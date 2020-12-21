@@ -1,0 +1,62 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+main {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font: 1rem/1.5 'Circular Std', 'Inter var', system-ui, BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  color: #222a3f;
+  background-color: #fff;
+}
+
+a {
+  background-color: transparent;
+  color: inherit;
+  text-decoration: inherit;
+}
+
+/* #preview {
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyIiBoZWlnaHQ9IjIiPjxnIGZpbGw9IiNGRkYiIGZpbGwtcnVsZT0ibm9uemVybyI+PHBhdGggZD0iTTEgMWgxdjFIMXpNMCAwaDF2MUgweiIvPjwvZz48L3N2Zz4=);
+  background-size: 20px 20px;
+} */
+
+#preview > * {
+  padding: 30px;
+}
+
+.CodeMirror {
+  height: 100%;
+  font: 0.8125rem/1.5 'SF Mono', SFMono-Regular, ui-monospace, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+    monospace;
+}
+
+@media (min-width: 768px) {
+  html main {
+    display: flex;
+  }
+
+  #editor,
+  #preview {
+    flex: 1;
+    overflow: auto;
+  }
+
+  #editor {
+    order: 0;
+    max-width: 680px;
+  }
+
+  #preview {
+    order: 1;
+  }
+}

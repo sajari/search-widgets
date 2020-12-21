@@ -1,0 +1,75 @@
+{
+  "extends": ["airbnb-typescript", "prettier"],
+  "plugins": ["simple-import-sort", "import", "prettier"],
+  "env": {
+    "browser": true
+  },
+  "rules": {
+    // Prettier setup
+    "prettier/prettier": "error",
+
+    // Fix up spacing between declarations
+    "padding-line-between-statements": [
+      "error",
+      {
+        "blankLine": "never",
+        "prev": ["singleline-const", "singleline-let", "singleline-var"],
+        "next": ["singleline-const", "singleline-let", "singleline-var"]
+      }
+    ],
+
+    // Sort imports
+    "sort-imports": "off",
+    "import/order": "off",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+
+    // Named or default is fine
+    "import/prefer-default-export": "off",
+
+    // Not required with TS
+    "react/prop-types": "off",
+    "react/require-default-props": "off",
+
+    // JSX stuff
+    "react/jsx-props-no-spreading": "off",
+    "react/react-in-jsx-scope": "off",
+
+    // Fix TypeScript extension issues
+    // https://github.com/airbnb/javascript/blob/master/packages/eslint-config-airbnb-base/rules/imports.js#L139
+    // https://stackoverflow.com/questions/59265981/typescript-eslint-missing-file-extension-ts-import-extensions
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "mjs": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+
+    // Let prettier take care of it
+    "@typescript-eslint/indent": "off",
+
+    // This one is annoying
+    "@typescript-eslint/explicit-function-return-type": "off",
+
+    // Dangling commas make merge/diffs easier
+    "@typescript-eslint/comma-dangle": "off"
+  },
+  "settings": {
+    "react": {
+      "pragma": "h",
+      "version": "detect"
+    }
+  },
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "project": "./tsconfig.eslint.json"
+  }
+}

@@ -1,0 +1,62 @@
+<div data-widget="search-ui">
+  <script type="application/json">
+    {
+      "account": "1603163345448404241",
+      "collection": "sajari-test-fashion2",
+      "pipeline": "query",
+      "filters": [
+        {
+          "name": "vendor",
+          "field": "vendor",
+          "title": "Vendor"
+        },
+        {
+          "name": "type",
+          "field": "product_type",
+          "title": "Type"
+        },
+        {
+          "name": "collection",
+          "field": "collection_titles",
+          "title": "Collection",
+          "array": true
+        },
+        {
+          "name": "tags",
+          "field": "tags",
+          "title": "Tags",
+          "array": true
+        }
+      ],
+      "fields": {
+        "image": "image"
+      },
+      "options": {
+        "results": {
+          "imageAspectRatio": {
+            "grid": "9 / 16",
+            "list": "1"
+          },
+          "imageObjectFit": {
+            "grid": "cover",
+            "list": "cover"
+          }
+        },
+        "input": {
+          "mode": "instant"
+        },
+        "theme": {
+          "color": {
+            "primary": {
+              "base": "#10B981",
+              "active": "#059669"
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <noscript>This page requires JavaScript</noscript>
+</div>
+
+<script async src="https://cdn.potts.es/shopify/1/loader.js"></script>
