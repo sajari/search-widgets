@@ -1,30 +1,31 @@
 import { useEffect } from 'preact/hooks';
+
 import { useDebounce } from '../useDebounce';
 
 type ParamValue = string | number | boolean | string[] | number[] | boolean[];
 
-interface UseQueryParamParams<T> {
+interface UseQueryParamParams {
   value?: ParamValue;
   callback?: (value: string) => void;
   debounce?: number;
 }
 
-export function useQueryParam<T>(key: string, options?: UseQueryParamParams<T>) {
+export function useQueryParam(key: string, options?: UseQueryParamParams) {
   const { value, callback, debounce } = options ?? {};
   const debouncedValue = debounce ? useDebounce(value, debounce) : value;
   const getValue = () =>
     typeof window !== 'undefined' ? new URLSearchParams(window.location.search).get(key) ?? '' : '';
 
-  const setParam = (value?: ParamValue, replace = false) => {
+  const setParam = (val?: ParamValue, replace = false) => {
     const url = new URL(window.location.href);
 
-    if (typeof value === 'undefined') {
+    if (typeof val === 'undefined') {
       return;
     }
 
-    if (value) {
-      url.searchParams.set(key, value.toString());
-    } else if (value?.toString().length === 0) {
+    if (val) {
+      url.searchParams.set(key, val.toString());
+    } else if (val?.toString().length === 0) {
       url.searchParams.delete(key);
     }
 

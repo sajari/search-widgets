@@ -3,7 +3,6 @@ import tw, { styled } from 'twin.macro';
 
 import { useAppContext } from '../../context';
 import { useInterfaceContext } from '../context';
-
 import ToggleFilters from './ToggleFilters';
 
 const Summary = styled(CoreSummary)`

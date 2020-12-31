@@ -41,7 +41,7 @@ export default () => {
           <div css={tw`flex`}>
             {results && (
               <div css={[tw`transition-all duration-200`, filtersShown ? tw`pr-8 w-80` : tw`w-0 opacity-0`]}>
-                <div css={[tw`w-72 space-y-6`, filtersShown ? `whitespace-nowrap` : tw``]}>
+                <div css={[tw`w-72 space-y-6`, filtersShown ? 'whitespace-nowrap' : tw``]}>
                   <Input {...options.input} />
 
                   {filters?.map((props) => (

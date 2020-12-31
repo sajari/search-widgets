@@ -22,7 +22,6 @@ export function createContext<ContextType>(options: CreateContextOptions = {}) {
   const { strict = true, errorMessage = 'useContext must be inside a Provider with a value', name } = options;
   const Context = create<ContextType | undefined>(undefined);
 
-  // @ts-ignore
   Context.displayName = name;
 
   function useContext() {
