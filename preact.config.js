@@ -1,5 +1,4 @@
-import { resolve } from 'path';
-
+/* eslint-disable no-param-reassign */
 // Override webpack config defaults
 export default {
   /**
