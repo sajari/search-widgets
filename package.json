@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "@sajari/search-widgets",
-  "version": "1.0.0-beta.9",
+  "version": "1.0.0-beta.12",
   "license": "MIT",
   "browserslist": "> 1%",
   "scripts": {
@@ -41,7 +41,7 @@
     "@types/webpack-env": "^1.16.0",
     "@typescript-eslint/eslint-plugin": "^4.11.1",
     "ansi-colors": "^4.1.1",
-    "aws-sdk": "^2.819.0",
+    "aws-sdk": "^2.820.0",
     "babel-plugin-macros": "3.0.1",
     "cli-confirm": "^1.0.1",
     "cross-env": "^7.0.3",
@@ -70,8 +70,8 @@
     "typescript": "^4.1.3"
   },
   "dependencies": {
-    "@sajari/react-components": "^1.2.0",
-    "@sajari/react-search-ui": "^1.2.0",
+    "@sajari/react-components": "^1.2.2",
+    "@sajari/react-search-ui": "^1.2.3",
     "@sajari/react-hooks": "^1.0.7",
     "@sajari/react-sdk-utils": "^1.2.0",
     "lodash-es": "^4.17.20",
