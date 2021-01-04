@@ -13,11 +13,9 @@ import Options from './Options';
 export default () => {
   const [filtersShown, setFiltersShown] = useState(true);
   const { options, filters, id } = useAppContext();
-  // Resizing
   const [width, setWidth] = useState(0);
   const debouncedWidth = useDebounce(width, 100);
   const breakpoints = parseBreakpoints(debouncedWidth);
-  const handleResize = (rect: DOMRectReadOnly) => setWidth(rect.width);
   const { results } = useSearchContext();
 
   useEffect(() => {
@@ -34,7 +32,7 @@ export default () => {
 
   return (
     <InterfaceContextProvider value={context}>
-      <ResizeObserver onResize={handleResize}>
+      <ResizeObserver onResize={(size) => setWidth(size.width)}>
         <div id={id} css={tw`space-y-6`}>
           {results && <Options />}
 
