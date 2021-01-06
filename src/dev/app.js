@@ -5,7 +5,8 @@
   const value = localStorage.getItem(storageKey) || '';
   const editor = document.getElementById('editor');
   const preview = document.getElementById('preview');
-  const convertJSON = (json) => `<div data-widget="search-ui"><script type="application/json">${json}</script></div>`;
+  const convertJSON = (json) =>
+    `<div data-widget="search-results"><script type="application/json">${json}</script></div>`;
 
   preview.innerHTML = convertJSON(value);
 

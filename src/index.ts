@@ -4,7 +4,7 @@ import habitat from 'preact-habitat';
 import App from './app';
 
 const components: Record<string, ComponentType> = {
-  'search-ui': App as ComponentType,
+  'search-results': App as ComponentType,
 };
 
 const attribute = 'data-widget';

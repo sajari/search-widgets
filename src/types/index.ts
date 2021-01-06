@@ -27,11 +27,14 @@ export interface AppOptions {
   pagination?: PaginationProps;
 }
 
+export type Preset = 'shopify' | undefined;
+
 export interface AppProps {
   endpoint?: string;
   account: string;
   collection: string;
   pipeline: string | { name: string; version?: string };
+  preset: Preset;
   fields?: FieldDictionary;
   filters?: FilterProps[];
   variables?: ContextProviderValues['search']['variables'];

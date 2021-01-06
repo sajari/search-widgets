@@ -2,7 +2,7 @@ import { FieldDictionary, FilterBuilder, Pipeline, SearchProvider, Variables } f
 import { isString, merge } from 'lodash-es';
 
 import AppContextProvider from './context';
-import { defaultFields, mergeDefaults } from './defaults';
+import { getDefaultFields, mergeDefaults } from './defaults';
 import { useQueryParam } from './hooks';
 import Interface from './interface';
 import { AppProps } from './types';
@@ -13,6 +13,7 @@ export default (props: AppProps) => {
     account,
     collection,
     pipeline,
+    preset,
     filters = [],
     variables: variablesProp,
     fields: fieldsProp,
@@ -20,7 +21,7 @@ export default (props: AppProps) => {
     theme,
   } = props;
   const id = `search-ui-${Date.now()}`;
-  const options = mergeDefaults(id, optionsProp);
+  const options = mergeDefaults(id, preset, optionsProp);
   const { name, version = undefined } = isString(pipeline) ? { name: pipeline } : pipeline;
   const { value: q } = useQueryParam('q');
 
@@ -29,7 +30,7 @@ export default (props: AppProps) => {
     ...variablesProp,
   });
 
-  const fields = new FieldDictionary(merge(defaultFields, fieldsProp));
+  const fields = new FieldDictionary(merge(getDefaultFields(preset), fieldsProp));
 
   const searchContext = {
     pipeline: new Pipeline(
@@ -48,6 +49,7 @@ export default (props: AppProps) => {
   const context = {
     ...props,
     endpoint,
+    preset,
     fields,
     filters,
     options,

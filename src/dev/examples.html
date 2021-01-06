@@ -1,59 +1,30 @@
-<div data-widget="search-ui">
+<div data-widget="search-results">
   <script type="application/json">
     {
       "account": "1603163345448404241",
       "collection": "sajari-test-fashion2",
       "pipeline": "query",
+      "preset": "shopify",
       "filters": [
         {
           "name": "vendor",
           "field": "vendor",
-          "title": "Vendor"
+          "title": "Vendor",
+          "searchable": true
         },
         {
           "name": "type",
           "field": "product_type",
-          "title": "Type"
+          "title": "Type",
+          "searchable": true
         },
         {
           "name": "collection",
           "field": "collection_titles",
           "title": "Collection",
           "array": true
-        },
-        {
-          "name": "tags",
-          "field": "tags",
-          "title": "Tags",
-          "array": true
         }
-      ],
-      "fields": {
-        "image": "image"
-      },
-      "options": {
-        "results": {
-          "imageAspectRatio": {
-            "grid": "9 / 16",
-            "list": "1"
-          },
-          "imageObjectFit": {
-            "grid": "cover",
-            "list": "cover"
-          }
-        },
-        "input": {
-          "mode": "instant"
-        },
-        "theme": {
-          "color": {
-            "primary": {
-              "base": "#10B981",
-              "active": "#059669"
-            }
-          }
-        }
-      }
+      ]
     }
   </script>
   <noscript>This page requires JavaScript</noscript>
