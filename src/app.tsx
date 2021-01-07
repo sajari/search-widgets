@@ -48,11 +48,11 @@ export default (props: AppProps) => {
   };
 
   const context = {
-    ...props,
-    endpoint,
-    preset,
-    fields,
+    account,
+    collection,
+    pipeline,
     filters,
+    defaultFilter,
     options,
     variables,
     id,

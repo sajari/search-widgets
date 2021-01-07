@@ -44,7 +44,8 @@ export interface AppProps {
   options?: AppOptions;
 }
 
-export interface AppContextProps extends Required<Omit<AppProps, 'config' | 'theme'>> {
+export interface AppContextProps
+  extends Required<Omit<AppProps, 'config' | 'endpoint' | 'fields' | 'preset' | 'theme'>> {
   children?: ComponentChildren;
   id: string;
 }
