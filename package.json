@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "@sajari/search-widgets",
-  "version": "1.0.0-beta.13",
+  "version": "1.0.0-beta.14",
   "license": "MIT",
   "browserslist": "> 1%",
   "scripts": {
@@ -41,7 +41,7 @@
     "@types/webpack-env": "^1.16.0",
     "@typescript-eslint/eslint-plugin": "^4.12.0",
     "ansi-colors": "^4.1.1",
-    "aws-sdk": "^2.822.0",
+    "aws-sdk": "^2.823.0",
     "babel-plugin-macros": "3.0.1",
     "cli-confirm": "^1.0.1",
     "cross-env": "^7.0.3",
@@ -58,8 +58,8 @@
     "gulp-babel": "^8.0.0",
     "gulp-rename": "^2.0.0",
     "gulp-replace": "^1.0.0",
-    "gulp-terser": "^2.0.0",
-    "husky": "^4.3.6",
+    "gulp-terser": "^2.0.1",
+    "husky": "^4.3.7",
     "if-env": "^1.0.4",
     "lint-staged": "^10.5.3",
     "postcss": "^8.2.2",
