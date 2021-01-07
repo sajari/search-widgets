@@ -9,12 +9,13 @@ import { AppProps } from './types';
 
 export default (props: AppProps) => {
   const {
-    endpoint = 'https://jsonapi-us-valkyrie.sajari.net',
+    endpoint,
     account,
     collection,
     pipeline,
     preset,
     filters = [],
+    defaultFilter,
     variables: variablesProp,
     fields: fieldsProp,
     options: optionsProp,
@@ -58,7 +59,7 @@ export default (props: AppProps) => {
   };
 
   return (
-    <SearchProvider search={searchContext} theme={theme} searchOnLoad>
+    <SearchProvider search={searchContext} theme={theme} searchOnLoad defaultFilter={defaultFilter}>
       <AppContextProvider value={context}>
         <Interface />
       </AppContextProvider>

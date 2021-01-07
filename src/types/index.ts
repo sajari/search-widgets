@@ -37,9 +37,10 @@ export interface AppProps {
   preset: Preset;
   fields?: FieldDictionary;
   filters?: FilterProps[];
-  variables?: ContextProviderValues['search']['variables'];
-  config?: ContextProviderValues['search']['config'];
-  theme?: ContextProviderValues['theme'];
+  defaultFilter: ContextProviderValues['defaultFilter'];
+  variables: ContextProviderValues['search']['variables'];
+  config: ContextProviderValues['search']['config'];
+  theme: ContextProviderValues['theme'];
   options?: AppOptions;
 }
 
