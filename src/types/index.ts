@@ -2,6 +2,7 @@
 import {
   ContextProviderValues,
   FieldDictionary,
+  FilterBuilder,
   FilterProps,
   InputProps as CoreInputProps,
   PaginationProps,
@@ -36,7 +37,8 @@ export interface AppProps {
   pipeline: string | { name: string; version?: string };
   preset: Preset;
   fields?: FieldDictionary;
-  filters?: FilterProps[];
+  filters?: (FilterProps & { field: string })[];
+  filterBuilders?: FilterBuilder[];
   defaultFilter: ContextProviderValues['defaultFilter'];
   variables: ContextProviderValues['search']['variables'];
   config: ContextProviderValues['search']['config'];

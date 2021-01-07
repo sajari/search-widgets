@@ -5,7 +5,7 @@ import { useEffect, useState } from 'preact/hooks';
 import tw from 'twin.macro';
 
 import { useAppContext } from '../context';
-import { useDebounce } from '../hooks';
+import { useDebounce, useSyncStateQueryParams } from '../hooks';
 import { parseBreakpoints } from '../utils/styles';
 import InterfaceContextProvider from './context';
 import Options from './Options';
@@ -17,6 +17,8 @@ export default () => {
   const debouncedWidth = useDebounce(width, 100);
   const breakpoints = parseBreakpoints(debouncedWidth);
   const { results } = useSearchContext();
+
+  useSyncStateQueryParams();
 
   useEffect(() => {
     if (breakpoints.md !== null && !breakpoints.md) {
