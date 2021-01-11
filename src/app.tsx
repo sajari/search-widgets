@@ -31,13 +31,15 @@ export default (props: AppProps) => {
     fields: fieldsProp,
     options: optionsProp,
     theme,
+    viewType: viewTypeProp = 'grid',
+    syncURL = 'none',
   } = props;
 
   const id = `search-ui-${Date.now()}`;
   const options = mergeDefaults(id, preset, optionsProp);
   const { name, version = undefined } = isString(pipeline) ? { name: pipeline } : pipeline;
-  const params = getSearchParams();
-  const viewType: ViewType = ['grid', 'list'].includes(params.viewType) ? (params.viewType as ViewType) : 'grid';
+  const params = syncURL === 'none' ? {} : getSearchParams();
+  const viewType: ViewType = ['grid', 'list'].includes(params.viewType) ? (params.viewType as ViewType) : viewTypeProp;
 
   const variables = useMemo(() => {
     const validKeys = ['q', 'sort', 'show'];
@@ -98,6 +100,7 @@ export default (props: AppProps) => {
     options,
     variables,
     id,
+    syncURL,
   };
 
   return (

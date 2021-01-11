@@ -5,20 +5,19 @@ import { useEffect, useState } from 'preact/hooks';
 import tw from 'twin.macro';
 
 import { useAppContext } from '../context';
-import { useDebounce, useSyncStateQueryParams } from '../hooks';
+import { useDebounce } from '../hooks';
 import { parseBreakpoints } from '../utils/styles';
 import InterfaceContextProvider from './context';
 import Options from './Options';
+import SyncStateQueryParams from './SyncStateQueryParams';
 
 export default () => {
   const [filtersShown, setFiltersShown] = useState(true);
-  const { options, filters, id } = useAppContext();
+  const { options, filters, id, syncURL } = useAppContext();
   const [width, setWidth] = useState(0);
   const debouncedWidth = useDebounce(width, 100);
   const breakpoints = parseBreakpoints(debouncedWidth);
   const { results } = useSearchContext();
-
-  useSyncStateQueryParams();
 
   useEffect(() => {
     if (breakpoints.md !== null && !breakpoints.md) {
@@ -34,6 +33,7 @@ export default () => {
 
   return (
     <InterfaceContextProvider value={context}>
+      {syncURL !== 'none' ? <SyncStateQueryParams /> : null}
       <ResizeObserver onResize={(size) => setWidth(size.width)}>
         <div id={id} css={tw`space-y-6`}>
           {results && <Options />}
