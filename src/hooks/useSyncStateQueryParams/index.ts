@@ -1,10 +1,5 @@
-import {
-  EVENT_SELECTION_UPDATED,
-  useQuery,
-  useResultsPerPage,
-  useSearchContext,
-  useSorting,
-} from '@sajari/react-hooks';
+import { EVENT_SELECTION_UPDATED, useQuery, useResultsPerPage, useSorting } from '@sajari/react-hooks';
+import { useSearchUIContext } from '@sajari/react-search-ui';
 import { useEffect } from 'preact/hooks';
 
 import { useAppContext } from '../../context';
@@ -13,8 +8,8 @@ import { useSetQueryParams } from '../useQueryParam';
 export function useSyncStateQueryParams() {
   const { query } = useQuery();
   const { sorting } = useSorting();
+  const { viewType } = useSearchUIContext();
   const { resultsPerPage } = useResultsPerPage();
-  const { viewType } = useSearchContext();
   const setQParam = useSetQueryParams('q', { debounce: 500, replace: true });
   const setSortParam = useSetQueryParams('sort', { debounce: 500, replace: true });
   const setShowParam = useSetQueryParams('show', { debounce: 500, replace: true, defaultValue: 15 });

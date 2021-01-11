@@ -1,4 +1,11 @@
-import { FieldDictionary, FilterBuilder, Pipeline, SearchProvider, Variables } from '@sajari/react-search-ui';
+import {
+  ContextProviderValues,
+  FieldDictionary,
+  FilterBuilder,
+  Pipeline,
+  SearchProvider,
+  Variables,
+} from '@sajari/react-search-ui';
 import { isString, merge } from 'lodash-es';
 import { useMemo } from 'preact/hooks';
 
@@ -7,6 +14,9 @@ import { getDefaultFields, mergeDefaults } from './defaults';
 import Interface from './interface';
 import { AppProps } from './types';
 import getSearchParams from './utils/getSearchParams';
+
+// TODO: should be exported from the search-ui package
+type ViewType = Required<ContextProviderValues>['viewType'];
 
 export default (props: AppProps) => {
   const {
@@ -27,6 +37,7 @@ export default (props: AppProps) => {
   const options = mergeDefaults(id, preset, optionsProp);
   const { name, version = undefined } = isString(pipeline) ? { name: pipeline } : pipeline;
   const params = getSearchParams();
+  const viewType: ViewType = ['grid', 'list'].includes(params.viewType) ? (params.viewType as ViewType) : 'grid';
 
   const variables = useMemo(() => {
     const validKeys = ['q', 'sort', 'show'];
@@ -90,7 +101,7 @@ export default (props: AppProps) => {
   };
 
   return (
-    <SearchProvider search={searchContext} theme={theme} searchOnLoad defaultFilter={defaultFilter}>
+    <SearchProvider search={searchContext} theme={theme} searchOnLoad defaultFilter={defaultFilter} viewType={viewType}>
       <AppContextProvider value={context}>
         <Interface />
       </AppContextProvider>
