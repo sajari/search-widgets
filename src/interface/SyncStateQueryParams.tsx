@@ -6,7 +6,10 @@ import { useAppContext } from '../context';
 import { useSetQueryParams } from '../hooks/useQueryParam';
 
 const SyncStateQueryParams = () => {
-  const { filterBuilders, syncURL } = useAppContext();
+  const {
+    filterBuilders,
+    options: { syncURL, viewType: defaultViewType = 'grid' },
+  } = useAppContext();
   const replace = syncURL === 'replace';
   const { query } = useQuery();
   const { sorting } = useSorting();
@@ -15,7 +18,7 @@ const SyncStateQueryParams = () => {
   const setQParam = useSetQueryParams('q', { debounce: 500, replace });
   const setSortParam = useSetQueryParams('sort', { debounce: 500, replace });
   const setShowParam = useSetQueryParams('show', { debounce: 500, replace, defaultValue: 15 });
-  const setViewType = useSetQueryParams('viewType', { debounce: 500, replace, defaultValue: 'grid' });
+  const setViewTypeParam = useSetQueryParams('viewType', { debounce: 500, replace, defaultValue: defaultViewType });
   const setFilterCallbacks: Record<string, (val: string[]) => void> = {};
   // Since the filter list is static, we "can" declare hooks inside a for loop
   // eslint-disable-next-line no-restricted-syntax
@@ -37,7 +40,7 @@ const SyncStateQueryParams = () => {
   }, [resultsPerPage]);
 
   useEffect(() => {
-    setViewType(viewType);
+    setViewTypeParam(viewType);
   }, [viewType]);
 
   useEffect(() => {

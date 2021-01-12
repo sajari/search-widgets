@@ -13,7 +13,7 @@ import SyncStateQueryParams from './SyncStateQueryParams';
 
 export default () => {
   const [filtersShown, setFiltersShown] = useState(true);
-  const { options, filters, id, syncURL } = useAppContext();
+  const { options, filters, id } = useAppContext();
   const [width, setWidth] = useState(0);
   const debouncedWidth = useDebounce(width, 100);
   const breakpoints = parseBreakpoints(debouncedWidth);
@@ -33,7 +33,7 @@ export default () => {
 
   return (
     <InterfaceContextProvider value={context}>
-      {syncURL !== 'none' ? <SyncStateQueryParams /> : null}
+      {options.syncURL !== 'none' ? <SyncStateQueryParams /> : null}
       <ResizeObserver onResize={(size) => setWidth(size.width)}>
         <div id={id} css={tw`space-y-6`}>
           {results && <Options />}

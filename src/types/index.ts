@@ -26,6 +26,8 @@ export interface AppOptions {
   input?: InputProps;
   results?: ResultsProps;
   pagination?: PaginationProps;
+  syncURL?: 'none' | 'replace';
+  viewType?: ContextProviderValues['viewType'];
 }
 
 export type Preset = 'shopify' | undefined;
@@ -40,19 +42,17 @@ export interface AppProps {
   preset: Preset;
   fields?: FieldDictionary;
   filters?: (FilterProps & { field: string })[];
-  filterBuilders?: FilterBuilder[];
   defaultFilter: ContextProviderValues['defaultFilter'];
-  viewType?: ContextProviderValues['viewType'];
   variables: ContextProviderValues['search']['variables'];
   config: ContextProviderValues['search']['config'];
   theme: ContextProviderValues['theme'];
   options?: AppOptions;
-  syncURL?: 'none' | 'replace';
 }
 
 export interface AppContextProps
   extends Required<Omit<AppProps, 'config' | 'endpoint' | 'fields' | 'preset' | 'theme' | 'viewType'>> {
   children?: ComponentChildren;
+  filterBuilders: FilterBuilder[];
   id: string;
 }
 

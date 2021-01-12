@@ -42,6 +42,8 @@ export function getDefaultOptions(preset: Preset): AppOptions {
     pagination: {
       scrollToTop: true,
     },
+    viewType: 'grid',
+    syncURL: 'none',
   };
 
   switch (preset) {
