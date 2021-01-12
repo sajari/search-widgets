@@ -1,8 +1,8 @@
 import {
-  ContextProviderValues,
   FieldDictionary,
   FilterBuilder,
   Pipeline,
+  ResultViewType,
   SearchProvider,
   Variables,
 } from '@sajari/react-search-ui';
@@ -14,9 +14,6 @@ import { getDefaultFields, mergeDefaults } from './defaults';
 import Interface from './interface';
 import { AppProps } from './types';
 import getSearchParams from './utils/getSearchParams';
-
-// TODO: should be exported from the search-ui package
-type ViewType = Required<ContextProviderValues>['viewType'];
 
 export default (props: AppProps) => {
   const {
@@ -37,8 +34,8 @@ export default (props: AppProps) => {
   const options = mergeDefaults(id, preset, optionsProp);
   const { name, version = undefined } = isString(pipeline) ? { name: pipeline } : pipeline;
   const params = options.syncURL === 'none' ? {} : getSearchParams();
-  const viewType: ViewType = ['grid', 'list'].includes(params.viewType)
-    ? (params.viewType as ViewType)
+  const viewType: ResultViewType = ['grid', 'list'].includes(params.viewType)
+    ? (params.viewType as ResultViewType)
     : options.viewType ?? 'grid';
 
   const variables = useMemo(() => {

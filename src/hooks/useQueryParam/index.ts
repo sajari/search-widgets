@@ -25,11 +25,16 @@ export function useSetQueryParams(key: string, options?: UseQueryParamParams) {
     }
 
     const url = new URL(window.location.href);
+    const prevSearch = url.search;
 
     if ((!Array.isArray(val) && val && val !== defaultValue) || (Array.isArray(val) && val.length > 0)) {
       url.searchParams.set(key, val.toString());
     } else if (val?.toString().length === 0 || val === defaultValue || (Array.isArray(val) && val.length === 0)) {
       url.searchParams.delete(key);
+    }
+
+    if (prevSearch === url.search) {
+      return;
     }
 
     if (replace) {

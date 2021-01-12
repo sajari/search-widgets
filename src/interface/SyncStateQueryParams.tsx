@@ -1,9 +1,30 @@
-import { EVENT_SELECTION_UPDATED, useQuery, useResultsPerPage, useSorting } from '@sajari/react-hooks';
-import { useSearchUIContext } from '@sajari/react-search-ui';
+import { useFilter, useQuery, useResultsPerPage, useSorting } from '@sajari/react-hooks';
+import { FilterBuilder, ResultViewType, useSearchUIContext } from '@sajari/react-search-ui';
 import { useEffect } from 'preact/hooks';
 
 import { useAppContext } from '../context';
 import { useSetQueryParams } from '../hooks/useQueryParam';
+
+const FilterWatcher = ({ filter, replace }: { filter: FilterBuilder; replace: boolean }) => {
+  const key = filter.getField() as string;
+  const name = filter.getName();
+  const { setSelected, selected } = useFilter(name);
+  const setFilterParam = useSetQueryParams(key, {
+    debounce: 500,
+    replace,
+    callback: replace
+      ? undefined
+      : (value) => {
+          setSelected(value === '' ? [] : value.split(','));
+        },
+  });
+
+  useEffect(() => {
+    setFilterParam(selected);
+  }, [selected]);
+
+  return null;
+};
 
 const SyncStateQueryParams = () => {
   const {
@@ -11,21 +32,32 @@ const SyncStateQueryParams = () => {
     options: { syncURL, viewType: defaultViewType = 'grid' },
   } = useAppContext();
   const replace = syncURL === 'replace';
-  const { query } = useQuery();
-  const { sorting } = useSorting();
-  const { viewType } = useSearchUIContext();
-  const { resultsPerPage } = useResultsPerPage();
-  const setQParam = useSetQueryParams('q', { debounce: 500, replace });
-  const setSortParam = useSetQueryParams('sort', { debounce: 500, replace });
-  const setShowParam = useSetQueryParams('show', { debounce: 500, replace, defaultValue: 15 });
-  const setViewTypeParam = useSetQueryParams('viewType', { debounce: 500, replace, defaultValue: defaultViewType });
-  const setFilterCallbacks: Record<string, (val: string[]) => void> = {};
-  // Since the filter list is static, we "can" declare hooks inside a for loop
-  // eslint-disable-next-line no-restricted-syntax
-  for (const filter of filterBuilders) {
-    const key = filter.getField() as string;
-    setFilterCallbacks[key] = useSetQueryParams(key, { debounce: 500, replace });
-  }
+  const { query, setQuery } = useQuery();
+  const { sorting, setSorting } = useSorting();
+  const { viewType, setViewType } = useSearchUIContext();
+  const { resultsPerPage, setResultsPerPage } = useResultsPerPage();
+  const setQParam = useSetQueryParams('q', { debounce: 500, replace, callback: replace ? undefined : setQuery });
+  const setSortParam = useSetQueryParams('sort', {
+    debounce: 500,
+    replace,
+    callback: replace ? undefined : setSorting,
+  });
+  const setShowParam = useSetQueryParams('show', {
+    debounce: 500,
+    replace,
+    defaultValue: 15,
+    callback: replace
+      ? undefined
+      : (value) => {
+          setResultsPerPage(Number(value) || 15);
+        },
+  });
+  const setViewTypeParam = useSetQueryParams('viewType', {
+    debounce: 500,
+    replace,
+    defaultValue: defaultViewType,
+    callback: replace ? undefined : (value) => setViewType((value as ResultViewType) || defaultViewType),
+  });
 
   useEffect(() => {
     setQParam(query);
@@ -43,20 +75,13 @@ const SyncStateQueryParams = () => {
     setViewTypeParam(viewType);
   }, [viewType]);
 
-  useEffect(() => {
-    const unregisterListeners = filterBuilders.map((filter) => {
-      const key = filter.getField() as string;
-      return filter.listen(EVENT_SELECTION_UPDATED, () => {
-        setFilterCallbacks[key](filter.get());
-      });
-    });
-
-    return () => {
-      unregisterListeners.forEach((func) => func());
-    };
-  }, []);
-
-  return null;
+  return (
+    <>
+      {filterBuilders.map((filter) => (
+        <FilterWatcher filter={filter} key={filter.getField()} replace={replace} />
+      ))}
+    </>
+  );
 };
 
 export default SyncStateQueryParams;

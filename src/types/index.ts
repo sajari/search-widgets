@@ -8,17 +8,18 @@ import {
   PaginationProps,
   ResultsPerPageProps,
   ResultsProps,
+  ResultViewType,
   SortingProps,
 } from '@sajari/react-search-ui';
 import { ComponentChildren } from 'preact';
 
 import { Breakpoints } from '../utils/styles';
 
-export type ViewType = 'grid' | 'list';
-
 interface InputProps extends CoreInputProps<any> {
   mode?: Exclude<CoreInputProps<any>['mode'], 'results'>;
 }
+
+export type SyncURLType = 'none' | 'replace' | 'push';
 
 export interface AppOptions {
   resultsPerPage?: ResultsPerPageProps;
@@ -26,13 +27,11 @@ export interface AppOptions {
   input?: InputProps;
   results?: ResultsProps;
   pagination?: PaginationProps;
-  syncURL?: 'none' | 'replace';
-  viewType?: ContextProviderValues['viewType'];
+  syncURL?: SyncURLType;
+  viewType?: ResultViewType;
 }
 
 export type Preset = 'shopify' | undefined;
-
-export type SyncURLType = 'none' | 'replace';
 
 export interface AppProps {
   endpoint?: string;
