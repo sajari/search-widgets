@@ -29,6 +29,9 @@ export interface AppOptions {
   pagination?: PaginationProps;
   syncURL?: SyncURLType;
   viewType?: ResultViewType;
+  urlParams?: {
+    q?: string;
+  };
 }
 
 export type Preset = 'shopify' | undefined;

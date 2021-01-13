@@ -29,14 +29,18 @@ const FilterWatcher = ({ filter, replace }: { filter: FilterBuilder; replace: bo
 const SyncStateQueryParams = () => {
   const {
     filterBuilders,
-    options: { syncURL, viewType: defaultViewType = 'grid' },
+    options: { syncURL, viewType: defaultViewType = 'grid', urlParams },
   } = useAppContext();
   const replace = syncURL === 'replace';
   const { query, setQuery } = useQuery();
   const { sorting, setSorting } = useSorting();
   const { viewType, setViewType } = useSearchUIContext();
   const { resultsPerPage, setResultsPerPage } = useResultsPerPage();
-  const setQParam = useSetQueryParams('q', { debounce: 500, replace, callback: replace ? undefined : setQuery });
+  const setQParam = useSetQueryParams(urlParams?.q || 'q', {
+    debounce: 500,
+    replace,
+    callback: replace ? undefined : setQuery,
+  });
   const setSortParam = useSetQueryParams('sort', {
     debounce: 500,
     replace,

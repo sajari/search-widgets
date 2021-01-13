@@ -44,6 +44,9 @@ export function getDefaultOptions(preset: Preset): AppOptions {
     },
     viewType: 'grid',
     syncURL: 'none',
+    urlParams: {
+      q: 'q',
+    },
   };
 
   switch (preset) {

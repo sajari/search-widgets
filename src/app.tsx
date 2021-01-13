@@ -39,8 +39,9 @@ export default (props: AppProps) => {
     : options.viewType ?? 'grid';
 
   const variables = useMemo(() => {
-    const validKeys = ['q', 'sort', 'show'];
-    const mapKeys: Record<string, string> = { show: 'resultsPerPage' };
+    const queryKey = options.urlParams?.q || 'q';
+    const validKeys = [queryKey, 'sort', 'show'];
+    const mapKeys: Record<string, string> = { [queryKey]: 'q', show: 'resultsPerPage' };
     const variablesFromParams = validKeys.reduce((a, c) => {
       if (c in params) {
         if (mapKeys[c]) {
