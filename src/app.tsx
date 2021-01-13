@@ -2,6 +2,8 @@ import {
   FieldDictionary,
   FilterBuilder,
   Pipeline,
+  Range,
+  RangeFilterBuilder,
   ResultViewType,
   SearchProvider,
   Variables,
@@ -14,6 +16,7 @@ import { getDefaultFields, mergeDefaults } from './defaults';
 import Interface from './interface';
 import { AppProps } from './types';
 import getSearchParams from './utils/getSearchParams';
+import isRange from './utils/isRange';
 
 export default (props: AppProps) => {
   const {
@@ -62,9 +65,24 @@ export default (props: AppProps) => {
   const filters = useMemo(() => {
     return filtersProp.map((filter) => {
       const value = params[filter.field as string] || '';
-      const initial = value ? value.split(',') : [];
-      const filterBuilder = new FilterBuilder(filter);
-      filterBuilder.set(initial);
+      const isRangeFilter = filter.type === 'range';
+      const filterBuilder = isRangeFilter ? new RangeFilterBuilder(filter) : new FilterBuilder(filter);
+
+      if (filterBuilder instanceof RangeFilterBuilder) {
+        let initialRange: Range | null = value.split(':').map(Number) as Range;
+        const limit = (params[`${filter.field}_min_max` as string] || '').split(':').map(Number) as Range;
+
+        if (!isRange(initialRange)) {
+          initialRange = null;
+        }
+        filterBuilder.set(initialRange);
+        if (!isRange(limit)) {
+          filterBuilder.setMin(limit[0]);
+          filterBuilder.setMax(limit[1]);
+        }
+      } else {
+        filterBuilder.set(value ? value.split(',') : []);
+      }
 
       return filterBuilder;
     });

@@ -1,9 +1,18 @@
-import { useFilter, useQuery, useResultsPerPage, useSorting } from '@sajari/react-hooks';
+import {
+  Range,
+  RangeFilterBuilder,
+  useFilter,
+  useQuery,
+  useRangeFilter,
+  useResultsPerPage,
+  useSorting,
+} from '@sajari/react-hooks';
 import { FilterBuilder, ResultViewType, useSearchUIContext } from '@sajari/react-search-ui';
 import { useEffect } from 'preact/hooks';
 
 import { useAppContext } from '../context';
 import { useSetQueryParams } from '../hooks/useQueryParam';
+import isRange from '../utils/isRange';
 
 const FilterWatcher = ({ filter, replace }: { filter: FilterBuilder; replace: boolean }) => {
   const key = filter.getField() as string;
@@ -22,6 +31,41 @@ const FilterWatcher = ({ filter, replace }: { filter: FilterBuilder; replace: bo
   useEffect(() => {
     setFilterParam(selected);
   }, [selected]);
+
+  return null;
+};
+
+const RangeFilterWatcher = ({ filter, replace }: { filter: RangeFilterBuilder; replace: boolean }) => {
+  const key = filter.getField() as string;
+  const name = filter.getName();
+  const { range, setRange, min, max } = useRangeFilter(name);
+  const setFilterParam = useSetQueryParams(key, {
+    debounce: 500,
+    replace,
+    callback: replace
+      ? undefined
+      : (value) => {
+          let rangeValue: Range = value.split(':').map(Number) as Range;
+          if (!isRange(rangeValue)) {
+            rangeValue = [min, max];
+          }
+
+          setRange(rangeValue);
+        },
+  });
+
+  const setMinMaxParam = useSetQueryParams(`${key}_min_max`, {
+    debounce: 500,
+    replace,
+  });
+
+  useEffect(() => {
+    setFilterParam(range?.join(':'));
+  }, [range]);
+
+  useEffect(() => {
+    setMinMaxParam(`${min}:${max}`);
+  }, [min, max]);
 
   return null;
 };
@@ -81,9 +125,13 @@ const SyncStateQueryParams = () => {
 
   return (
     <>
-      {filterBuilders.map((filter) => (
-        <FilterWatcher filter={filter} key={filter.getField()} replace={replace} />
-      ))}
+      {filterBuilders.map((filter) => {
+        return filter instanceof FilterBuilder ? (
+          <FilterWatcher filter={filter} key={filter.getField()} replace={replace} />
+        ) : (
+          <RangeFilterWatcher filter={filter} key={filter.getField()} replace={replace} />
+        );
+      })}
     </>
   );
 };
