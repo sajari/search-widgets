@@ -1,11 +1,19 @@
-import { FieldDictionary, FilterBuilder, Pipeline, SearchProvider, Variables } from '@sajari/react-search-ui';
+import {
+  FieldDictionary,
+  FilterBuilder,
+  Pipeline,
+  ResultViewType,
+  SearchProvider,
+  Variables,
+} from '@sajari/react-search-ui';
 import { isString, merge } from 'lodash-es';
+import { useMemo } from 'preact/hooks';
 
 import AppContextProvider from './context';
 import { getDefaultFields, mergeDefaults } from './defaults';
-import { useQueryParam } from './hooks';
 import Interface from './interface';
 import { AppProps } from './types';
+import getSearchParams from './utils/getSearchParams';
 
 export default (props: AppProps) => {
   const {
@@ -14,44 +22,78 @@ export default (props: AppProps) => {
     collection,
     pipeline,
     preset,
-    filters = [],
+    filters: filtersProp = [],
     defaultFilter,
     variables: variablesProp,
     fields: fieldsProp,
     options: optionsProp,
     theme,
   } = props;
+
   const id = `search-ui-${Date.now()}`;
   const options = mergeDefaults(id, preset, optionsProp);
   const { name, version = undefined } = isString(pipeline) ? { name: pipeline } : pipeline;
-  const { value: q } = useQueryParam('q');
+  const params = options.syncURL === 'none' ? {} : getSearchParams();
+  const viewType: ResultViewType = ['grid', 'list'].includes(params.viewType)
+    ? (params.viewType as ResultViewType)
+    : options.viewType ?? 'grid';
 
-  const variables = new Variables({
-    q,
-    ...variablesProp,
-  });
+  const variables = useMemo(() => {
+    const queryKey = options.urlParams?.q || 'q';
+    const validKeys = [queryKey, 'sort', 'show'];
+    const mapKeys: Record<string, string> = { [queryKey]: 'q', show: 'resultsPerPage' };
+    const variablesFromParams = validKeys.reduce((a, c) => {
+      if (c in params) {
+        if (mapKeys[c]) {
+          return { ...a, [mapKeys[c]]: params[c] };
+        }
+        return { ...a, [c]: params[c] };
+      }
+
+      return a;
+    }, {});
+
+    return new Variables({
+      ...variablesProp,
+      ...variablesFromParams,
+    });
+  }, []);
+
+  const filters = useMemo(() => {
+    return filtersProp.map((filter) => {
+      const value = params[filter.field as string] || '';
+      const initial = value ? value.split(',') : [];
+      const filterBuilder = new FilterBuilder(filter);
+      filterBuilder.set(initial);
+
+      return filterBuilder;
+    });
+  }, []);
 
   const fields = new FieldDictionary(merge(getDefaultFields(preset), fieldsProp));
 
-  const searchContext = {
-    pipeline: new Pipeline(
-      {
-        account,
-        collection,
-        endpoint,
-      },
-      { name, version },
-    ),
-    variables,
-    fields,
-    filters: filters.map((filter) => new FilterBuilder(filter)),
-  };
+  const searchContext = useMemo(() => {
+    return {
+      pipeline: new Pipeline(
+        {
+          account,
+          collection,
+          endpoint,
+        },
+        { name, version },
+      ),
+      variables,
+      fields,
+      filters,
+    };
+  }, []);
 
   const context = {
     account,
     collection,
     pipeline,
-    filters,
+    filters: filtersProp,
+    filterBuilders: filters,
     defaultFilter,
     options,
     variables,
@@ -59,7 +101,7 @@ export default (props: AppProps) => {
   };
 
   return (
-    <SearchProvider search={searchContext} theme={theme} searchOnLoad defaultFilter={defaultFilter}>
+    <SearchProvider search={searchContext} theme={theme} searchOnLoad defaultFilter={defaultFilter} viewType={viewType}>
       <AppContextProvider value={context}>
         <Interface />
       </AppContextProvider>

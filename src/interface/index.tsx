@@ -9,6 +9,7 @@ import { useDebounce } from '../hooks';
 import { parseBreakpoints } from '../utils/styles';
 import InterfaceContextProvider from './context';
 import Options from './Options';
+import SyncStateQueryParams from './SyncStateQueryParams';
 
 export default () => {
   const [filtersShown, setFiltersShown] = useState(true);
@@ -32,6 +33,7 @@ export default () => {
 
   return (
     <InterfaceContextProvider value={context}>
+      {options.syncURL !== 'none' ? <SyncStateQueryParams /> : null}
       <ResizeObserver onResize={(size) => setWidth(size.width)}>
         <div id={id} css={tw`space-y-6`}>
           {results && <Options />}

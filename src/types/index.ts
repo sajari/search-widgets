@@ -2,22 +2,24 @@
 import {
   ContextProviderValues,
   FieldDictionary,
+  FilterBuilder,
   FilterProps,
   InputProps as CoreInputProps,
   PaginationProps,
   ResultsPerPageProps,
   ResultsProps,
+  ResultViewType,
   SortingProps,
 } from '@sajari/react-search-ui';
 import { ComponentChildren } from 'preact';
 
 import { Breakpoints } from '../utils/styles';
 
-export type ViewType = 'grid' | 'list';
-
 interface InputProps extends CoreInputProps<any> {
   mode?: Exclude<CoreInputProps<any>['mode'], 'results'>;
 }
+
+export type SyncURLType = 'none' | 'replace' | 'push';
 
 export interface AppOptions {
   resultsPerPage?: ResultsPerPageProps;
@@ -25,6 +27,11 @@ export interface AppOptions {
   input?: InputProps;
   results?: ResultsProps;
   pagination?: PaginationProps;
+  syncURL?: SyncURLType;
+  viewType?: ResultViewType;
+  urlParams?: {
+    q?: string;
+  };
 }
 
 export type Preset = 'shopify' | undefined;
@@ -36,7 +43,7 @@ export interface AppProps {
   pipeline: string | { name: string; version?: string };
   preset: Preset;
   fields?: FieldDictionary;
-  filters?: FilterProps[];
+  filters?: (FilterProps & { field: string })[];
   defaultFilter: ContextProviderValues['defaultFilter'];
   variables: ContextProviderValues['search']['variables'];
   config: ContextProviderValues['search']['config'];
@@ -45,8 +52,9 @@ export interface AppProps {
 }
 
 export interface AppContextProps
-  extends Required<Omit<AppProps, 'config' | 'endpoint' | 'fields' | 'preset' | 'theme'>> {
+  extends Required<Omit<AppProps, 'config' | 'endpoint' | 'fields' | 'preset' | 'theme' | 'viewType'>> {
   children?: ComponentChildren;
+  filterBuilders: FilterBuilder[];
   id: string;
 }
 
