@@ -2213,10 +2213,10 @@
     smoothscroll-polyfill "^0.4.4"
     use-resize-observer "^7.0.0"
 
-"@sajari/react-hooks@^1.2.3":
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/@sajari/react-hooks/-/react-hooks-1.2.3.tgz#7b760480a21d734a5f756cb79ad686cc89d95dc5"
-  integrity sha512-qV3weIri2AyxTQ6livuAUkKtxASah1dxFZUEQG1XA2Si4uQ6g7jyDgb+IeeLmvA7sVGbMpsIr9djlQ99QDdN3A==
+"@sajari/react-hooks@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@sajari/react-hooks/-/react-hooks-1.3.0.tgz#17c651798c28a78bc041ea245fd30a1359adb12e"
+  integrity sha512-U6/+vtQH/H8kRGKjrdDFQywBlvO+Z65KS6C5zvp/mw1JcsBgJSeb8xLIi57PZqG8wCVv3pgDf7azSgj856+6yQ==
   dependencies:
     "@sajari/react-sdk-utils" "^1.3.1"
     "@sajari/sdk-js" "2.0.0-alpha.18"
@@ -2237,14 +2237,14 @@
     tailwindcss-truncate-multiline "^1.0.3"
     twin.macro "^1.12.1"
 
-"@sajari/react-search-ui@^1.6.6":
-  version "1.6.6"
-  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-1.6.6.tgz#8d2e176a5c6221c5d53aab20137e528597584ce3"
-  integrity sha512-2NI/jpQ91eYynACybeZ8MvkgQWULYfksZofEh8C3WZsFYjEGVwByudxXKsYnvyGi3CKo256XcVcqn9RgJQaV9g==
+"@sajari/react-search-ui@^1.6.7":
+  version "1.6.7"
+  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-1.6.7.tgz#83e439ec1e31855e6508d0b162adb484601f29d9"
+  integrity sha512-QxpxWoRPFVVn7tFVFoO2jIXFqy/HwVbtjQNCtBwgmDF9gX9tODZtSrW3RJqSdDsDWf5a+mNdOYmbR8qSNbN1cA==
   dependencies:
     "@react-aria/utils" "3.5.0"
     "@sajari/react-components" "^1.4.5"
-    "@sajari/react-hooks" "^1.2.3"
+    "@sajari/react-hooks" "^1.3.0"
     "@sajari/react-sdk-utils" "^1.3.1"
     i18next "19.8.4"
     i18next-browser-languagedetector "^6.0.1"
