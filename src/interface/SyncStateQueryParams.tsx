@@ -1,4 +1,5 @@
 import {
+  EVENT_RANGE_FIRST_AGGREGATE_UPDATED,
   Range,
   RangeFilterBuilder,
   useFilter,
@@ -9,9 +10,11 @@ import {
 } from '@sajari/react-hooks';
 import { FilterBuilder, ResultViewType, useSearchUIContext } from '@sajari/react-search-ui';
 import { useEffect } from 'preact/hooks';
+import { useRef } from 'react';
 
 import { useAppContext } from '../context';
 import { useSetQueryParams } from '../hooks/useQueryParam';
+import getSearchParams from '../utils/getSearchParams';
 import isRange from '../utils/isRange';
 
 const FilterWatcher = ({ filter, replace }: { filter: FilterBuilder; replace: boolean }) => {
@@ -39,6 +42,8 @@ const RangeFilterWatcher = ({ filter, replace }: { filter: RangeFilterBuilder; r
   const key = filter.getField() as string;
   const name = filter.getName();
   const { range, setRange, min, max } = useRangeFilter(name);
+  const allowSetParam = useRef(false);
+
   const setFilterParam = useSetQueryParams(key, {
     debounce: 500,
     replace,
@@ -60,12 +65,28 @@ const RangeFilterWatcher = ({ filter, replace }: { filter: RangeFilterBuilder; r
   });
 
   useEffect(() => {
-    setFilterParam(range?.join(':'));
+    if (allowSetParam.current) {
+      setFilterParam(range?.join(':'));
+      setMinMaxParam(filter.getMinMax().join(':'));
+    }
   }, [range]);
 
   useEffect(() => {
-    setMinMaxParam(`${min}:${max}`);
-  }, [min, max]);
+    const params = getSearchParams();
+    const unregisterListener = filter.listen(EVENT_RANGE_FIRST_AGGREGATE_UPDATED, () => {
+      const limit = (params[`${filter.getField()}_min_max` as string] || '').split(':').map(Number) as Range;
+      const initial = (params[filter.getField()] || '').split(':').map(Number) as Range;
+
+      if (isRange(limit) && isRange(initial)) {
+        filter.setMin(limit[0]);
+        filter.setMax(limit[1]);
+        filter.set(initial);
+      }
+      allowSetParam.current = true;
+    });
+
+    return () => unregisterListener();
+  }, []);
 
   return null;
 };
