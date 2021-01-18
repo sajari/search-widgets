@@ -34,6 +34,7 @@ export default () => {
   return (
     <InterfaceContextProvider value={context}>
       {options.syncURL !== 'none' ? <SyncStateQueryParams /> : null}
+
       <ResizeObserver onResize={(size) => setWidth(size.width)}>
         <div id={id} css={tw`space-y-6`}>
           {results && <Options />}

@@ -7,4 +7,4 @@
   script.id = id;
   script.async = true;
   document.body.appendChild(script);
-})('{js-url}', 'sajari-widgets');
+})('{url}', 'sajari-widgets');
