@@ -1,9 +1,20 @@
-import { useFilter, useQuery, useResultsPerPage, useSorting } from '@sajari/react-hooks';
+import {
+  Range,
+  RangeFilterBuilder,
+  useFilter,
+  useQuery,
+  useRangeFilter,
+  useResultsPerPage,
+  useSearchContext,
+  useSorting,
+} from '@sajari/react-hooks';
 import { FilterBuilder, ResultViewType, useSearchUIContext } from '@sajari/react-search-ui';
 import { useEffect } from 'preact/hooks';
+import { useRef } from 'react';
 
 import { useAppContext } from '../context';
 import { useSetQueryParams } from '../hooks/useQueryParam';
+import { isRange, paramToRange, rangeToParam } from '../utils';
 
 const FilterWatcher = ({ filter, replace }: { filter: FilterBuilder; replace: boolean }) => {
   const key = filter.getField() as string;
@@ -22,6 +33,43 @@ const FilterWatcher = ({ filter, replace }: { filter: FilterBuilder; replace: bo
   useEffect(() => {
     setFilterParam(selected);
   }, [selected]);
+
+  return null;
+};
+
+const RangeFilterWatcher = ({ filter, replace }: { filter: RangeFilterBuilder; replace: boolean }) => {
+  const key = filter.getField() as string;
+  const name = filter.getName();
+  const { range, setRange, min, max } = useRangeFilter(name);
+  const allowSetParam = useRef(false);
+  const { response } = useSearchContext();
+
+  const setFilterParam = useSetQueryParams(key, {
+    debounce: 500,
+    replace,
+    callback: replace
+      ? undefined
+      : (value) => {
+          let rangeValue = paramToRange(value);
+          if (!isRange(rangeValue)) {
+            rangeValue = [min, max];
+          }
+          setRange(rangeValue as Range);
+        },
+  });
+
+  useEffect(() => {
+    if (allowSetParam.current && range) {
+      setFilterParam(rangeToParam(range));
+    }
+  }, [range]);
+
+  useEffect(() => {
+    // We don't want to populate the params in the URL when there is no interation with the app
+    if (response) {
+      allowSetParam.current = true;
+    }
+  }, [response]);
 
   return null;
 };
@@ -81,9 +129,13 @@ const SyncStateQueryParams = () => {
 
   return (
     <>
-      {filterBuilders.map((filter) => (
-        <FilterWatcher filter={filter} key={filter.getField()} replace={replace} />
-      ))}
+      {filterBuilders.map((filter) => {
+        return filter instanceof FilterBuilder ? (
+          <FilterWatcher filter={filter} key={filter.getField()} replace={replace} />
+        ) : (
+          <RangeFilterWatcher filter={filter} key={filter.getField()} replace={replace} />
+        );
+      })}
     </>
   );
 };

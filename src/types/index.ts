@@ -6,6 +6,7 @@ import {
   FilterProps,
   InputProps as CoreInputProps,
   PaginationProps,
+  RangeFilterBuilder,
   ResultsPerPageProps,
   ResultsProps,
   ResultViewType,
@@ -54,7 +55,7 @@ export interface AppProps {
 export interface AppContextProps
   extends Required<Omit<AppProps, 'config' | 'endpoint' | 'fields' | 'preset' | 'theme' | 'viewType'>> {
   children?: ComponentChildren;
-  filterBuilders: FilterBuilder[];
+  filterBuilders: (RangeFilterBuilder | FilterBuilder)[];
   id: string;
 }
 
