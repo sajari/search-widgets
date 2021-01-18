@@ -1,5 +1,5 @@
 import {
-  EVENT_RANGE_FIRST_AGGREGATE_UPDATED,
+  EVENT_VALUES_UPDATED,
   Range,
   RangeFilterBuilder,
   useFilter,
@@ -10,7 +10,7 @@ import {
 } from '@sajari/react-hooks';
 import { FilterBuilder, ResultViewType, useSearchUIContext } from '@sajari/react-search-ui';
 import { useEffect } from 'preact/hooks';
-import { useRef } from 'react';
+import { useMemo, useRef } from 'react';
 
 import { useAppContext } from '../context';
 import { useSetQueryParams } from '../hooks/useQueryParam';
@@ -41,8 +41,18 @@ const FilterWatcher = ({ filter, replace }: { filter: FilterBuilder; replace: bo
 const RangeFilterWatcher = ({ filter, replace }: { filter: RangeFilterBuilder; replace: boolean }) => {
   const key = filter.getField() as string;
   const name = filter.getName();
+  const {
+    options: { urlParams },
+  } = useAppContext();
+  const originQuery = useMemo(() => {
+    const queryKey = urlParams?.q || 'q';
+    return getSearchParams()[queryKey] || '';
+  }, []);
   const { range, setRange, min, max } = useRangeFilter(name);
   const allowSetParam = useRef(false);
+  const isStatic = filter.getIsStatic();
+  const { query = originQuery } = useQuery();
+  const { variables } = useAppContext();
 
   const setFilterParam = useSetQueryParams(key, {
     debounce: 500,
@@ -65,27 +75,25 @@ const RangeFilterWatcher = ({ filter, replace }: { filter: RangeFilterBuilder; r
   });
 
   useEffect(() => {
-    if (allowSetParam.current) {
+    if (!isStatic && allowSetParam.current) {
       setFilterParam(range?.join(':'));
       setMinMaxParam(filter.getMinMax().join(':'));
     }
-  }, [range]);
+  }, [isStatic, range]);
 
   useEffect(() => {
-    const params = getSearchParams();
-    const unregisterListener = filter.listen(EVENT_RANGE_FIRST_AGGREGATE_UPDATED, () => {
-      const limit = (params[`${filter.getField()}_min_max` as string] || '').split(':').map(Number) as Range;
-      const initial = (params[filter.getField()] || '').split(':').map(Number) as Range;
+    if (variables?.get().q !== originQuery && isStatic) {
+      filter.setIsStatic(false);
+    }
+  }, [query]);
 
-      if (isRange(limit) && isRange(initial)) {
-        filter.setMin(limit[0]);
-        filter.setMax(limit[1]);
-        filter.set(initial);
-      }
+  useEffect(() => {
+    const unregister = variables?.listen(EVENT_VALUES_UPDATED, () => {
       allowSetParam.current = true;
+      if (unregister) {
+        unregister();
+      }
     });
-
-    return () => unregisterListener();
   }, []);
 
   return null;

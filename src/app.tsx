@@ -74,9 +74,11 @@ export default (props: AppProps) => {
 
         if (!isRange(initialRange)) {
           initialRange = null;
+        } else {
+          filterBuilder.setIsStatic(true);
         }
         filterBuilder.set(initialRange);
-        if (!isRange(limit)) {
+        if (isRange(limit)) {
           filterBuilder.setMin(limit[0]);
           filterBuilder.setMax(limit[1]);
         }
