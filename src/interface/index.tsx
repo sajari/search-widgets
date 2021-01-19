@@ -31,6 +31,8 @@ export default () => {
     setFiltersShown,
   };
 
+  const tabsFilters = filters?.filter((props) => props.type === 'tabs') || [];
+
   return (
     <InterfaceContextProvider value={context}>
       {options.syncURL !== 'none' ? <SyncStateQueryParams /> : null}
@@ -45,14 +47,18 @@ export default () => {
                 <div css={[tw`w-72 space-y-6`, filtersShown ? 'whitespace-nowrap' : tw``]}>
                   <Input {...options.input} />
 
-                  {filters?.map((props) => (
-                    <Filter {...props} key={props.name} />
-                  ))}
+                  {filters
+                    ?.filter((props) => props.type !== 'tabs')
+                    .map((props) => (
+                      <Filter {...props} key={props.name} />
+                    ))}
                 </div>
               </div>
             )}
 
-            <div css={tw`flex-1 space-y-6`}>
+            <div css={[tw`flex-1 space-y-6`, filtersShown ? 'width: calc(100% - 20rem);' : tw`w-full`]}>
+              {tabsFilters.length > 0 ? tabsFilters.map((props) => <Filter {...props} key={props.name} />) : null}
+
               <Results {...options.results} />
 
               <Pagination {...options.pagination} />
