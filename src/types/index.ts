@@ -26,10 +26,9 @@ export interface AppOptions {
   resultsPerPage?: ResultsPerPageProps;
   sorting?: SortingProps;
   input?: InputProps;
-  results?: ResultsProps;
+  results?: ResultsProps & { viewType?: ResultViewType };
   pagination?: PaginationProps;
   syncURL?: SyncURLType;
-  viewType?: ResultViewType;
   urlParams?: {
     q?: string;
   };

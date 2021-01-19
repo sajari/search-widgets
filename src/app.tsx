@@ -39,7 +39,7 @@ export default (props: AppProps) => {
   const params = options.syncURL === 'none' ? {} : getSearchParams();
   const viewType: ResultViewType = ['grid', 'list'].includes(params.viewType)
     ? (params.viewType as ResultViewType)
-    : options.viewType ?? 'grid';
+    : options.results?.viewType ?? 'grid';
 
   const variables = useMemo(() => {
     const queryKey = options.urlParams?.q || 'q';

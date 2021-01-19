@@ -52,7 +52,6 @@ export function getDefaultOptions(preset: Preset): AppOptions {
     case 'shopify':
       return merge(defaults, {
         results: {
-          defaultAppearance: 'grid',
           imageAspectRatio: {
             grid: 9 / 16,
             list: 1,
@@ -61,6 +60,7 @@ export function getDefaultOptions(preset: Preset): AppOptions {
             grid: 'cover',
             list: 'cover',
           },
+          viewType: 'grid',
         },
         sorting: {
           options: [
@@ -94,7 +94,6 @@ export function getDefaultOptions(preset: Preset): AppOptions {
             },
           ],
         },
-        viewType: 'grid',
         syncURL: 'push',
       });
 
