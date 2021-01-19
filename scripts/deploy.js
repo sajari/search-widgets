@@ -48,6 +48,7 @@ async function main(...args) {
     files.push('bundle.js', 'bundle.js.map');
   }
 
+  // https://googleapis.dev/nodejs/storage/latest/global.html#StorageOptions
   const storage = new Storage({ keyFilename: path.resolve(__dirname, '../key.json') });
 
   async function uploadFile(file) {
