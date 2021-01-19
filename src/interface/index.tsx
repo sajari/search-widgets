@@ -46,7 +46,7 @@ export default () => {
                   <Input {...options.input} />
 
                   {filters?.map((props) => (
-                    <Filter {...props} />
+                    <Filter {...props} key={props.name} />
                   ))}
                 </div>
               </div>
