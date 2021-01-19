@@ -77,8 +77,9 @@ const RangeFilterWatcher = ({ filter, replace }: { filter: RangeFilterBuilder; r
 const SyncStateQueryParams = () => {
   const {
     filterBuilders,
-    options: { syncURL, viewType: defaultViewType = 'grid', urlParams },
+    options: { syncURL, results: resultsOptions = {}, urlParams },
   } = useAppContext();
+  const { viewType: defaultViewType = 'grid' } = resultsOptions;
   const replace = syncURL === 'replace';
   const { query, setQuery } = useQuery();
   const { sorting, setSorting } = useSorting();
