@@ -1,3 +1,4 @@
+import mitt from 'mitt';
 import { ComponentType } from 'preact';
 import habitat from 'preact-habitat';
 
@@ -8,6 +9,7 @@ const components: Record<string, ComponentType> = {
 };
 
 const attribute = 'data-widget';
+const emitter = mitt();
 
 const renderAll = () => {
   // Build widgets
@@ -15,6 +17,9 @@ const renderAll = () => {
     habitat(component).render({
       selector: `[${attribute}="${type}"]`,
       clean: true,
+      defaultProps: {
+        emitter,
+      },
     });
   });
 
@@ -39,6 +44,9 @@ const renderAll = () => {
     habitat(component).render({
       selector: `#${id}`,
       clean: true,
+      defaultProps: {
+        emitter,
+      },
     });
   };
 

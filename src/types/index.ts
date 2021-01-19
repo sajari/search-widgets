@@ -12,6 +12,7 @@ import {
   ResultViewType,
   SortingProps,
 } from '@sajari/react-search-ui';
+import { Emitter } from 'mitt';
 import { ComponentChildren } from 'preact';
 
 import { Breakpoints } from '../utils/styles';
@@ -56,12 +57,18 @@ export interface AppProps {
   config: ContextProviderValues['search']['config'];
   theme: ContextProviderValues['theme'];
   options?: AppOptions;
+  emitter: Emitter;
 }
 
-export interface AppContextProps extends Required<Pick<AppProps, 'filters' | 'options'>> {
+export interface AppContextProps extends Required<Pick<AppProps, 'filters' | 'options' | 'emitter'>> {
   children?: ComponentChildren;
   filterBuilders: (RangeFilterBuilder | FilterBuilder)[];
   id: string;
+}
+
+export interface PubSubContextProps {
+  children?: ComponentChildren;
+  emitter: Emitter;
 }
 
 export interface InterfaceContextProps {

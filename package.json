@@ -69,6 +69,7 @@
     "@sajari/react-search-ui": "^1.7.10",
     "lodash-es": "^4.17.20",
     "preact": "^10.5.12",
+    "mitt": "^2.1.0",
     "preact-habitat": "^3.3.0",
     "preact-render-to-string": "^5.1.12",
     "query-string": "^6.13.8",
