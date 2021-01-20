@@ -5,8 +5,8 @@ import { useEffect, useState } from 'preact/hooks';
 import React from 'react';
 import tw from 'twin.macro';
 
-import { useAppContext } from '../context';
-import { AppOptions } from '../types';
+import { useSearchResultsContext } from '../context';
+import { SearchResultsOptions } from '../types';
 import { useInterfaceContext } from './context';
 import Options from './Options';
 
@@ -15,14 +15,14 @@ function isSubmitInput(node: Element) {
 }
 
 const OverlayInterface = () => {
-  const { options, filters, id } = useAppContext();
+  const { options, filters, id } = useSearchResultsContext();
   const { results, pageCount, clear } = useSearchContext();
   const { setQuery } = useQuery();
   const { setWidth, filtersShown } = useInterfaceContext();
   const [open, setOpen] = useState(false);
   const tabsFilters = filters?.filter((props) => props.type === 'tabs') || [];
   const inputProps = options.input ?? {};
-  const { buttonSelector, inputSelector } = options as AppOptions<'overlay'>;
+  const { buttonSelector, inputSelector } = options as SearchResultsOptions<'overlay'>;
 
   useEffect(() => {
     if (buttonSelector) {

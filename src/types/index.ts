@@ -25,7 +25,7 @@ export type SyncURLType = 'none' | 'replace' | 'push';
 
 type Mode = 'standard' | 'overlay';
 
-export type AppOptions<M = Mode> = {
+export type SearchResultsOptions<M = Mode> = {
   resultsPerPage?: ResultsPerPageProps;
   sorting?: SortingProps;
   input?: InputProps & { hide?: boolean };
@@ -50,7 +50,7 @@ export type AppOptions<M = Mode> = {
 export type PresetType = 'shopify' | 'website' | undefined;
 export type TrackingType = 'posneg' | 'click';
 
-export interface AppProps {
+export interface SearchResultsProps {
   endpoint?: string;
   account: string;
   collection: string;
@@ -68,11 +68,11 @@ export interface AppProps {
   variables: ContextProviderValues['search']['variables'];
   config: ContextProviderValues['search']['config'];
   theme: ContextProviderValues['theme'];
-  options?: AppOptions;
+  options?: SearchResultsOptions;
   emitter: Emitter;
 }
 
-export interface AppContextProps extends Required<Pick<AppProps, 'filters' | 'options'>> {
+export interface SearchResultsContextProps extends Required<Pick<SearchResultsProps, 'filters' | 'options'>> {
   children?: ComponentChildren;
   filterBuilders: (RangeFilterBuilder | FilterBuilder)[];
   id: string;
@@ -89,4 +89,9 @@ export interface InterfaceContextProps {
   filtersShown: boolean;
   setWidth: (width: number) => void;
   setFiltersShown: (shown: boolean) => void;
+}
+
+export interface SearchInputBindingProps extends SearchResultsProps {
+  selector: string;
+  mode: string;
 }

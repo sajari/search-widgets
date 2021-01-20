@@ -1,22 +1,22 @@
 import { ClickTracking, FieldDictionary, PosNegTracking } from '@sajari/react-hooks';
 import { isArray, isEmpty, isNumber, isString, merge, MergeOptions } from '@sajari/react-sdk-utils';
 
-import { AppOptions, AppProps, TrackingType } from './types';
+import { SearchResultsOptions, SearchResultsProps, TrackingType } from './types';
 import { mapAspectRatio } from './utils';
 
-interface MergePropsParams extends AppProps {
+interface MergePropsParams extends SearchResultsProps {
   id: string;
 }
 
-interface MergedAppProps extends Omit<AppProps, 'options' | 'tracking' | 'preset'> {
-  options: AppOptions;
+interface MergedSearchResultsProps extends Omit<SearchResultsProps, 'options' | 'tracking' | 'preset'> {
+  options: SearchResultsOptions;
   tracking?: ClickTracking | PosNegTracking;
 }
 
-export function mergeProps(params: MergePropsParams): MergedAppProps {
+export function mergeProps(params: MergePropsParams): MergedSearchResultsProps {
   const { preset, options, fields, id, tracking, ...rest } = params;
   const mergeOptions = new MergeOptions({ arrayHandling: 'replace' });
-  const props: MergedAppProps = {
+  const props: MergedSearchResultsProps = {
     ...rest,
     options: {
       input: {

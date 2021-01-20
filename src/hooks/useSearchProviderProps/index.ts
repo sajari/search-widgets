@@ -1,35 +1,13 @@
-import {
-  FilterBuilder,
-  Pipeline,
-  Range,
-  RangeFilterBuilder,
-  ResultViewType,
-  SearchProvider,
-  Variables,
-} from '@sajari/react-search-ui';
-import { isString } from 'lodash-es';
-import { useMemo } from 'preact/hooks';
-import { useEffect, useState } from 'react';
+import { isString } from '@sajari/react-sdk-utils';
+import { FilterBuilder, Pipeline, Range, RangeFilterBuilder, ResultViewType, Variables } from '@sajari/react-search-ui';
+import { useMemo } from 'react';
 
-import AppContextProvider from './context';
-import { mergeProps } from './defaults';
-import Interface from './interface';
-import PubSubContextProvider from './pubsub/context';
-import { AppProps } from './types';
-import { isRange, paramToRange } from './utils';
-import getSearchParams from './utils/getSearchParams';
+import { mergeProps } from '../../defaults';
+import { SearchResultsProps } from '../../types';
+import { isRange, paramToRange } from '../../utils';
+import getSearchParams from '../../utils/getSearchParams';
 
-const validOrigins = [
-  'http://localhost:',
-  'https://localhost:',
-  'https://app.sajari.com',
-  'https://app.sajari-staging.io',
-];
-
-const messageType = 'sajari-shopify-ui-builder-update';
-
-export default (defaultProps: AppProps) => {
-  const [state, setState] = useState(defaultProps);
+export function useSearchProviderProps(props: SearchResultsProps) {
   const {
     endpoint,
     account,
@@ -40,10 +18,10 @@ export default (defaultProps: AppProps) => {
     variables: variablesProp,
     theme,
     emitter,
-  } = state;
+  } = props;
 
   const id = `search-ui-${Date.now()}`;
-  const { fields, options, tracking } = mergeProps({ id, ...state });
+  const { fields, options, tracking } = mergeProps({ id, ...props });
   const { name, version = undefined } = isString(pipeline) ? { name: pipeline } : pipeline;
   const params = options.mode === 'standard' && options?.syncURL === 'none' ? {} : getSearchParams();
 
@@ -127,40 +105,13 @@ export default (defaultProps: AppProps) => {
     mode: options.mode,
   };
 
-  const emitterContext = {
+  return {
+    searchContext,
+    defaultFilter,
+    viewType,
+    theme,
+    searchOnLoad: options.mode === 'standard',
+    context,
     emitter,
   };
-
-  useEffect(() => {
-    function handleMessage(event: MessageEvent) {
-      const {
-        origin,
-        data: { type, payload },
-      } = event;
-      if (validOrigins.some((o) => origin.startsWith(o)) && type === messageType) {
-        setState(payload);
-      }
-    }
-    window.addEventListener('message', handleMessage);
-
-    return () => {
-      window.removeEventListener('message', handleMessage);
-    };
-  }, []);
-
-  return (
-    <SearchProvider
-      search={searchContext}
-      theme={theme}
-      searchOnLoad={options.mode === 'standard'}
-      defaultFilter={defaultFilter}
-      viewType={viewType}
-    >
-      <PubSubContextProvider value={emitterContext}>
-        <AppContextProvider value={context}>
-          <Interface />
-        </AppContextProvider>
-      </PubSubContextProvider>
-    </SearchProvider>
-  );
-};
+}

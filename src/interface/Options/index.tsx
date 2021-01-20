@@ -1,7 +1,7 @@
 import { ResultsPerPage, Sorting, Summary as CoreSummary, ViewType } from '@sajari/react-search-ui';
 import tw, { styled } from 'twin.macro';
 
-import { useAppContext } from '../../context';
+import { useSearchResultsContext } from '../../context';
 import { useInterfaceContext } from '../context';
 import ToggleFilters from './ToggleFilters';
 
@@ -10,7 +10,7 @@ const Summary = styled(CoreSummary)`
 `;
 
 export default () => {
-  const { options } = useAppContext();
+  const { options } = useSearchResultsContext();
   const { breakpoints } = useInterfaceContext();
   const md = Boolean(breakpoints.md);
 

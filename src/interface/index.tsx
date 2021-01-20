@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'preact/hooks';
 
-import { useAppContext } from '../context';
+import { useSearchResultsContext } from '../context';
 import { useDebounce } from '../hooks';
 import { parseBreakpoints } from '../utils/styles';
 import InterfaceContextProvider from './context';
@@ -11,7 +11,7 @@ export default () => {
   const [filtersShown, setFiltersShown] = useState(true);
   const {
     options: { mode },
-  } = useAppContext();
+  } = useSearchResultsContext();
   const [width, setWidth] = useState(0);
   const debouncedWidth = useDebounce(width, 100);
   const breakpoints = parseBreakpoints(debouncedWidth);
