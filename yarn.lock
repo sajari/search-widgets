@@ -1646,12 +1646,12 @@
     smoothscroll-polyfill "^0.4.4"
     use-resize-observer "^7.0.0"
 
-"@sajari/react-hooks@^1.4.1":
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/@sajari/react-hooks/-/react-hooks-1.4.1.tgz#d71e4e7ac8159050656d9059b85556e39e845fcd"
-  integrity sha512-GJjop8SycsUFODu01x7RfZzccssbHv64/d44WT8DA4s3/gj8QGkDxzmFOKHVZsfKd95Feax5sEYlGFMEa6mPyQ==
+"@sajari/react-hooks@^1.4.2":
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/@sajari/react-hooks/-/react-hooks-1.4.2.tgz#a57c7782a2bb8a1215d333d44ff7b5054406372a"
+  integrity sha512-W8MrF3GckS76Yx/y8dsb8EZN24lZU8/qyBzLqLd3DHiai6bMMxxsAiqY9SIVUjAtUQxOaEijfDCLmmBE1Vz/VQ==
   dependencies:
-    "@sajari/react-sdk-utils" "^1.3.1"
+    "@sajari/react-sdk-utils" "^1.3.2"
     "@sajari/sdk-js" "2.0.0-alpha.18"
     js-cookie "^2.2.1"
 
@@ -1670,15 +1670,30 @@
     tailwindcss-truncate-multiline "^1.0.3"
     twin.macro "^1.12.1"
 
-"@sajari/react-search-ui@^1.7.4":
-  version "1.7.4"
-  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-1.7.4.tgz#9bef21bee8526a5d6b70b792d32dc1ef0fd8cabb"
-  integrity sha512-17PXEo2l6817XG0RI8laIuDfXdypXZzfjUcjutZxrWxTKwTBUvvAUHhoauRXkanLcAQZU5DEiKRUiI8J/mzwOA==
+"@sajari/react-sdk-utils@^1.3.2":
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/@sajari/react-sdk-utils/-/react-sdk-utils-1.3.2.tgz#0acc5c2a89f608c4a21900c0ddc45157c3c87983"
+  integrity sha512-TJ5moQi2cT6qGyZsyif7iD0YeW5KZVxxYSe2BVux9DxJC7bWRoZxjAYfNg9Pd9PSo6Kg+NatYW/NTZfbhWubhQ==
+  dependencies:
+    "@emotion/core" "^10.1.1"
+    "@emotion/is-prop-valid" "1.0.0"
+    "@emotion/styled" "^10.0.27"
+    "@tailwindcss/ui" "^0.7.2"
+    emotion-theming "^10.0.27"
+    tailwindcss "^1.9.6"
+    tailwindcss-filters "^3.0.0"
+    tailwindcss-truncate-multiline "^1.0.3"
+    twin.macro "^1.12.1"
+
+"@sajari/react-search-ui@^1.7.5":
+  version "1.7.5"
+  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-1.7.5.tgz#ca9f4df12ac2aea3bc4de47fd39d5b3eea5fb16e"
+  integrity sha512-ujMIiW5TPjtDZ7OOh+p3i5bUiwXgQwvrmH9Bc1Qpk6a7L8foxZr8A2fitLVyoOQMUfFes97FqAj3wr2jlraYLg==
   dependencies:
     "@react-aria/utils" "3.5.0"
     "@sajari/react-components" "^1.4.8"
-    "@sajari/react-hooks" "^1.4.1"
-    "@sajari/react-sdk-utils" "^1.3.1"
+    "@sajari/react-hooks" "^1.4.2"
+    "@sajari/react-sdk-utils" "^1.3.2"
     i18next "19.8.4"
     i18next-browser-languagedetector "^6.0.1"
     react-aria-live "^2.0.5"
@@ -9065,10 +9080,10 @@ preact-render-to-string@^5.1.12:
   dependencies:
     pretty-format "^3.8.0"
 
-preact@^10.5.11:
-  version "10.5.11"
-  resolved "https://registry.yarnpkg.com/preact/-/preact-10.5.11.tgz#2c8a431f16613e442901068175771806cf1cc0f6"
-  integrity sha512-BdtFePVilR1430kDuzh3VkkZktCmp8RTqHOjG8qesyGZXHNYJjdrjEBuc2f7O/vthhVENxJd0/aTjWtYeH46aw==
+preact@^10.5.12:
+  version "10.5.12"
+  resolved "https://registry.yarnpkg.com/preact/-/preact-10.5.12.tgz#6a8ee8bf40a695c505df9abebacd924e4dd37704"
+  integrity sha512-r6siDkuD36oszwlCkcqDJCAKBQxGoeEGytw2DGMD5A/GGdu5Tymw+N2OBXwvOLxg6d1FeY8MgMV3cc5aVQo4Cg==
 
 prelude-ls@^1.2.1:
   version "1.2.1"

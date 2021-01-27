@@ -14,6 +14,7 @@ export function getDefaultFields(preset: Preset): FieldDictionary {
         description: 'body_html',
         image: ['image_urls', 'images'],
         price: ['variant_prices', 'max_price'],
+        originalPrice: 'variant_compare_at_prices',
       };
 
     default:
