@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "@sajari/search-widgets",
-  "version": "1.0.0-beta.23",
+  "version": "1.0.0-beta.24",
   "license": "MIT",
   "browserslist": "> 1%",
   "scripts": {
@@ -33,12 +33,12 @@
   },
   "devDependencies": {
     "@babel/plugin-transform-react-jsx": "^7.12.12",
-    "@google-cloud/storage": "^5.7.3",
+    "@google-cloud/storage": "^5.7.4",
     "@sajari/eslint-config": "^0.1.1",
     "@types/lodash-es": "^4.17.4",
     "@types/react": "^17.0.0",
     "@types/webpack-env": "^1.16.0",
-    "@typescript-eslint/eslint-plugin": "^4.14.1",
+    "@typescript-eslint/eslint-plugin": "^4.14.2",
     "ansi-colors": "^4.1.1",
     "babel-plugin-macros": "3.0.1",
     "cli-confirm": "^1.0.1",
