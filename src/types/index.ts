@@ -25,7 +25,7 @@ export type SyncURLType = 'none' | 'replace' | 'push';
 export interface AppOptions {
   resultsPerPage?: ResultsPerPageProps;
   sorting?: SortingProps;
-  input?: InputProps;
+  input?: InputProps & { hide?: boolean };
   results?: ResultsProps & { viewType?: ResultViewType };
   pagination?: PaginationProps;
   syncURL?: SyncURLType;

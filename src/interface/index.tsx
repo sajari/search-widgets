@@ -32,6 +32,7 @@ export default () => {
   };
 
   const tabsFilters = filters?.filter((props) => props.type === 'tabs') || [];
+  const { hide = false, ...inputProps } = options.input ?? {};
 
   return (
     <InterfaceContextProvider value={context}>
@@ -45,7 +46,7 @@ export default () => {
             {results && (
               <div css={[tw`transition-all duration-200`, filtersShown ? tw`pr-8 w-80` : tw`w-0 opacity-0`]}>
                 <div css={[tw`w-72 space-y-6`, filtersShown ? 'whitespace-nowrap' : tw``]}>
-                  <Input {...options.input} />
+                  {!hide && <Input {...inputProps} />}
 
                   {filters
                     ?.filter((props) => props.type !== 'tabs')
