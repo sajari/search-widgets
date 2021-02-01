@@ -1,5 +1,4 @@
 import {
-  FieldDictionary,
   FilterBuilder,
   Pipeline,
   Range,
@@ -8,11 +7,11 @@ import {
   SearchProvider,
   Variables,
 } from '@sajari/react-search-ui';
-import { isString, merge } from 'lodash-es';
+import { isString } from 'lodash-es';
 import { useMemo } from 'preact/hooks';
 
 import AppContextProvider from './context';
-import { getDefaultFields, mergeDefaults } from './defaults';
+import { mergeProps } from './defaults';
 import Interface from './interface';
 import { AppProps } from './types';
 import { isRange, paramToRange } from './utils';
@@ -24,17 +23,14 @@ export default (props: AppProps) => {
     account,
     collection,
     pipeline,
-    preset,
     filters: filtersProp = [],
     defaultFilter,
     variables: variablesProp,
-    fields: fieldsProp,
-    options: optionsProp,
     theme,
   } = props;
 
   const id = `search-ui-${Date.now()}`;
-  const options = mergeDefaults(id, preset, optionsProp);
+  const { fields, options, tracking } = mergeProps({ id, ...props });
   const { name, version = undefined } = isString(pipeline) ? { name: pipeline } : pipeline;
   const params = options.syncURL === 'none' ? {} : getSearchParams();
   const viewType: ResultViewType = ['grid', 'list'].includes(params.viewType)
@@ -81,8 +77,6 @@ export default (props: AppProps) => {
     });
   }, []);
 
-  const fields = new FieldDictionary(merge(getDefaultFields(preset), fieldsProp));
-
   const searchContext = useMemo(() => {
     return {
       pipeline: new Pipeline(
@@ -92,6 +86,7 @@ export default (props: AppProps) => {
           endpoint,
         },
         { name, version },
+        tracking,
       ),
       variables,
       fields,
@@ -100,14 +95,9 @@ export default (props: AppProps) => {
   }, []);
 
   const context = {
-    account,
-    collection,
-    pipeline,
     filters: filtersProp,
     filterBuilders: filters,
-    defaultFilter,
     options,
-    variables,
     id,
   };
 

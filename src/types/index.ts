@@ -34,16 +34,23 @@ export interface AppOptions {
   };
 }
 
-export type Preset = 'shopify' | undefined;
+export type PresetType = 'shopify' | 'website' | undefined;
+export type TrackingType = 'posneg' | 'click';
 
 export interface AppProps {
   endpoint?: string;
   account: string;
   collection: string;
   pipeline: string | { name: string; version?: string };
-  preset: Preset;
+  tracking?:
+    | TrackingType
+    | {
+        type: TrackingType;
+        field: string;
+      };
+  preset: PresetType;
   fields?: FieldDictionary;
-  filters?: (FilterProps & { field: string })[];
+  filters?: Array<FilterProps & { field: string }>;
   defaultFilter: ContextProviderValues['defaultFilter'];
   variables: ContextProviderValues['search']['variables'];
   config: ContextProviderValues['search']['config'];
@@ -51,8 +58,7 @@ export interface AppProps {
   options?: AppOptions;
 }
 
-export interface AppContextProps
-  extends Required<Omit<AppProps, 'config' | 'endpoint' | 'fields' | 'preset' | 'theme' | 'viewType'>> {
+export interface AppContextProps extends Required<Pick<AppProps, 'filters' | 'options'>> {
   children?: ComponentChildren;
   filterBuilders: (RangeFilterBuilder | FilterBuilder)[];
   id: string;
