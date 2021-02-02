@@ -13,6 +13,7 @@ import { useMemo } from 'preact/hooks';
 import AppContextProvider from './context';
 import { mergeProps } from './defaults';
 import Interface from './interface';
+import PubSubContextProvider from './pubsub/context';
 import { AppProps } from './types';
 import { isRange, paramToRange } from './utils';
 import getSearchParams from './utils/getSearchParams';
@@ -27,6 +28,7 @@ export default (props: AppProps) => {
     defaultFilter,
     variables: variablesProp,
     theme,
+    emitter,
   } = props;
 
   const id = `search-ui-${Date.now()}`;
@@ -101,11 +103,17 @@ export default (props: AppProps) => {
     id,
   };
 
+  const emitterContext = {
+    emitter,
+  };
+
   return (
     <SearchProvider search={searchContext} theme={theme} searchOnLoad defaultFilter={defaultFilter} viewType={viewType}>
-      <AppContextProvider value={context}>
-        <Interface />
-      </AppContextProvider>
+      <PubSubContextProvider value={emitterContext}>
+        <AppContextProvider value={context}>
+          <Interface />
+        </AppContextProvider>
+      </PubSubContextProvider>
     </SearchProvider>
   );
 };
