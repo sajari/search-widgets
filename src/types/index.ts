@@ -60,7 +60,7 @@ export interface AppProps {
   emitter: Emitter;
 }
 
-export interface AppContextProps extends Required<Pick<AppProps, 'filters' | 'options' | 'emitter'>> {
+export interface AppContextProps extends Required<Pick<AppProps, 'filters' | 'options'>> {
   children?: ComponentChildren;
   filterBuilders: (RangeFilterBuilder | FilterBuilder)[];
   id: string;

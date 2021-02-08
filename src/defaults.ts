@@ -1,5 +1,5 @@
 import { ClickTracking, FieldDictionary, PosNegTracking } from '@sajari/react-hooks';
-import { isEmpty, isString, merge } from 'lodash-es';
+import { isArray, isEmpty, isNumber, isString, merge, MergeOptions } from '@sajari/react-sdk-utils';
 
 import { AppOptions, AppProps, TrackingType } from './types';
 import { mapAspectRatio } from './utils';
@@ -15,6 +15,7 @@ interface MergedAppProps extends Omit<AppProps, 'options' | 'tracking' | 'preset
 
 export function mergeProps(params: MergePropsParams): MergedAppProps {
   const { preset, options, fields, id, tracking, ...rest } = params;
+  const mergeOptions = new MergeOptions({ arrayHandling: 'replace' });
   const props: MergedAppProps = {
     ...rest,
     options: {
@@ -47,7 +48,7 @@ export function mergeProps(params: MergePropsParams): MergedAppProps {
 
   switch (preset) {
     case 'shopify':
-      merge(props, {
+      merge(mergeOptions, props, {
         tracking: new ClickTracking('id'),
         fields: {
           // eslint-disable-next-line no-template-curly-in-string
@@ -72,10 +73,6 @@ export function mergeProps(params: MergePropsParams): MergedAppProps {
           },
           sorting: {
             options: [
-              {
-                name: 'Most relevant',
-                value: '',
-              },
               {
                 name: 'Price: Low to High',
                 value: 'max_price',
@@ -108,7 +105,7 @@ export function mergeProps(params: MergePropsParams): MergedAppProps {
       break;
 
     case 'website':
-      merge(props, {
+      merge(mergeOptions, props, {
         tracking: new ClickTracking(),
       });
       break;
@@ -119,19 +116,44 @@ export function mergeProps(params: MergePropsParams): MergedAppProps {
 
   // Merge fields, if specified
   if (!isEmpty(fields)) {
-    merge(props, { fields });
+    merge(mergeOptions, props, { fields });
   }
 
   // Merge options, if specified
   if (!isEmpty(options)) {
-    merge(props, { options });
+    merge(mergeOptions, props, { options });
   }
 
   // Parse aspect ratios
   if (options?.results?.imageAspectRatio) {
-    merge(props.options?.results, { imageAspectRatio: mapAspectRatio(options.results.imageAspectRatio) });
+    const defaultRatio = props.options?.results?.imageAspectRatio;
+    const defaultRatios = isNumber(defaultRatio) ? { list: defaultRatio, grid: defaultRatio } : defaultRatio;
+    const newRatio = options.results.imageAspectRatio;
+    const newRatios = isNumber(newRatio) ? { list: newRatio, grid: newRatio } : newRatio;
+
+    Object.assign(props.options.results, {
+      imageAspectRatio: mapAspectRatio({
+        ...defaultRatios,
+        ...newRatios,
+      }),
+    });
   }
 
+  // Inject "Most relevant" option if required
+  if (!props.options.sorting?.options?.some(({ value }) => isEmpty(value))) {
+    if (!props.options.sorting) {
+      props.options.sorting = {};
+    }
+
+    if (!isArray(props.options.sorting.options)) {
+      props.options.sorting.options = [];
+    }
+
+    props.options.sorting.options.unshift({
+      name: 'Most relevant',
+      value: '',
+    });
+  }
   // Parse fields as a FieldDictionary
   props.fields = new FieldDictionary(props.fields);
 
@@ -141,8 +163,10 @@ export function mergeProps(params: MergePropsParams): MergedAppProps {
       switch (type) {
         case 'click':
           return new ClickTracking(field);
+
         case 'posneg':
           return new PosNegTracking(field);
+
         default:
           return undefined;
       }
