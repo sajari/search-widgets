@@ -14,6 +14,7 @@ import { useRef } from 'react';
 
 import { useAppContext } from '../context';
 import { useSetQueryParams } from '../hooks/useQueryParam';
+import { AppOptions } from '../types';
 import { isRange, paramToRange, rangeToParam } from '../utils';
 
 const FilterWatcher = ({ filter, replace }: { filter: FilterBuilder; replace: boolean }) => {
@@ -75,10 +76,8 @@ const RangeFilterWatcher = ({ filter, replace }: { filter: RangeFilterBuilder; r
 };
 
 const SyncStateQueryParams = () => {
-  const {
-    filterBuilders,
-    options: { syncURL, results: resultsOptions = {}, urlParams },
-  } = useAppContext();
+  const { filterBuilders, options } = useAppContext();
+  const { syncURL, results: resultsOptions = {}, urlParams } = options as AppOptions<'standard'>;
   const { viewType: defaultViewType = 'grid' } = resultsOptions;
   const replace = syncURL === 'replace';
   const { query, setQuery } = useQuery();

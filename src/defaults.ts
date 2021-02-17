@@ -43,6 +43,7 @@ export function mergeProps(params: MergePropsParams): MergedAppProps {
       urlParams: {
         q: 'q',
       },
+      mode: 'standard',
     },
   };
 

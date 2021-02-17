@@ -34,13 +34,14 @@ export default (props: AppProps) => {
   const id = `search-ui-${Date.now()}`;
   const { fields, options, tracking } = mergeProps({ id, ...props });
   const { name, version = undefined } = isString(pipeline) ? { name: pipeline } : pipeline;
-  const params = options.syncURL === 'none' ? {} : getSearchParams();
+  const params = options.mode === 'standard' && options?.syncURL === 'none' ? {} : getSearchParams();
+
   const viewType: ResultViewType = ['grid', 'list'].includes(params.viewType)
     ? (params.viewType as ResultViewType)
     : options.results?.viewType ?? 'grid';
 
   const variables = useMemo(() => {
-    const queryKey = options.urlParams?.q || 'q';
+    const queryKey = options.mode === 'standard' ? options?.urlParams?.q || 'q' : 'q';
     const validKeys = [queryKey, 'sort', 'show'];
     const mapKeys: Record<string, string> = { [queryKey]: 'q', show: 'resultsPerPage' };
     const variablesFromParams = validKeys.reduce((a, c) => {
@@ -101,6 +102,7 @@ export default (props: AppProps) => {
     filterBuilders: filters,
     options,
     id,
+    mode: options.mode,
   };
 
   const emitterContext = {
@@ -108,7 +110,13 @@ export default (props: AppProps) => {
   };
 
   return (
-    <SearchProvider search={searchContext} theme={theme} searchOnLoad defaultFilter={defaultFilter} viewType={viewType}>
+    <SearchProvider
+      search={searchContext}
+      theme={theme}
+      searchOnLoad={options.mode === 'standard'}
+      defaultFilter={defaultFilter}
+      viewType={viewType}
+    >
       <PubSubContextProvider value={emitterContext}>
         <AppContextProvider value={context}>
           <Interface />
