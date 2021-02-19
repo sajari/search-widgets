@@ -154,6 +154,7 @@ export function mergeProps(params: MergePropsParams): MergedAppProps {
       value: '',
     });
   }
+
   // Parse fields as a FieldDictionary
   props.fields = new FieldDictionary(props.fields);
 
