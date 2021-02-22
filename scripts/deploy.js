@@ -43,13 +43,24 @@ async function main(...args) {
   const [arg] = args;
   const latest = arg === '--latest';
   const files = ['loader.js'];
+  let credentials = '';
+
+  if (!process.env.GOOGLE_CREDENTIALS) {
+    throw new Error('Google Credentials not found');
+  }
+
+  try {
+    credentials = JSON.parse(process.env.GOOGLE_CREDENTIALS);
+  } catch (e) {
+    throw new Error('Invalid Google Credentials');
+  }
 
   if (!latest) {
     files.push('bundle.js', 'bundle.js.map');
   }
 
   // https://googleapis.dev/nodejs/storage/latest/global.html#StorageOptions
-  const storage = new Storage({ keyFilename: path.resolve(__dirname, '../key.json') });
+  const storage = new Storage({ credentials });
 
   async function uploadFile(file) {
     const name = path.basename(file);
