@@ -51,7 +51,7 @@ const OverlayInterface = () => {
   }, [buttonSelector, inputSelector]);
 
   return (
-    <Modal open={open} onClose={() => setOpen(false)} center={false} size="7xl">
+    <Modal open={open} onClose={() => setOpen(false)} center={false} size="7xl" animationDuration={75}>
       <ResizeObserver onResize={(size) => setWidth(size.width)} css={tw`overflow-hidden h-full flex`}>
         <div css={[tw`w-full flex flex-col flex-none overflow-hidden`]}>
           <div css={tw`flex-none`}>
@@ -70,12 +70,15 @@ const OverlayInterface = () => {
           </div>
 
           {results ? (
-            <div id={id} css={tw`flex flex-grow overflow-hidden pl-6`}>
+            <div
+              id={id}
+              css={[tw`flex flex-grow overflow-hidden transition-all duration-200`, !filtersShown && tw`pl-6`]}
+            >
               {results && (
                 <div
                   css={[
                     tw`transition-all duration-200 overflow-y-auto flex-none`,
-                    filtersShown ? tw`pr-8 w-80` : tw`w-0 opacity-0`,
+                    filtersShown ? tw`pr-8 w-86 pl-6` : tw`w-0 opacity-0`,
                   ]}
                 >
                   <div css={tw`w-72 space-y-6 pb-6`}>
@@ -88,7 +91,7 @@ const OverlayInterface = () => {
                 </div>
               )}
 
-              <div css={[tw`flex flex-col`, filtersShown ? 'width: calc(100% - 20rem);' : tw`w-full`]}>
+              <div css={[tw`flex flex-col`, filtersShown ? 'width: calc(100% - 21.5rem);' : tw`w-full`]}>
                 {tabsFilters.length > 0 ? (
                   <div css={tw`space-y-6 pr-6`}>
                     {tabsFilters.map((props) => (
@@ -97,8 +100,10 @@ const OverlayInterface = () => {
                   </div>
                 ) : null}
 
-                <div css={tw`overflow-y-auto py-6 pr-6`}>
-                  <Results {...options.results} />
+                <div css={tw`overflow-y-auto pt-6 pr-6`}>
+                  <div css={tw`mb-6`}>
+                    <Results {...options.results} />
+                  </div>
                 </div>
               </div>
             </div>
