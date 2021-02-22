@@ -51,14 +51,23 @@ const OverlayInterface = () => {
   }, [buttonSelector, inputSelector]);
 
   return (
-    <Modal open={open} onClose={() => setOpen(false)} center={false} size="7xl" animationDuration={75}>
+    <Modal
+      open={open}
+      onClose={() => {
+        setOpen(false);
+        clear({ q: '' });
+      }}
+      center={false}
+      size="7xl"
+      animationDuration={75}
+    >
       <ResizeObserver onResize={(size) => setWidth(size.width)} css={tw`overflow-hidden h-full flex`}>
         <div css={[tw`w-full flex flex-col flex-none overflow-hidden`]}>
           <div css={tw`flex-none`}>
             <div css={tw`py-2.5 pl-2.5 flex items-center`}>
               <Input {...inputProps} css={tw`w-full`} />
               <div css={tw`flex-none w-14 flex justify-center`}>
-                <ModalCloseButton css={tw`m-0`} onClick={() => clear({ q: '' })} />
+                <ModalCloseButton css={tw`m-0`} />
               </div>
             </div>
 
