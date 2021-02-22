@@ -23,17 +23,29 @@ interface InputProps extends CoreInputProps<any> {
 
 export type SyncURLType = 'none' | 'replace' | 'push';
 
-export interface AppOptions {
+type Mode = 'standard' | 'overlay';
+
+export type AppOptions<M = Mode> = {
   resultsPerPage?: ResultsPerPageProps;
   sorting?: SortingProps;
   input?: InputProps & { hide?: boolean };
   results?: ResultsProps & { viewType?: ResultViewType };
   pagination?: PaginationProps;
-  syncURL?: SyncURLType;
-  urlParams?: {
-    q?: string;
-  };
-}
+  mode?: M;
+} & (
+  | {
+      mode: 'standard';
+      syncURL?: SyncURLType;
+      urlParams?: {
+        q?: string;
+      };
+    }
+  | {
+      mode: 'overlay';
+      buttonSelector?: string;
+      inputSelector?: string;
+    }
+);
 
 export type PresetType = 'shopify' | 'website' | undefined;
 export type TrackingType = 'posneg' | 'click';
@@ -75,5 +87,6 @@ export interface InterfaceContextProps {
   children?: ComponentChildren;
   breakpoints: Breakpoints;
   filtersShown: boolean;
+  setWidth: (width: number) => void;
   setFiltersShown: (shown: boolean) => void;
 }
