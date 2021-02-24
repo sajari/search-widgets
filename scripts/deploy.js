@@ -58,7 +58,7 @@ async function main(...args) {
   }
 
   // https://googleapis.dev/nodejs/storage/latest/global.html#StorageOptions
-  const storage = new Storage({ client_email: GOOGLE_CLIENT_EMAIL, private_key: GOOGLE_PRIVATE_KEY });
+  const storage = new Storage({ credentials: { client_email: GOOGLE_CLIENT_EMAIL, private_key: GOOGLE_PRIVATE_KEY } });
 
   async function uploadFile(file) {
     const name = path.basename(file);
