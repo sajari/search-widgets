@@ -14,7 +14,7 @@
     "dev": "preact watch --template ./src/dev/index.ejs --no-esm",
     "dev:ssl": "preact watch --template ./src/dev/index.ejs --no-esm --host search-widgets.local --https --cert ./src/dev/cert.pem --key ./src/dev/cert.key",
     "deploy": "eslint . && yarn build && node -r esm scripts/deploy.js",
-    "deploy:latest": "cli-confirm 'This will deploy the current version to root and major version loaders. Are you sure?' && node -r esm scripts/deploy.js --latest",
+    "deploy:latest": "node -r esm scripts/deploy.js --latest",
     "cert": "openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ./src/dev/cert.key -out ./src/dev/cert.pem -config ./src/dev/req.cnf -sha256",
     "changeset": "changeset",
     "release": "changeset publish"
@@ -44,7 +44,6 @@
     "@typescript-eslint/eslint-plugin": "^4.15.2",
     "ansi-colors": "^4.1.1",
     "babel-plugin-macros": "3.0.1",
-    "cli-confirm": "^1.0.1",
     "cross-env": "^7.0.3",
     "eslint": "^7.20.0",
     "eslint-plugin-import": "^2.22.1",
