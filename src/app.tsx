@@ -9,6 +9,7 @@ import {
 } from '@sajari/react-search-ui';
 import { isString } from 'lodash-es';
 import { useMemo } from 'preact/hooks';
+import { useEffect, useState } from 'react';
 
 import AppContextProvider from './context';
 import { mergeProps } from './defaults';
@@ -18,7 +19,15 @@ import { AppProps } from './types';
 import { isRange, paramToRange } from './utils';
 import getSearchParams from './utils/getSearchParams';
 
-export default (props: AppProps) => {
+const validOrigins = [
+  'http://localhost:',
+  'https://localhost:',
+  'https://app.sajari.com',
+  'https://app.sajari-staging.io',
+];
+
+export default (defaultProps: AppProps) => {
+  const [state, setState] = useState(defaultProps);
   const {
     endpoint,
     account,
@@ -29,10 +38,10 @@ export default (props: AppProps) => {
     variables: variablesProp,
     theme,
     emitter,
-  } = props;
+  } = state;
 
   const id = `search-ui-${Date.now()}`;
-  const { fields, options, tracking } = mergeProps({ id, ...props });
+  const { fields, options, tracking } = mergeProps({ id, ...state });
   const { name, version = undefined } = isString(pipeline) ? { name: pipeline } : pipeline;
   const params = options.mode === 'standard' && options?.syncURL === 'none' ? {} : getSearchParams();
 
@@ -112,6 +121,20 @@ export default (props: AppProps) => {
   const emitterContext = {
     emitter,
   };
+
+  useEffect(() => {
+    function handleMessage(event: MessageEvent) {
+      const { origin, data } = event;
+      if (validOrigins.some((o) => origin.startsWith(o))) {
+        setState(data);
+      }
+    }
+    window.addEventListener('message', handleMessage);
+
+    return () => {
+      window.removeEventListener('message', handleMessage);
+    };
+  }, []);
 
   return (
     <SearchProvider
