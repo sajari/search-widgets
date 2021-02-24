@@ -43,16 +43,14 @@ async function main(...args) {
   const [arg] = args;
   const latest = arg === '--latest';
   const files = ['loader.js'];
-  let credentials = '';
+  const { GOOGLE_PRIVATE_KEY, GOOGLE_CLIENT_EMAIL } = process.env;
 
-  if (!process.env.GOOGLE_CREDENTIALS) {
-    throw new Error('Google Credentials not found');
+  if (!GOOGLE_PRIVATE_KEY) {
+    throw new Error('GOOGLE_PRIVATE_KEY missing');
   }
 
-  try {
-    credentials = JSON.parse(process.env.GOOGLE_CREDENTIALS);
-  } catch (e) {
-    throw new Error('Invalid Google Credentials');
+  if (!GOOGLE_CLIENT_EMAIL) {
+    throw new Error('GOOGLE_CLIENT_EMAIL missing');
   }
 
   if (!latest) {
@@ -60,7 +58,7 @@ async function main(...args) {
   }
 
   // https://googleapis.dev/nodejs/storage/latest/global.html#StorageOptions
-  const storage = new Storage({ credentials });
+  const storage = new Storage({ client_email: GOOGLE_CLIENT_EMAIL, private_key: GOOGLE_PRIVATE_KEY });
 
   async function uploadFile(file) {
     const name = path.basename(file);
