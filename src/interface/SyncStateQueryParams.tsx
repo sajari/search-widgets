@@ -61,7 +61,7 @@ const RangeFilterWatcher = ({ filter, replace }: { filter: RangeFilterBuilder; r
 
   useEffect(() => {
     if (allowSetParam.current && range) {
-      setFilterParam(rangeToParam(range));
+      setFilterParam(range[0] !== min || range[1] !== max ? rangeToParam(range) : '');
     }
   }, [range]);
 
