@@ -1865,10 +1865,10 @@
     eslint-config-airbnb-typescript "^12.0.0"
     eslint-config-prettier "^7.1.0"
 
-"@sajari/react-components@^1.5.13":
-  version "1.5.13"
-  resolved "https://registry.yarnpkg.com/@sajari/react-components/-/react-components-1.5.13.tgz#db950a374567cb62f1031b71fbce84884eb01560"
-  integrity sha512-HSW2jjAr6cvUeFbtUqDO4mLwx1tNEq0q+52oGv4Ff667A5WMjBMw+2AblF2MNB8JVf2PE2xn0fiEKKWg+UV4dA==
+"@sajari/react-components@^1.5.15":
+  version "1.5.15"
+  resolved "https://registry.yarnpkg.com/@sajari/react-components/-/react-components-1.5.15.tgz#3e399adf04efd7d58e92b4dbd6c64b1967e0c837"
+  integrity sha512-rtJaxbD2O/C9h3qTVs7j8pc3NIkmtwmObZS6KUnMhm3zGT7FaF17ooePwLgQnXZ9y6yqMO2CUFsusgitlUvNQg==
   dependencies:
     "@react-aria/button" "^3.3.0"
     "@react-aria/focus" "^3.2.3"
@@ -1889,10 +1889,10 @@
     smoothscroll-polyfill "^0.4.4"
     use-resize-observer "^7.0.0"
 
-"@sajari/react-hooks@^1.4.7":
-  version "1.4.7"
-  resolved "https://registry.yarnpkg.com/@sajari/react-hooks/-/react-hooks-1.4.7.tgz#f98dd95f50f0746e14cef9a0f67ea5599b323bf4"
-  integrity sha512-IHYdk2JqVJj/DQqfTwFLKLj8MYsoI7FYJBnQNUsLZzfBGfSVm03xvc/RGS7LFp9Xa0xMalYw+YZYv3zArJ4Wkg==
+"@sajari/react-hooks@^1.4.8":
+  version "1.4.8"
+  resolved "https://registry.yarnpkg.com/@sajari/react-hooks/-/react-hooks-1.4.8.tgz#e8471635893edbd00d0ea233877042a38db570a2"
+  integrity sha512-2x+YC8FQSP70pH9x8qv1vdiP3vy/ahvoxgLYT/mrY3mAsFpoOYbBAXRE8d8glpEXtRa0tFnu2xeAB7iGMnVrdQ==
   dependencies:
     "@sajari/react-sdk-utils" "^1.3.5"
     "@sajari/sdk-js" "^2.0.0-rc.2"
@@ -1928,14 +1928,14 @@
     tailwindcss-truncate-multiline "^1.0.3"
     twin.macro "^1.12.1"
 
-"@sajari/react-search-ui@^1.7.21":
-  version "1.7.21"
-  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-1.7.21.tgz#84d4fc7e7a65390a6636171ab2e4bf2a398eac91"
-  integrity sha512-YHasiD/0V9VZJRp6ouPGC3/xJyoxCoSfrsHpSpBy6EHM9zRLp9EJhMK56Z1FjqxhJaGxQ1QKpQs/r3Ou/bsaxw==
+"@sajari/react-search-ui@^1.7.23":
+  version "1.7.23"
+  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-1.7.23.tgz#8d205fc1b156fddad9ffd49da204d18cdbb4c2b2"
+  integrity sha512-QdIteOATgSLvvxWIYyyD4fCAiQRua1zIAdo/p4D9KVOO5DnMov5an5xqbj4FqpM+zQXixF1WSOOHvYKHa83nMQ==
   dependencies:
     "@react-aria/utils" "3.5.0"
-    "@sajari/react-components" "^1.5.13"
-    "@sajari/react-hooks" "^1.4.7"
+    "@sajari/react-components" "^1.5.15"
+    "@sajari/react-hooks" "^1.4.8"
     "@sajari/react-sdk-utils" "^1.3.8"
     i18next "19.8.7"
     i18next-browser-languagedetector "^6.0.1"
@@ -3728,11 +3728,6 @@ cli-boxes@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/cli-boxes/-/cli-boxes-2.2.0.tgz#538ecae8f9c6ca508e3c3c95b453fe93cb4c168d"
   integrity sha512-gpaBrMAizVEANOpfZp/EEUixTXDyGt7DFzdK5hU+UbWt/J0lB0w20ncZj59Z9a93xHb9u12zF5BS6i9RKbtg4w==
-
-cli-confirm@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/cli-confirm/-/cli-confirm-1.0.1.tgz#a3cfb7a9de71d6b5cc34df9e7b8a73d73d77970a"
-  integrity sha512-AF9fOBZPflNFm2wtq5BNqLr2ZmOB0nwgYQn0tgfbk5OYDMmLFbP+FrelmGK5apvp67ybbpUVTBZZffgR2yv+CQ==
 
 cli-cursor@^3.1.0:
   version "3.1.0"
