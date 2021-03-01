@@ -26,6 +26,8 @@ const validOrigins = [
   'https://app.sajari-staging.io',
 ];
 
+const messageType = 'sajari-shopify-ui-builder-update';
+
 export default (defaultProps: AppProps) => {
   const [state, setState] = useState(defaultProps);
   const {
@@ -124,9 +126,12 @@ export default (defaultProps: AppProps) => {
 
   useEffect(() => {
     function handleMessage(event: MessageEvent) {
-      const { origin, data } = event;
-      if (validOrigins.some((o) => origin.startsWith(o))) {
-        setState(data);
+      const {
+        origin,
+        data: { type, payload },
+      } = event;
+      if (validOrigins.some((o) => origin.startsWith(o)) && type === messageType) {
+        setState(payload);
       }
     }
     window.addEventListener('message', handleMessage);
