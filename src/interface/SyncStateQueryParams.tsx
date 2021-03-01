@@ -43,7 +43,7 @@ const RangeFilterWatcher = ({ filter, replace }: { filter: RangeFilterBuilder; r
   const name = filter.getName();
   const { range, setRange, min, max } = useRangeFilter(name);
   const allowSetParam = useRef(false);
-  const { response } = useSearchContext();
+  const { response, results } = useSearchContext();
 
   const setFilterParam = useSetQueryParams(key, {
     debounce: 500,
@@ -59,9 +59,18 @@ const RangeFilterWatcher = ({ filter, replace }: { filter: RangeFilterBuilder; r
         },
   });
 
+  const setMinMaxParam = useSetQueryParams(`${key}_min_max`, {
+    debounce: 500,
+    replace,
+  });
+
   useEffect(() => {
     if (allowSetParam.current && range) {
-      setFilterParam(range[0] !== min || range[1] !== max ? rangeToParam(range) : '');
+      const shouldSetNewValue = range[0] !== min || range[1] !== max;
+      setFilterParam(shouldSetNewValue ? rangeToParam(range) : '');
+      if (filter.isAggregate()) {
+        setMinMaxParam(shouldSetNewValue ? filter.getMinMax().join(':') : '');
+      }
     }
   }, [range]);
 
@@ -71,6 +80,15 @@ const RangeFilterWatcher = ({ filter, replace }: { filter: RangeFilterBuilder; r
       allowSetParam.current = true;
     }
   }, [response]);
+
+  useEffect(() => {
+    if (results && filter.getFrozen()) {
+      // wait for the cycle of React to end then releasing the frozen state
+      setTimeout(() => {
+        filter.setFrozen(false);
+      });
+    }
+  }, [results]);
 
   return null;
 };
