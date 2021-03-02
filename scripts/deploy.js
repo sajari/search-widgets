@@ -29,7 +29,7 @@ class FileUpload {
   }
 
   get destination() {
-    return `embed/${this.isLoader && this.latest ? semver.major(version) : version}/${this.name}`;
+    return `embed/${this.isLoader && this.isLatest ? semver.major(version) : version}/${this.name}`;
   }
 
   get cacheControl() {
