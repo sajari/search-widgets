@@ -31,14 +31,26 @@ export default {
     const { rule } = helpers.getLoadersByName(config, 'babel-loader')[0];
     const babelConfig = rule.options;
 
-    babelConfig.plugins.push([require.resolve('babel-plugin-macros')]);
-
-    babelConfig.plugins.push([
-      require.resolve('@babel/plugin-transform-react-jsx'),
+    babelConfig.presets.push([
+      '@babel/preset-react',
       {
-        pragma: 'h',
+        runtime: 'automatic',
+        importSource: '@emotion/core',
       },
     ]);
+
+    babelConfig.plugins.push('babel-plugin-macros');
+
+    babelConfig.plugins.push([
+      '@emotion/babel-plugin-jsx-pragmatic',
+      {
+        export: 'jsx',
+        import: '__cssprop',
+        module: '@emotion/core',
+      },
+    ]);
+
+    babelConfig.plugins.push(['babel-plugin-transform-react-jsx', { pragma: '__cssprop' }]);
 
     // Use only required polyfills
     // babelConfig.presets[1][1].useBuiltIns = 'entry';

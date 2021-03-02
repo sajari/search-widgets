@@ -12,7 +12,7 @@ Coming soon
 - [Preact CLI](https://preactjs.com/cli/)
 - [Tailwind](https://tailwindcss.com/)
 - [Twin.Macro](https://github.com/ben-rogerson/twin.macro/)
-- [Styled Components](https://styled-components.com/)
+- [Emotion](https://emotion.sh/)
 
 ## Getting started
 
