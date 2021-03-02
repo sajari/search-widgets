@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 1.0.1
+
+### Patch Changes
+
+- c037f59: Fix the deployment script
+
 ## 1.0.0
 
 ### Patch Changes
