@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 1.0.2
+
+### Patch Changes
+
+- 8075b70: Added sourcemap to deployment files
+
 ## 1.0.1
 
 ### Patch Changes
