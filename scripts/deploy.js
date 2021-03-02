@@ -64,8 +64,11 @@ async function main(...args) {
   await buildLoader();
 
   const [arg] = args;
-  const latest = arg === '--latest';
-  const files = [new FileUpload('loader.js'), new FileUpload('bundle.js'), new FileUpload('bundle.min.js')];
+  const full = arg === '--full';
+  const loaderOnly = arg === '--loader-only';
+  const files = !loaderOnly
+    ? [new FileUpload('loader.js'), new FileUpload('bundle.js'), new FileUpload('bundle.min.js')]
+    : [];
   const { GOOGLE_PRIVATE_KEY, GOOGLE_CLIENT_EMAIL } = process.env;
 
   if (!GOOGLE_PRIVATE_KEY) {
@@ -75,7 +78,7 @@ async function main(...args) {
     throw new Error('GOOGLE_CLIENT_EMAIL missing');
   }
 
-  if (latest) {
+  if (loaderOnly || full) {
     files.push(new FileUpload('loader.js', true));
   }
 

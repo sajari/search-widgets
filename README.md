@@ -35,6 +35,10 @@ Create the following HTML and add your props object from the preview:
 
 ## Deploying
 
-- Update the version in package.json
-- Run `yarn deploy` to create a production build and deploy to AWS S3
-- If the version is safe to be latest, run `yarn deploy:latest` to point the loader to that version
+Deployment is handed via Atlassian changesets. To create a new release, your change/PR must have an associated changeset. To create one, run `yarn changeset`.
+
+You should never need to manually deploy, but if you do:
+
+- `yarn deploy` will create a production build, using the version from the package.json and deploy to GCS (cdn.sajari.com/embed).
+- `yarn deploy:loader-only` will update the major-version loader.js (e.g. `/1/loader.js`) to point to the version in package.json.
+- `yarn deploy:full` will do a full deployment of all files and point the major version loader to the current version in package.json. Essentially, it's a shortcut for `yarn deploy && yarn deploy:loader-only`.
