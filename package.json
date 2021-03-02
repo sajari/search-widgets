@@ -61,10 +61,10 @@
     "typescript": "^4.2.2"
   },
   "dependencies": {
-    "@sajari/react-components": "^1.5.15",
-    "@sajari/react-hooks": "^1.4.8",
+    "@sajari/react-components": "^1.6.0",
+    "@sajari/react-hooks": "^1.4.9",
     "@sajari/react-sdk-utils": "^1.3.8",
-    "@sajari/react-search-ui": "^1.7.23",
+    "@sajari/react-search-ui": "^1.8.0",
     "lodash-es": "^4.17.20",
     "mitt": "^2.1.0",
     "preact": "^10.5.12",

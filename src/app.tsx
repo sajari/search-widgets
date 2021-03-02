@@ -84,8 +84,15 @@ export default (defaultProps: AppProps) => {
 
       if (filterBuilder instanceof RangeFilterBuilder) {
         const initialRange = paramToRange(value);
+        const limit = (params[`${filter.field}_min_max` as string] || '').split(':').map(Number) as Range;
         if (isRange(initialRange)) {
           filterBuilder.set(initialRange as Range);
+        }
+        if (isRange(limit)) {
+          filterBuilder.setMin(limit[0]);
+          filterBuilder.setMax(limit[1]);
+          // Freeze the state of the filterBuilder to avoid the UI from being overridden at the first response
+          filterBuilder.setFrozen(true);
         }
       } else {
         filterBuilder.set(value ? value.split(',') : []);
