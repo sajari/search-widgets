@@ -35,7 +35,7 @@ Create the following HTML and add your props object from the preview:
 
 ## Deploying
 
-Deployment is handed via Atlassian changesets. To create a new release, your change/PR must have an associated changeset. To create one, run `yarn changeset`.
+Deployment is handled using Atlassian changesets. To create a new release, your change/PR must have an associated changeset. To create one, run `yarn changeset`.
 
 You should never need to manually deploy, but if you do:
 
