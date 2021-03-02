@@ -67,7 +67,7 @@ async function main(...args) {
   const full = arg === '--full';
   const loaderOnly = arg === '--loader-only';
   const files = !loaderOnly
-    ? [new FileUpload('loader.js'), new FileUpload('bundle.js'), new FileUpload('bundle.min.js')]
+    ? [new FileUpload('loader.js'), new FileUpload('bundle.js'), new FileUpload('bundle.js.map')]
     : [];
   const { GOOGLE_PRIVATE_KEY, GOOGLE_CLIENT_EMAIL } = process.env;
 
