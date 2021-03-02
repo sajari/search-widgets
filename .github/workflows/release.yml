@@ -33,7 +33,7 @@ jobs:
         uses: changesets/action@master
         with:
           # This will only run when it's a release commit by the changeset bot
-          publish: yarn deploy && yarn deploy:latest
+          publish: yarn deploy:full
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GOOGLE_CLIENT_EMAIL: ${{ secrets.GOOGLE_CLIENT_EMAIL }}
