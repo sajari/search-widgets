@@ -14,7 +14,7 @@
     "dev": "preact watch --template ./src/dev/index.ejs --no-esm",
     "dev:ssl": "preact watch --template ./src/dev/index.ejs --no-esm --host search-widgets.local --https --cert ./src/dev/cert.pem --key ./src/dev/cert.key",
     "deploy": "eslint . && yarn build && node -r esm scripts/deploy.js",
-    "deploy:latest": "node -r esm scripts/deploy.js --latest",
+    "deploy:latest": "eslint . && yarn build && node -r esm scripts/deploy.js --latest",
     "cert": "openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ./src/dev/cert.key -out ./src/dev/cert.pem -config ./src/dev/req.cnf -sha256",
     "changeset": "changeset",
     "release": "changeset publish",

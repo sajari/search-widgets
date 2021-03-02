@@ -14,6 +14,29 @@ const dirs = {
 };
 const bucketName = 'sajari-public-assets';
 
+class FileUpload {
+  constructor(name, latest = false) {
+    this.name = name;
+    this.isLatest = latest;
+  }
+
+  get isLoader() {
+    return this.name === 'loader.js';
+  }
+
+  get fullPath() {
+    return path.resolve(__dirname, `${dirs.build}/${this.name}`);
+  }
+
+  get destination() {
+    return `embed/${this.isLoader && this.latest ? semver.major(version) : version}/${this.name}`;
+  }
+
+  get cacheControl() {
+    return this.isLoader ? 'no-cache' : 'public, max-age=31536000';
+  }
+}
+
 const buildLoader = async () =>
   new Promise((resolve, reject) =>
     fs.readFile(path.resolve(__dirname, '../src/loader.js'), 'utf-8', (readError, data) => {
@@ -42,44 +65,40 @@ async function main(...args) {
 
   const [arg] = args;
   const latest = arg === '--latest';
-  const files = ['loader.js'];
+  const files = [new FileUpload('loader.js'), new FileUpload('bundle.js'), new FileUpload('bundle.min.js')];
   const { GOOGLE_PRIVATE_KEY, GOOGLE_CLIENT_EMAIL } = process.env;
 
   if (!GOOGLE_PRIVATE_KEY) {
     throw new Error('GOOGLE_PRIVATE_KEY missing');
   }
-
   if (!GOOGLE_CLIENT_EMAIL) {
     throw new Error('GOOGLE_CLIENT_EMAIL missing');
   }
 
-  if (!latest) {
-    files.push('bundle.js', 'bundle.js.map');
+  if (latest) {
+    files.push(new FileUpload('loader.js', true));
   }
 
   // https://googleapis.dev/nodejs/storage/latest/global.html#StorageOptions
   const storage = new Storage({ credentials: { client_email: GOOGLE_CLIENT_EMAIL, private_key: GOOGLE_PRIVATE_KEY } });
 
   async function uploadFile(file) {
-    const name = path.basename(file);
-    const isLoader = name === 'loader.js';
+    const { name, destination, cacheControl, fullPath, isLatest } = file;
 
-    await storage.bucket(bucketName).upload(path.resolve(__dirname, file), {
-      destination: `embed/${isLoader && latest ? semver.major(version) : version}/${name}`,
+    await storage.bucket(bucketName).upload(fullPath, {
+      destination,
       gzip: true,
       metadata: {
-        cacheControl: isLoader ? 'no-cache' : 'public, max-age=31536000',
+        cacheControl,
       },
     });
 
-    log(`${ansi.green.bold(name)} uploaded to ${ansi.cyan(bucketName)}...`);
+    log(`${ansi.green.bold(isLatest ? `${name} (latest)` : name)} uploaded to ${ansi.cyan(bucketName)}...`);
   }
 
-  files
-    .map((f) => `${dirs.build}/${f}`)
-    .forEach((file) =>
-      uploadFile(file).catch((error) => log(`${ansi.red.bold(`${path.basename(file)} failed!`)} ${error.message}`)),
-    );
+  files.forEach((file) =>
+    uploadFile(file).catch((error) => log(`${ansi.red.bold(`${file.name} failed!`)} ${error.message}`)),
+  );
 }
 
 main(...process.argv.slice(2));
