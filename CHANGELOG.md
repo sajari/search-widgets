@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 1.0.3
+
+### Patch Changes
+
+- b8e8e0f: Fix loader deployment
+
 ## 1.0.2
 
 ### Patch Changes
