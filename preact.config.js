@@ -10,7 +10,7 @@ export default {
    * @param {WebpackConfigHelpers} helpers - object with useful helpers for working with the webpack config.
    * @param {object} options - this is mainly relevant for plugins (will always be empty in the config), default to an empty object
    * */
-  webpack(config, env, helpers) {
+  webpack(config, env) {
     config.node.process = true;
 
     // Remove the hash on output files
@@ -26,31 +26,6 @@ export default {
       maxEntrypointSize: 300000,
       maxAssetSize: 300000,
     };
-
-    // Add custom babel plugins
-    const { rule } = helpers.getLoadersByName(config, 'babel-loader')[0];
-    const babelConfig = rule.options;
-
-    babelConfig.presets.push([
-      '@babel/preset-react',
-      {
-        runtime: 'automatic',
-        importSource: '@emotion/core',
-      },
-    ]);
-
-    babelConfig.plugins.push('babel-plugin-macros');
-
-    babelConfig.plugins.push([
-      '@emotion/babel-plugin-jsx-pragmatic',
-      {
-        export: 'jsx',
-        import: '__cssprop',
-        module: '@emotion/core',
-      },
-    ]);
-
-    babelConfig.plugins.push(['babel-plugin-transform-react-jsx', { pragma: '__cssprop' }]);
 
     // Use only required polyfills
     // babelConfig.presets[1][1].useBuiltIns = 'entry';

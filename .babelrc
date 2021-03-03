@@ -1,0 +1,15 @@
+{
+  "plugins": [
+    "babel-plugin-macros",
+    ["babel-plugin-emotion", { "cssPropOptimization": true }],
+    [
+      "@emotion/babel-plugin-jsx-pragmatic",
+      {
+        "export": "jsx",
+        "import": "__cssprop",
+        "module": "@emotion/core"
+      }
+    ],
+    ["babel-plugin-transform-react-jsx", { "pragma": "__cssprop" }]
+  ]
+}

@@ -921,14 +921,14 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.12.13"
 
-"@babel/plugin-transform-react-jsx-development@^7.12.1", "@babel/plugin-transform-react-jsx-development@^7.12.12":
+"@babel/plugin-transform-react-jsx-development@^7.12.12":
   version "7.12.17"
   resolved "https://registry.yarnpkg.com/@babel/plugin-transform-react-jsx-development/-/plugin-transform-react-jsx-development-7.12.17.tgz#f510c0fa7cd7234153539f9a362ced41a5ca1447"
   integrity sha512-BPjYV86SVuOaudFhsJR1zjgxxOhJDt6JHNoD48DxWEIxUCAMjV1ys6DYw4SDYZh0b1QsS2vfIA9t/ZsQGsDOUQ==
   dependencies:
     "@babel/plugin-transform-react-jsx" "^7.12.17"
 
-"@babel/plugin-transform-react-jsx@^7.12.1", "@babel/plugin-transform-react-jsx@^7.12.13", "@babel/plugin-transform-react-jsx@^7.12.17":
+"@babel/plugin-transform-react-jsx@^7.12.13", "@babel/plugin-transform-react-jsx@^7.12.17":
   version "7.12.17"
   resolved "https://registry.yarnpkg.com/@babel/plugin-transform-react-jsx/-/plugin-transform-react-jsx-7.12.17.tgz#dd2c1299f5e26de584939892de3cfc1807a38f24"
   integrity sha512-mwaVNcXV+l6qJOuRhpdTEj8sT/Z0owAVWf9QujTZ0d2ye9X/K+MTOTSizcgKOj18PGnTc/7g1I4+cIUjsKhBcw==
@@ -1458,17 +1458,6 @@
   integrity sha512-y+3AJ0SItMDaAgGPVkQBC/S/BaqaPACkQ6MyCI2CUlrjTxKttTVfD3TMtcs7vLEcLxqzZ1xiG0vzwCXjhopawQ==
   dependencies:
     "@babel/plugin-syntax-jsx" "^7.2.0"
-
-"@emotion/babel-preset-css-prop@^10.2.1":
-  version "10.2.1"
-  resolved "https://registry.yarnpkg.com/@emotion/babel-preset-css-prop/-/babel-preset-css-prop-10.2.1.tgz#fb331355c1819367a6e5dd171879ae4957aa701a"
-  integrity sha512-4hudLJCfIrbpJZek5n69cwzu7GgCamza/whh/RgqXaI5ZWT8pFj1rR2KjQntzFFzTU7l9o+jdVPSpgCbrVG+VQ==
-  dependencies:
-    "@babel/plugin-transform-react-jsx" "^7.12.1"
-    "@babel/plugin-transform-react-jsx-development" "^7.12.1"
-    "@babel/runtime" "^7.5.5"
-    "@emotion/babel-plugin-jsx-pragmatic" "^0.1.5"
-    babel-plugin-emotion "^10.0.27"
 
 "@emotion/cache@^10.0.27":
   version "10.0.29"
@@ -3210,11 +3199,6 @@ babel-plugin-syntax-object-rest-spread@^6.8.0:
   version "6.13.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-syntax-object-rest-spread/-/babel-plugin-syntax-object-rest-spread-6.13.0.tgz#fd6536f2bce13836ffa3a5458c4903a597bb3bf5"
   integrity sha1-/WU28rzhODb/o6VFjEkDpZe7O/U=
-
-babel-plugin-transform-inline-environment-variables@^0.4.3:
-  version "0.4.3"
-  resolved "https://registry.yarnpkg.com/babel-plugin-transform-inline-environment-variables/-/babel-plugin-transform-inline-environment-variables-0.4.3.tgz#a3b09883353be8b5e2336e3ff1ef8a5d93f9c489"
-  integrity sha1-o7CYgzU76LXiM24/8e+KXZP5xIk=
 
 babel-plugin-transform-object-rest-spread@^6.26.0:
   version "6.26.0"
