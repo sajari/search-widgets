@@ -6,7 +6,18 @@
   const editor = document.getElementById('editor');
   const preview = document.getElementById('preview');
   const convertJSON = (json) =>
-    `<div data-widget="search-results"><script type="application/json">${json}</script></div>`;
+    `
+    <div data-widget="search-results">
+      <script type="application/json">
+        ${json}
+      </script>
+    </div>
+    <div data-widget="search-input-binding">
+      <script type="application/json">
+        ${JSON.stringify({ ...JSON.parse(json === "" ? "{}":json), selector: '#js-search-input' })}
+      </script>
+    </div>
+    `;
 
   preview.innerHTML = convertJSON(value);
 

@@ -2,10 +2,12 @@ import mitt from 'mitt';
 import { ComponentType } from 'preact';
 import habitat from 'preact-habitat';
 
-import App from './app';
+import SearchInputBinding from './search-input-binding';
+import SearchResults from './search-results';
 
 const components: Record<string, ComponentType> = {
-  'search-results': App as ComponentType,
+  'search-results': SearchResults as ComponentType,
+  'search-input-binding': SearchInputBinding as ComponentType,
 };
 
 const attribute = 'data-widget';

@@ -12,9 +12,9 @@ import { FilterBuilder, ResultViewType, useSearchUIContext } from '@sajari/react
 import { useEffect } from 'preact/hooks';
 import React, { useRef } from 'react';
 
-import { useAppContext } from '../context';
+import { useSearchResultsContext } from '../context';
 import { useSetQueryParams } from '../hooks/useQueryParam';
-import { AppOptions } from '../types';
+import { SearchResultsOptions } from '../types';
 import { isRange, paramToRange, rangeToParam } from '../utils';
 
 const FilterWatcher = ({ filter, replace }: { filter: FilterBuilder; replace: boolean }) => {
@@ -94,8 +94,8 @@ const RangeFilterWatcher = ({ filter, replace }: { filter: RangeFilterBuilder; r
 };
 
 const SyncStateQueryParams = () => {
-  const { filterBuilders, options } = useAppContext();
-  const { syncURL, results: resultsOptions = {}, urlParams } = options as AppOptions<'standard'>;
+  const { filterBuilders, options } = useSearchResultsContext();
+  const { syncURL, results: resultsOptions = {}, urlParams } = options as SearchResultsOptions<'standard'>;
   const { viewType: defaultViewType = 'grid' } = resultsOptions;
   const replace = syncURL === 'replace';
   const { query, setQuery } = useQuery();

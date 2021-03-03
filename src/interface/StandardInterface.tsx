@@ -4,15 +4,15 @@ import { Filter, Input, Pagination, Results } from '@sajari/react-search-ui';
 import React from 'react';
 import tw from 'twin.macro';
 
-import { useAppContext } from '../context';
-import { AppOptions } from '../types';
+import { useSearchResultsContext } from '../context';
+import { SearchResultsOptions } from '../types';
 import { useInterfaceContext } from './context';
 import Options from './Options';
 import SyncStateQueryParams from './SyncStateQueryParams';
 
 const StandardInterface = () => {
-  const { options, filters, id } = useAppContext();
-  const { syncURL } = options as AppOptions<'standard'>;
+  const { options, filters, id } = useSearchResultsContext();
+  const { syncURL } = options as SearchResultsOptions<'standard'>;
   const { results } = useSearchContext();
   const { setWidth, filtersShown } = useInterfaceContext();
   const tabsFilters = filters?.filter((props) => props.type === 'tabs') || [];

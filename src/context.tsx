@@ -1,9 +1,9 @@
-import { AppContextProps } from './types';
+import { SearchResultsContextProps } from './types';
 import { createContext } from './utils';
 
-const [AppContextProvider, useAppContext] = createContext<AppContextProps>({
+const [SearchResultsContextProvider, useSearchResultsContext] = createContext<SearchResultsContextProps>({
   strict: true,
 });
 
-export default AppContextProvider;
-export { useAppContext };
+export default SearchResultsContextProvider;
+export { useSearchResultsContext };
