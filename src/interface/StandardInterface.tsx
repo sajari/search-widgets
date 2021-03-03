@@ -19,7 +19,7 @@ const StandardInterface = () => {
   const { hide = false, ...inputProps } = options.input ?? {};
 
   return (
-    <>
+    <React.Fragment>
       {syncURL !== 'none' ? <SyncStateQueryParams /> : null}
       <ResizeObserver onResize={(size) => setWidth(size.width)}>
         <div id={id} css={tw`space-y-6`}>
@@ -50,7 +50,7 @@ const StandardInterface = () => {
           </div>
         </div>
       </ResizeObserver>
-    </>
+    </React.Fragment>
   );
 };
 

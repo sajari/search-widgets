@@ -10,7 +10,7 @@ import {
 } from '@sajari/react-hooks';
 import { FilterBuilder, ResultViewType, useSearchUIContext } from '@sajari/react-search-ui';
 import { useEffect } from 'preact/hooks';
-import { useRef } from 'react';
+import React, { useRef } from 'react';
 
 import { useAppContext } from '../context';
 import { useSetQueryParams } from '../hooks/useQueryParam';
@@ -146,7 +146,7 @@ const SyncStateQueryParams = () => {
   }, [viewType]);
 
   return (
-    <>
+    <React.Fragment>
       {filterBuilders.map((filter) => {
         return filter instanceof FilterBuilder ? (
           <FilterWatcher filter={filter} key={filter.getField()} replace={replace} />
@@ -154,7 +154,7 @@ const SyncStateQueryParams = () => {
           <RangeFilterWatcher filter={filter} key={filter.getField()} replace={replace} />
         );
       })}
-    </>
+    </React.Fragment>
   );
 };
 

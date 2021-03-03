@@ -2,7 +2,6 @@ import { Modal, ModalCloseButton, ResizeObserver } from '@sajari/react-component
 import { useQuery, useSearchContext } from '@sajari/react-hooks';
 import { Filter, Input, Pagination, Results } from '@sajari/react-search-ui';
 import { useEffect, useState } from 'preact/hooks';
-import React from 'react';
 import tw from 'twin.macro';
 
 import { useAppContext } from '../context';
