@@ -27,15 +27,17 @@ export default (defaultProps: SearchResultsProps) => {
   };
 
   useEffect(() => {
-    function handleMessage(event: MessageEvent) {
+    const handleMessage = (event: MessageEvent) => {
       const {
         origin,
         data: { type, payload },
       } = event;
+
       if (validOrigins.some((o) => origin.startsWith(o)) && type === messageType) {
         setState(payload);
       }
-    }
+    };
+
     window.addEventListener('message', handleMessage);
 
     return () => {

@@ -4,7 +4,10 @@
   const storageKey = 'code-content';
   const value = localStorage.getItem(storageKey) || '';
   const editor = document.getElementById('editor');
+  const codeHeader = document.getElementById('code-header');
+  const codeFooter = document.getElementById('code-footer');
   const preview = document.getElementById('preview');
+
   const convertJSON = (json) =>
     `
     <div data-widget="search-results">
@@ -14,10 +17,18 @@
     </div>
     <div data-widget="search-input-binding">
       <script type="application/json">
-        ${JSON.stringify({ ...JSON.parse(json === "" ? "{}":json), selector: '#js-search-input' })}
+        ${JSON.stringify({ ...JSON.parse(json === '' ? '{}' : json), selector: '#js-search-input' })}
       </script>
     </div>
     `;
+
+  codeHeader.innerText = `
+<div data-widget="search-results">
+  <script type="application/json">`.trim();
+
+  codeFooter.innerText = `
+  </script>
+</div>`.replace('\n', '');
 
   preview.innerHTML = convertJSON(value);
 

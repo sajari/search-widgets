@@ -30,14 +30,38 @@ a {
   background-size: 20px 20px;
 } */
 
-#preview > * {
-  padding: 30px;
+#code {
+  background-color: #0f111a;
+  color: #8f93a2;
+}
+
+#code-header,
+#code-footer,
+.CodeMirror {
+  font: 0.8125rem/1.5 'SF Mono', SFMono-Regular, ui-monospace, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+    monospace;
 }
 
 .CodeMirror {
   height: 100%;
-  font: 0.8125rem/1.5 'SF Mono', SFMono-Regular, ui-monospace, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
-    monospace;
+}
+
+#code-header,
+#code-footer {
+  margin: 0;
+  padding: 1rem;
+}
+
+#code-header {
+  padding-bottom: 0;
+}
+
+#code-footer {
+  padding-top: 0;
+}
+
+#preview > * {
+  padding: 30px;
 }
 
 @media (min-width: 768px) {
@@ -45,13 +69,13 @@ a {
     display: flex;
   }
 
-  #editor,
+  #code,
   #preview {
     flex: 1;
     overflow: auto;
   }
 
-  #editor {
+  #code {
     order: 0;
     max-width: 680px;
   }

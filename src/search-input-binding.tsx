@@ -35,17 +35,26 @@ const Wrapper = ({ children, ...props }: Omit<SearchInputBindingProps, 'selector
 
 export default ({ selector, ...rest }: SearchInputBindingProps) => {
   const container = document.querySelector(selector) as HTMLElement;
+
   if (container) {
-    container.style.position = 'relative';
+    // Make sure the suggestions don't overflow
+    if (!container.style.position || container.style.position === 'static') {
+      container.style.position = 'relative';
+    }
+
     container.childNodes.forEach((node) => {
       const element = node as HTMLInputElement;
 
       if (!(element instanceof Element) || element.tagName !== 'INPUT') {
         return;
       }
-      const mode = element.dataset.type as any;
+
+      // Remove the default attributes for autocomplete
       removeAttributes(element);
+
+      const mode = element.dataset.type as never;
       const fragment = document.createDocumentFragment();
+
       render(
         <Wrapper {...rest}>
           <Input mode={mode ?? 'instant'} inputElement={{ current: element }} />
