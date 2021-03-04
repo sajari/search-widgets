@@ -184,3 +184,12 @@ export function mergeProps(params: MergePropsParams): MergedSearchResultsProps {
 
   return props;
 }
+
+export const getPresetSelector = (preset: SearchResultsProps['preset']) => {
+  switch (preset) {
+    case 'shopify':
+      return 'form[action="/search"] input[name="q"]';
+    default:
+      return '';
+  }
+};

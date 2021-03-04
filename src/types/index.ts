@@ -72,7 +72,8 @@ export interface SearchResultsProps {
   emitter: Emitter;
 }
 
-export interface SearchResultsContextProps extends Required<Pick<SearchResultsProps, 'filters' | 'options'>> {
+export interface SearchResultsContextProps
+  extends Required<Pick<SearchResultsProps, 'filters' | 'options' | 'preset'>> {
   children?: ComponentChildren;
   filterBuilders: (RangeFilterBuilder | FilterBuilder)[];
   id: string;

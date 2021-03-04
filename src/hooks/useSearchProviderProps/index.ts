@@ -18,6 +18,7 @@ export function useSearchProviderProps(props: SearchResultsProps) {
     variables: variablesProp,
     theme,
     emitter,
+    preset,
   } = props;
 
   const id = `search-ui-${Date.now()}`;
@@ -103,6 +104,7 @@ export function useSearchProviderProps(props: SearchResultsProps) {
     options,
     id,
     mode: options.mode,
+    preset,
   };
 
   return {

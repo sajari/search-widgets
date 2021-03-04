@@ -17,7 +17,7 @@
     </div>
     <div data-widget="search-input-binding">
       <script type="application/json">
-        ${JSON.stringify({ ...JSON.parse(json === '' ? '{}' : json), selector: '#js-search-input' })}
+				${json}
       </script>
     </div>
     `;

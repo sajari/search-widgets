@@ -5,6 +5,7 @@ import { useEffect, useState } from 'preact/hooks';
 import tw from 'twin.macro';
 
 import { useSearchResultsContext } from '../context';
+import { getPresetSelector } from '../defaults';
 import { SearchResultsOptions } from '../types';
 import { useInterfaceContext } from './context';
 import Options from './Options';
@@ -14,16 +15,20 @@ function isSubmitInput(node: Element) {
 }
 
 const OverlayInterface = () => {
-  const { options, filters, id } = useSearchResultsContext();
+  const { options, filters, id, preset } = useSearchResultsContext();
   const { results, pageCount, clear } = useSearchContext();
   const { setQuery } = useQuery();
   const { setWidth, filtersShown } = useInterfaceContext();
   const [open, setOpen] = useState(false);
   const tabsFilters = filters?.filter((props) => props.type === 'tabs') || [];
   const inputProps = options.input ?? {};
-  const { buttonSelector, inputSelector } = options as SearchResultsOptions<'overlay'>;
+  const { buttonSelector: buttonSelectorProp, inputSelector } = options as SearchResultsOptions<'overlay'>;
 
   useEffect(() => {
+    let buttonSelector = buttonSelectorProp;
+    if (!buttonSelectorProp) {
+      buttonSelector = getPresetSelector(preset);
+    }
     if (buttonSelector) {
       const button = document.querySelector(buttonSelector);
       const input = inputSelector ? (document.querySelector(inputSelector) as HTMLInputElement) : null;
@@ -47,7 +52,7 @@ const OverlayInterface = () => {
       }
     }
     return () => {};
-  }, [buttonSelector, inputSelector]);
+  }, [buttonSelectorProp, inputSelector]);
 
   return (
     <Modal
