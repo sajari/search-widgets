@@ -1,6 +1,7 @@
 import { Input, SearchProvider } from '@sajari/react-search-ui';
 import { render } from 'preact/compat';
 
+import { getPresetSelector } from './defaults';
 import { useSearchProviderProps } from './hooks';
 import { SearchInputBindingProps } from './types';
 
@@ -33,16 +34,21 @@ const Wrapper = ({ children, ...props }: Omit<SearchInputBindingProps, 'selector
   );
 };
 
-export default ({ selector, ...rest }: SearchInputBindingProps) => {
-  const container = document.querySelector(selector) as HTMLElement;
+const renderBindingInput = (target: HTMLElement, props: Omit<SearchInputBindingProps, 'selector'>) => {
+  if (target instanceof HTMLInputElement) {
+    const container = target.parentElement;
+    const fragment = document.createDocumentFragment();
+    const mode = target.dataset.type as never;
 
-  if (container) {
-    // Make sure the suggestions don't overflow
-    if (!container.style.position || container.style.position === 'static') {
-      container.style.position = 'relative';
-    }
-
-    container.childNodes.forEach((node) => {
+    render(
+      <Wrapper {...props}>
+        <Input mode={mode ?? 'instant'} inputElement={{ current: target }} />
+      </Wrapper>,
+      (fragment as unknown) as Element,
+    );
+    container?.appendChild(fragment);
+  } else {
+    target.childNodes.forEach((node) => {
       const element = node as HTMLInputElement;
 
       if (!(element instanceof Element) || element.tagName !== 'INPUT') {
@@ -56,14 +62,26 @@ export default ({ selector, ...rest }: SearchInputBindingProps) => {
       const fragment = document.createDocumentFragment();
 
       render(
-        <Wrapper {...rest}>
+        <Wrapper {...props}>
           <Input mode={mode ?? 'instant'} inputElement={{ current: element }} />
         </Wrapper>,
         (fragment as unknown) as Element,
       );
-      container.appendChild(fragment);
+      target.appendChild(fragment);
     });
   }
+};
 
+export default ({ selector: selectorProp, ...rest }: SearchInputBindingProps) => {
+  let target: HTMLElement | null = null;
+  let selector = selectorProp;
+  if (!selectorProp) {
+    selector = getPresetSelector(rest.preset);
+  }
+  target = document.querySelector(selector) as HTMLElement;
+
+  if (target) {
+    renderBindingInput(target, rest);
+  }
   return null;
 };
