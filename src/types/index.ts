@@ -42,7 +42,7 @@ export type SearchResultsOptions<M = Mode> = {
     }
   | {
       mode: 'overlay';
-      buttonSelector?: string;
+      buttonSelector?: string | string[];
       inputSelector?: string;
     }
 );

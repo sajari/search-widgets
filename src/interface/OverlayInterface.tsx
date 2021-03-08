@@ -1,5 +1,6 @@
 import { Modal, ModalCloseButton, ResizeObserver } from '@sajari/react-components';
 import { useQuery, useSearchContext } from '@sajari/react-hooks';
+import { isArray } from '@sajari/react-sdk-utils';
 import { Filter, Input, Pagination, Results } from '@sajari/react-search-ui';
 import { useEffect, useState } from 'preact/hooks';
 import tw from 'twin.macro';
@@ -14,6 +15,10 @@ function isSubmitInput(node: Element) {
   return node.tagName === 'INPUT' && node.getAttribute('type') === 'submit';
 }
 
+function isButton(node: Element) {
+  return node.tagName === 'BUTTON' || node.getAttribute('role') === 'button' || isSubmitInput(node);
+}
+
 const OverlayInterface = () => {
   const { options, filters, id, preset } = useSearchResultsContext();
   const { results, pageCount, clear } = useSearchContext();
@@ -25,15 +30,30 @@ const OverlayInterface = () => {
   const { buttonSelector: buttonSelectorProp, inputSelector } = options as SearchResultsOptions<'overlay'>;
 
   useEffect(() => {
-    let buttonSelector = buttonSelectorProp;
-    if (!buttonSelectorProp) {
-      buttonSelector = getPresetSelector(preset);
-    }
-    if (buttonSelector) {
+    const buttonSelectors = isArray(buttonSelectorProp)
+      ? buttonSelectorProp
+      : [buttonSelectorProp || getPresetSelector(preset)];
+
+    const removeEventList: (() => void)[] = [];
+
+    buttonSelectors.forEach((buttonSelector) => {
       const button = document.querySelector(buttonSelector);
       const input = inputSelector ? (document.querySelector(inputSelector) as HTMLInputElement) : null;
-
       if (button) {
+        if (!isButton(button)) {
+          button.setAttribute('role', 'button');
+          button.querySelectorAll('*').forEach((node) => {
+            node.setAttribute('aria-hidden', 'true');
+            if (node instanceof HTMLElement) {
+              // eslint-disable-next-line no-param-reassign
+              node.style.pointerEvents = 'none';
+            }
+
+            node.addEventListener('click', (e) => {
+              e.preventDefault();
+            });
+          });
+        }
         const openModal = (e: Event) => {
           if (isSubmitInput(button)) {
             e.preventDefault();
@@ -45,13 +65,13 @@ const OverlayInterface = () => {
           }
         };
         button.addEventListener('click', openModal);
-
-        return () => {
-          button.removeEventListener('click', openModal);
-        };
+        removeEventList.push(() => button.removeEventListener('click', openModal));
       }
-    }
-    return () => {};
+    });
+
+    return () => {
+      removeEventList.forEach((removeListener) => removeListener());
+    };
   }, [buttonSelectorProp, inputSelector]);
 
   return (
