@@ -6,7 +6,7 @@ import { useEffect, useState } from 'preact/hooks';
 import tw from 'twin.macro';
 
 import { useSearchResultsContext } from '../context';
-import { getPresetSelector } from '../defaults';
+import { getPresetSelectorOverlayMode } from '../defaults';
 import { SearchResultsOptions } from '../types';
 import { useInterfaceContext } from './context';
 import Options from './Options';
@@ -32,19 +32,25 @@ const OverlayInterface = () => {
   useEffect(() => {
     const buttonSelectors = isArray(buttonSelectorProp)
       ? buttonSelectorProp
-      : [buttonSelectorProp || getPresetSelector(preset)];
+      : [buttonSelectorProp || getPresetSelectorOverlayMode(preset)];
 
     const removeEventList: (() => void)[] = [];
 
     buttonSelectors.forEach((buttonSelector) => {
-      const button = document.querySelector(buttonSelector);
+      let button = document.querySelector(buttonSelector);
       const input = inputSelector ? (document.querySelector(inputSelector) as HTMLInputElement) : null;
+
       if (button) {
         if (!isButton(button)) {
           button.setAttribute('role', 'button');
+          // Remove all registered events
+          const cloneButton = button.cloneNode(true) as HTMLElement;
+          button.parentNode?.replaceChild(cloneButton, button);
+          button = cloneButton;
+
           button.querySelectorAll('*').forEach((node) => {
-            node.setAttribute('aria-hidden', 'true');
             if (node instanceof HTMLElement) {
+              node.setAttribute('aria-hidden', 'true');
               // eslint-disable-next-line no-param-reassign
               node.style.pointerEvents = 'none';
             }
@@ -55,7 +61,7 @@ const OverlayInterface = () => {
           });
         }
         const openModal = (e: Event) => {
-          if (isSubmitInput(button)) {
+          if (isSubmitInput(button as Element)) {
             e.preventDefault();
           }
           setOpen(true);
@@ -65,7 +71,7 @@ const OverlayInterface = () => {
           }
         };
         button.addEventListener('click', openModal);
-        removeEventList.push(() => button.removeEventListener('click', openModal));
+        removeEventList.push(() => button?.removeEventListener('click', openModal));
       }
     });
 
