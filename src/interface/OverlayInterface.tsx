@@ -45,27 +45,11 @@ const OverlayInterface = () => {
       const input = inputSelector ? (document.querySelector(inputSelector) as HTMLInputElement) : null;
 
       if (button) {
-        if (!isButton(button)) {
-          button.setAttribute('role', 'button');
-          button.setAttribute('aria-label', ariaLabel);
-          // Remove all registered events
-          const cloneButton = button.cloneNode(true) as HTMLElement;
-          button.parentNode?.replaceChild(cloneButton, button);
-          button = cloneButton;
+        const openModal = (e: Event | KeyboardEvent) => {
+          if (e instanceof KeyboardEvent && e.type === 'keydown' && e.key !== 'Enter' && e.key !== ' ') {
+            return;
+          }
 
-          button.querySelectorAll('*').forEach((node) => {
-            if (node instanceof HTMLElement) {
-              node.setAttribute('aria-hidden', 'true');
-              // eslint-disable-next-line no-param-reassign
-              node.style.pointerEvents = 'none';
-            }
-
-            node.addEventListener('click', (e) => {
-              e.preventDefault();
-            });
-          });
-        }
-        const openModal = (e: Event) => {
           if (isSubmitInput(button as Element)) {
             e.preventDefault();
           }
@@ -75,8 +59,36 @@ const OverlayInterface = () => {
             setQuery(query);
           }
         };
+
+        if (!isButton(button)) {
+          button.setAttribute('role', 'button');
+          button.setAttribute('tabIndex', '0');
+          button.setAttribute('aria-label', ariaLabel);
+          // Remove all registered events
+          const cloneButton = button.cloneNode(true) as HTMLElement;
+          button.parentNode?.replaceChild(cloneButton, button);
+          button = cloneButton;
+
+          button.querySelectorAll('*').forEach((node) => {
+            if (node instanceof HTMLElement) {
+              node.setAttribute('aria-hidden', 'true');
+              node.setAttribute('tabIndex', '-1');
+              // eslint-disable-next-line no-param-reassign
+              node.style.pointerEvents = 'none';
+            }
+
+            node.addEventListener('click', (e) => {
+              e.preventDefault();
+            });
+          });
+
+          button.addEventListener('keydown', openModal);
+        }
         button.addEventListener('click', openModal);
-        removeEventList.push(() => button?.removeEventListener('click', openModal));
+        removeEventList.push(() => {
+          button?.removeEventListener('click', openModal);
+          button?.removeEventListener('keydown', openModal);
+        });
       }
     });
 
