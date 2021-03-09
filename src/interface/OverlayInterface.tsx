@@ -27,7 +27,11 @@ const OverlayInterface = () => {
   const [open, setOpen] = useState(false);
   const tabsFilters = filters?.filter((props) => props.type === 'tabs') || [];
   const inputProps = options.input ?? {};
-  const { buttonSelector: buttonSelectorProp, inputSelector } = options as SearchResultsOptions<'overlay'>;
+  const {
+    buttonSelector: buttonSelectorProp,
+    inputSelector,
+    ariaLabel = 'Open search',
+  } = options as SearchResultsOptions<'overlay'>;
 
   useEffect(() => {
     const buttonSelectors = isArray(buttonSelectorProp)
@@ -43,6 +47,7 @@ const OverlayInterface = () => {
       if (button) {
         if (!isButton(button)) {
           button.setAttribute('role', 'button');
+          button.setAttribute('aria-label', ariaLabel);
           // Remove all registered events
           const cloneButton = button.cloneNode(true) as HTMLElement;
           button.parentNode?.replaceChild(cloneButton, button);

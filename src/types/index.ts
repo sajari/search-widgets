@@ -44,6 +44,7 @@ export type SearchResultsOptions<M = Mode> = {
       mode: 'overlay';
       buttonSelector?: string | string[];
       inputSelector?: string;
+      ariaLabel?: string;
     }
 );
 
