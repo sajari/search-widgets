@@ -1,5 +1,17 @@
 # @sajari/search-widgets
 
+## 1.1.0
+
+### Minor Changes
+
+- c39046c: Add default preset selector fallback for Shopify
+- 2cb4891: Migrate from `styled-components` to `emotion`.
+- 07a0990: Take over standard input
+
+### Patch Changes
+
+- 45deec9: Fixed `buttonSelector` not work properly with elements having children.
+
 ## 1.0.3
 
 ### Patch Changes
