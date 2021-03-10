@@ -55,14 +55,15 @@ const OverlayInterface = () => {
           }
         };
 
+        // Remove all registered events
+        const cloneButton = button.cloneNode(true) as HTMLElement;
+        button.parentNode?.replaceChild(cloneButton, button);
+        button = cloneButton;
+
         if (!isButton(button) || !isSubmitInput(button)) {
           button.setAttribute('role', 'button');
           button.setAttribute('tabIndex', '0');
           button.setAttribute('aria-label', ariaLabel);
-          // Remove all registered events
-          const cloneButton = button.cloneNode(true) as HTMLElement;
-          button.parentNode?.replaceChild(cloneButton, button);
-          button = cloneButton;
 
           button.querySelectorAll('*').forEach((node) => {
             if (node instanceof HTMLElement) {
