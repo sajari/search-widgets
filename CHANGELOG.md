@@ -1,5 +1,13 @@
 # @sajari/search-widgets
 
+## 1.1.1
+
+### Patch Changes
+
+- e0ffc0c: Remove current events from button used to trigger the overlay modal to open. It's because the previous event might have the effect of changing the UI which can conflict with the modal transition.
+- ce9556b: Upgrade packages.
+- 3c32285: Fix some bugs with the takeover mode
+
 ## 1.1.0
 
 ### Minor Changes
