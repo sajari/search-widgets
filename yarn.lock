@@ -2025,10 +2025,10 @@
     eslint-config-airbnb-typescript "^12.0.0"
     eslint-config-prettier "^7.1.0"
 
-"@sajari/react-components@^1.6.0":
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/@sajari/react-components/-/react-components-1.6.0.tgz#4f7540467a6d9b66e7936ed166825d927333cf68"
-  integrity sha512-/oyV1k4Ha2cPl1iwg2MFr8qm5DlHFf3QUtFHYNI7OZ6iAFrLg/P3Co5r+62Uy7LoNcjf/2PjDQxFujRWHy9VLA==
+"@sajari/react-components@^1.6.1", "@sajari/react-components@^1.7.0":
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/@sajari/react-components/-/react-components-1.7.0.tgz#b354d3ec1bac350c30befa53e3e144b4222490ef"
+  integrity sha512-Bd4Ror9kBLsvm0T6ZyBPVynTFeJtJSIqilzLNAKSUzhUiIEPfGKHKlL5Ch1GlXoTyszufHpyJV04j+EdhgN9Qg==
   dependencies:
     "@react-aria/button" "^3.3.0"
     "@react-aria/focus" "^3.2.3"
@@ -2048,6 +2048,15 @@
     react-ranger "^2.1.0"
     smoothscroll-polyfill "^0.4.4"
     use-resize-observer "^7.0.0"
+
+"@sajari/react-hooks@^1.4.10":
+  version "1.4.10"
+  resolved "https://registry.yarnpkg.com/@sajari/react-hooks/-/react-hooks-1.4.10.tgz#dbe412e77122e4bacd29a51f0ed31d0be2232ac9"
+  integrity sha512-aeB1m4QERdqKTHKHa3jybdqM+ktjWD+cUVI/E7qOWMFwTthBfma5HArzNWjbNRB0ZHUS109nv5UAHrynETfJ+g==
+  dependencies:
+    "@sajari/react-sdk-utils" "^1.3.5"
+    "@sajari/sdk-js" "^2.0.0-rc.2"
+    js-cookie "^2.2.1"
 
 "@sajari/react-hooks@^1.4.9":
   version "1.4.9"
@@ -2088,13 +2097,13 @@
     tailwindcss-truncate-multiline "^1.0.3"
     twin.macro "^1.12.1"
 
-"@sajari/react-search-ui@^1.8.0":
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-1.8.0.tgz#3b87e4f5b46235f201eaa51ede080f095c0476a3"
-  integrity sha512-eebb1i4vPul/a77nPTLF1QDinvjrsus18vW+Gx4T2lSoxJdMAKnnaZ7/DnLe+QXXybQSOigAkvyUBqwDBVdl8w==
+"@sajari/react-search-ui@^1.8.2":
+  version "1.8.2"
+  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-1.8.2.tgz#cd360ada12c282ea43478798579e06d6e0d16774"
+  integrity sha512-v+1XUPLgI+2G/aNpD5gcXgPnnmQtjxUt9Q1R8T9vGGqFn4n2Au2tKFC7jUAJN+Ke4caDySxe8d8ej1V9fG61Bw==
   dependencies:
     "@react-aria/utils" "3.5.0"
-    "@sajari/react-components" "^1.6.0"
+    "@sajari/react-components" "^1.6.1"
     "@sajari/react-hooks" "^1.4.9"
     "@sajari/react-sdk-utils" "^1.3.8"
     i18next "19.8.7"
