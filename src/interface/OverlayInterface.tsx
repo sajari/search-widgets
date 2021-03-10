@@ -16,7 +16,7 @@ function isSubmitInput(node: Element) {
 }
 
 function isButton(node: Element) {
-  return node.tagName === 'BUTTON' || node.getAttribute('role') === 'button' || isSubmitInput(node);
+  return node.tagName === 'BUTTON' || node.getAttribute('role') === 'button';
 }
 
 const OverlayInterface = () => {
@@ -28,16 +28,13 @@ const OverlayInterface = () => {
   const tabsFilters = filters?.filter((props) => props.type === 'tabs') || [];
   const inputProps = options.input ?? {};
   const {
-    buttonSelector: buttonSelectorProp,
+    buttonSelector: buttonSelectorProp = getPresetSelectorOverlayMode(preset),
     inputSelector,
     ariaLabel = 'Open search',
   } = options as SearchResultsOptions<'overlay'>;
 
   useEffect(() => {
-    const buttonSelectors = isArray(buttonSelectorProp)
-      ? buttonSelectorProp
-      : [buttonSelectorProp || getPresetSelectorOverlayMode(preset)];
-
+    const buttonSelectors = isArray(buttonSelectorProp) ? buttonSelectorProp : [buttonSelectorProp];
     const removeEventList: (() => void)[] = [];
 
     buttonSelectors.forEach((buttonSelector) => {
@@ -49,10 +46,8 @@ const OverlayInterface = () => {
           if (e instanceof KeyboardEvent && e.type === 'keydown' && e.key !== 'Enter' && e.key !== ' ') {
             return;
           }
+          e.preventDefault();
 
-          if (isSubmitInput(button as Element)) {
-            e.preventDefault();
-          }
           setOpen(true);
           const query = input?.value;
           if (query) {
@@ -60,7 +55,7 @@ const OverlayInterface = () => {
           }
         };
 
-        if (!isButton(button)) {
+        if (!isButton(button) || !isSubmitInput(button)) {
           button.setAttribute('role', 'button');
           button.setAttribute('tabIndex', '0');
           button.setAttribute('aria-label', ariaLabel);
