@@ -151,7 +151,11 @@ const SyncStateQueryParams = () => {
         return filter instanceof FilterBuilder ? (
           <FilterWatcher filter={filter} key={filter.getField()} replace={replace} />
         ) : (
-          <RangeFilterWatcher filter={filter} key={filter.getField()} replace={replace} />
+          <RangeFilterWatcher
+            filter={(filter as unknown) as RangeFilterBuilder}
+            key={filter.getField()}
+            replace={replace}
+          />
         );
       })}
     </React.Fragment>

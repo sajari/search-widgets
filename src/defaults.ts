@@ -10,7 +10,7 @@ interface MergePropsParams extends SearchResultsProps {
 
 interface MergedSearchResultsProps extends Omit<SearchResultsProps, 'options' | 'tracking' | 'preset'> {
   options: SearchResultsOptions;
-  tracking?: ClickTracking | PosNegTracking;
+  tracking?: ClickTracking | PosNegTracking | any;
 }
 
 export function mergeProps(params: MergePropsParams): MergedSearchResultsProps {
