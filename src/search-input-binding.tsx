@@ -15,6 +15,17 @@ const attributesToBeRemoved = [
   'aria-haspopup',
 ];
 
+// To emulate form submission
+const wrapInForm = (input: HTMLInputElement) => {
+  const form = document.createElement('form');
+  form.action = '/search';
+  form.method = 'get';
+  form.role = 'search';
+  input.parentNode?.insertBefore(form, input);
+  form.appendChild(input);
+  return form;
+};
+
 const removeAttributes = (element: Element | null) =>
   attributesToBeRemoved.forEach((attr) => element?.removeAttribute(attr));
 
@@ -38,11 +49,12 @@ const renderBindingInput = (target: HTMLElement, props: Omit<SearchInputBindingP
   if (target instanceof HTMLInputElement) {
     const container = target.parentElement;
     const fragment = document.createDocumentFragment();
-    const mode = target.dataset.type as never;
+    const { mode } = props;
+    const form = wrapInForm(target);
 
     render(
       <Wrapper {...props}>
-        <Input mode={mode ?? 'instant'} inputElement={{ current: target }} />
+        <Input mode={(mode as any) ?? 'instant'} onSelect={form.submit} inputElement={{ current: target }} />
       </Wrapper>,
       (fragment as unknown) as Element,
     );
@@ -58,12 +70,13 @@ const renderBindingInput = (target: HTMLElement, props: Omit<SearchInputBindingP
       // Remove the default attributes for autocomplete
       removeAttributes(element);
 
-      const mode = element.dataset.type as never;
+      const { mode } = props;
       const fragment = document.createDocumentFragment();
+      const form = wrapInForm(element);
 
       render(
         <Wrapper {...props}>
-          <Input mode={mode ?? 'instant'} inputElement={{ current: element }} />
+          <Input mode={(mode as any) ?? 'instant'} onSelect={form.submit} inputElement={{ current: element }} />
         </Wrapper>,
         (fragment as unknown) as Element,
       );
