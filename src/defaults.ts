@@ -193,3 +193,12 @@ export const getPresetSelector = (preset: SearchResultsProps['preset']) => {
       return '';
   }
 };
+
+export const getPresetSelectorOverlayMode = (preset: SearchResultsProps['preset']) => {
+  switch (preset) {
+    case 'shopify':
+      return ['form[action="/search"]', 'a[href="/search"]'];
+    default:
+      return [];
+  }
+};

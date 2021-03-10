@@ -1,17 +1,22 @@
 import { Modal, ModalCloseButton, ResizeObserver } from '@sajari/react-components';
 import { useQuery, useSearchContext } from '@sajari/react-hooks';
+import { isArray } from '@sajari/react-sdk-utils';
 import { Filter, Input, Pagination, Results } from '@sajari/react-search-ui';
 import { useEffect, useState } from 'preact/hooks';
 import tw from 'twin.macro';
 
 import { useSearchResultsContext } from '../context';
-import { getPresetSelector } from '../defaults';
+import { getPresetSelectorOverlayMode } from '../defaults';
 import { SearchResultsOptions } from '../types';
 import { useInterfaceContext } from './context';
 import Options from './Options';
 
 function isSubmitInput(node: Element) {
   return node.tagName === 'INPUT' && node.getAttribute('type') === 'submit';
+}
+
+function isButton(node: Element) {
+  return node.tagName === 'BUTTON' || node.getAttribute('role') === 'button';
 }
 
 const OverlayInterface = () => {
@@ -22,36 +27,69 @@ const OverlayInterface = () => {
   const [open, setOpen] = useState(false);
   const tabsFilters = filters?.filter((props) => props.type === 'tabs') || [];
   const inputProps = options.input ?? {};
-  const { buttonSelector: buttonSelectorProp, inputSelector } = options as SearchResultsOptions<'overlay'>;
+  const {
+    buttonSelector: buttonSelectorProp = getPresetSelectorOverlayMode(preset),
+    inputSelector,
+    ariaLabel = 'Open search',
+  } = options as SearchResultsOptions<'overlay'>;
 
   useEffect(() => {
-    let buttonSelector = buttonSelectorProp;
-    if (!buttonSelectorProp) {
-      buttonSelector = getPresetSelector(preset);
-    }
-    if (buttonSelector) {
-      const button = document.querySelector(buttonSelector);
+    const buttonSelectors = isArray(buttonSelectorProp) ? buttonSelectorProp : [buttonSelectorProp];
+    const removeEventList: (() => void)[] = [];
+
+    buttonSelectors.forEach((buttonSelector) => {
+      let button = document.querySelector(buttonSelector);
       const input = inputSelector ? (document.querySelector(inputSelector) as HTMLInputElement) : null;
 
       if (button) {
-        const openModal = (e: Event) => {
-          if (isSubmitInput(button)) {
-            e.preventDefault();
+        const openModal = (e: Event | KeyboardEvent) => {
+          if (e instanceof KeyboardEvent && e.type === 'keydown' && e.key !== 'Enter' && e.key !== ' ') {
+            return;
           }
+          e.preventDefault();
+
           setOpen(true);
           const query = input?.value;
           if (query) {
             setQuery(query);
           }
         };
-        button.addEventListener('click', openModal);
 
-        return () => {
-          button.removeEventListener('click', openModal);
-        };
+        if (!isButton(button) || !isSubmitInput(button)) {
+          button.setAttribute('role', 'button');
+          button.setAttribute('tabIndex', '0');
+          button.setAttribute('aria-label', ariaLabel);
+          // Remove all registered events
+          const cloneButton = button.cloneNode(true) as HTMLElement;
+          button.parentNode?.replaceChild(cloneButton, button);
+          button = cloneButton;
+
+          button.querySelectorAll('*').forEach((node) => {
+            if (node instanceof HTMLElement) {
+              node.setAttribute('aria-hidden', 'true');
+              node.setAttribute('tabIndex', '-1');
+              // eslint-disable-next-line no-param-reassign
+              node.style.pointerEvents = 'none';
+            }
+
+            node.addEventListener('click', (e) => {
+              e.preventDefault();
+            });
+          });
+
+          button.addEventListener('keydown', openModal);
+        }
+        button.addEventListener('click', openModal);
+        removeEventList.push(() => {
+          button?.removeEventListener('click', openModal);
+          button?.removeEventListener('keydown', openModal);
+        });
       }
-    }
-    return () => {};
+    });
+
+    return () => {
+      removeEventList.forEach((removeListener) => removeListener());
+    };
   }, [buttonSelectorProp, inputSelector]);
 
   return (
