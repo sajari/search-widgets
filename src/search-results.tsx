@@ -18,9 +18,17 @@ const messageType = 'sajari-shopify-ui-builder-update';
 
 export default (defaultProps: SearchResultsProps) => {
   const [state, setState] = useState(defaultProps);
-  const { emitter, context, searchContext, theme, searchOnLoad, defaultFilter, viewType } = useSearchProviderProps(
-    state,
-  );
+  const {
+    emitter,
+    context,
+    searchContext,
+    theme,
+    searchOnLoad,
+    defaultFilter,
+    viewType,
+    customClassNames,
+    disableDefaultStyles,
+  } = useSearchProviderProps(state);
 
   const emitterContext = {
     emitter,
@@ -52,6 +60,8 @@ export default (defaultProps: SearchResultsProps) => {
       searchOnLoad={searchOnLoad}
       defaultFilter={defaultFilter}
       viewType={viewType}
+      customClassNames={customClassNames}
+      disableDefaultStyles={disableDefaultStyles}
     >
       <PubSubContextProvider value={emitterContext}>
         <SearchResultsContextProvider value={context}>

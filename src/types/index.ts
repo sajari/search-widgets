@@ -69,6 +69,8 @@ export interface SearchResultsProps {
   variables: ContextProviderValues['search']['variables'];
   config: ContextProviderValues['search']['config'];
   theme: ContextProviderValues['theme'];
+  customClassNames?: ContextProviderValues['customClassNames'];
+  disableDefaultStyles?: ContextProviderValues['disableDefaultStyles'];
   options?: SearchResultsOptions;
   emitter: Emitter;
 }
