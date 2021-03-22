@@ -1,4 +1,4 @@
-import { isString } from '@sajari/react-sdk-utils';
+import { isBoolean, isString } from '@sajari/react-sdk-utils';
 import { FilterBuilder, Pipeline, Range, RangeFilterBuilder, ResultViewType, Variables } from '@sajari/react-search-ui';
 import { useMemo } from 'react';
 
@@ -109,12 +109,14 @@ export function useSearchProviderProps(props: SearchResultsProps) {
     preset,
   };
 
+  const searchOnLoad = isBoolean(options.searchOnLoad) ? options.searchOnLoad : options.mode === 'standard';
+
   return {
     searchContext,
     defaultFilter,
     viewType,
     theme,
-    searchOnLoad: options.mode === 'standard',
+    searchOnLoad,
     context,
     emitter,
     customClassNames,

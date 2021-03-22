@@ -31,6 +31,7 @@ export type SearchResultsOptions<M = Mode> = {
   input?: InputProps & { hide?: boolean };
   results?: ResultsProps & { viewType?: ResultViewType };
   pagination?: PaginationProps;
+  searchOnLoad?: boolean;
   mode?: M;
 } & (
   | {
