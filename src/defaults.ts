@@ -238,4 +238,5 @@ export const widgetDefaultContent: Record<WidgetType, string> = {
   'search-input-binding': JSON.stringify(
     merge(cloneDeep(defaultConfig), { selector: '#js-search-input', mode: 'results' }),
   ),
+  'search-input': JSON.stringify(merge(cloneDeep(defaultConfig), { mode: 'suggestions' })),
 };
