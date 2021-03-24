@@ -17,8 +17,10 @@ import { ComponentChildren } from 'preact';
 
 import { Breakpoints } from '../utils/styles';
 
+export type InputMode = CoreInputProps<any>['mode'];
+
 interface InputProps extends CoreInputProps<any> {
-  mode?: Exclude<CoreInputProps<any>['mode'], 'results'>;
+  mode?: Exclude<InputMode, 'results'>;
 }
 
 export type SyncURLType = 'none' | 'replace' | 'push';
@@ -97,5 +99,5 @@ export interface InterfaceContextProps {
 
 export interface SearchInputBindingProps extends SearchResultsProps {
   selector: string;
-  mode: string;
+  mode: InputMode;
 }

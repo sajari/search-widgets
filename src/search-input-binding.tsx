@@ -3,7 +3,7 @@ import { render } from 'preact/compat';
 
 import { getPresetSelector } from './defaults';
 import { useSearchProviderProps } from './hooks';
-import { SearchInputBindingProps } from './types';
+import { InputMode, SearchInputBindingProps } from './types';
 
 const attributesToBeRemoved = [
   'data-predictive-search-drawer-input',
@@ -24,6 +24,13 @@ const wrapInForm = (input: HTMLInputElement) => {
   input.parentNode?.insertBefore(form, input);
   form.appendChild(input);
   return form;
+};
+
+const defaultMode: InputMode = 'suggestions';
+const getSubmit = (mode: InputMode, form: HTMLFormElement) => () => {
+  if (mode === defaultMode) {
+    form.submit();
+  }
 };
 
 const removeAttributes = (element: Element | null) =>
@@ -49,12 +56,12 @@ const renderBindingInput = (target: HTMLElement, props: Omit<SearchInputBindingP
   if (target instanceof HTMLInputElement) {
     const container = target.parentElement;
     const fragment = document.createDocumentFragment();
-    const { mode } = props;
+    const { mode = 'suggestions' } = props;
     const form = wrapInForm(target);
 
     render(
       <Wrapper {...props}>
-        <Input mode={(mode as any) ?? 'instant'} onSelect={form.submit} inputElement={{ current: target }} />
+        <Input mode={mode} onSelect={getSubmit(mode, form)} inputElement={{ current: target }} />
       </Wrapper>,
       (fragment as unknown) as Element,
     );
@@ -70,13 +77,13 @@ const renderBindingInput = (target: HTMLElement, props: Omit<SearchInputBindingP
       // Remove the default attributes for autocomplete
       removeAttributes(element);
 
-      const { mode } = props;
+      const { mode = 'suggestions' } = props;
       const fragment = document.createDocumentFragment();
       const form = wrapInForm(element);
 
       render(
         <Wrapper {...props}>
-          <Input mode={(mode as any) ?? 'instant'} onSelect={form.submit} inputElement={{ current: element }} />
+          <Input mode={mode} onSelect={getSubmit(mode, form)} inputElement={{ current: element }} />
         </Wrapper>,
         (fragment as unknown) as Element,
       );
