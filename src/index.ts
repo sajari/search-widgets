@@ -5,6 +5,14 @@ import habitat from 'preact-habitat';
 import SearchInputBinding from './search-input-binding';
 import SearchResults from './search-results';
 
+if (!process.env.DEPLOY_SCRIPT) {
+  import('./dev/app')
+    .then(({ default: setupApp }) => {
+      setupApp();
+    })
+    .catch(console.error);
+}
+
 const components: Record<string, ComponentType> = {
   'search-results': SearchResults as ComponentType,
   'search-input-binding': SearchInputBinding as ComponentType,
