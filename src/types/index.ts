@@ -21,6 +21,7 @@ export type InputMode = CoreInputProps<any>['mode'];
 
 interface InputProps extends CoreInputProps<any> {
   mode?: Exclude<InputMode, 'results'>;
+  placeholder?: string;
 }
 
 export type SyncURLType = 'none' | 'replace' | 'push';
