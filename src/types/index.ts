@@ -48,6 +48,7 @@ export type SearchResultsOptions<M = Mode> = {
       buttonSelector?: string | string[];
       inputSelector?: string;
       ariaLabel?: string;
+      defaultOpen?: boolean;
     }
 );
 
