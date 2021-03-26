@@ -24,14 +24,15 @@ const OverlayInterface = () => {
   const { results, pageCount, clear } = useSearchContext();
   const { setQuery } = useQuery();
   const { setWidth, filtersShown } = useInterfaceContext();
-  const [open, setOpen] = useState(false);
   const tabsFilters = filters?.filter((props) => props.type === 'tabs') || [];
   const inputProps = options.input ?? {};
   const {
     buttonSelector: buttonSelectorProp = getPresetSelectorOverlayMode(preset),
     inputSelector,
     ariaLabel = 'Open search',
+    defaultOpen = false,
   } = options as SearchResultsOptions<'overlay'>;
+  const [open, setOpen] = useState(defaultOpen);
 
   useEffect(() => {
     const buttonSelectors = isArray(buttonSelectorProp) ? buttonSelectorProp : [buttonSelectorProp];
