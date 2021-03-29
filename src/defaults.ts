@@ -241,4 +241,5 @@ export const widgetDefaultContent: Record<WidgetType, string> = {
   'search-input': JSON.stringify(
     merge(cloneDeep(defaultConfig), { mode: 'suggestions', redirect: { url: 'search', queryParamName: 'q' } }),
   ),
+  'dynamic-content': JSON.stringify(cloneDeep(defaultConfig)),
 };

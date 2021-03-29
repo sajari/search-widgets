@@ -104,12 +104,15 @@ export interface SearchInputBindingProps extends SearchResultsProps {
   mode: InputMode;
 }
 
-export type WidgetType = 'search-results' | 'search-input-binding' | 'overlay' | 'search-input';
-
 export interface SearchInputProps extends SearchResultsProps {
   mode: InputMode;
   redirect?: {
     url: string;
     queryParamName: string;
   };
+}
+export type WidgetType = 'search-results' | 'search-input-binding' | 'overlay' | 'dynamic-content' | 'search-input';
+
+export interface DynamicContentProps extends SearchResultsProps {
+  selector: string;
 }

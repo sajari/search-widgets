@@ -69,6 +69,7 @@ export default () => {
         `;
         break;
       case 'search-results':
+      case 'dynamic-content':
       default:
         break;
     }

@@ -12,6 +12,7 @@ const widgets: { name: string; value: WidgetType }[] = [
   { name: 'Takeover search input', value: 'search-input-binding' },
   { name: 'Search Input', value: 'search-input' },
   { name: 'Overlay', value: 'overlay' },
+  { name: 'Dynamic Content', value: 'dynamic-content' },
 ];
 
 export const Toolbar = ({ widget, onWidgetChange }: Props) => {

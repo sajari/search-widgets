@@ -2,6 +2,7 @@ import mitt from 'mitt';
 import { ComponentType } from 'preact';
 import habitat from 'preact-habitat';
 
+import DynamicContent from './dynamic-content';
 import SearchInput from './search-input';
 import SearchInputBinding from './search-input-binding';
 import SearchResults from './search-results';
@@ -18,6 +19,7 @@ const components: Record<string, ComponentType> = {
   'search-results': SearchResults as ComponentType,
   'search-input-binding': SearchInputBinding as ComponentType,
   'search-input': SearchInput as ComponentType,
+  'dynamic-content': DynamicContent as ComponentType,
 };
 
 const attribute = 'data-widget';
