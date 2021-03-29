@@ -108,4 +108,8 @@ export type WidgetType = 'search-results' | 'search-input-binding' | 'overlay' |
 
 export interface SearchInputProps extends SearchResultsProps {
   mode: InputMode;
+  redirect?: {
+    url: string;
+    queryParamName: string;
+  };
 }

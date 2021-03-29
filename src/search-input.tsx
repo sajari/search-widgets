@@ -1,4 +1,5 @@
-import { Input, SearchProvider } from '@sajari/react-search-ui';
+import { Input, InputProps, SearchProvider } from '@sajari/react-search-ui';
+import { useRef } from 'preact/hooks';
 
 import SearchResultsContextProvider from './context';
 import { useSearchProviderProps } from './hooks';
@@ -14,7 +15,23 @@ export default (defaultProps: SearchInputProps) => {
     emitter,
   };
 
-  const { mode, options } = defaultProps;
+  const { mode, options, redirect } = defaultProps;
+  const AppliedInput = (props: InputProps<any> & { name?: string }) => (
+    <Input mode={mode} {...options?.input} {...props} />
+  );
+
+  const RenderInput = () => {
+    const formRef = useRef<HTMLFormElement>();
+    if (redirect && mode !== 'results') {
+      return (
+        <form ref={formRef} action={redirect.url ?? 'search'}>
+          <AppliedInput onSelect={() => formRef.current.submit()} name={redirect.queryParamName || 'q'} />
+        </form>
+      );
+    }
+
+    return <AppliedInput />;
+  };
 
   return (
     <SearchProvider
@@ -26,7 +43,7 @@ export default (defaultProps: SearchInputProps) => {
     >
       <PubSubContextProvider value={emitterContext}>
         <SearchResultsContextProvider value={context}>
-          <Input mode={mode} {...options?.input} />
+          <RenderInput />
         </SearchResultsContextProvider>
       </PubSubContextProvider>
     </SearchProvider>
