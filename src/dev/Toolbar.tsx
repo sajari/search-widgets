@@ -10,6 +10,7 @@ interface Props {
 const widgets: { name: string; value: WidgetType }[] = [
   { name: 'Search Results', value: 'search-results' },
   { name: 'Takeover search input', value: 'search-input-binding' },
+  { name: 'Search Input', value: 'search-input' },
   { name: 'Overlay', value: 'overlay' },
 ];
 
