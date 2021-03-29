@@ -47,12 +47,14 @@ a {
 }
 
 #code-header,
+#toolbar,
 #code-footer {
   margin: 0;
   padding: 1rem;
 }
 
-#code-header {
+#code-header,
+#toolbar {
   padding-bottom: 0;
 }
 
@@ -83,4 +85,17 @@ a {
   #preview {
     order: 1;
   }
+}
+
+#toolbar {
+  display: flex;
+}
+
+#toolbar #widget-selector {
+  flex: 1;
+  margin-right: 1rem;
+}
+
+[data-widget-hide='true'] {
+  display: none;
 }

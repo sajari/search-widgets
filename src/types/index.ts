@@ -103,3 +103,5 @@ export interface SearchInputBindingProps extends SearchResultsProps {
   selector: string;
   mode: InputMode;
 }
+
+export type WidgetType = 'search-results' | 'search-input-binding' | 'overlay';

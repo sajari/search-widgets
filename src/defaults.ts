@@ -1,7 +1,8 @@
 import { ClickTracking, FieldDictionary, PosNegTracking } from '@sajari/react-hooks';
 import { isArray, isEmpty, isNumber, isString, merge, MergeOptions } from '@sajari/react-sdk-utils';
+import { cloneDeep } from 'lodash-es';
 
-import { SearchResultsOptions, SearchResultsProps, TrackingType } from './types';
+import { SearchResultsOptions, SearchResultsProps, TrackingType, WidgetType } from './types';
 import { mapAspectRatio } from './utils';
 
 interface MergePropsParams extends SearchResultsProps {
@@ -201,4 +202,40 @@ export const getPresetSelectorOverlayMode = (preset: SearchResultsProps['preset'
     default:
       return [];
   }
+};
+
+const defaultConfig = JSON.parse(`{
+	    "account": "1603163345448404241",
+	    "collection": "sajari-test-fashion2",
+	    "pipeline": "query",
+	    "preset": "shopify",
+	    "filters": [{
+	            "name": "vendor",
+	            "field": "vendor",
+	            "title": "Vendor",
+	            "searchable": true
+	        },
+	        {
+	            "name": "type",
+	            "field": "product_type",
+	            "title": "Type",
+	            "searchable": true
+	        },
+	        {
+	            "name": "collection",
+	            "field": "collection_titles",
+	            "title": "Collection",
+	            "array": true
+	        }
+	    ]
+	}`);
+
+export const widgetDefaultContent: Record<WidgetType, string> = {
+  'search-results': JSON.stringify(cloneDeep(defaultConfig)),
+  overlay: JSON.stringify(
+    merge(cloneDeep(defaultConfig), { options: { mode: 'overlay', buttonSelector: '#open-modal' } }),
+  ),
+  'search-input-binding': JSON.stringify(
+    merge(cloneDeep(defaultConfig), { selector: '#js-search-input', mode: 'results' }),
+  ),
 };
