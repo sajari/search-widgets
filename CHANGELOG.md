@@ -1,5 +1,23 @@
 # @sajari/search-widgets
 
+## 1.2.0
+
+### Minor Changes
+
+- 5857d92: Add support for input placeholder
+- 857a924: Add search input widget
+- 43c21ae: Add widget selector
+
+### Patch Changes
+
+- b3a82ea: Added `defaultOpen` for `overlay` mode.
+- 4b4a7c0: Upgrade packages to add support `maxSuggestions` and `autoFocus` for `Input`.
+- 4354361: Fix selecting suggestion item doesn't trigger search request
+- 05c967d: Added support for `customClassNames` and `disableDefaultStyles` for styling customization.
+- b4758f4: Upgrade packages.
+- 47c507c: Add support extra props for Modal in `overlay` mode.
+- 391f2db: Evaluate DEPLOY_SCRIPT env when building
+
 ## 1.1.1
 
 ### Patch Changes
