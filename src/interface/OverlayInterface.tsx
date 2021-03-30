@@ -31,6 +31,7 @@ const OverlayInterface = () => {
     inputSelector,
     ariaLabel = 'Open search',
     defaultOpen = false,
+    modal: modalProps,
   } = options as SearchResultsOptions<'overlay'>;
   const [open, setOpen] = useState(defaultOpen);
 
@@ -104,6 +105,7 @@ const OverlayInterface = () => {
       center={false}
       size="7xl"
       animationDuration={75}
+      {...modalProps}
     >
       <ResizeObserver onResize={(size) => setWidth(size.width)} css={tw`overflow-hidden h-full flex`}>
         <div css={[tw`w-full flex flex-col flex-none overflow-hidden`]}>

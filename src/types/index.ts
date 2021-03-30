@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { ModalProps } from '@sajari/react-components';
 import {
   ContextProviderValues,
   FieldDictionary,
@@ -49,6 +50,7 @@ export type SearchResultsOptions<M = Mode> = {
       inputSelector?: string;
       ariaLabel?: string;
       defaultOpen?: boolean;
+      modal?: ModalProps;
     }
 );
 
