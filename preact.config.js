@@ -10,7 +10,11 @@ export default {
    * @param {WebpackConfigHelpers} helpers - object with useful helpers for working with the webpack config.
    * @param {object} options - this is mainly relevant for plugins (will always be empty in the config), default to an empty object
    * */
-  webpack(config, env) {
+  webpack(config, env, helpers) {
+    const { DEPLOY_SCRIPT } = process.env;
+    const { plugin } = helpers.getPluginsByName(config, 'DefinePlugin')[0];
+    Object.assign(plugin.definitions, { 'process.env.DEPLOY_SCRIPT': JSON.stringify(DEPLOY_SCRIPT) });
+
     config.node.process = true;
 
     // Remove the hash on output files
