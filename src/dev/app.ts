@@ -33,8 +33,9 @@ export default () => {
         localStorage.setItem(widgetKey, widget);
         updateNow = true;
         codeMirror.setValue(
-          (localStorage.getItem(`code-content-${activeWidget}`) as WidgetType) ||
-            window.js_beautify(widgetDefaultContent[widget]),
+          window.js_beautify(
+            (localStorage.getItem(`code-content-${activeWidget}`) as WidgetType) || widgetDefaultContent[widget],
+          ),
         );
       },
     },
