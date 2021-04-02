@@ -6,15 +6,15 @@ import './app.css';
 import { widgetDefaultContent } from '../defaults';
 
 export default () => {
-  const storageKey = 'code-content';
   const widgetKey = 'active-widget';
   const toolbarSelector = '#toolbar';
-  const value = localStorage.getItem(storageKey) || '';
   const editor = document.getElementById('editor') as HTMLElement;
   const codeHeader = document.getElementById('code-header') as HTMLElement;
   const codeFooter = document.getElementById('code-footer') as HTMLElement;
   const preview = document.getElementById('preview') as HTMLElement;
   let activeWidget: WidgetType = (localStorage.getItem(widgetKey) as WidgetType) ?? 'search-results';
+  const storageKey = `code-content-${activeWidget}`;
+  const value = localStorage.getItem(storageKey) || widgetDefaultContent[activeWidget];
   let updateNow = false;
   const codeMirror = window.CodeMirror(editor, {
     value: window.js_beautify(value),
@@ -32,7 +32,10 @@ export default () => {
         activeWidget = widget;
         localStorage.setItem(widgetKey, widget);
         updateNow = true;
-        codeMirror.setValue(window.js_beautify(widgetDefaultContent[widget]));
+        codeMirror.setValue(
+          (localStorage.getItem(`code-content-${activeWidget}`) as WidgetType) ||
+            window.js_beautify(widgetDefaultContent[widget]),
+        );
       },
     },
   });
@@ -100,7 +103,7 @@ export default () => {
       () => {
         const value = instance.doc.getValue();
         updatePreview(value, activeWidget);
-        localStorage.setItem('code-content', value);
+        localStorage.setItem(`code-content-${activeWidget}`, value);
         updateNow = false;
       },
       updateNow ? 0 : 800,
