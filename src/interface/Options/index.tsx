@@ -9,7 +9,11 @@ const Summary = styled(CoreSummary)`
   ${tw`text-lg`}
 `;
 
-export default () => {
+interface Props {
+  showToggleFilter?: boolean;
+}
+
+export default ({ showToggleFilter = true }: Props) => {
   const { options } = useSearchResultsContext();
   const { breakpoints } = useInterfaceContext();
   const md = Boolean(breakpoints.md);
@@ -25,7 +29,7 @@ export default () => {
 
         <ViewType size="sm" inline={md} />
 
-        <ToggleFilters />
+        {showToggleFilter && <ToggleFilters />}
       </div>
     </div>
   );

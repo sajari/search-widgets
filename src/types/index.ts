@@ -29,10 +29,12 @@ export type SyncURLType = 'none' | 'replace' | 'push';
 
 type Mode = 'standard' | 'overlay';
 
+type InputPosition = 'top' | 'aside';
+
 export type SearchResultsOptions<M = Mode> = {
   resultsPerPage?: ResultsPerPageProps;
   sorting?: SortingProps;
-  input?: InputProps & { hide?: boolean };
+  input?: InputProps & { hide?: boolean; position?: InputPosition };
   results?: ResultsProps & { viewType?: ResultViewType };
   pagination?: PaginationProps;
   mode?: M;
