@@ -22,6 +22,7 @@ export function mergeProps(params: MergePropsParams): MergedSearchResultsProps {
     options: {
       input: {
         mode: 'instant',
+        position: 'aside',
       },
       results: {
         imageAspectRatio: {

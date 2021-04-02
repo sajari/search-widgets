@@ -16,20 +16,29 @@ const StandardInterface = () => {
   const { results } = useSearchContext();
   const { setWidth, filtersShown } = useInterfaceContext();
   const tabsFilters = filters?.filter((props) => props.type === 'tabs') || [];
+  const hideSidebar =
+    (filters?.filter((props) => props.type !== 'tabs') || []).length === 0 && options.input?.position === 'top';
   const { hide = false, ...inputProps } = options.input ?? {};
+  const topInput = options.input?.position === 'top';
 
   return (
     <React.Fragment>
       {syncURL !== 'none' ? <SyncStateQueryParams /> : null}
       <ResizeObserver onResize={(size) => setWidth(size.width)}>
         <div id={id} css={tw`space-y-6`}>
-          {results && <Options />}
+          {!hide && topInput && <Input {...inputProps} css={tw`w-full`} />}
+          {results && <Options showToggleFilter={!hideSidebar || !topInput} />}
 
           <div css={tw`flex`}>
             {results && (
-              <div css={[tw`transition-all duration-200`, filtersShown ? tw`pr-8 w-80` : tw`w-0 opacity-0`]}>
+              <div
+                css={[
+                  tw`transition-all duration-200`,
+                  filtersShown && !hideSidebar ? tw`pr-8 w-80` : tw`w-0 opacity-0`,
+                ]}
+              >
                 <div css={tw`w-72 space-y-6`}>
-                  {!hide && <Input {...inputProps} />}
+                  {!hide && !topInput && <Input {...inputProps} />}
 
                   {filters
                     ?.filter((props) => props.type !== 'tabs')
@@ -40,7 +49,7 @@ const StandardInterface = () => {
               </div>
             )}
 
-            <div css={[tw`flex-1 space-y-6`, filtersShown ? 'width: calc(100% - 20rem);' : tw`w-full`]}>
+            <div css={[tw`flex-1 space-y-6`, filtersShown && !hideSidebar ? 'width: calc(100% - 20rem);' : tw`w-full`]}>
               {tabsFilters.length > 0 ? tabsFilters.map((props) => <Filter {...props} key={props.name} />) : null}
 
               <Results {...options.results} />
