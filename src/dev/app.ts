@@ -43,9 +43,7 @@ export default () => {
 
   const convertJSON = (json: string, widget: WidgetType) =>
     `
-    <div data-widget-hide="${widget === 'overlay' || widget === 'search-input-binding'}" data-widget="${
-      widget === 'overlay' ? 'search-results' : widget
-    }">
+    <div data-widget-hide="${widget === 'overlay' || widget === 'search-input-binding'}" data-widget="${widget}">
       <script type="application/json">
         ${json}
       </script>
@@ -79,7 +77,7 @@ export default () => {
     preview.innerHTML = `${jsonData}${extra}`;
 
     codeHeader.innerText = `
-<div data-widget="${widget === 'overlay' ? 'search-results' : widget}">
+<div data-widget="${widget}">
   <script type="application/json">`.trim();
 
     codeFooter.innerText = `

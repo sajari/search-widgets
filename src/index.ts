@@ -16,6 +16,7 @@ if (!process.env.DEPLOY_SCRIPT) {
 
 const components: Record<string, ComponentType> = {
   'search-results': SearchResults as ComponentType,
+  overlay: SearchResults as ComponentType,
   'search-input-binding': SearchInputBinding as ComponentType,
   'search-input': SearchInput as ComponentType,
 };
