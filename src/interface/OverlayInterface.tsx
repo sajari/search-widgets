@@ -25,6 +25,7 @@ const OverlayInterface = () => {
   const { setQuery } = useQuery();
   const { setWidth, filtersShown } = useInterfaceContext();
   const tabsFilters = filters?.filter((props) => props.type === 'tabs') || [];
+  const nonTabsFilters = filters?.filter((props) => props.type !== 'tabs') || [];
   const inputProps = options.input ?? {};
   const {
     buttonSelector: buttonSelectorProp = getPresetSelectorOverlayMode(preset),
@@ -34,6 +35,7 @@ const OverlayInterface = () => {
     modal: modalProps,
   } = options as SearchResultsOptions<'overlay'>;
   const [open, setOpen] = useState(defaultOpen);
+  const hideSidebar = nonTabsFilters.length === 0;
 
   useEffect(() => {
     const buttonSelectors = isArray(buttonSelectorProp) ? buttonSelectorProp : [buttonSelectorProp];
@@ -119,7 +121,7 @@ const OverlayInterface = () => {
 
             {results && (
               <div css={tw`pt-3.5 px-6 pb-6`}>
-                <Options />
+                <Options showToggleFilter={!hideSidebar} />
               </div>
             )}
           </div>
@@ -127,26 +129,29 @@ const OverlayInterface = () => {
           {results ? (
             <div
               id={id}
-              css={[tw`flex flex-grow overflow-hidden transition-all duration-200`, !filtersShown && tw`pl-6`]}
+              css={[
+                tw`flex flex-grow overflow-hidden transition-all duration-200`,
+                (!filtersShown || hideSidebar) && tw`pl-6`,
+              ]}
             >
               {results && (
                 <div
                   css={[
                     tw`transition-all duration-200 overflow-y-auto flex-none`,
-                    filtersShown ? tw`pr-8 w-86 pl-6` : tw`w-0 opacity-0`,
+                    filtersShown && !hideSidebar ? tw`pr-8 w-86 pl-6` : tw`w-0 opacity-0`,
                   ]}
                 >
                   <div css={tw`w-72 space-y-6 pb-6`}>
-                    {filters
-                      ?.filter((props) => props.type !== 'tabs')
-                      .map((props) => (
-                        <Filter {...props} key={props.name} />
-                      ))}
+                    {nonTabsFilters.map((props) => (
+                      <Filter {...props} key={props.name} />
+                    ))}
                   </div>
                 </div>
               )}
 
-              <div css={[tw`flex flex-col`, filtersShown ? 'width: calc(100% - 21.5rem);' : tw`w-full`]}>
+              <div
+                css={[tw`flex flex-col`, filtersShown && !hideSidebar ? 'width: calc(100% - 21.5rem);' : tw`w-full`]}
+              >
                 {tabsFilters.length > 0 ? (
                   <div css={tw`space-y-6 pr-6`}>
                     {tabsFilters.map((props) => (
