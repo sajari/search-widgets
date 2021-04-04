@@ -1,5 +1,12 @@
 # @sajari/search-widgets
 
+## 1.3.1
+
+### Patch Changes
+
+- 1aff0f3: Fix incorrect widget name passed in `data-widget` for the `overlay` mode.
+- a4cd947: Hide the filter sidebar if there is no filter to avoid the left blank space on the interface for the overlay mode.
+
 ## 1.3.0
 
 ### Minor Changes
