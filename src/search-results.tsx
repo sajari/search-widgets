@@ -7,13 +7,6 @@ import Interface from './interface';
 import PubSubContextProvider from './pubsub/context';
 import { SearchResultsProps } from './types';
 
-const validOrigins = [
-  'http://localhost:',
-  'https://localhost:',
-  'https://app.sajari.com',
-  'https://app.sajari-staging.io',
-];
-
 const messageType = 'sajari-shopify-ui-builder-update';
 
 export default (defaultProps: SearchResultsProps) => {
@@ -37,11 +30,10 @@ export default (defaultProps: SearchResultsProps) => {
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
       const {
-        origin,
         data: { type, payload },
       } = event;
 
-      if (validOrigins.some((o) => origin.startsWith(o)) && type === messageType) {
+      if (type === messageType) {
         setState(payload);
       }
     };
