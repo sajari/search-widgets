@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 1.3.2
+
+### Patch Changes
+
+- ce6949e: Remove origin whitelist when doing fast refresh
+
 ## 1.3.1
 
 ### Patch Changes
