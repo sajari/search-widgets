@@ -8,10 +8,10 @@ import PubSubContextProvider from './pubsub/context';
 import { SearchResultsProps } from './types';
 
 const validOrigins = [
-  'http://localhost:',
-  'https://localhost:',
-  'https://app.sajari.com',
-  'https://app.sajari-staging.io',
+  /^(http|https):\/\/localhost/gm,
+  /^(http|https):\/\/local\.sajari/gm,
+  /^(http|https):\/\/app\.sajari/gm,
+  /^(http|https):\/\/c-\d+-dot-console-dot-sajaricom-staging\.appspot\.com/gm,
 ];
 
 const messageType = 'sajari-shopify-ui-builder-update';
@@ -41,7 +41,7 @@ export default (defaultProps: SearchResultsProps) => {
         data: { type, payload },
       } = event;
 
-      if (validOrigins.some((o) => origin.startsWith(o)) && type === messageType) {
+      if (validOrigins.some((o) => o.test(origin)) && type === messageType) {
         setState(payload);
       }
     };
