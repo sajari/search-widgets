@@ -65,9 +65,24 @@ export default () => {
         break;
       case 'search-input-binding':
         extra = `
-          <div id="js-search-input">
+          <div style="border-radius: 4px;border:2px solid #9CA3AF;margin:10px;padding:10px;">
+            <p style="margin-top:0px;">The following 3 inputs are identical and can be retrieved using the <code>form[action="/search"] input[name="q"]</code> selector.</p>
+            <form action="/search">
+              <input name="q" />
+            </form>
+            <form action="/search">
+              <input name="q" />
+            </form>
+            <form action="/search">
+              <input name="q" />
+            </form>
+          </div>
+          <div id="js-search-input" style="padding:10px;margin:10px;border-radius: 4px;border:2px solid #9CA3AF;">
+            <p style="margin-top:0px;">This container has the id of <code>js-search-input</code></p>
+            <input />
             <input />
           </div>
+          <p>Try switching between <code>"selector": "#js-search-input"</code> and not specifiying a selector at all (which defaults to <code>form[action="/search"] input[name="q"]</code>) to see the difference and use cases.</p>
         `;
         break;
       case 'search-results':
