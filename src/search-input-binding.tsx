@@ -21,6 +21,7 @@ const wrapInForm = (input: HTMLInputElement) => {
   form.action = '/search';
   form.method = 'get';
   form.role = 'search';
+  form.style.display = 'inline-block';
   input.parentNode?.insertBefore(form, input);
   form.appendChild(input);
   return form;
