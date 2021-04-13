@@ -21,6 +21,7 @@ const wrapInForm = (input: HTMLInputElement) => {
   form.action = '/search';
   form.method = 'get';
   form.role = 'search';
+  form.style.display = 'inline-block';
   input.parentNode?.insertBefore(form, input);
   form.appendChild(input);
   return form;
@@ -52,56 +53,61 @@ const Wrapper = ({ children, ...props }: Omit<SearchInputBindingProps, 'selector
   );
 };
 
-const renderBindingInput = (target: HTMLElement, props: Omit<SearchInputBindingProps, 'selector'>) => {
-  if (target instanceof HTMLInputElement) {
-    const container = target.parentElement;
-    const fragment = document.createDocumentFragment();
-    const { mode = 'suggestions' } = props;
-    const form = wrapInForm(target);
-
-    render(
-      <Wrapper {...props}>
-        <Input mode={mode} onSelect={getSubmit(mode, form)} inputElement={{ current: target }} />
-      </Wrapper>,
-      (fragment as unknown) as Element,
-    );
-    container?.appendChild(fragment);
-  } else {
-    target.childNodes.forEach((node) => {
-      const element = node as HTMLInputElement;
-
-      if (!(element instanceof Element) || element.tagName !== 'INPUT') {
-        return;
-      }
-
+const renderBindingInput = (targets: NodeListOf<HTMLElement>, props: Omit<SearchInputBindingProps, 'selector'>) => {
+  targets.forEach((target) => {
+    if (target instanceof HTMLInputElement) {
       // Remove the default attributes for autocomplete
-      removeAttributes(element);
+      removeAttributes(target);
 
-      const { mode = 'suggestions' } = props;
+      const container = target.parentElement;
       const fragment = document.createDocumentFragment();
-      const form = wrapInForm(element);
+      const { mode = 'suggestions' } = props;
+      const form = wrapInForm(target);
 
       render(
         <Wrapper {...props}>
-          <Input mode={mode} onSelect={getSubmit(mode, form)} inputElement={{ current: element }} />
+          <Input mode={mode} onSelect={getSubmit(mode, form)} inputElement={{ current: target }} />
         </Wrapper>,
         (fragment as unknown) as Element,
       );
-      target.appendChild(fragment);
-    });
-  }
+      container?.appendChild(fragment);
+    } else {
+      target.childNodes.forEach((node) => {
+        const element = node as HTMLInputElement;
+
+        if (!(element instanceof Element) || element.tagName !== 'INPUT') {
+          return;
+        }
+
+        // Remove the default attributes for autocomplete
+        removeAttributes(element);
+
+        const { mode = 'suggestions' } = props;
+        const fragment = document.createDocumentFragment();
+        const form = wrapInForm(element);
+
+        render(
+          <Wrapper {...props}>
+            <Input mode={mode} onSelect={getSubmit(mode, form)} inputElement={{ current: element }} />
+          </Wrapper>,
+          (fragment as unknown) as Element,
+        );
+        target.appendChild(fragment);
+      });
+    }
+  });
 };
 
 export default ({ selector: selectorProp, ...rest }: SearchInputBindingProps) => {
-  let target: HTMLElement | null = null;
+  let targets: NodeListOf<HTMLElement> | null = null;
   let selector = selectorProp;
   if (!selectorProp) {
     selector = getPresetSelector(rest.preset);
   }
-  target = document.querySelector(selector) as HTMLElement;
+  targets = document.querySelectorAll(selector);
 
-  if (target) {
-    renderBindingInput(target, rest);
+  if (targets && targets.length > 0) {
+    renderBindingInput(targets, rest);
   }
   return null;
 };
