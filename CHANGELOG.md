@@ -1,5 +1,13 @@
 # @sajari/search-widgets
 
+## 1.3.3
+
+### Patch Changes
+
+- 38e383a: Allow for take over input to work if there are multiple results of a selector
+- f05c2da: Upgrade SDK packages to include the fix for input styling being overridden by external CSS.
+- 6d4fa78: Upgrade new version for React SDK packages to include the fix for Modal `z-index` issue.
+
 ## 1.3.2
 
 ### Patch Changes
