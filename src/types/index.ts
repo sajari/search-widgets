@@ -30,6 +30,7 @@ export type SyncURLType = 'none' | 'replace' | 'push';
 type Mode = 'standard' | 'overlay';
 
 type InputPosition = 'top' | 'aside';
+type TextTransform = 'normal-case' | 'uppercase' | 'lowercase' | 'capitalize' | 'capitalize-first-letter';
 
 export type SearchResultsOptions<M = Mode> = {
   resultsPerPage?: ResultsPerPageProps;
@@ -72,7 +73,7 @@ export interface SearchResultsProps {
       };
   preset: PresetType;
   fields?: FieldDictionary;
-  filters?: Array<FilterProps & { field: string }>;
+  filters?: Array<FilterProps & { field: string; textTransform?: TextTransform }>;
   defaultFilter: ContextProviderValues['defaultFilter'];
   variables: ContextProviderValues['search']['variables'];
   config: ContextProviderValues['search']['config'];

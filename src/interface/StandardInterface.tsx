@@ -42,15 +42,24 @@ const StandardInterface = () => {
 
                   {filters
                     ?.filter((props) => props.type !== 'tabs')
-                    .map((props) => (
-                      <Filter {...props} key={props.name} />
-                    ))}
+                    .map((props) => {
+                      const { type, textTransform = 'capitalize-first-letter' } = props;
+                      if (type === 'list' || type === 'select') {
+                        return <Filter {...{ ...props, textTransform }} key={props.name} />;
+                      }
+                      return <Filter {...props} key={props.name} />;
+                    })}
                 </div>
               </div>
             )}
 
             <div css={[tw`flex-1 space-y-6`, filtersShown && !hideSidebar ? 'width: calc(100% - 20rem);' : tw`w-full`]}>
-              {tabsFilters.length > 0 ? tabsFilters.map((props) => <Filter {...props} key={props.name} />) : null}
+              {tabsFilters.length > 0
+                ? tabsFilters.map((props) => {
+                    const { textTransform = 'capitalize-first-letter' } = props;
+                    return <Filter {...props} type="tabs" textTransform={textTransform} key={props.name} />;
+                  })
+                : null}
 
               <Results {...options.results} />
 
