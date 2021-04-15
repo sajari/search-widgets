@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 1.3.4
+
+### Patch Changes
+
+- 6865892: Add support `textTransform` for filter options.
+
 ## 1.3.3
 
 ### Patch Changes
