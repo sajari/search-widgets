@@ -2049,19 +2049,10 @@
     smoothscroll-polyfill "^0.4.4"
     use-resize-observer "^7.0.0"
 
-"@sajari/react-hooks@^1.4.10":
-  version "1.4.10"
-  resolved "https://registry.yarnpkg.com/@sajari/react-hooks/-/react-hooks-1.4.10.tgz#dbe412e77122e4bacd29a51f0ed31d0be2232ac9"
-  integrity sha512-aeB1m4QERdqKTHKHa3jybdqM+ktjWD+cUVI/E7qOWMFwTthBfma5HArzNWjbNRB0ZHUS109nv5UAHrynETfJ+g==
-  dependencies:
-    "@sajari/react-sdk-utils" "^1.3.5"
-    "@sajari/sdk-js" "^2.0.0-rc.2"
-    js-cookie "^2.2.1"
-
-"@sajari/react-hooks@^1.4.9":
-  version "1.4.9"
-  resolved "https://registry.yarnpkg.com/@sajari/react-hooks/-/react-hooks-1.4.9.tgz#6442bb072444de8966e30a15f16c555019754143"
-  integrity sha512-Dy6iEArnJoEcJJ0LuxB715dqRkXHuzfBZ3qUb/UpRa+fxTJixjdUnEs4qpeksj609V6qOI9g/5Jib2UuxIFKDA==
+"@sajari/react-hooks@^1.4.11":
+  version "1.4.11"
+  resolved "https://registry.yarnpkg.com/@sajari/react-hooks/-/react-hooks-1.4.11.tgz#97c0078cd43d99a68abd1c6c27bf547287d728fa"
+  integrity sha512-y172aT+neKL+wYna54CCmkVCAMH0J8A7K/KcVCnzcMjw6zdeKgsAfcw81C51fmvrh7WHlA/mUrfh9yxc8aEHTw==
   dependencies:
     "@sajari/react-sdk-utils" "^1.3.5"
     "@sajari/sdk-js" "^2.0.0-rc.2"
@@ -2097,14 +2088,14 @@
     tailwindcss-truncate-multiline "^1.0.3"
     twin.macro "^1.12.1"
 
-"@sajari/react-search-ui@^1.8.8":
-  version "1.8.8"
-  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-1.8.8.tgz#fb6c3dcfeb12cd06443e22ba8f1c4f5f5f8b0804"
-  integrity sha512-d1bp6dYr6F5k44OcS8fjHzS+UkH6kvOkFsdmmKrR8a0j+cLC4rJA5Qf71JoG6nsjAp6IjQa/4RbQ7KEBc5jb0A==
+"@sajari/react-search-ui@^1.8.9":
+  version "1.8.9"
+  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-1.8.9.tgz#af8f33189bad720d0d9fd5ea33121a10c3d626eb"
+  integrity sha512-8s7qX+ggMpcBT8C7bJcvZWNxXMlRjgUyQlowm8G2R/0d+hO5Bt9C0yqO0OyOettKanIcFbwQxLTWnP/eSvn8Rw==
   dependencies:
     "@react-aria/utils" "3.5.0"
     "@sajari/react-components" "^1.7.6"
-    "@sajari/react-hooks" "^1.4.9"
+    "@sajari/react-hooks" "^1.4.11"
     "@sajari/react-sdk-utils" "^1.3.9"
     i18next "19.8.7"
     i18next-browser-languagedetector "^6.0.1"

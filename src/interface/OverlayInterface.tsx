@@ -142,9 +142,13 @@ const OverlayInterface = () => {
                   ]}
                 >
                   <div css={tw`w-72 space-y-6 pb-6`}>
-                    {nonTabsFilters.map((props) => (
-                      <Filter {...props} key={props.name} />
-                    ))}
+                    {nonTabsFilters.map((props) => {
+                      const { type, textTransform = 'capitalize-first-letter' } = props;
+                      if (type === 'list' || type === 'select') {
+                        return <Filter {...{ ...props, textTransform }} key={props.name} />;
+                      }
+                      return <Filter {...props} key={props.name} />;
+                    })}
                   </div>
                 </div>
               )}
@@ -154,9 +158,10 @@ const OverlayInterface = () => {
               >
                 {tabsFilters.length > 0 ? (
                   <div css={tw`space-y-6 pr-6`}>
-                    {tabsFilters.map((props) => (
-                      <Filter {...props} key={props.name} />
-                    ))}
+                    {tabsFilters.map((props) => {
+                      const { textTransform = 'capitalize-first-letter' } = props;
+                      return <Filter {...props} type="tabs" textTransform={textTransform} key={props.name} />;
+                    })}
                   </div>
                 ) : null}
 
