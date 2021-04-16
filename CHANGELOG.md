@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 1.3.5
+
+### Patch Changes
+
+- 2c597af: Upgrade SDK packages to fix empty results issue if an interface has a price filter.
+
 ## 1.3.4
 
 ### Patch Changes
