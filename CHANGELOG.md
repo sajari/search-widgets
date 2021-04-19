@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 1.3.6
+
+### Patch Changes
+
+- c6c8ce7: Upgrade `@sajari/react-search-ui@1.8.11` to include the fix for `formatLabel` returning `undefined` value if the input is empty and enable the reset button for a radio filter list.
+
 ## 1.3.5
 
 ### Patch Changes
