@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 1.3.7
+
+### Patch Changes
+
+- ac17274: Remove `inline-block` override causing styling of the search input broken in some themes.
+
 ## 1.3.6
 
 ### Patch Changes
