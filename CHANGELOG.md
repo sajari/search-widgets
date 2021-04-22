@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 1.3.8
+
+### Patch Changes
+
+- 3cc1c26: Hide powered by Sajari logo in Shopify.
+
 ## 1.3.7
 
 ### Patch Changes
