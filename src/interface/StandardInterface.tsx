@@ -11,7 +11,7 @@ import Options from './Options';
 import SyncStateQueryParams from './SyncStateQueryParams';
 
 const StandardInterface = () => {
-  const { options, filters, id } = useSearchResultsContext();
+  const { options, filters, id, preset } = useSearchResultsContext();
   const { syncURL } = options as SearchResultsOptions<'standard'>;
   const { results } = useSearchContext();
   const { setWidth, filtersShown } = useInterfaceContext();
@@ -26,7 +26,7 @@ const StandardInterface = () => {
       {syncURL !== 'none' ? <SyncStateQueryParams /> : null}
       <ResizeObserver onResize={(size) => setWidth(size.width)}>
         <div id={id} css={tw`space-y-6`}>
-          {!hide && topInput && <Input {...inputProps} css={tw`w-full`} />}
+          {!hide && topInput && <Input {...inputProps} css={tw`w-full`} showPoweredBy={preset !== 'shopify'} />}
           {results && <Options showToggleFilter={!hideSidebar || !topInput} />}
 
           <div css={tw`flex`}>
@@ -38,7 +38,7 @@ const StandardInterface = () => {
                 ]}
               >
                 <div css={tw`w-72 space-y-6`}>
-                  {!hide && !topInput && <Input {...inputProps} />}
+                  {!hide && !topInput && <Input {...inputProps} showPoweredBy={preset !== 'shopify'} />}
 
                   {filters
                     ?.filter((props) => props.type !== 'tabs')

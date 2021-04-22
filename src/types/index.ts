@@ -20,7 +20,7 @@ import { Breakpoints } from '../utils/styles';
 
 export type InputMode = CoreInputProps<any>['mode'];
 
-interface InputProps extends CoreInputProps<any> {
+interface InputProps extends Omit<CoreInputProps<any>, 'showPoweredBy'> {
   mode?: Exclude<InputMode, 'results'>;
   placeholder?: string;
 }
