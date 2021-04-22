@@ -54,6 +54,8 @@ const Wrapper = ({ children, ...props }: Omit<SearchInputBindingProps, 'selector
 
 const renderBindingInput = (targets: NodeListOf<HTMLElement>, props: Omit<SearchInputBindingProps, 'selector'>) => {
   targets.forEach((target) => {
+    const showPoweredBy = props.preset !== 'shopify';
+
     if (target instanceof HTMLInputElement) {
       // Remove the default attributes for autocomplete
       removeAttributes(target);
@@ -65,7 +67,12 @@ const renderBindingInput = (targets: NodeListOf<HTMLElement>, props: Omit<Search
 
       render(
         <Wrapper {...props}>
-          <Input mode={mode} onSelect={getSubmit(mode, form)} inputElement={{ current: target }} />
+          <Input
+            mode={mode}
+            onSelect={getSubmit(mode, form)}
+            inputElement={{ current: target }}
+            showPoweredBy={showPoweredBy}
+          />
         </Wrapper>,
         (fragment as unknown) as Element,
       );
@@ -87,7 +94,12 @@ const renderBindingInput = (targets: NodeListOf<HTMLElement>, props: Omit<Search
 
         render(
           <Wrapper {...props}>
-            <Input mode={mode} onSelect={getSubmit(mode, form)} inputElement={{ current: element }} />
+            <Input
+              mode={mode}
+              onSelect={getSubmit(mode, form)}
+              inputElement={{ current: element }}
+              showPoweredBy={showPoweredBy}
+            />
           </Wrapper>,
           (fragment as unknown) as Element,
         );
