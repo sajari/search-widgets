@@ -42,27 +42,27 @@ const OverlayInterface = () => {
     const removeEventList: (() => void)[] = [];
 
     buttonSelectors.forEach((buttonSelector) => {
-      let button = document.querySelector(buttonSelector);
+      const buttons = document.querySelectorAll(buttonSelector);
       const input = inputSelector ? (document.querySelector(inputSelector) as HTMLInputElement) : null;
 
-      if (button) {
-        const openModal = (e: Event | KeyboardEvent) => {
-          if (e instanceof KeyboardEvent && e.type === 'keydown' && e.key !== 'Enter' && e.key !== ' ') {
-            return;
-          }
-          e.preventDefault();
+      const openModal = (e: Event | KeyboardEvent) => {
+        if (e instanceof KeyboardEvent && e.type === 'keydown' && e.key !== 'Enter' && e.key !== ' ') {
+          return;
+        }
+        e.preventDefault();
 
-          setOpen(true);
-          const query = input?.value;
-          if (query) {
-            setQuery(query);
-          }
-        };
+        setOpen(true);
+        const query = input?.value;
+        if (query) {
+          setQuery(query);
+        }
+      };
 
+      buttons.forEach((btn) => {
         // Remove all registered events
-        const cloneButton = button.cloneNode(true) as HTMLElement;
-        button.parentNode?.replaceChild(cloneButton, button);
-        button = cloneButton;
+        const cloneButton = btn.cloneNode(true) as HTMLElement;
+        btn.parentNode?.replaceChild(cloneButton, btn);
+        const button = cloneButton;
 
         if (!isButton(button) || !isSubmitInput(button)) {
           button.setAttribute('role', 'button');
@@ -89,7 +89,7 @@ const OverlayInterface = () => {
           button?.removeEventListener('click', openModal);
           button?.removeEventListener('keydown', openModal);
         });
-      }
+      });
     });
 
     return () => {
