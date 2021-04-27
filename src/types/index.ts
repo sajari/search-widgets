@@ -80,6 +80,7 @@ export interface SearchResultsProps {
   theme: ContextProviderValues['theme'];
   customClassNames?: ContextProviderValues['customClassNames'];
   disableDefaultStyles?: ContextProviderValues['disableDefaultStyles'];
+  importantStyles?: ContextProviderValues['importantStyles'];
   options?: SearchResultsOptions;
   emitter: Emitter;
 }

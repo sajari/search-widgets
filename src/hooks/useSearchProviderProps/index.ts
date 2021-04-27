@@ -21,6 +21,7 @@ export function useSearchProviderProps(props: SearchResultsProps) {
     preset,
     customClassNames,
     disableDefaultStyles = false,
+    importantStyles = false,
   } = props;
 
   const id = `search-ui-${Date.now()}`;
@@ -119,5 +120,6 @@ export function useSearchProviderProps(props: SearchResultsProps) {
     emitter,
     customClassNames,
     disableDefaultStyles,
+    importantStyles,
   };
 }
