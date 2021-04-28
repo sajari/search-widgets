@@ -3,7 +3,7 @@ import { render } from 'preact/compat';
 
 import { getPresetSelector } from './defaults';
 import { useSearchProviderProps } from './hooks';
-import { InputMode, SearchInputBindingProps } from './types';
+import { SearchInputBindingProps } from './types';
 
 const attributesToBeRemoved = [
   'data-predictive-search-drawer-input',
@@ -15,26 +15,13 @@ const attributesToBeRemoved = [
   'aria-haspopup',
 ];
 
-// To emulate form submission
-const wrapInForm = (input: HTMLInputElement) => {
-  const form = document.createElement('form');
-  form.action = '/search';
-  form.method = 'get';
-  form.role = 'search';
-  input.parentNode?.insertBefore(form, input);
-  form.appendChild(input);
-  return form;
-};
-
-const defaultMode: InputMode = 'suggestions';
-const getSubmit = (mode: InputMode, form: HTMLFormElement) => () => {
-  if (mode === defaultMode) {
-    form.submit();
-  }
-};
-
 const removeAttributes = (element: Element | null) =>
   attributesToBeRemoved.forEach((attr) => element?.removeAttribute(attr));
+
+const onSelectHandler = (element: Element | null) => () => {
+  const form = element?.closest('form');
+  form?.submit();
+};
 
 const Wrapper = ({ children, ...props }: Omit<SearchInputBindingProps, 'selector'> & { children: React.ReactNode }) => {
   const { searchOnLoad, viewType, defaultFilter, theme, searchContext } = useSearchProviderProps(props);
@@ -57,53 +44,47 @@ const renderBindingInput = (targets: NodeListOf<HTMLElement>, props: Omit<Search
     const showPoweredBy = props.preset !== 'shopify';
 
     if (target instanceof HTMLInputElement) {
-      // Remove the default attributes for autocomplete
-      removeAttributes(target);
-
-      const container = target.parentElement;
+      const cloned = target.cloneNode(true) as HTMLInputElement;
+      target.replaceWith(cloned);
       const fragment = document.createDocumentFragment();
-      const { mode = 'suggestions' } = props;
-      const form = wrapInForm(target);
+
+      removeAttributes(cloned);
 
       render(
         <Wrapper {...props}>
           <Input
-            mode={mode}
-            onSelect={getSubmit(mode, form)}
-            inputElement={{ current: target }}
+            mode="suggestions"
+            onSelect={onSelectHandler(cloned)}
+            inputElement={{ current: cloned }}
             showPoweredBy={showPoweredBy}
           />
         </Wrapper>,
         (fragment as unknown) as Element,
       );
-      container?.appendChild(fragment);
     } else {
       target.childNodes.forEach((node) => {
-        const element = node as HTMLInputElement;
+        const cloned = node.cloneNode(true) as HTMLInputElement;
+        node.replaceWith(cloned);
 
-        if (!(element instanceof Element) || element.tagName !== 'INPUT') {
+        if (!(cloned instanceof Element) || cloned.tagName !== 'INPUT') {
           return;
         }
 
-        // Remove the default attributes for autocomplete
-        removeAttributes(element);
-
-        const { mode = 'suggestions' } = props;
         const fragment = document.createDocumentFragment();
-        const form = wrapInForm(element);
+
+        removeAttributes(cloned);
 
         render(
           <Wrapper {...props}>
             <Input
-              mode={mode}
-              onSelect={getSubmit(mode, form)}
-              inputElement={{ current: element }}
+              mode="suggestions"
+              onSelect={onSelectHandler(cloned)}
+              inputElement={{ current: cloned }}
               showPoweredBy={showPoweredBy}
             />
           </Wrapper>,
           (fragment as unknown) as Element,
         );
-        target.appendChild(fragment);
       });
     }
   });
