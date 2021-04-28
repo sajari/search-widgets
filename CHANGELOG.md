@@ -1,5 +1,15 @@
 # @sajari/search-widgets
 
+## 1.3.9
+
+### Patch Changes
+
+- 9adadef: Upgrade SDK packages to include the fix for broken styling issues when integrating with Shopify themes.
+- 18b2de9: Support `importantStyles` option to add !important to the provided styles in order to avoid CSS crashes from external CSS.
+- 42ad2c4: Fix search input binding styling issue
+- bf697fd: Update the script of the overlay mode to have effect on multiple elements queried by `buttonSelector`
+- d5302b0: Upgrade SDK packages to include the fix for broken styling issues when integrating with Shopify themes.
+
 ## 1.3.8
 
 ### Patch Changes
