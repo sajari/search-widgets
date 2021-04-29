@@ -1,5 +1,14 @@
 # @sajari/search-widgets
 
+## 1.3.10
+
+### Patch Changes
+
+- eaa6a34: Tweak design of overlay component:
+
+  - Increase the font size in the search box.
+  - Remove the input border and divide the search results from the input with one divider line.
+
 ## 1.3.9
 
 ### Patch Changes
