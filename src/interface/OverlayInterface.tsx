@@ -112,8 +112,16 @@ const OverlayInterface = () => {
       <ResizeObserver onResize={(size) => setWidth(size.width)} css={tw`overflow-hidden h-full flex`}>
         <div css={[tw`w-full flex flex-col flex-none overflow-hidden`]}>
           <div css={tw`flex-none`}>
-            <div css={tw`py-2.5 pl-2.5 flex items-center`}>
-              <Input {...inputProps} css={tw`w-full`} />
+            <div
+              css={[tw`py-4 pl-2.5 flex items-center`, results && tw`border-gray-200 border-0 border-b border-solid`]}
+            >
+              <Input
+                {...inputProps}
+                css={tw`w-full`}
+                size="2xl"
+                variant="unstyled"
+                showPoweredBy={preset !== 'shopify'}
+              />
               <div css={tw`flex-none w-14 flex justify-center`}>
                 <ModalCloseButton css={tw`m-0`} />
               </div>
