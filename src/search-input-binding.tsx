@@ -18,9 +18,8 @@ const attributesToBeRemoved = [
 const removeAttributes = (element: Element | null) =>
   attributesToBeRemoved.forEach((attr) => element?.removeAttribute(attr));
 
-const removeThemeOriginalDropdown = (elementSelectorToBeRemoved: string | string[]) => {
-  const selectors =
-    typeof elementSelectorToBeRemoved === 'string' ? elementSelectorToBeRemoved.split(' ') : elementSelectorToBeRemoved;
+const removeThemeElements = (selectorsParam: string | string[]) => {
+  const selectors = typeof selectorsParam === 'string' ? selectorsParam.split(' ') : selectorsParam;
   selectors.forEach((selector) => {
     const list = document.querySelectorAll(selector);
     list.forEach((element) => element.remove());
@@ -95,7 +94,7 @@ const renderBindingInput = (targets: NodeListOf<HTMLElement>, props: Omit<Search
   });
 };
 
-export default ({ selector: selectorProp, dropdownQuerySelector, ...rest }: SearchInputBindingProps) => {
+export default ({ selector: selectorProp, omittedElementSelectors, ...rest }: SearchInputBindingProps) => {
   let targets: NodeListOf<HTMLElement> | null = null;
   let selector = selectorProp;
   if (!selectorProp) {
@@ -104,7 +103,9 @@ export default ({ selector: selectorProp, dropdownQuerySelector, ...rest }: Sear
   targets = document.querySelectorAll(selector);
 
   if (targets && targets.length > 0) {
-    removeThemeOriginalDropdown(dropdownQuerySelector ?? []);
+    if (omittedElementSelectors) {
+      removeThemeElements(omittedElementSelectors);
+    }
     renderBindingInput(targets, rest);
   }
   return null;

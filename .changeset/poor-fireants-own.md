@@ -2,4 +2,4 @@
 '@sajari/search-widgets': patch
 ---
 
-Fix the takeover input not working in Venture theme
+Prevent Shopify theme's dropdown to overlap with ours
