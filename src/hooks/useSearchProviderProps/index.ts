@@ -19,13 +19,17 @@ export function useSearchProviderProps(props: SearchResultsProps) {
     theme,
     emitter,
     preset,
-    customClassNames,
-    disableDefaultStyles = false,
-    importantStyles = false,
   } = props;
 
   const id = `search-ui-${Date.now()}`;
-  const { fields, options, tracking } = mergeProps({ id, ...props });
+  const {
+    fields,
+    options,
+    tracking,
+    customClassNames,
+    disableDefaultStyles = false,
+    importantStyles = false,
+  } = mergeProps({ id, ...props });
   const { name, version = undefined } = isString(pipeline) ? { name: pipeline } : pipeline;
   const params = options.mode === 'standard' && options?.syncURL === 'none' ? {} : getSearchParams();
 

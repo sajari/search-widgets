@@ -104,6 +104,7 @@ export function mergeProps(params: MergePropsParams): MergedSearchResultsProps {
           },
           syncURL: 'push',
         },
+        importantStyles: true,
       });
       break;
 
