@@ -206,6 +206,31 @@ export const getPresetSelectorOverlayMode = (preset: SearchResultsProps['preset'
   }
 };
 
+export const addComplementaryThemeSelectors = (selectorsParam: string[], themeId?: number) => {
+  const selectors = [...selectorsParam];
+  switch (themeId) {
+    // Boundless
+    case 766:
+      selectors.push('.js-drawer-open-top');
+      break;
+    // Venture
+    case 775:
+      selectors.push('.site-header__search');
+      break;
+    // Express
+    case 885:
+      selectors.push('.form');
+      break;
+    // Blockshop
+    case 606:
+      selectors.push('.header--search');
+      break;
+    default:
+      break;
+  }
+  return selectors;
+};
+
 const defaultConfig = JSON.parse(`{
 	    "account": "1603163345448404241",
 	    "collection": "sajari-test-fashion2",
