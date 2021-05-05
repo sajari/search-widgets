@@ -1,5 +1,13 @@
 # @sajari/search-widgets
 
+## 1.3.11
+
+### Patch Changes
+
+- 2f11f65: Prevent Shopify theme's dropdown to overlap with ours
+- 5dc0323: Upgrade SDK packages to include the fix for style override.
+- e982e49: Set default `importantStyles:true` for `Shopify` preset to avoid style override.
+
 ## 1.3.10
 
 ### Patch Changes
