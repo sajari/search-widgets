@@ -108,6 +108,7 @@ export interface InterfaceContextProps {
 export interface SearchInputBindingProps extends SearchResultsProps {
   selector: string;
   mode: InputMode;
+  omittedElementSelectors?: string | string[];
 }
 
 export type WidgetType = 'search-results' | 'search-input-binding' | 'overlay' | 'search-input';

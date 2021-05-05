@@ -18,6 +18,14 @@ const attributesToBeRemoved = [
 const removeAttributes = (element: Element | null) =>
   attributesToBeRemoved.forEach((attr) => element?.removeAttribute(attr));
 
+const removeThemeElements = (selectorsParam: string | string[]) => {
+  const selectors = typeof selectorsParam === 'string' ? selectorsParam.split(' ') : selectorsParam;
+  selectors.forEach((selector) => {
+    const list = document.querySelectorAll(selector);
+    list.forEach((element) => element.remove());
+  });
+};
+
 const onSelectHandler = (element: Element | null) => () => {
   const form = element?.closest('form');
   form?.submit();
@@ -44,18 +52,16 @@ const renderBindingInput = (targets: NodeListOf<HTMLElement>, props: Omit<Search
     const showPoweredBy = props.preset !== 'shopify';
 
     if (target instanceof HTMLInputElement) {
-      const cloned = target.cloneNode(true) as HTMLInputElement;
-      target.replaceWith(cloned);
       const fragment = document.createDocumentFragment();
 
-      removeAttributes(cloned);
+      removeAttributes(target);
 
       render(
         <Wrapper {...props}>
           <Input
             mode="suggestions"
-            onSelect={onSelectHandler(cloned)}
-            inputElement={{ current: cloned }}
+            onSelect={onSelectHandler(target)}
+            inputElement={{ current: target }}
             showPoweredBy={showPoweredBy}
           />
         </Wrapper>,
@@ -63,23 +69,21 @@ const renderBindingInput = (targets: NodeListOf<HTMLElement>, props: Omit<Search
       );
     } else {
       target.childNodes.forEach((node) => {
-        const cloned = node.cloneNode(true) as HTMLInputElement;
-        node.replaceWith(cloned);
-
-        if (!(cloned instanceof Element) || cloned.tagName !== 'INPUT') {
+        if (!(node instanceof Element) || node.tagName !== 'INPUT') {
           return;
         }
 
+        const element = node as HTMLInputElement;
         const fragment = document.createDocumentFragment();
 
-        removeAttributes(cloned);
+        removeAttributes(element);
 
         render(
           <Wrapper {...props}>
             <Input
               mode="suggestions"
-              onSelect={onSelectHandler(cloned)}
-              inputElement={{ current: cloned }}
+              onSelect={onSelectHandler(element)}
+              inputElement={{ current: element }}
               showPoweredBy={showPoweredBy}
             />
           </Wrapper>,
@@ -90,7 +94,7 @@ const renderBindingInput = (targets: NodeListOf<HTMLElement>, props: Omit<Search
   });
 };
 
-export default ({ selector: selectorProp, ...rest }: SearchInputBindingProps) => {
+export default ({ selector: selectorProp, omittedElementSelectors, ...rest }: SearchInputBindingProps) => {
   let targets: NodeListOf<HTMLElement> | null = null;
   let selector = selectorProp;
   if (!selectorProp) {
@@ -99,6 +103,9 @@ export default ({ selector: selectorProp, ...rest }: SearchInputBindingProps) =>
   targets = document.querySelectorAll(selector);
 
   if (targets && targets.length > 0) {
+    if (omittedElementSelectors) {
+      removeThemeElements(omittedElementSelectors);
+    }
     renderBindingInput(targets, rest);
   }
   return null;
