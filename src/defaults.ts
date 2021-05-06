@@ -206,8 +206,8 @@ export const getPresetSelectorOverlayMode = (preset: SearchResultsProps['preset'
   }
 };
 
-export const addComplementaryThemeSelectors = (selectorsParam: string[], themeId?: number) => {
-  const selectors = [...selectorsParam];
+export function getComplementaryThemeButtonSelectors(themeId: number) {
+  const selectors: string[] = [];
   switch (themeId) {
     // Boundless
     case 766:
@@ -229,7 +229,7 @@ export const addComplementaryThemeSelectors = (selectorsParam: string[], themeId
       break;
   }
   return selectors;
-};
+}
 
 const defaultConfig = JSON.parse(`{
 	    "account": "1603163345448404241",

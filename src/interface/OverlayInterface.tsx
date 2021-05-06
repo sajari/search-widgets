@@ -6,7 +6,7 @@ import { useEffect, useState } from 'preact/hooks';
 import tw from 'twin.macro';
 
 import { useSearchResultsContext } from '../context';
-import { addComplementaryThemeSelectors, getPresetSelectorOverlayMode } from '../defaults';
+import { getComplementaryThemeButtonSelectors, getPresetSelectorOverlayMode } from '../defaults';
 import { SearchResultsOptions } from '../types';
 import { useInterfaceContext } from './context';
 import Options from './Options';
@@ -38,8 +38,11 @@ const OverlayInterface = () => {
   const hideSidebar = nonTabsFilters.length === 0;
 
   useEffect(() => {
-    const rawButtonSelectors = isArray(buttonSelectorProp) ? buttonSelectorProp : [buttonSelectorProp];
-    const buttonSelectors = addComplementaryThemeSelectors(rawButtonSelectors, window.Shopify.theme.theme_store_id);
+    const buttonSelectors = isArray(buttonSelectorProp) ? buttonSelectorProp : [buttonSelectorProp];
+    if (window.Shopify?.theme?.theme_store_id) {
+      const extraSeletors = getComplementaryThemeButtonSelectors(window.Shopify.theme.theme_store_id);
+      buttonSelectors.push(...extraSeletors);
+    }
     const removeEventList: (() => void)[] = [];
 
     buttonSelectors.filter(Boolean).forEach((buttonSelector) => {
