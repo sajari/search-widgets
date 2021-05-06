@@ -41,7 +41,7 @@ const OverlayInterface = () => {
     const buttonSelectors = isArray(buttonSelectorProp) ? buttonSelectorProp : [buttonSelectorProp];
     const removeEventList: (() => void)[] = [];
 
-    buttonSelectors.forEach((buttonSelector) => {
+    buttonSelectors.filter(Boolean).forEach((buttonSelector) => {
       const buttons = document.querySelectorAll(buttonSelector);
       const input = inputSelector ? (document.querySelector(inputSelector) as HTMLInputElement) : null;
 
