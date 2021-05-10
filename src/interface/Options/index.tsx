@@ -25,7 +25,9 @@ export default ({ showToggleFilter = true }: Props) => {
       <div css={[tw`flex items-end space-x-4`, md ? tw`justify-end` : tw`justify-between`]}>
         <ResultsPerPage size="sm" inline={md} options={options.resultsPerPage?.options} />
 
-        <Sorting size="sm" inline={md} options={options.sorting?.options} />
+        {options.sorting?.options && options.sorting.options.length > 0 && (
+          <Sorting size="sm" inline={md} options={options.sorting?.options} />
+        )}
 
         <ViewType size="sm" inline={md} />
 
