@@ -144,7 +144,11 @@ export function mergeProps(params: MergePropsParams): MergedSearchResultsProps {
   }
 
   // Inject "Most relevant" option if required
-  if (!props.options.sorting?.options?.some(({ value }) => isEmpty(value))) {
+  if (
+    props.options.sorting?.options &&
+    props.options.sorting.options.length > 0 &&
+    !props.options.sorting.options.some(({ value }) => isEmpty(value))
+  ) {
     if (!props.options.sorting) {
       props.options.sorting = {};
     }
