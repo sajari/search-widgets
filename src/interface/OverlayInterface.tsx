@@ -1,7 +1,7 @@
 import { Modal, ModalCloseButton, ResizeObserver } from '@sajari/react-components';
 import { useQuery, useSearchContext } from '@sajari/react-hooks';
 import { isArray } from '@sajari/react-sdk-utils';
-import { Filter, Input, Pagination, Results } from '@sajari/react-search-ui';
+import { Filter, Input, Pagination, Results, useSearchUIContext } from '@sajari/react-search-ui';
 import { useEffect, useState } from 'preact/hooks';
 import tw from 'twin.macro';
 
@@ -24,6 +24,7 @@ const OverlayInterface = () => {
   const { results, pageCount, clear } = useSearchContext();
   const { setQuery } = useQuery();
   const { setWidth, filtersShown, breakpoints } = useInterfaceContext();
+  const { setViewType } = useSearchUIContext();
   const tabsFilters = filters?.filter((props) => props.type === 'tabs') || [];
   const nonTabsFilters = filters?.filter((props) => props.type !== 'tabs') || [];
   const inputProps = options.input ?? {};
@@ -99,6 +100,12 @@ const OverlayInterface = () => {
 
   const isMobile = !breakpoints.sm;
 
+  useEffect(() => {
+    if (isMobile) {
+      setViewType('list');
+    }
+  }, [isMobile]);
+
   return (
     <Modal
       open={open}
@@ -109,8 +116,8 @@ const OverlayInterface = () => {
       center={false}
       size="7xl"
       animationDuration={75}
-      fullscreen={isMobile}
-      fullheight={isMobile && !!results}
+      fullWidth={isMobile}
+      fullHeight={isMobile && !!results}
       {...modalProps}
     >
       <ResizeObserver onResize={(size) => setWidth(size.width)} css={tw`overflow-hidden h-full flex`}>

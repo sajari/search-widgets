@@ -83,25 +83,18 @@ const FilterWatchers = ({
 }) => {
   return (
     <React.Fragment>
-      {filters.map(({ name, type }, index) =>
-        type === 'range' ? (
-          <RangeFilterWatcher
+      {filters.map(({ name, type }, index) => {
+        const Component = type === 'range' ? RangeFilterWatcher : FilterWatcher;
+        return (
+          <Component
             key={name}
             name={name}
             toggle={(v: boolean) => {
               setSelectedFilter(index, v);
             }}
           />
-        ) : (
-          <FilterWatcher
-            key={name}
-            name={name}
-            toggle={(v: boolean) => {
-              setSelectedFilter(index, v);
-            }}
-          />
-        ),
-      )}
+        );
+      })}
     </React.Fragment>
   );
 };
@@ -109,7 +102,7 @@ const FilterWatchers = ({
 export default ({ showToggleFilter = true, isMobile = false }: Props) => {
   const { options, filters } = useSearchResultsContext();
   const { breakpoints } = useInterfaceContext();
-  const { reset } = useSearchContext();
+  const { resetFilters } = useSearchContext();
   const md = Boolean(breakpoints.md);
   const [open, setOpen] = useState(false);
   const onOpen = () => setOpen(true);
@@ -124,25 +117,36 @@ export default ({ showToggleFilter = true, isMobile = false }: Props) => {
     setFilterList(newValues);
   };
 
+  const showSorting = options.sorting?.options && options.sorting.options.length;
+
   return (
     <div css={md ? tw`flex items-center justify-between space-x-4` : tw`space-y-4`}>
-      <div css={[tw`flex items-end space-x-4`, md ? tw`justify-end` : tw`justify-between`]}>
+      <div css={[tw`flex`, md ? tw`justify-end items-end` : tw`justify-between items-start`]}>
         <Summary />
         {isMobile && (
-          <Button onClick={onOpen} size="sm">
-            Filters
+          <Button
+            onClick={onOpen}
+            size="sm"
+            css={tw`border-none bg-transparent shadow-none -mr-3 h-7`}
+            aria-label="Show filters"
+          >
+            <svg height="16" width="16" viewBox="0 0 16 16" focusable="false" role="presentation">
+              <path
+                fill="currentColor"
+                d="M15 3h-4c-.6 0-1 .4-1 1s.4 1 1 1h4c.6 0 1-.4 1-1s-.4-1-1-1zM5 1c-1.3 0-2.4.9-2.8 2H1c-.6 0-1 .4-1 1s.4 1 1 1h1.2C2.6 6.1 3.7 7 5 7c1.7 0 3-1.3 3-3S6.7 1 5 1zM1 13h4c.6 0 1-.4 1-1s-.4-1-1-1H1c-.6 0-1 .4-1 1s.4 1 1 1zM15 11h-1.2c-.4-1.2-1.5-2-2.8-2-1.7 0-3 1.3-3 3s1.3 3 3 3c1.3 0 2.4-.9 2.8-2H15c.6 0 1-.4 1-1s-.4-1-1-1z"
+              />
+            </svg>
           </Button>
         )}
       </div>
+
       <FilterWatchers filters={filters} setSelectedFilter={setSelectedFilter} />
 
       {!isMobile && (
         <div css={[tw`flex items-end space-x-4`, md ? tw`justify-end` : tw`justify-between`]}>
           <ResultsPerPage size="sm" inline={md} options={options.resultsPerPage?.options} />
 
-          {options.sorting?.options && options.sorting.options.length > 0 && (
-            <Sorting size="sm" inline={md} options={options.sorting?.options} />
-          )}
+          {showSorting && <Sorting type="select" size="sm" inline={md} options={options.sorting?.options} />}
 
           <ViewType size="sm" inline={md} />
 
@@ -156,8 +160,8 @@ export default ({ showToggleFilter = true, isMobile = false }: Props) => {
         modalAnimationIn={animateModalIn}
         modalAnimationOut={animateModalOut}
         animationDuration={300}
-        fullscreen
-        fullheight
+        fullWidth
+        fullHeight
       >
         <ModalHeader>
           <ModalTitle css={tw`text-xl mt-3`}>Filters</ModalTitle>
@@ -165,7 +169,8 @@ export default ({ showToggleFilter = true, isMobile = false }: Props) => {
         </ModalHeader>
 
         <ModalBody>
-          <div css={tw`space-y-6 divide-y pb-16`}>
+          <div css={[tw`space-y-6 divide-y`, count === 0 ? tw`pb-0` : tw`pb-16`]}>
+            {showSorting && <Sorting type="list" size="sm" inline={md} options={options.sorting?.options} />}
             {nonTabsFilters.map((props) => {
               const { type, textTransform = 'capitalize-first-letter' } = props;
               if (type === 'list' || type === 'select') {
@@ -175,24 +180,27 @@ export default ({ showToggleFilter = true, isMobile = false }: Props) => {
             })}
           </div>
         </ModalBody>
-        <ModalFooter
-          css={[
-            tw`flex justify-center absolute bottom-0 inset-x-0 border border-t border-gray-200 duration-200 transition-all transform`,
-            count === 0 ? tw`translate-y-full opacity-0` : tw`translate-y-0 opacity-100`,
-          ]}
-        >
-          <Button
-            onClick={() => {
-              reset();
-              setFilterList(filters.map(() => false));
-            }}
+        <div css={[tw`absolute bottom-0 inset-x-0`, count === 0 ? tw`h-0` : tw`h-12`]}>
+          <ModalFooter
+            css={[
+              tw`flex justify-center absolute bottom-0 inset-x-0 border border-solid border-t border-gray-200 duration-200 transition-all transform bg-white`,
+              count === 0 ? tw`translate-y-full opacity-0` : tw`translate-y-0 opacity-100`,
+            ]}
           >
-            {`Clear (${count})`}
-          </Button>
-          <Button onClick={onClose} appearance="primary">
-            Apply
-          </Button>
-        </ModalFooter>
+            <Button
+              onClick={() => {
+                resetFilters();
+                setFilterList(filters.map(() => false));
+              }}
+              css={tw`w-1/2`}
+            >
+              {`Clear (${count})`}
+            </Button>
+            <Button onClick={onClose} appearance="primary" css={tw`w-1/2`}>
+              Apply
+            </Button>
+          </ModalFooter>
+        </div>
       </Modal>
     </div>
   );
