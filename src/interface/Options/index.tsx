@@ -56,19 +56,19 @@ interface Props {
   isMobile?: boolean;
 }
 
-const FilterWatcher = ({ name, toggle }: { name: string; toggle: (v: boolean) => void }) => {
+const FilterWatcher = ({ name, toggleIsActive }: { name: string; toggleIsActive: (v: boolean) => void }) => {
   const { selected } = useFilter(name);
   useEffect(() => {
-    toggle(selected.length > 0);
+    toggleIsActive(selected.length > 0);
   }, [selected]);
 
   return null;
 };
 
-const RangeFilterWatcher = ({ name, toggle }: { name: string; toggle: (v: boolean) => void }) => {
+const RangeFilterWatcher = ({ name, toggleIsActive }: { name: string; toggleIsActive: (v: boolean) => void }) => {
   const { range, max, min } = useRangeFilter(name);
   useEffect(() => {
-    toggle(min !== range?.[0] || max !== range?.[1]);
+    toggleIsActive(min !== range?.[0] || max !== range?.[1]);
   }, [range, max, min]);
 
   return null;
@@ -76,10 +76,10 @@ const RangeFilterWatcher = ({ name, toggle }: { name: string; toggle: (v: boolea
 
 const FilterWatchers = ({
   filters,
-  setSelectedFilter,
+  setActiveFilter,
 }: {
   filters: FilterProps[];
-  setSelectedFilter: (index: number, value: boolean) => void;
+  setActiveFilter: (index: number, value: boolean) => void;
 }) => {
   return (
     <React.Fragment>
@@ -89,8 +89,8 @@ const FilterWatchers = ({
           <Component
             key={name}
             name={name}
-            toggle={(v: boolean) => {
-              setSelectedFilter(index, v);
+            toggleIsActive={(v: boolean) => {
+              setActiveFilter(index, v);
             }}
           />
         );
@@ -108,13 +108,13 @@ export default ({ showToggleFilter = true, isMobile = false }: Props) => {
   const onOpen = () => setOpen(true);
   const onClose = () => setOpen(false);
   const nonTabsFilters = filters?.filter((props) => props.type !== 'tabs') || [];
-  const [filterList, setFilterList] = useState(filters.map(() => false));
+  const [filterList, setActiveFilterList] = useState(filters.map(() => false));
   const count = filterList.filter(Boolean).length;
 
-  const setSelectedFilter = (index: number, value: boolean) => {
+  const setActiveFilter = (index: number, value: boolean) => {
     const newValues = [...filterList];
     newValues[index] = value;
-    setFilterList(newValues);
+    setActiveFilterList(newValues);
   };
 
   const showSorting = options.sorting?.options && options.sorting.options.length;
@@ -140,7 +140,7 @@ export default ({ showToggleFilter = true, isMobile = false }: Props) => {
         )}
       </div>
 
-      <FilterWatchers filters={filters} setSelectedFilter={setSelectedFilter} />
+      <FilterWatchers filters={filters} setActiveFilter={setActiveFilter} />
 
       {!isMobile && (
         <div css={[tw`flex items-end space-x-4`, md ? tw`justify-end` : tw`justify-between`]}>
@@ -164,11 +164,11 @@ export default ({ showToggleFilter = true, isMobile = false }: Props) => {
         fullHeight
       >
         <ModalHeader>
-          <ModalTitle css={tw`text-xl mt-3`}>Filters</ModalTitle>
+          <ModalTitle css={tw`text-xl`}>Filters</ModalTitle>
           <ModalCloseButton />
         </ModalHeader>
 
-        <ModalBody>
+        <ModalBody css={tw`pt-2`}>
           <div css={[tw`space-y-6 divide-y`, count === 0 ? tw`pb-0` : tw`pb-16`]}>
             {showSorting && <Sorting type="list" size="sm" inline={md} options={options.sorting?.options} />}
             {nonTabsFilters.map((props) => {
@@ -190,7 +190,7 @@ export default ({ showToggleFilter = true, isMobile = false }: Props) => {
             <Button
               onClick={() => {
                 resetFilters();
-                setFilterList(filters.map(() => false));
+                setActiveFilterList(filters.map(() => false));
               }}
               css={tw`w-1/2`}
             >

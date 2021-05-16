@@ -21,7 +21,7 @@ function isButton(node: Element) {
 
 const OverlayInterface = () => {
   const { options, filters, id, preset } = useSearchResultsContext();
-  const { results, pageCount, clear } = useSearchContext();
+  const { results, pageCount, clear, resetFilters } = useSearchContext();
   const { setQuery } = useQuery();
   const { setWidth, filtersShown, breakpoints } = useInterfaceContext();
   const { setViewType } = useSearchUIContext();
@@ -101,15 +101,16 @@ const OverlayInterface = () => {
   const isMobile = !breakpoints.sm;
 
   useEffect(() => {
-    if (isMobile) {
+    if (isMobile && open) {
       setViewType('list');
     }
-  }, [isMobile]);
+  }, [isMobile, open]);
 
   return (
     <Modal
       open={open}
       onClose={() => {
+        resetFilters(false);
         setOpen(false);
         clear({ q: '' });
       }}
