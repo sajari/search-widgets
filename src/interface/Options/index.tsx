@@ -1,4 +1,4 @@
-import { css, keyframes } from '@emotion/core';
+import { keyframes } from '@emotion/core';
 import {
   Button,
   Modal,
@@ -8,7 +8,7 @@ import {
   ModalHeader,
   ModalTitle,
 } from '@sajari/react-components';
-import { useFilter, useRangeFilter, useSearchContext } from '@sajari/react-hooks';
+import { RangeFilterBuilder, useFilter, useRangeFilter, useSearchContext } from '@sajari/react-hooks';
 import {
   Filter,
   FilterProps,
@@ -100,7 +100,7 @@ const FilterWatchers = ({
 };
 
 export default ({ showToggleFilter = true, isMobile = false }: Props) => {
-  const { options, filters } = useSearchResultsContext();
+  const { options, filters, filterBuilders } = useSearchResultsContext();
   const { breakpoints } = useInterfaceContext();
   const { resetFilters } = useSearchContext();
   const md = Boolean(breakpoints.md);
@@ -116,6 +116,24 @@ export default ({ showToggleFilter = true, isMobile = false }: Props) => {
     newValues[index] = value;
     setActiveFilterList(newValues);
   };
+
+  useEffect(() => {
+    // Freeze the state of the rangeFilterBuilder to avoid the UI from being overridden after reopenning the modal
+    let timeout: ReturnType<typeof setTimeout>;
+    if (open) {
+      const rangeFilters = filterBuilders
+        .filter((fb) => fb instanceof RangeFilterBuilder)
+        .map((fb) => fb as RangeFilterBuilder);
+      rangeFilters.forEach((fb) => fb.setFrozen(true));
+      timeout = setTimeout(() => {
+        rangeFilters.forEach((fb) => fb.setFrozen(false));
+      }, 500);
+    }
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [open]);
 
   const showSorting = options.sorting?.options && options.sorting.options.length;
 
