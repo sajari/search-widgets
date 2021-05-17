@@ -102,7 +102,7 @@ const FilterWatchers = ({
 export default ({ showToggleFilter = true, isMobile = false }: Props) => {
   const { options, filters, filterBuilders } = useSearchResultsContext();
   const { breakpoints } = useInterfaceContext();
-  const { resetFilters } = useSearchContext();
+  const { resetFilters, results } = useSearchContext();
   const md = Boolean(breakpoints.md);
   const [open, setOpen] = useState(false);
   const onOpen = () => setOpen(true);
@@ -189,13 +189,14 @@ export default ({ showToggleFilter = true, isMobile = false }: Props) => {
         <ModalBody css={tw`pt-2`}>
           <div css={[tw`space-y-6 divide-y`, count === 0 ? tw`pb-0` : tw`pb-16`]}>
             {showSorting && <Sorting type="list" size="sm" inline={md} options={options.sorting?.options} />}
-            {nonTabsFilters.map((props) => {
-              const { type, textTransform = 'capitalize-first-letter' } = props;
-              if (type === 'list' || type === 'select') {
-                return <Filter {...{ ...props, textTransform }} key={props.name} />;
-              }
-              return <Filter {...props} key={props.name} />;
-            })}
+            {results &&
+              nonTabsFilters.map((props) => {
+                const { type, textTransform = 'capitalize-first-letter' } = props;
+                if (type === 'list' || type === 'select') {
+                  return <Filter {...{ ...props, textTransform }} key={props.name} />;
+                }
+                return <Filter {...props} key={props.name} />;
+              })}
           </div>
         </ModalBody>
         <div css={[tw`absolute bottom-0 inset-x-0`, count === 0 ? tw`h-0` : tw`h-12`]}>
