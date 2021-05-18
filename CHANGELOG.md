@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 1.4.1
+
+### Patch Changes
+
+- 9ed199f: There is a bug that prevents users from scrolling on the mobile overlay. Basically, it makes it hard to interact with the app.
+
 ## 1.4.0
 
 ### Minor Changes
