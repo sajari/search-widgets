@@ -1,7 +1,7 @@
 import { Modal, ModalCloseButton, ResizeObserver } from '@sajari/react-components';
 import { useQuery, useSearchContext } from '@sajari/react-hooks';
 import { isArray } from '@sajari/react-sdk-utils';
-import { Filter, Input, Pagination, Results, useSearchUIContext } from '@sajari/react-search-ui';
+import { Filter, Input, Pagination, Results } from '@sajari/react-search-ui';
 import { useEffect, useState } from 'preact/hooks';
 import tw from 'twin.macro';
 
@@ -21,10 +21,9 @@ function isButton(node: Element) {
 
 const OverlayInterface = () => {
   const { options, filters, id, preset } = useSearchResultsContext();
-  const { results, pageCount, clear, resetFilters } = useSearchContext();
+  const { results, pageCount, clear } = useSearchContext();
   const { setQuery } = useQuery();
-  const { setWidth, filtersShown, breakpoints } = useInterfaceContext();
-  const { setViewType } = useSearchUIContext();
+  const { setWidth, filtersShown } = useInterfaceContext();
   const tabsFilters = filters?.filter((props) => props.type === 'tabs') || [];
   const nonTabsFilters = filters?.filter((props) => props.type !== 'tabs') || [];
   const inputProps = options.input ?? {};
@@ -98,27 +97,16 @@ const OverlayInterface = () => {
     };
   }, [buttonSelectorProp, inputSelector]);
 
-  const isMobile = !breakpoints.sm;
-
-  useEffect(() => {
-    if (isMobile && open) {
-      setViewType('list');
-    }
-  }, [isMobile, open]);
-
   return (
     <Modal
       open={open}
       onClose={() => {
-        resetFilters(false);
         setOpen(false);
         clear({ q: '' });
       }}
       center={false}
       size="7xl"
       animationDuration={75}
-      fullWidth={isMobile}
-      fullHeight={isMobile && !!results}
       {...modalProps}
     >
       <ResizeObserver onResize={(size) => setWidth(size.width)} css={tw`overflow-hidden h-full flex`}>
@@ -130,7 +118,7 @@ const OverlayInterface = () => {
               <Input
                 {...inputProps}
                 css={tw`w-full`}
-                size={isMobile ? 'xl' : '2xl'}
+                size="2xl"
                 variant="unstyled"
                 showPoweredBy={preset !== 'shopify'}
               />
@@ -140,8 +128,8 @@ const OverlayInterface = () => {
             </div>
 
             {results && (
-              <div css={[tw`pt-3.5 px-6`, isMobile ? tw`pb-2` : tw`pb-6`]}>
-                <Options isMobile={isMobile} showToggleFilter={!hideSidebar} />
+              <div css={tw`pt-3.5 px-6 pb-6`}>
+                <Options showToggleFilter={!hideSidebar} />
               </div>
             )}
           </div>
@@ -154,7 +142,7 @@ const OverlayInterface = () => {
                 (!filtersShown || hideSidebar) && tw`pl-6`,
               ]}
             >
-              {results && !isMobile && (
+              {results && (
                 <div
                   css={[
                     tw`transition-all duration-200 overflow-y-auto flex-none`,

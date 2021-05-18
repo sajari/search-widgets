@@ -1,4 +1,3 @@
-import { isSSR } from '@sajari/react-sdk-utils';
 import { useEffect, useState } from 'preact/hooks';
 
 import { useSearchResultsContext } from '../context';
@@ -13,7 +12,7 @@ export default () => {
   const {
     options: { mode },
   } = useSearchResultsContext();
-  const [width, setWidth] = useState(isSSR() ? 0 : window.screen.width);
+  const [width, setWidth] = useState(0);
   const debouncedWidth = useDebounce(width, 100);
   const breakpoints = parseBreakpoints(debouncedWidth);
 
