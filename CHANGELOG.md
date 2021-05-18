@@ -1,5 +1,16 @@
 # @sajari/search-widgets
 
+## 1.4.0
+
+### Minor Changes
+
+- 30e08a9: Add support mobile view for the overlay mode.
+- 21a8140: Add option to toggle sorting
+
+### Patch Changes
+
+- cef00f8: Fix DOMException when the buttonSelector is empty string
+
 ## 1.3.11
 
 ### Patch Changes
