@@ -2030,10 +2030,10 @@
     eslint-config-airbnb-typescript "^12.0.0"
     eslint-config-prettier "^7.1.0"
 
-"@sajari/react-components@^1.7.10":
-  version "1.7.10"
-  resolved "https://registry.yarnpkg.com/@sajari/react-components/-/react-components-1.7.10.tgz#b9b9aa9f00e72ee5816cd7aa74588a9d819ec6bb"
-  integrity sha512-ykdJm2bUr+UttHfsb01wjsoW+m5cHj1+Y+yOmZzUNp/+d7/JMIKJcFZO8nimgkidpnYXUlrePfwUq87iXt1z8w==
+"@sajari/react-components@^1.7.12":
+  version "1.7.12"
+  resolved "https://registry.yarnpkg.com/@sajari/react-components/-/react-components-1.7.12.tgz#6fe64f71546d19a8716f4ac3a57fe0b50a43efa0"
+  integrity sha512-XY8aYZ2aA8+iumjPKVzgEsg6a9V3SIim8lQGsH7uUAx0cqT8Ky+IqADG5CPzE25Zb9Ky0a/+OGQgpIRX0I3AsQ==
   dependencies:
     "@popperjs/core" "^2.9.2"
     "@react-aria/button" "^3.3.0"
@@ -2055,10 +2055,10 @@
     smoothscroll-polyfill "^0.4.4"
     use-resize-observer "^7.0.0"
 
-"@sajari/react-hooks@^1.4.12":
-  version "1.4.12"
-  resolved "https://registry.yarnpkg.com/@sajari/react-hooks/-/react-hooks-1.4.12.tgz#743116e71767f87583e6d94e9e7854c4a4955a01"
-  integrity sha512-2Hsc5DJ/idYXX4eZ3P8kLUC7hp3XZ3dn7YHFiuNAnimxykWnMsaKcA1JFfoWgP703jIxy3YtwX6BCd7oUspk2A==
+"@sajari/react-hooks@^1.4.14":
+  version "1.4.14"
+  resolved "https://registry.yarnpkg.com/@sajari/react-hooks/-/react-hooks-1.4.14.tgz#9880fce3bf819e36275d9b02b2bcf5713a74105c"
+  integrity sha512-X6LvH1EAt0cdG3EGcq1gtk0i3MKzMRDpNYfH41pvZ1MBIBg6MF9Tvdai5WOckpKmTH/liV5kcSb69tk5HxIpkQ==
   dependencies:
     "@sajari/react-sdk-utils" "^1.3.5"
     "@sajari/sdk-js" "^2.0.0-rc.2"
@@ -2094,14 +2094,14 @@
     tailwindcss-truncate-multiline "^1.0.3"
     twin.macro "^1.12.1"
 
-"@sajari/react-search-ui@^1.8.16":
-  version "1.8.16"
-  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-1.8.16.tgz#894442bf81b563c81eecc9618270eba64dcfe543"
-  integrity sha512-q2AQ1301cYHYDY2bqk785k0Fg3hNPqUZWevgKFvk4QOgyQSGdUd6NS/qjNuUt31WuuX2RbyzjPgfyfe7pptKbw==
+"@sajari/react-search-ui@^1.8.19":
+  version "1.8.19"
+  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-1.8.19.tgz#fe1075ec8151c31070381d4c0a156e7ceff2646a"
+  integrity sha512-zY28xNyBTib+kvWMxpLhwB+0bKYgHeq8Qw1R1141o4fiz4BpDu68VsU5FdziKKO3mjfH9H4TtMV2euspi9aQdQ==
   dependencies:
     "@react-aria/utils" "3.5.0"
-    "@sajari/react-components" "^1.7.10"
-    "@sajari/react-hooks" "^1.4.12"
+    "@sajari/react-components" "^1.7.12"
+    "@sajari/react-hooks" "^1.4.14"
     "@sajari/react-sdk-utils" "^1.3.9"
     i18next "19.8.7"
     i18next-browser-languagedetector "^6.0.1"
