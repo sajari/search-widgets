@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 1.4.2
+
+### Patch Changes
+
+- a7bd4d5: Upgrade SDK packages to fix various UI break and SEO issues.
+
 ## 1.4.1
 
 ### Patch Changes
