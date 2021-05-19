@@ -2,6 +2,8 @@ import { Modal, ModalCloseButton, ResizeObserver } from '@sajari/react-component
 import { useQuery, useSearchContext } from '@sajari/react-hooks';
 import { isArray } from '@sajari/react-sdk-utils';
 import { Filter, Input, Pagination, Results, useSearchUIContext } from '@sajari/react-search-ui';
+// TODO: ideally this should be a generic solution in the Modal component
+// making a note here so we (Thanh) can revisit the issue
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 import { useEffect, useState } from 'preact/hooks';
 import tw from 'twin.macro';

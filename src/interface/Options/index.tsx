@@ -17,6 +17,8 @@ import {
   Summary as CoreSummary,
   ViewType,
 } from '@sajari/react-search-ui';
+// TODO: ideally this should be a generic solution in the Modal component
+// making a note here so we (Thanh) can revisit the issue
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 import React, { useEffect, useState } from 'react';
 import tw, { styled } from 'twin.macro';
