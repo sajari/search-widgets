@@ -34,7 +34,7 @@ type TextTransform = 'normal-case' | 'uppercase' | 'lowercase' | 'capitalize' | 
 
 export type SearchResultsOptions<M = Mode> = {
   resultsPerPage?: ResultsPerPageProps;
-  sorting?: SortingProps;
+  sorting?: Omit<SortingProps, 'type'>;
   input?: InputProps & { hide?: boolean; position?: InputPosition };
   results?: ResultsProps & { viewType?: ResultViewType };
   pagination?: PaginationProps;

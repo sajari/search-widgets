@@ -26,7 +26,7 @@ export default ({ showToggleFilter = true }: Props) => {
         <ResultsPerPage size="sm" inline={md} options={options.resultsPerPage?.options} />
 
         {options.sorting?.options && options.sorting.options.length > 0 && (
-          <Sorting size="sm" inline={md} options={options.sorting?.options} />
+          <Sorting type="select" size="sm" inline={md} options={options.sorting?.options} />
         )}
 
         <ViewType size="sm" inline={md} />
