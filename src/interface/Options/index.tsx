@@ -56,6 +56,7 @@ const Summary = styled(CoreSummary)`
 interface Props {
   showToggleFilter?: boolean;
   isMobile?: boolean;
+  onScrollTop?: () => void;
 }
 
 const FilterWatcher = ({ name, toggleIsActive }: { name: string; toggleIsActive: (v: boolean) => void }) => {
@@ -101,7 +102,7 @@ const FilterWatchers = ({
   );
 };
 
-export default ({ showToggleFilter = true, isMobile = false }: Props) => {
+export default ({ showToggleFilter = true, isMobile = false, onScrollTop }: Props) => {
   const { options, filters, filterBuilders } = useSearchResultsContext();
   const { breakpoints } = useInterfaceContext();
   const { resetFilters, results } = useSearchContext();
@@ -239,7 +240,16 @@ export default ({ showToggleFilter = true, isMobile = false }: Props) => {
             >
               {`Clear (${count})`}
             </Button>
-            <Button onClick={onClose} appearance="primary" css={tw`w-1/2`}>
+            <Button
+              onClick={() => {
+                onClose();
+                if (onScrollTop) {
+                  onScrollTop();
+                }
+              }}
+              appearance="primary"
+              css={tw`w-1/2`}
+            >
               Apply
             </Button>
           </ModalFooter>
