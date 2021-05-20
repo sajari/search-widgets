@@ -5,7 +5,7 @@ import { Filter, Input, Pagination, Results, useSearchUIContext } from '@sajari/
 // TODO: ideally this should be a generic solution in the Modal component
 // making a note here so we (Thanh) can revisit the issue
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
-import { useEffect, useState } from 'preact/hooks';
+import { useCallback, useEffect, useState } from 'preact/hooks';
 import tw from 'twin.macro';
 
 import { useSearchResultsContext } from '../context';
@@ -22,6 +22,8 @@ function isButton(node: Element) {
   return node.tagName === 'BUTTON' || node.getAttribute('role') === 'button';
 }
 
+const containerId = `sj-${Date.now()}`;
+
 const OverlayInterface = () => {
   const { options, filters, id, preset } = useSearchResultsContext();
   const { results, pageCount, clear, resetFilters } = useSearchContext();
@@ -31,7 +33,12 @@ const OverlayInterface = () => {
   const tabsFilters = filters?.filter((props) => props.type === 'tabs') || [];
   const nonTabsFilters = filters?.filter((props) => props.type !== 'tabs') || [];
   const inputProps = options.input ?? {};
-  let refResultBox: HTMLDivElement | null;
+  let refResultBox: HTMLDivElement | undefined;
+
+  const scrollTop = useCallback(() => {
+    const container = document.querySelector(`#${containerId}`);
+    container?.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
   const {
     buttonSelector: buttonSelectorProp = getPresetSelectorOverlayMode(preset),
@@ -160,7 +167,7 @@ const OverlayInterface = () => {
 
             {results && (
               <div css={[tw`pt-3.5 px-6`, isMobile ? tw`pb-2` : tw`pb-6`]}>
-                <Options isMobile={isMobile} showToggleFilter={!hideSidebar} />
+                <Options isMobile={isMobile} showToggleFilter={!hideSidebar} onScrollTop={scrollTop} />
               </div>
             )}
           </div>
@@ -205,6 +212,7 @@ const OverlayInterface = () => {
                 ) : null}
 
                 <div
+                  id={containerId}
                   css={tw`overflow-y-auto pt-6 pr-6`}
                   ref={(node) => {
                     if (!node) return;
@@ -221,7 +229,7 @@ const OverlayInterface = () => {
           ) : null}
           {pageCount > 1 ? (
             <div css={tw`flex-none border-0 border-t border-solid border-gray-200 py-3.5 px-6`}>
-              <Pagination {...options.pagination} />
+              <Pagination {...options.pagination} scrollTarget={`#${containerId}`} />
             </div>
           ) : null}
         </div>
