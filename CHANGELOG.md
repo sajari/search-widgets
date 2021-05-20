@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 1.4.3
+
+### Patch Changes
+
+- 46267d2: Renable the mobile overlay after resolving scroll blocking issue.
+
 ## 1.4.2
 
 ### Patch Changes
