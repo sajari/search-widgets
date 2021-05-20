@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 1.4.4
+
+### Patch Changes
+
+- bdd4f36: Improve UX for the mobile overlay by automatically scrolling to top if the pagination or apply filters button was used.
+
 ## 1.4.3
 
 ### Patch Changes
