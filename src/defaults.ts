@@ -5,13 +5,17 @@ import { cloneDeep } from 'lodash-es';
 import { SearchResultsOptions, SearchResultsProps, TrackingType, WidgetType } from './types';
 import { mapAspectRatio } from './utils';
 
+type DeepPartial<T> = {
+  [P in keyof T]?: DeepPartial<T[P]>;
+};
+
 interface MergePropsParams extends SearchResultsProps {
   id: string;
 }
 
 interface MergedSearchResultsProps extends Omit<SearchResultsProps, 'options' | 'tracking' | 'preset'> {
   options: SearchResultsOptions;
-  tracking?: ClickTracking | PosNegTracking | any;
+  tracking?: ClickTracking | PosNegTracking;
 }
 
 export function mergeProps(params: MergePropsParams): MergedSearchResultsProps {
@@ -50,8 +54,8 @@ export function mergeProps(params: MergePropsParams): MergedSearchResultsProps {
   };
 
   switch (preset) {
-    case 'shopify':
-      merge(mergeOptions, props, {
+    case 'shopify': {
+      const src: DeepPartial<MergedSearchResultsProps> = {
         tracking: new ClickTracking('id'),
         fields: {
           // eslint-disable-next-line no-template-curly-in-string
@@ -105,17 +109,22 @@ export function mergeProps(params: MergePropsParams): MergedSearchResultsProps {
           syncURL: 'push',
         },
         importantStyles: true,
-      });
-      break;
+      };
 
-    case 'website':
-      merge(mergeOptions, props, {
+      merge(mergeOptions, props, src);
+      break;
+    }
+    case 'website': {
+      const src: DeepPartial<MergedSearchResultsProps> = {
         tracking: new ClickTracking(),
-      });
-      break;
+      };
 
-    default:
+      merge(mergeOptions, props, src);
       break;
+    }
+    default: {
+      break;
+    }
   }
 
   // Merge fields, if specified
