@@ -109,6 +109,9 @@ export function mergeProps(params: MergePropsParams): MergedSearchResultsProps {
           syncURL: 'push',
         },
         importantStyles: true,
+        onResultClick: (url: string) => {
+          console.log('user clicked url', url);
+        },
       };
 
       merge(mergeOptions, props, src);

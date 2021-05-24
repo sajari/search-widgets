@@ -1,3 +1,4 @@
+import { EVENT_RESULT_CLICKED } from '@sajari/react-hooks';
 import { isString } from '@sajari/react-sdk-utils';
 import { FilterBuilder, Pipeline, Range, RangeFilterBuilder, ResultViewType, Variables } from '@sajari/react-search-ui';
 import { useMemo } from 'react';
@@ -29,6 +30,7 @@ export function useSearchProviderProps(props: SearchResultsProps) {
     customClassNames,
     disableDefaultStyles = false,
     importantStyles = false,
+    onResultClick,
   } = mergeProps({ id, ...props });
   const { name, version = undefined } = isString(pipeline) ? { name: pipeline } : pipeline;
   const params = options.mode === 'standard' && options?.syncURL === 'none' ? {} : getSearchParams();
@@ -88,17 +90,23 @@ export function useSearchProviderProps(props: SearchResultsProps) {
     });
   }, []);
 
+  const p = new Pipeline(
+    {
+      account,
+      collection,
+      endpoint,
+    },
+    { name, version },
+    tracking,
+  );
+
+  if (onResultClick) {
+    p.listen(EVENT_RESULT_CLICKED, onResultClick);
+  }
+
   const searchContext = useMemo(() => {
     return {
-      pipeline: new Pipeline(
-        {
-          account,
-          collection,
-          endpoint,
-        },
-        { name, version },
-        tracking,
-      ),
+      pipeline: p,
       variables,
       fields,
       filters,

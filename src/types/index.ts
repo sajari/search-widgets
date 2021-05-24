@@ -83,6 +83,10 @@ export interface SearchResultsProps {
   importantStyles?: ContextProviderValues['importantStyles'];
   options?: SearchResultsOptions;
   emitter: Emitter;
+  shopify?: {
+    myshopifyDomain: string;
+  };
+  onResultClick?: (url: string) => void;
 }
 
 export interface SearchResultsContextProps
