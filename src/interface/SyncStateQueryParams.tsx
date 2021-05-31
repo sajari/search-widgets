@@ -53,6 +53,9 @@ const RangeFilterWatcher = ({ filter, replace }: { filter: RangeFilterBuilder; r
       : (value) => {
           let rangeValue = paramToRange(value);
           if (!isRange(rangeValue)) {
+            rangeValue = filter.getAggregateMaxRange() as Range;
+          }
+          if (!isRange(rangeValue)) {
             rangeValue = [min, max];
           }
           setRange(rangeValue as Range);
@@ -61,7 +64,8 @@ const RangeFilterWatcher = ({ filter, replace }: { filter: RangeFilterBuilder; r
 
   const setMinMaxParam = useSetQueryParams(`${key}_min_max`, {
     debounce: 500,
-    replace,
+    // Prevent min_max from being a part of the history
+    replace: true,
   });
 
   useEffect(() => {
