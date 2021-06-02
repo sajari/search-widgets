@@ -1,5 +1,18 @@
 # @sajari/search-widgets
 
+## 1.5.0
+
+### Minor Changes
+
+- b27ccf5: Upgrade SDK packages to include:
+
+  - Update the `z-index` of modal to the maximum number of `2147483647`.
+  - Add support `includes`, `excludes`, and `prefixFilter` option for filter settings.
+
+### Patch Changes
+
+- 541e4db: Fix the issue when using the browser back button can break the range filter.
+
 ## 1.4.4
 
 ### Patch Changes
