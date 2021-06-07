@@ -63,6 +63,7 @@ const OverlayInterface = () => {
           return;
         }
         e.preventDefault();
+        e.stopPropagation();
 
         setOpen(true);
         const query = input?.value;
