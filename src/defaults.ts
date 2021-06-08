@@ -62,8 +62,26 @@ export function mergeProps(params: MergePropsParams): MergedSearchResultsProps {
           url: '/products/${handle}',
           subtitle: 'vendor',
           description: 'body_html',
-          image: ['image_urls', 'images'],
-          price: ['variant_prices', 'max_price'],
+          image: (values: {
+            variant_ids?: string[];
+            variant_image_ids?: string[];
+            image_ids?: string[];
+            image_urls?: string;
+            images: string[];
+          }) => {
+            const variantImages = values.variant_ids?.map((_: string, i: number) => {
+              const variantImageId = values.variant_image_ids?.[i];
+              const variantImageIndex = values.image_ids?.findIndex((ii: string) => ii === variantImageId);
+              const variantImageUrl = values.image_urls?.[variantImageIndex ?? -1];
+
+              return variantImageUrl;
+            });
+
+            return [values.image_urls?.[0] ?? values.images[0], ...(variantImages ?? [])].filter(Boolean);
+          },
+          price: (values: { variant_prices: string[] }) => {
+            return [values.variant_prices, ...values.variant_prices].filter(Boolean);
+          },
           originalPrice: 'variant_compare_at_prices',
         },
         options: {
