@@ -1,10 +1,10 @@
 import { Modal, ModalCloseButton, ResizeObserver } from '@sajari/react-components';
-import { useQuery, useSearchContext } from '@sajari/react-hooks';
+import { useQuery, useSearchContext, useSorting } from '@sajari/react-hooks';
 import { isArray } from '@sajari/react-sdk-utils';
 import { Filter, Input, Pagination, Results, useSearchUIContext } from '@sajari/react-search-ui';
 // TODO: ideally this should be a generic solution in the Modal component
 // making a note here so we (Thanh) can revisit the issue
-import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
+import { clearAllBodyScrollLocks, disableBodyScroll } from 'body-scroll-lock';
 import { useCallback, useEffect, useState } from 'preact/hooks';
 import tw from 'twin.macro';
 
@@ -26,14 +26,14 @@ const containerId = `sj-${Date.now()}`;
 
 const OverlayInterface = () => {
   const { options, filters, id, preset } = useSearchResultsContext();
-  const { results, pageCount, clear, resetFilters } = useSearchContext();
+  const { results, pageCount, clear, resetFilters, error } = useSearchContext();
+  const { setSorting } = useSorting();
   const { setQuery } = useQuery();
   const { setWidth, filtersShown, breakpoints } = useInterfaceContext();
   const { setViewType } = useSearchUIContext();
   const tabsFilters = filters?.filter((props) => props.type === 'tabs') || [];
   const nonTabsFilters = filters?.filter((props) => props.type !== 'tabs') || [];
   const inputProps = options.input ?? {};
-  let refResultBox: HTMLDivElement | undefined;
 
   const scrollTop = useCallback(() => {
     const container = document.querySelector(`#${containerId}`);
@@ -120,16 +120,14 @@ const OverlayInterface = () => {
   }, [isMobile, open]);
 
   useEffect(() => {
-    if (refResultBox && !open) {
-      enableBodyScroll(refResultBox);
+    if (!open) {
+      clearAllBodyScrollLocks();
     }
   }, [open]);
 
   useEffect(() => {
     return () => {
-      if (refResultBox) {
-        enableBodyScroll(refResultBox);
-      }
+      clearAllBodyScrollLocks();
     };
   }, []);
 
@@ -137,6 +135,7 @@ const OverlayInterface = () => {
     <Modal
       open={open}
       onClose={() => {
+        setSorting('', false);
         resetFilters(false);
         setOpen(false);
         clear({ q: '' });
@@ -145,14 +144,17 @@ const OverlayInterface = () => {
       size="7xl"
       animationDuration={75}
       fullWidth={isMobile}
-      fullHeight={isMobile && !!results}
+      fullHeight={isMobile && (!!results || !!error)}
       {...modalProps}
     >
       <ResizeObserver onResize={(size) => setWidth(size.width)} css={tw`overflow-hidden h-full flex`}>
         <div css={[tw`w-full flex flex-col flex-none overflow-hidden`]}>
           <div css={tw`flex-none`}>
             <div
-              css={[tw`py-4 pl-2.5 flex items-center`, results && tw`border-gray-200 border-0 border-b border-solid`]}
+              css={[
+                tw`py-4 pl-2.5 flex items-center`,
+                (results || error) && tw`border-gray-200 border-0 border-b border-solid`,
+              ]}
             >
               <Input
                 {...inputProps}
@@ -173,37 +175,40 @@ const OverlayInterface = () => {
             )}
           </div>
 
-          {results ? (
-            <div
-              id={id}
-              css={[
-                tw`flex flex-grow overflow-hidden transition-all duration-200`,
-                (!filtersShown || hideSidebar) && tw`pl-6`,
-              ]}
-            >
-              {results && !isMobile && (
-                <div
-                  css={[
-                    tw`transition-all duration-200 overflow-y-auto flex-none`,
-                    filtersShown && !hideSidebar ? tw`pr-8 w-86 pl-6` : tw`w-0 opacity-0`,
-                  ]}
-                >
-                  <div css={tw`w-72 space-y-6 pb-6`}>
-                    {nonTabsFilters.map((props) => {
-                      const { type, textTransform = 'capitalize-first-letter' } = props;
-                      if (type === 'list' || type === 'select') {
-                        return <Filter {...{ ...props, textTransform }} key={props.name} />;
-                      }
-                      return <Filter {...props} key={props.name} />;
-                    })}
-                  </div>
-                </div>
-              )}
-
+          <div
+            id={id}
+            css={[
+              tw`flex flex-grow overflow-hidden transition-all duration-200`,
+              (!filtersShown || hideSidebar) && tw`pl-6`,
+            ]}
+          >
+            {results && !isMobile && (
               <div
-                css={[tw`flex flex-col`, filtersShown && !hideSidebar ? 'width: calc(100% - 21.5rem);' : tw`w-full`]}
+                css={[
+                  tw`transition-all duration-200 overflow-y-auto flex-none`,
+                  filtersShown && !hideSidebar ? tw`pr-8 w-86 pl-6` : tw`w-0 opacity-0`,
+                ]}
               >
-                {tabsFilters.length > 0 ? (
+                <div css={tw`w-72 space-y-6 pb-6`}>
+                  {nonTabsFilters.map((props) => {
+                    const { type, textTransform = 'capitalize-first-letter' } = props;
+                    if (type === 'list' || type === 'select') {
+                      return <Filter {...{ ...props, textTransform }} key={props.name} />;
+                    }
+                    return <Filter {...props} key={props.name} />;
+                  })}
+                </div>
+              </div>
+            )}
+
+            {(!!results || !!error) && (
+              <div
+                css={[
+                  tw`flex flex-col`,
+                  filtersShown && !hideSidebar && !error ? 'width: calc(100% - 21.5rem);' : tw`w-full`,
+                ]}
+              >
+                {tabsFilters.length > 0 && !error ? (
                   <div css={tw`space-y-6 pr-6`}>
                     {tabsFilters.map((props) => {
                       const { textTransform = 'capitalize-first-letter' } = props;
@@ -218,7 +223,6 @@ const OverlayInterface = () => {
                   ref={(node) => {
                     if (!node) return;
                     disableBodyScroll(node);
-                    refResultBox = node;
                   }}
                 >
                   <div css={tw`mb-6`}>
@@ -226,8 +230,8 @@ const OverlayInterface = () => {
                   </div>
                 </div>
               </div>
-            </div>
-          ) : null}
+            )}
+          </div>
           {pageCount > 1 ? (
             <div css={tw`flex-none border-0 border-t border-solid border-gray-200 py-3.5 px-6`}>
               <Pagination {...options.pagination} scrollTarget={`#${containerId}`} />
