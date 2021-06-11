@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 1.5.1
+
+### Patch Changes
+
+- 084a83d: Stop the click event from being triggered on the parent nodes. In most cases, we only want the click on the node (buttonSelector) to trigger the overlay modal to open rather than calling the script from themes.
+
 ## 1.5.0
 
 ### Minor Changes
