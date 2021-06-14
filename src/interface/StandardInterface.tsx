@@ -1,6 +1,7 @@
 import { ResizeObserver } from '@sajari/react-components';
 import { useSearchContext } from '@sajari/react-hooks';
-import { Filter, Input, Pagination, Results } from '@sajari/react-search-ui';
+import { Filter, Input, Pagination, Results, useSearchUIContext } from '@sajari/react-search-ui';
+import { useEffect } from 'preact/hooks';
 import React from 'react';
 import tw from 'twin.macro';
 
@@ -14,20 +15,30 @@ const StandardInterface = () => {
   const { options, filters, id, preset } = useSearchResultsContext();
   const { syncURL } = options as SearchResultsOptions<'standard'>;
   const { results } = useSearchContext();
-  const { setWidth, filtersShown } = useInterfaceContext();
+  const { setWidth, filtersShown, breakpoints } = useInterfaceContext();
+  const { setViewType, viewType } = useSearchUIContext();
   const tabsFilters = filters?.filter((props) => props.type === 'tabs') || [];
   const hideSidebar =
     (filters?.filter((props) => props.type !== 'tabs') || []).length === 0 && options.input?.position === 'top';
   const { hide = false, ...inputProps } = options.input ?? {};
   const topInput = options.input?.position === 'top';
+  const isMobile = !breakpoints.sm;
+
+  useEffect(() => {
+    if (isMobile && viewType !== 'list') {
+      setViewType('list');
+    }
+  }, [isMobile, breakpoints]);
 
   return (
     <React.Fragment>
       {syncURL !== 'none' ? <SyncStateQueryParams /> : null}
       <ResizeObserver onResize={(size) => setWidth(size.width)}>
         <div id={id} css={tw`space-y-6`}>
-          {!hide && topInput && <Input {...inputProps} css={tw`w-full`} showPoweredBy={preset !== 'shopify'} />}
-          {results && <Options showToggleFilter={!hideSidebar || !topInput} />}
+          {((!hide && topInput) || isMobile) && (
+            <Input {...inputProps} css={tw`w-full`} showPoweredBy={preset !== 'shopify'} />
+          )}
+          {results && <Options isMobile={isMobile} showToggleFilter={!hideSidebar || !topInput} />}
 
           <div css={tw`flex`}>
             {results && (
