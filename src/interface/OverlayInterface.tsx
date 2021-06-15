@@ -170,7 +170,7 @@ const OverlayInterface = () => {
 
             {results && (
               <div css={[tw`pt-3.5 px-6`, isMobile ? tw`pb-2` : tw`pb-6`]}>
-                <Options isMobile={isMobile} showToggleFilter={!hideSidebar} onScrollTop={scrollTop} />
+                <Options isMobile={isMobile} showToggleFilter={!hideSidebar} onScrollTop={scrollTop} mode="overlay" />
               </div>
             )}
           </div>

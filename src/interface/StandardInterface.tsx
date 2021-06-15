@@ -35,7 +35,7 @@ const StandardInterface = () => {
       {syncURL !== 'none' ? <SyncStateQueryParams /> : null}
       <ResizeObserver onResize={(size) => setWidth(size.width)}>
         <div id={id} css={tw`space-y-6`}>
-          {((!hide && topInput) || isMobile) && (
+          {!hide && (topInput || isMobile) && (
             <Input {...inputProps} css={tw`w-full`} showPoweredBy={preset !== 'shopify'} />
           )}
           {results && <Options isMobile={isMobile} showToggleFilter={!hideSidebar || !topInput} />}

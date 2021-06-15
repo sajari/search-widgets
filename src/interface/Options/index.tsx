@@ -57,6 +57,7 @@ interface Props {
   showToggleFilter?: boolean;
   isMobile?: boolean;
   onScrollTop?: () => void;
+  mode?: 'standard' | 'overlay';
 }
 
 const FilterWatcher = ({ name, toggleIsActive }: { name: string; toggleIsActive: (v: boolean) => void }) => {
@@ -102,7 +103,7 @@ const FilterWatchers = ({
   );
 };
 
-export default ({ showToggleFilter = true, isMobile = false, onScrollTop }: Props) => {
+export default ({ showToggleFilter = true, isMobile = false, onScrollTop, mode = 'standard' }: Props) => {
   const { options, filters, filterBuilders } = useSearchResultsContext();
   const { breakpoints } = useInterfaceContext();
   const { resetFilters, results } = useSearchContext();
@@ -163,7 +164,7 @@ export default ({ showToggleFilter = true, isMobile = false, onScrollTop }: Prop
           <Button
             onClick={onOpen}
             size="sm"
-            css={tw`border-none bg-transparent shadow-none -mr-3 h-7`}
+            css={[tw`border-none bg-transparent shadow-none h-7`, mode === 'overlay' ? tw`-mr-3` : undefined]}
             aria-label="Show filters"
           >
             <svg height="16" width="16" viewBox="0 0 16 16" focusable="false" role="presentation">
