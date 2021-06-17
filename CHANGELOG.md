@@ -1,5 +1,16 @@
 # @sajari/search-widgets
 
+## 1.6.0
+
+### Minor Changes
+
+- 4cadcc8: Add mobile display for the full page search.
+- f1b201d: Upgrade new versions for SDK packages to include a minor styling fix and add a button to reset the search if an error occurs.
+
+### Patch Changes
+
+- ddc1ef4: Set `syncURL: 'push'` for website collection to fix the issue when the query params from the URL are not synced with the UI.
+
 ## 1.5.2
 
 ### Patch Changes
