@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ModalProps } from '@sajari/react-components';
+import { VariablesObject } from '@sajari/react-hooks/dist/ContextProvider/controllers/Variables';
 import {
   ContextProviderValues,
   FieldDictionary,
@@ -75,7 +76,7 @@ export interface SearchResultsProps {
   fields?: FieldDictionary;
   filters?: Array<FilterProps & { field: string; textTransform?: TextTransform }>;
   defaultFilter: ContextProviderValues['defaultFilter'];
-  variables: ContextProviderValues['search']['variables'];
+  variables: Record<string, string | string[] | number | boolean>;
   config: ContextProviderValues['search']['config'];
   theme: ContextProviderValues['theme'];
   customClassNames?: ContextProviderValues['customClassNames'];
