@@ -64,13 +64,14 @@ export function useSearchProviderProps(props: SearchResultsProps) {
 
   const filters = useMemo(() => {
     return filtersProp.map((filter) => {
-      const value = params[filter.field as string] || '';
+      const key = filter.field || filter.name;
+      const value = params[key] || '';
       const isRangeFilter = filter.type === 'range';
       const filterBuilder = isRangeFilter ? new RangeFilterBuilder(filter) : new FilterBuilder(filter);
 
       if (filterBuilder instanceof RangeFilterBuilder) {
         const initialRange = paramToRange(value);
-        const limit = (params[`${filter.field}_min_max` as string] || '').split(':').map(Number) as Range;
+        const limit = (params[`${key}_min_max`] || '').split(':').map(Number) as Range;
         if (isRange(initialRange)) {
           filterBuilder.set(initialRange as Range);
         }
