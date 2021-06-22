@@ -18,7 +18,7 @@ import { SearchResultsOptions } from '../types';
 import { isRange, paramToRange, rangeToParam } from '../utils';
 
 const FilterWatcher = ({ filter, replace }: { filter: FilterBuilder; replace: boolean }) => {
-  const key = filter.getField() as string;
+  const key = filter.getField() || filter.getName();
   const name = filter.getName();
   const { setSelected, selected } = useFilter(name);
   const setFilterParam = useSetQueryParams(key, {
@@ -39,7 +39,7 @@ const FilterWatcher = ({ filter, replace }: { filter: FilterBuilder; replace: bo
 };
 
 const RangeFilterWatcher = ({ filter, replace }: { filter: RangeFilterBuilder; replace: boolean }) => {
-  const key = filter.getField() as string;
+  const key = filter.getField() || filter.getName();
   const name = filter.getName();
   const { range, setRange, min, max } = useRangeFilter(name);
   const allowSetParam = useRef(false);
