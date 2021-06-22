@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 1.6.1
+
+### Patch Changes
+
+- d3fe708: Fix the issue when `undefined` appears in the URL if selecting a value from a manual filter.
+
 ## 1.6.0
 
 ### Minor Changes
