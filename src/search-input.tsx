@@ -24,7 +24,16 @@ export default (defaultProps: SearchInputProps) => {
     if (redirect && mode !== 'results') {
       return (
         <form ref={formRef} action={redirect.url ?? 'search'}>
-          <AppliedInput onSelect={() => formRef.current.submit()} name={redirect.queryParamName || 'q'} />
+          <AppliedInput
+            onSelect={() => {
+              if (typeof formRef.current.requestSubmit === 'function') {
+                formRef.current.requestSubmit();
+                return;
+              }
+              formRef.current.submit();
+            }}
+            name={redirect.queryParamName || 'q'}
+          />
         </form>
       );
     }
