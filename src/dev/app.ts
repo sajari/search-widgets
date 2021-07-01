@@ -79,8 +79,8 @@ export default () => {
           </div>
           <div id="js-search-input" style="padding:10px;margin:10px;border-radius: 4px;border:2px solid #9CA3AF;">
             <p style="margin-top:0px;">This container has the id of <code>js-search-input</code></p>
-            <input />
-            <input />
+            <input style="width: 40%;" />
+            <input style="width: 40%;" />
           </div>
           <p>Try switching between <code>"selector": "#js-search-input"</code> and not specifiying a selector at all (which defaults to <code>form[action="/search"] input[name="q"]</code>) to see the difference and use cases.</p>
         `;

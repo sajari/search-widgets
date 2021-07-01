@@ -31,7 +31,12 @@ const onSelectHandler = (element: Element | null) => () => {
   form?.submit();
 };
 
-const Wrapper = ({ children, ...props }: Omit<SearchInputBindingProps, 'selector'> & { children: React.ReactNode }) => {
+const Wrapper = ({
+  children,
+  ...props
+}: Omit<SearchInputBindingProps, 'selector' | 'omittedElementSelectors' | 'mode'> & {
+  children: React.ReactNode;
+}) => {
   const { searchOnLoad, viewType, defaultFilter, theme, searchContext, currency } = useSearchProviderProps(props);
 
   return (
@@ -48,7 +53,11 @@ const Wrapper = ({ children, ...props }: Omit<SearchInputBindingProps, 'selector
   );
 };
 
-const renderBindingInput = (targets: NodeListOf<HTMLElement>, props: Omit<SearchInputBindingProps, 'selector'>) => {
+const renderBindingInput = (
+  targets: NodeListOf<HTMLElement>,
+  params: Omit<SearchInputBindingProps, 'selector' | 'omittedElementSelectors'>,
+) => {
+  const { mode, ...props } = params;
   targets.forEach((target) => {
     const showPoweredBy = props.preset !== 'shopify';
 
@@ -60,7 +69,7 @@ const renderBindingInput = (targets: NodeListOf<HTMLElement>, props: Omit<Search
       render(
         <Wrapper {...props}>
           <Input
-            mode="suggestions"
+            mode={mode}
             onSelect={onSelectHandler(target)}
             inputElement={{ current: target }}
             showPoweredBy={showPoweredBy}
@@ -82,7 +91,7 @@ const renderBindingInput = (targets: NodeListOf<HTMLElement>, props: Omit<Search
         render(
           <Wrapper {...props}>
             <Input
-              mode="suggestions"
+              mode={mode}
               onSelect={onSelectHandler(element)}
               inputElement={{ current: element }}
               showPoweredBy={showPoweredBy}
@@ -103,7 +112,7 @@ export default ({ selector: selectorProp, omittedElementSelectors, ...rest }: Se
   }
   targets = document.querySelectorAll(selector);
 
-  if (targets && targets.length > 0) {
+  if (targets && targets.length > 0 && rest.mode !== 'instant') {
     if (omittedElementSelectors) {
       removeThemeElements(omittedElementSelectors);
     }
