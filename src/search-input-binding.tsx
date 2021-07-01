@@ -32,7 +32,7 @@ const onSelectHandler = (element: Element | null) => () => {
 };
 
 const Wrapper = ({ children, ...props }: Omit<SearchInputBindingProps, 'selector'> & { children: React.ReactNode }) => {
-  const { searchOnLoad, viewType, defaultFilter, theme, searchContext } = useSearchProviderProps(props);
+  const { searchOnLoad, viewType, defaultFilter, theme, searchContext, currency } = useSearchProviderProps(props);
 
   return (
     <SearchProvider
@@ -41,6 +41,7 @@ const Wrapper = ({ children, ...props }: Omit<SearchInputBindingProps, 'selector
       searchOnLoad={searchOnLoad}
       defaultFilter={defaultFilter}
       viewType={viewType}
+      currency={currency}
     >
       {children}
     </SearchProvider>

@@ -22,6 +22,7 @@ export default (defaultProps: SearchResultsProps) => {
     customClassNames,
     disableDefaultStyles,
     importantStyles,
+    currency,
   } = useSearchProviderProps(state);
 
   const emitterContext = {
@@ -56,6 +57,7 @@ export default (defaultProps: SearchResultsProps) => {
       customClassNames={customClassNames}
       disableDefaultStyles={disableDefaultStyles}
       importantStyles={importantStyles}
+      currency={currency}
     >
       <PubSubContextProvider value={emitterContext}>
         <SearchResultsContextProvider value={context}>
