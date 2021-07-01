@@ -115,7 +115,7 @@ export interface SearchInputBindingProps extends SearchResultsProps {
 export type WidgetType = 'search-results' | 'search-input-binding' | 'overlay' | 'search-input';
 
 export interface SearchInputProps extends SearchResultsProps {
-  mode: InputMode;
+  mode: Exclude<InputMode, 'instant'>;
   redirect?: {
     url: string;
     queryParamName: string;
