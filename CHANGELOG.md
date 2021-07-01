@@ -1,5 +1,21 @@
 # @sajari/search-widgets
 
+## 1.7.0
+
+### Minor Changes
+
+- f4398ca: Add configuration for currency code to format any price values.
+
+  ```JSON
+  {
+     "account": "1594153711901724220",
+     "collection": "bestbuy",
+     "pipeline": "query",
+     "currency": "USD",
+     ...
+  }
+  ```
+
 ## 1.6.1
 
 ### Patch Changes
