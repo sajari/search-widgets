@@ -108,14 +108,14 @@ export interface InterfaceContextProps {
 
 export interface SearchInputBindingProps extends SearchResultsProps {
   selector: string;
-  mode: InputMode;
+  mode: Exclude<InputMode, 'instant'>;
   omittedElementSelectors?: string | string[];
 }
 
 export type WidgetType = 'search-results' | 'search-input-binding' | 'overlay' | 'search-input';
 
 export interface SearchInputProps extends SearchResultsProps {
-  mode: InputMode;
+  mode: Exclude<InputMode, 'instant'>;
   redirect?: {
     url: string;
     queryParamName: string;
