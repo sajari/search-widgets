@@ -108,7 +108,7 @@ export interface InterfaceContextProps {
 
 export interface SearchInputBindingProps extends SearchResultsProps {
   selector: string;
-  mode: InputMode;
+  mode: Exclude<InputMode, 'instant'>;
   omittedElementSelectors?: string | string[];
 }
 

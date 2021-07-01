@@ -57,7 +57,7 @@ const renderBindingInput = (
   targets: NodeListOf<HTMLElement>,
   params: Omit<SearchInputBindingProps, 'selector' | 'omittedElementSelectors'>,
 ) => {
-  const { mode, ...props } = params;
+  const { mode = 'suggestions', ...props } = params;
   targets.forEach((target) => {
     const showPoweredBy = props.preset !== 'shopify';
 
@@ -112,7 +112,7 @@ export default ({ selector: selectorProp, omittedElementSelectors, ...rest }: Se
   }
   targets = document.querySelectorAll(selector);
 
-  if (targets && targets.length > 0 && rest.mode !== 'instant') {
+  if (targets && targets.length > 0) {
     if (omittedElementSelectors) {
       removeThemeElements(omittedElementSelectors);
     }
