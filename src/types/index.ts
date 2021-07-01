@@ -81,6 +81,7 @@ export interface SearchResultsProps {
   customClassNames?: ContextProviderValues['customClassNames'];
   disableDefaultStyles?: ContextProviderValues['disableDefaultStyles'];
   importantStyles?: ContextProviderValues['importantStyles'];
+  currency?: ContextProviderValues['currency'];
   options?: SearchResultsOptions;
   emitter: Emitter;
 }
