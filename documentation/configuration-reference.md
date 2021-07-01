@@ -6,7 +6,7 @@ Search widgets are discrete blocks of JSON code that utilize the [Sajari React S
 | ---------------------- | ---------------------------------------------------------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `pipeline`             | `string (required)`                                                    | `_`       | The pipeline configuration. See [Pipeline overview](https://docs.sajari.com/developer-guide/pipelines/overview/).                                      |
 | `account`              | `string (required)`                                                    | `_`       | The account configuration (available in the credentials section in the Sajari admin interface).                                                        |
-| `collection`           | `string (required)`                                                    | `_`       | The collection configuration (available in the credentials section in the Sajari admin interface).                                                     |
+| `collection`           | `string (required)`                                                    | `_`       | The collection to query (available in the credentials section in the Sajari admin interface).                                                          |
 | `endpoint`             | `string`                                                               | `_`       | The endpoint configuration.                                                                                                                            |
 | `preset`               | `'shopify'` \| `'website'` \| `''`                                     | `''`      | The collection template. The set value affects the default values of properties such as `buttonSelector`.                                              |
 | `tracking`             | `'click'` \| `'posneg'`                                                | `'click'` | Enable tracking to give you insights into the search behavior of your users and how your content is performing.                                        |
@@ -51,7 +51,7 @@ The `Filter` object defines options to allow refining of search results. The opt
 | Name    | Type                                                                                                                                                                                                    | Default  | Description                 |
 | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | --------------------------- |
 | `name`  | `string`                                                                                                                                                                                                | `_`      | The name of a given Filter. |
-| `title` | `string`                                                                                                                                                                                                | `false`  | Title of the filter.        |
+| `title` | `string`                                                                                                                                                                                                | `_`      | Title of the filter.        |
 | `type`  | [`'list'`](#list-properties) \| [`'color'`](#color-properties) \| [`'rating'`](#rating-properties) \| [`'tabs'`](#tab-properties) \| [`'select'`](#select-properties) \| [`'range'`](#range-properties) | `'list'` | Type of the filter.         |
 
 #### List properties
@@ -168,10 +168,12 @@ Exclusive props if type is `range`.
 
 #### Standard properties
 
-| Name        | Type                          | Default    | Description                                                                                                                                                         |
-| ----------- | ----------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `syncURL`   | `none` \| `replace` \| `push` | `push`     | Keep the search state in the URL if the option is not `none`. While `replace` prevent adding a new URL entry into the `history` stack, `push` will do the opposite. |
-| `urlParams` | `{q: string}`                 | `{q: 'q'}` | A key -> value pair object maps the URL params to initial values for the search. `q` defines the URL param for the initial search query.                            |
+Exclusive props if mode is `standard`.
+
+| Name        | Type                                | Default    | Description                                                                                                                                                         |
+| ----------- | ----------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `'syncURL'` | `'none'` \| `'replace'` \| `'push'` | `'push'`   | Keep the search state in the URL if the option is not `none`. While `replace` prevent adding a new URL entry into the `history` stack, `push` will do the opposite. |
+| `urlParams` | `{q: string}`                       | `{q: 'q'}` | A key -> value pair object maps the URL params to initial values for the search. `q` defines the URL param for the initial search query.                            |
 
 **Example**
 
@@ -228,6 +230,8 @@ Exclusive props if type is `range`.
 See the example in [Codesandbox](https://codesandbox.io/s/standard-mode-search-results-widget-shgnj).
 
 #### Overlay properties
+
+Exclusive props if mode is `overlay`.
 
 | Name             | Type                   | Default                                                                  | Description                                                                                                                                   |
 | ---------------- | ---------------------- | ------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- |
