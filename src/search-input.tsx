@@ -1,20 +1,61 @@
-import { Input, InputProps, SearchProvider } from '@sajari/react-search-ui';
+import { Input, InputProps, Pipeline, SearchProvider, Variables } from '@sajari/react-search-ui';
 import { useRef } from 'preact/hooks';
+import { useMemo } from 'react';
 
-import SearchResultsContextProvider from './context';
-import { useSearchProviderProps } from './hooks';
 import PubSubContextProvider from './pubsub/context';
 import { SearchInputProps } from './types';
+import { getPipelineInfo } from './utils';
 
 export default (defaultProps: SearchInputProps) => {
-  const { emitter, context, searchContext, theme, searchOnLoad, defaultFilter, viewType, currency } =
-    useSearchProviderProps(defaultProps);
-
-  const emitterContext = {
+  const {
+    variables: variablesProp,
     emitter,
-  };
+    options,
+    preset,
+    mode = 'suggestions',
+    redirect,
+    account,
+    collection,
+    endpoint,
+    clickTokenURL,
+    pipeline,
+    config,
+    fields,
+    theme,
+    defaultFilter,
+    currency,
+    tracking,
+  } = defaultProps;
 
-  const { mode = 'suggestions', options, redirect, preset } = defaultProps;
+  const searchContext = useMemo(() => {
+    const { name, version = undefined } = getPipelineInfo(pipeline);
+    const variables = new Variables({ ...variablesProp });
+    return {
+      pipeline: new Pipeline(
+        {
+          account,
+          collection,
+          endpoint,
+          clickTokenURL,
+        },
+        { name, version },
+        // TODO: note it here if we can resolve the issue
+        // @ts-ignore: missing type NoTracking
+        tracking,
+      ),
+      config,
+      variables,
+      fields,
+    };
+  }, []);
+
+  const emitterContext = useMemo(
+    () => ({
+      emitter,
+    }),
+    [emitter],
+  );
+
   const AppliedInput = (props: InputProps<any> & { name?: string }) => (
     <Input mode={mode} {...options?.input} {...props} showPoweredBy={preset !== 'shopify'} />
   );
@@ -45,15 +86,12 @@ export default (defaultProps: SearchInputProps) => {
     <SearchProvider
       search={searchContext}
       theme={theme}
-      searchOnLoad={searchOnLoad}
       defaultFilter={defaultFilter}
       currency={currency}
-      viewType={viewType}
+      searchOnLoad={false}
     >
       <PubSubContextProvider value={emitterContext}>
-        <SearchResultsContextProvider value={context}>
-          <RenderInput />
-        </SearchResultsContextProvider>
+        <RenderInput />
       </PubSubContextProvider>
     </SearchProvider>
   );

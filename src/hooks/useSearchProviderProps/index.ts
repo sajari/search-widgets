@@ -1,10 +1,9 @@
-import { isString } from '@sajari/react-sdk-utils';
 import { FilterBuilder, Pipeline, Range, RangeFilterBuilder, ResultViewType, Variables } from '@sajari/react-search-ui';
 import { useMemo } from 'react';
 
 import { mergeProps } from '../../defaults';
 import { SearchResultsProps } from '../../types';
-import { isRange, paramToRange } from '../../utils';
+import { getPipelineInfo, isRange, paramToRange } from '../../utils';
 import getSearchParams from '../../utils/getSearchParams';
 
 export function useSearchProviderProps(props: SearchResultsProps) {
@@ -33,7 +32,7 @@ export function useSearchProviderProps(props: SearchResultsProps) {
     disableDefaultStyles = false,
     importantStyles = false,
   } = mergeProps({ id, ...props });
-  const { name, version = undefined } = isString(pipeline) ? { name: pipeline } : pipeline;
+  const { name, version = undefined } = getPipelineInfo(pipeline);
   const params = options.mode === 'standard' && options?.syncURL === 'none' ? {} : getSearchParams();
 
   const viewType: ResultViewType = ['grid', 'list'].includes(params.viewType)
