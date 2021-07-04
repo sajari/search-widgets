@@ -80,10 +80,8 @@ Exclusive props if type is `list`.
 | `prefixFilter`  | `string`                                                                                           | `_`                                            | If specified, only options that exactly match the prefix will be shown. The prefix will be removed from the option displayed. Used if `count` = true.                                 |
 | `textTransform` | `'normal-case'` \| `'uppercase'` \| `'lowercase'` \| `'capitalize'` \| `'capitalize-first-letter'` | `'normal-case'`                                | Control the capitalization of text options.                                                                                                                                           |
 
-**Examples**
-
 <details>
-<summary>Click to expand</summary>
+<summary>Click to expand example</summary>
 
 ```json
 {
@@ -124,10 +122,8 @@ Exclusive props if type is `color`.
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
 
-**Example**
-
 <details>
-<summary>Click to expand</summary>
+<summary>Click to expand example</summary>
 
 ```json
 {
@@ -150,10 +146,8 @@ Exclusive props if type is `rating`.
 | ----------- | --------- | ------- | ----------------------- |
 | `hideCount` | `boolean` | `false` | Hide total items count. |
 
-**Example**
-
 <details>
-<summary>Click to expand</summary>
+<summary>Click to expand example</summary>
 
 ```json
 {
@@ -190,10 +184,8 @@ Exclusive props if type is `tabs`.
 | `prefixFilter`  | `string`                                                                                           | `_`                             | If specified, only options that exactly match the prefix will be shown. The prefix will be removed from the option displayed. Used if `count` = true.                                   |
 | `textTransform` | `'normal-case'` \| `'uppercase'` \| `'lowercase'` \| `'capitalize'` \| `'capitalize-first-letter'` | `'normal-case'`                 | Control the capitalization of text options.                                                                                                                                             |
 
-**Example**
-
 <details>
-<summary>Click to expand</summary>
+<summary>Click to expand example</summary>
 
 ```json
 {
@@ -230,10 +222,8 @@ Exclusive props if type is `select`.
 | `prefixFilter`  | `string`                                                                                           | `_`                             | If specified, only options that exactly match the prefix will be shown. The prefix will be removed from the option displayed. Used if `count` = true.                                 |
 | `textTransform` | `'normal-case'` \| `'uppercase'` \| `'lowercase'` \| `'capitalize'` \| `'capitalize-first-letter'` | `'normal-case'`                 | Control the capitalization of text options.                                                                                                                                           |
 
-**Example**
-
 <details>
-<summary>Click to expand</summary>
+<summary>Click to expand example</summary>
 
 ```json
 {
@@ -247,6 +237,7 @@ Exclusive props if type is `select`.
 See the example in [Codesandbox](https://codesandbox.io/s/select-filter-2egs3).
 
 </details>
+
 #### Range properties
 
 Exclusive props if type is `range`.
@@ -265,10 +256,8 @@ Exclusive props if type is `range`.
 | `tick`       | `number`                 | `_`                   | The interval to show small ticks.                                                                                                        |
 | `ticks`      | `number[]`               | `_`                   | An array of custom ticks to use. This will override tick.                                                                                |
 
-**Example**
-
 <details>
-<summary>Click to expand</summary>
+<summary>Click to expand example</summary>
 
 ```json
 {
@@ -318,10 +307,8 @@ Exclusive props if mode is `standard`.
 | `'syncURL'` | `'none'` \| `'replace'` \| `'push'` | `'push'`   | Keep the search state in the URL if the option is not `none`. While `replace` prevent adding a new URL entry into the `history` stack, `push` will do the opposite. |
 | `urlParams` | `{q: string}`                       | `{q: 'q'}` | A key -> value pair object maps the URL params to initial values for the search. `q` defines the URL param for the initial search query.                            |
 
-**Example**
-
 <details>
-<summary>Click to expand</summary>
+<summary>Click to expand example</summary>
 
 ```HTML
 <div data-widget="search-results">
@@ -389,10 +376,8 @@ Exclusive props if mode is `overlay`.
 | `defaultOpen`    | `boolean`              | `false`                                                                  | If true, the modal will open.                                                                                                                 |
 | `modal`          | `ModalProps`           | `_`                                                                      | Options for the dialog window holding the search results interface. See [Modal props](https://react.docs.sajari.com/search-ui/results#props). |
 
-**Example**
-
 <details>
-<summary>Click to expand</summary>
+<summary>Click to expand example</summary>
 
 ```HTML
 <div data-widget="overlay">
@@ -462,10 +447,8 @@ The Takeover Search Input widget allows users to inject Sajari search experience
 | `mode`                    | `'standard'` \| `'typeahead'` \| `'suggestions'` \| `'results'` | `'results'`                                                           | The mode of the input. For details, see [Input props](https://react.docs.sajari.com/search-ui/input#props). |
 | `omittedElementSelectors` | `string` \| `string[]`                                          | `_`                                                                   | A single or a list of CSS selector of elements to be removed when the widget has mounted.                   |
 
-**Example**
-
 <details>
-<summary>Click to expand</summary>
+<summary>Click to expand example</summary>
 
 ```HTML
 <div data-widget="search-input-binding">
@@ -495,10 +478,8 @@ The search input widget is typically used in a global template and positioned in
 | `mode`     | `'standard'` \| `'typeahead'` \| `'suggestions'` \| `'results'` | `'suggestions'`                        | The mode of the input. For details, see [Input props](https://react.docs.sajari.com/search-ui/input#props).                                                                |
 | `redirect` | `{url: string, queryParamName: string}`                         | `{url: 'search', queryParamName: 'q'}` | Options to set the redirect URL and the name of the search query param, normally, the destination is where the [Search Results Widget](#search-results-widget) is located. |
 
-**Example**
-
 <details>
-<summary>Click to expand</summary>
+<summary>Click to expand example</summary>
 
 ```HTML
 <div data-widget="search-input">
