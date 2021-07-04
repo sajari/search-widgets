@@ -26,9 +26,9 @@ As being said, every widget has a set of basic configuration properties and is d
 <div data-widget="widget-name">
   <script type="application/json">
     {
-      "account": "1603163345448404241",
-      "collection": "sajari-test-fashion2",
-      "pipeline": "query",
+      "account": "ACCOUNT_ID",
+      "collection": "COLLECTION_ID",
+      "pipeline": "PIPELINE_NAME",
       ...
     }
   </script>
@@ -85,9 +85,9 @@ Exclusive props if type is `list`.
 
 ```json
 {
-  "name": "brand",
-  "field": "brand",
-  "title": "Brand"
+  "name": "NAME",
+  "field": "FIELD_NAME",
+  "title": "TITLE"
 }
 ```
 
@@ -97,9 +97,9 @@ However, we can manually specify the options:
 
 ```json
 {
-  "name": "category",
+  "name": "NAME",
   "count": false,
-  "title": "category",
+  "title": "TITLE",
   "multi": false,
   "hideCount": true,
   "options": {
@@ -127,9 +127,9 @@ Exclusive props if type is `color`.
 
 ```json
 {
-  "name": "color",
-  "field": "imageTags",
-  "title": "Color",
+  "name": "NAME",
+  "field": "FIELD_NAME",
+  "title": "TITLE",
   "type": "color"
 }
 ```
@@ -151,9 +151,9 @@ Exclusive props if type is `rating`.
 
 ```json
 {
-  "name": "rating",
-  "field": "rating",
-  "title": "Rating",
+  "name": "NAME",
+  "field": "FIELD_NAME",
+  "title": "TITLE",
   "type": "rating"
 }
 ```
@@ -189,9 +189,9 @@ Exclusive props if type is `tabs`.
 
 ```json
 {
-  "name": "category",
-  "field": "level1",
-  "title": "Category",
+  "name": "NAME",
+  "field": "FIELD_NAME",
+  "title": "TITLE",
   "type": "tabs"
 }
 ```
@@ -227,9 +227,9 @@ Exclusive props if type is `select`.
 
 ```json
 {
-  "name": "category2",
-  "field": "level2",
-  "title": "Category",
+  "name": "NAME",
+  "field": "FIELD_NAME",
+  "title": "TITLE",
   "type": "select"
 }
 ```
@@ -261,9 +261,9 @@ Exclusive props if type is `range`.
 
 ```json
 {
-  "name": "price",
-  "field": "price",
-  "title": "Price",
+  "name": "NAME",
+  "field": "FIELD_NAME",
+  "title": "TITLE",
   "type": "range"
 }
 ```
@@ -272,9 +272,9 @@ By default, the `max` and `min` value are set from an aggregation operation. How
 
 ```json
 {
-  "name": "price",
-  "field": "price",
-  "title": "Price",
+  "name": "NAME",
+  "field": "FIELD_NAME",
+  "title": "TITLE",
   "type": "range",
   "aggregate": false,
   "min": 0,
