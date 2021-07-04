@@ -20,7 +20,7 @@ Search widgets are discrete blocks of JSON code that utilize the [Sajari React S
 | `disableDefaultStyles` | `boolean`                                                              | `false`   | Disable the default styles of components.                                                                                                              |
 | `importantStyles`      | `boolean`                                                              | `true`    | Add `!important` to the provided styles to override any CSS clashes that usually result in strange styling.                                            |
 
-As being said, every widget has a set of basic configuration properties and is defined based on the following structure:
+The above configuration properties are defined based on the following structure:
 
 ```HTML
 <div data-widget="widget-name">
