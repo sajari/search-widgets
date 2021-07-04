@@ -14,6 +14,7 @@ Search widgets are discrete blocks of JSON code that utilize the [Sajari React S
 | `config`               | [`Config`](#Config)                                                    | `_`       | Defines mapping between key/value pair params to be sent with each and every request .The configuration is specified as [Config](#Config) properties.  |
 | `fields`               | [`FieldDictionary`](#FieldDictionary)                                  | `_`       | Map fields in your data to the required fields to display in the UI. The configuration is specified as [FieldDictionary](#FieldDictionary) properties. |
 | `defaultFilter`        | `string`                                                               | `_`       | A default filter to apply to all search requests.                                                                                                      |
+| `currency`             | `string`                                                               | `'USD'`   | The currency code to use for any formatted price values.                                                                                               |
 | `theme`                | `Theme`                                                                | `_`       | Set basic color options for the interface. The configuration is specified as [Theme](#Theme) properties.                                               |
 | `customClassNames`     | [`object`](https://react.docs.sajari.com/styling#available-classnames) | `_`       | Add CSS class names to components. See [Available className](https://react.docs.sajari.com/styling#available-classnames).                              |
 | `disableDefaultStyles` | `boolean`                                                              | `false`   | Disable the default styles of components.                                                                                                              |
@@ -60,9 +61,9 @@ Exclusive props if type is `list`.
 
 | Name            | Type                                                                                               | Default                                        | Description                                                                                                                                                                           |
 | --------------- | -------------------------------------------------------------------------------------------------- | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `field`         | `string`                                                                                           | `_`                                            | A field in schema, used if count = true.                                                                                                                                              |
+| `field`         | `string`                                                                                           | `_`                                            | A field in schema, used if `count` = true.                                                                                                                                            |
 | `count`         | `boolean`                                                                                          | `true if no options specified.`                | Map to a field which aims to perform a count aggregate.                                                                                                                               |
-| `options`       | `object`                                                                                           | `_`                                            | Dictionary of name -> filter pairs.                                                                                                                                                   |
+| `options`       | `object`                                                                                           | `_`                                            | Dictionary of name -> filter pairs, used if `count` = false.                                                                                                                          |
 | `multi`         | `boolean`                                                                                          | `true`                                         | Multiple selections allowed.                                                                                                                                                          |
 | `array`         | `boolean`                                                                                          | `false`                                        | Whether the response of the field is an array. This setting is only applicable if count is set.                                                                                       |
 | `group`         | `string`                                                                                           | `false`                                        | A group name, for grouping multiple filters together using [ARRAY_MATCH](https://docs.sajari.com/user-guide/integrating-search/filters/)                                              |
@@ -74,10 +75,47 @@ Exclusive props if type is `list`.
 | `sortAscending` | `boolean`                                                                                          | `true if sort is not 'count'.`                 | Whether to sort in ascending order.                                                                                                                                                   |
 | `format`        | `'default'` \| `'price'`                                                                           | `'default'`                                    | How to format the values.                                                                                                                                                             |
 | `hideCount`     | `boolean`                                                                                          | `false`                                        | Hide total items count.                                                                                                                                                               |
-| `includes`      | `string[]`                                                                                         | `_`                                            | If the list is set, select the items of the list from the filter options.                                                                                                             |
-| `excludes`      | `string[]`                                                                                         | `_`                                            | If the list is set, eliminate the items of the list from the filter options.                                                                                                          |
-| `prefixFilter`  | `string`                                                                                           | `_`                                            | Only include the filter options that starts with the prefix.                                                                                                                          |
+| `includes`      | `string[]`                                                                                         | `_`                                            | Selected options will be displayed as filter options. Used if `count` = true.                                                                                                         |
+| `excludes`      | `string[]`                                                                                         | `_`                                            | Selected options will not be displayed as filter options. Used if `count` = true.                                                                                                     |
+| `prefixFilter`  | `string`                                                                                           | `_`                                            | If specified, only options that exactly match the prefix will be shown. The prefix will be removed from the option displayed. Used if `count` = true.                                 |
 | `textTransform` | `'normal-case'` \| `'uppercase'` \| `'lowercase'` \| `'capitalize'` \| `'capitalize-first-letter'` | `'normal-case'`                                | Control the capitalization of text options.                                                                                                                                           |
+
+**Examples**
+
+<details>
+<summary>Click to expand</summary>
+
+```json
+{
+  "name": "brand",
+  "field": "brand",
+  "title": "Brand"
+}
+```
+
+Be default, it will perform a count aggregate over the field `brand` to return a list of filter options. The list can be filtered via `includes`, `excludes` or `prefixFilters`.
+
+However, we can manually specify the options:
+
+```json
+{
+  "name": "category",
+  "count": false,
+  "title": "category",
+  "multi": false,
+  "hideCount": true,
+  "options": {
+    "Appliances": "level1 ~ 'appliances'",
+    "Audio": "level1 ~ 'audio'",
+    "Cell phones": "level1 ~ 'Cell Phones'",
+    "Video games": "level1 ~ 'Video games'"
+  }
+}
+```
+
+See the example in [Codesandbox](https://codesandbox.io/s/list-filter-87xhw).
+
+</details>
 
 #### Color properties
 
@@ -85,6 +123,24 @@ Exclusive props if type is `color`.
 
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
+
+**Example**
+
+<details>
+<summary>Click to expand</summary>
+
+```json
+{
+  "name": "color",
+  "field": "imageTags",
+  "title": "Color",
+  "type": "color"
+}
+```
+
+See the example in [Codesandbox](https://codesandbox.io/s/color-and-rating-filter-tkf52).
+
+</details>
 
 #### Rating properties
 
@@ -94,13 +150,31 @@ Exclusive props if type is `rating`.
 | ----------- | --------- | ------- | ----------------------- |
 | `hideCount` | `boolean` | `false` | Hide total items count. |
 
-#### Tab properties
+**Example**
 
-Exclusive props if type is `tab`.
+<details>
+<summary>Click to expand</summary>
+
+```json
+{
+  "name": "rating",
+  "field": "rating",
+  "title": "Rating",
+  "type": "rating"
+}
+```
+
+See the example in [Codesandbox](https://codesandbox.io/s/color-and-rating-filter-tkf52).
+
+</details>
+
+#### Tabs properties
+
+Exclusive props if type is `tabs`.
 
 | Name            | Type                                                                                               | Default                         | Description                                                                                                                                                                             |
 | --------------- | -------------------------------------------------------------------------------------------------- | ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `field`         | `string`                                                                                           | `_`                             | A field in schema, used if count = true.                                                                                                                                                |
+| `field`         | `string`                                                                                           | `_`                             | A field in schema, used if `count` = true.                                                                                                                                              |
 | `count`         | `boolean`                                                                                          | `true if no options specified.` | Map to a field which aims to perform a count aggregate.                                                                                                                                 |
 | `options`       | `object`                                                                                           | `_`                             | Dictionary of name -> filter pairs.                                                                                                                                                     |
 | `multi`         | `boolean`                                                                                          | `true`                          | Multiple selections allowed.                                                                                                                                                            |
@@ -111,10 +185,28 @@ Exclusive props if type is `tab`.
 | `sortAscending` | `boolean`                                                                                          | `true if sort is not 'count'.`  | Whether to sort in ascending order.                                                                                                                                                     |
 | `format`        | `'default'` \| `'price'`                                                                           | `'default'`                     | How to format the values.                                                                                                                                                               |
 | `hideCount`     | `boolean`                                                                                          | `false`                         | Hide total items count.                                                                                                                                                                 |
-| `includes`      | `string[]`                                                                                         | `_`                             | If the list is set, select the items of the list from the filter options.                                                                                                               |
-| `excludes`      | `string[]`                                                                                         | `_`                             | If the list is set, eliminate the items of the list from the filter options.                                                                                                            |
-| `prefixFilter`  | `string`                                                                                           | `_`                             | Only include the filter options that starts with the prefix.                                                                                                                            |
+| `includes`      | `string[]`                                                                                         | `_`                             | Selected options will be displayed as filter options. Used if `count` = true.                                                                                                           |
+| `excludes`      | `string[]`                                                                                         | `_`                             | Selected options will not be displayed as filter options. Used if `count` = true.                                                                                                       |
+| `prefixFilter`  | `string`                                                                                           | `_`                             | If specified, only options that exactly match the prefix will be shown. The prefix will be removed from the option displayed. Used if `count` = true.                                   |
 | `textTransform` | `'normal-case'` \| `'uppercase'` \| `'lowercase'` \| `'capitalize'` \| `'capitalize-first-letter'` | `'normal-case'`                 | Control the capitalization of text options.                                                                                                                                             |
+
+**Example**
+
+<details>
+<summary>Click to expand</summary>
+
+```json
+{
+  "name": "category",
+  "field": "level1",
+  "title": "Category",
+  "type": "tabs"
+}
+```
+
+See the example in [Codesandbox](https://codesandbox.io/s/tabs-filter-b4qom).
+
+</details>
 
 #### Select properties
 
@@ -122,7 +214,7 @@ Exclusive props if type is `select`.
 
 | Name            | Type                                                                                               | Default                         | Description                                                                                                                                                                           |
 | --------------- | -------------------------------------------------------------------------------------------------- | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `field`         | `string`                                                                                           | `_`                             | A field in schema, used if count = true.                                                                                                                                              |
+| `field`         | `string`                                                                                           | `_`                             | A field in schema, used if `count` = true.                                                                                                                                            |
 | `count`         | `boolean`                                                                                          | `true if no options specified.` | Map to a field which aims to perform a count aggregate.                                                                                                                               |
 | `options`       | `object`                                                                                           | `_`                             | Dictionary of name -> filter pairs.                                                                                                                                                   |
 | `multi`         | `boolean`                                                                                          | `true`                          | Multiple selections allowed.                                                                                                                                                          |
@@ -133,27 +225,78 @@ Exclusive props if type is `select`.
 | `sortAscending` | `boolean`                                                                                          | `true if sort is not 'count'.`  | Whether to sort in ascending order.                                                                                                                                                   |
 | `format`        | `'default'` \| `'price'`                                                                           | `'default'`                     | How to format the values.                                                                                                                                                             |
 | `hideCount`     | `boolean`                                                                                          | `false`                         | Hide total items count.                                                                                                                                                               |
-| `includes`      | `string[]`                                                                                         | `_`                             | If the list is set, select the items of the list from the filter options.                                                                                                             |
-| `excludes`      | `string[]`                                                                                         | `_`                             | If the list is set, eliminate the items of the list from the filter options.                                                                                                          |
-| `prefixFilter`  | `string`                                                                                           | `_`                             | Only include the filter options that starts with the prefix.                                                                                                                          |
+| `includes`      | `string[]`                                                                                         | `_`                             | Selected options will be displayed as filter options. Used if `count` = true.                                                                                                         |
+| `excludes`      | `string[]`                                                                                         | `_`                             | Selected options will not be displayed as filter options. Used if `count` = true.                                                                                                     |
+| `prefixFilter`  | `string`                                                                                           | `_`                             | If specified, only options that exactly match the prefix will be shown. The prefix will be removed from the option displayed. Used if `count` = true.                                 |
 | `textTransform` | `'normal-case'` \| `'uppercase'` \| `'lowercase'` \| `'capitalize'` \| `'capitalize-first-letter'` | `'normal-case'`                 | Control the capitalization of text options.                                                                                                                                           |
 
+**Example**
+
+<details>
+<summary>Click to expand</summary>
+
+```json
+{
+  "name": "category2",
+  "field": "level2",
+  "title": "Category",
+  "type": "select"
+}
+```
+
+See the example in [Codesandbox](https://codesandbox.io/s/select-filter-2egs3).
+
+</details>
 #### Range properties
 
 Exclusive props if type is `range`.
 
-| Name         | Type       | Default               | Description                                                                                                                              |
-| ------------ | ---------- | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| `field`      | `string`   | `_`                   | A field in schema, used if count = true.                                                                                                 |
-| `group`      | `string`   | `false`               | A group name, for grouping multiple filters together using [ARRAY_MATCH](https://docs.sajari.com/user-guide/integrating-search/filters/) |
-| `aggregate`  | `boolean`  | `true`                | If true, set value for min and max from the backend response.                                                                            |
-| `min`        | `number`   | `0`                   | How to format the values.                                                                                                                |
-| `max`        | `number`   | `aggregate ? 0 : 100` | The min value of the filter.                                                                                                             |
-| `format`     | `string`   | `default`             | The max value of the filter.                                                                                                             |
-| `showInputs` | `boolean`  | `false`               | Show inputs.                                                                                                                             |
-| `steps`      | `number`   | `_`                   | An array of custom steps to use. This will override step.                                                                                |
-| `tick`       | `number`   | `_`                   | The interval to show small ticks.                                                                                                        |
-| `ticks`      | `number[]` | `_`                   | An array of custom ticks to use. This will override tick.                                                                                |
+| Name         | Type                     | Default               | Description                                                                                                                              |
+| ------------ | ------------------------ | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `field`      | `string`                 | `_`                   | A field in schema, used if count = true.                                                                                                 |
+| `group`      | `string`                 | `false`               | A group name, for grouping multiple filters together using [ARRAY_MATCH](https://docs.sajari.com/user-guide/integrating-search/filters/) |
+| `initial`    | `[number, number]`       | `_`                   | The initial value.                                                                                                                       |
+| `aggregate`  | `boolean`                | `true`                | If true, set value for min and max from the backend response.                                                                            |
+| `min`        | `number`                 | `0`                   | The min value of the filter.                                                                                                             |
+| `max`        | `number`                 | `aggregate ? 0 : 100` | The max value of the filter.                                                                                                             |
+| `format`     | `'default'` \| `'price'` | `'default'`           | How to format the values.                                                                                                                |
+| `showInputs` | `boolean`                | `false`               | Show inputs.                                                                                                                             |
+| `steps`      | `number`                 | `_`                   | An array of custom steps to use. This will override step.                                                                                |
+| `tick`       | `number`                 | `_`                   | The interval to show small ticks.                                                                                                        |
+| `ticks`      | `number[]`               | `_`                   | An array of custom ticks to use. This will override tick.                                                                                |
+
+**Example**
+
+<details>
+<summary>Click to expand</summary>
+
+```json
+{
+  "name": "price",
+  "field": "price",
+  "title": "Price",
+  "type": "range"
+}
+```
+
+By default, the `max` and `min` value are set from an aggregation operation. However, we can manually define the min-max range and the intial value.
+
+```json
+{
+  "name": "price",
+  "field": "price",
+  "title": "Price",
+  "type": "range",
+  "aggregate": false,
+  "min": 0,
+  "max": 2000,
+  "initial": [200, 500]
+}
+```
+
+See the example in [Codesandbox](https://codesandbox.io/s/range-filter-ctbvf).
+
+</details>
 
 ### SearchResultsOptions
 
@@ -176,6 +319,9 @@ Exclusive props if mode is `standard`.
 | `urlParams` | `{q: string}`                       | `{q: 'q'}` | A key -> value pair object maps the URL params to initial values for the search. `q` defines the URL param for the initial search query.                            |
 
 **Example**
+
+<details>
+<summary>Click to expand</summary>
 
 ```HTML
 <div data-widget="search-results">
@@ -229,6 +375,8 @@ Exclusive props if mode is `standard`.
 
 See the example in [Codesandbox](https://codesandbox.io/s/standard-mode-search-results-widget-shgnj).
 
+</details>
+
 #### Overlay properties
 
 Exclusive props if mode is `overlay`.
@@ -242,6 +390,9 @@ Exclusive props if mode is `overlay`.
 | `modal`          | `ModalProps`           | `_`                                                                      | Options for the dialog window holding the search results interface. See [Modal props](https://react.docs.sajari.com/search-ui/results#props). |
 
 **Example**
+
+<details>
+<summary>Click to expand</summary>
 
 ```HTML
 <div data-widget="overlay">
@@ -299,6 +450,8 @@ Exclusive props if mode is `overlay`.
 
 See the example in [Codesandbox](https://codesandbox.io/s/overlay-mode-search-results-widget-unv1n).
 
+</details>
+
 ## Takeover Search Input Widget
 
 The Takeover Search Input widget allows users to inject Sajari search experience into the existing input while keeping the current appearance. The following options can be configured when creating the Takeover Search Input widget.
@@ -310,6 +463,9 @@ The Takeover Search Input widget allows users to inject Sajari search experience
 | `omittedElementSelectors` | `string` \| `string[]`                                          | `_`                                                                   | A single or a list of CSS selector of elements to be removed when the widget has mounted.                   |
 
 **Example**
+
+<details>
+<summary>Click to expand</summary>
 
 ```HTML
 <div data-widget="search-input-binding">
@@ -328,6 +484,8 @@ The Takeover Search Input widget allows users to inject Sajari search experience
 
 See the example in [Codesandbox](https://codesandbox.io/s/takeover-input-widget-76okt).
 
+</details>
+
 ## Search Input Widget
 
 The search input widget is typically used in a global template and positioned in the header of the page. It renders a search input field. The following options can be configured when creating the Search Input Widget.
@@ -338,6 +496,9 @@ The search input widget is typically used in a global template and positioned in
 | `redirect` | `{url: string, queryParamName: string}`                         | `{url: 'search', queryParamName: 'q'}` | Options to set the redirect URL and the name of the search query param, normally, the destination is where the [Search Results Widget](#search-results-widget) is located. |
 
 **Example**
+
+<details>
+<summary>Click to expand</summary>
 
 ```HTML
 <div data-widget="search-input">
@@ -361,6 +522,8 @@ The search input widget is typically used in a global template and positioned in
 
 See the example in [Codesandbox](https://codesandbox.io/s/search-input-widget-mui1w).
 
+</details>
+
 ## Common Config Objects
 
 ### Variables
@@ -369,27 +532,28 @@ The Variables is a simple key -> value pair object used for every search request
 
 Value types can be `string | string[] | number | boolean`.
 
-| Name             | Type     | Default       | Description                           |
-| ---------------- | -------- | ------------- | ------------------------------------- |
-| `q`              | `string` | `_`           | The search query.                     |
-| `q.override`     | `string` | `_`           | TBD                                   |
-| `q.suggestions`  | `string` | `_`           | Dictionary of name -> filter pairs.   |
-| `filter`         | `string` | `'_id != ""'` | Default filter to apply.              |
-| `resultsPerPage` | `number` | `15`          | How many results to display per page. |
-| `page`           | `number` | `1`           | Which page to display.                |
+| Name             | Type     | Default       | Description                                    |
+| ---------------- | -------- | ------------- | ---------------------------------------------- |
+| `q`              | `string` | `_`           | The search query.                              |
+| `q.override`     | `string` | `_`           | TBD                                            |
+| `q.suggestions`  | `string` | `_`           | The autocomplete options for the search query. |
+| `filter`         | `string` | `'_id != ""'` | Default filter to apply.                       |
+| `resultsPerPage` | `number` | `15`          | How many results to display per page.          |
+| `page`           | `number` | `1`           | Which page to display.                         |
+| `maxSuggestions` | `number` | `10`          | How many autocomplete suggestions per search.  |
 
 ### Config
 
 The `Config` object defines mapping between key/value pair params to be sent with each and every request.
 
-| Name                  | Type     | Default            | Description                                       |
-| --------------------- | -------- | ------------------ | ------------------------------------------------- |
-| `qParam`              | `string` | `'q'`              | The key that includes a search query.             |
-| `qOverrideParam`      | `string` | `'q.override'`     | TBD                                               |
-| `qSuggestionsParam`   | `string` | `'q.suggestions'`  | The key for dictionary of name -> filter pairs.   |
-| `resultsPerPageParam` | `string` | `'resultsPerPage'` | The key for how many results to display per page. |
-| `pageParam`           | `string` | `'page'`           | The key for which page to display.                |
-| `maxSuggestions`      | `number` | `10`               | TBD                                               |
+| Name                  | Type     | Default            | Description                                                      |
+| --------------------- | -------- | ------------------ | ---------------------------------------------------------------- |
+| `qParam`              | `string` | `'q'`              | The key that includes a search query.                            |
+| `qOverrideParam`      | `string` | `'q.override'`     | TBD                                                              |
+| `qSuggestionsParam`   | `string` | `'q.suggestions'`  | The key that includes autocomplete options for the search query. |
+| `resultsPerPageParam` | `string` | `'resultsPerPage'` | The key for how many results to display per page.                |
+| `pageParam`           | `string` | `'page'`           | The key for which page to display.                               |
+| `maxSuggestions`      | `number` | `'maxSuggestions'` | The key for how many autocomplete suggestions per search.        |
 
 ### FieldDictionary
 
