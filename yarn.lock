@@ -2030,10 +2030,10 @@
     eslint-config-airbnb-typescript "^12.0.0"
     eslint-config-prettier "^7.1.0"
 
-"@sajari/react-components@^1.7.16":
-  version "1.7.16"
-  resolved "https://registry.yarnpkg.com/@sajari/react-components/-/react-components-1.7.16.tgz#7ae7e85212c36cc9074ef6bf9ac58edafc9092eb"
-  integrity sha512-jkXEAtFesU9W828wzn8Xbifpu4T8WwpKL2EVdYN4ieZwXMMf6M/KfUhxM0V+DI9kJKOi80AKBYkVAF/CtLbO/Q==
+"@sajari/react-components@^1.8.0":
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/@sajari/react-components/-/react-components-1.8.0.tgz#76c24cd6bbb24f7f95aeea79ade10fe33ec8534a"
+  integrity sha512-55udS8oaYVsNvBWLCUESmWDjCYNVlL3K6IAahjgl4o9Ql+0E29DphC7WAF8yLr2ppcSMv1NtIPngg1+hDxtuzw==
   dependencies:
     "@popperjs/core" "^2.9.2"
     "@react-aria/button" "^3.3.0"
@@ -2055,19 +2055,10 @@
     smoothscroll-polyfill "^0.4.4"
     use-resize-observer "^7.0.0"
 
-"@sajari/react-hooks@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@sajari/react-hooks/-/react-hooks-2.1.0.tgz#992665c00037cee61f357185e34cfe0e2429b025"
-  integrity sha512-uWbkV7d8/s41N32W4ju0gHVB/ZryB+xzTBcMlqu3dQnY1Ke+RurdccTf5g3c9DlHHiDiwcAPjgK2rtu+37A2wQ==
-  dependencies:
-    "@sajari/react-sdk-utils" "^1.3.10"
-    "@sajari/sdk-js" "^2.0.0-rc.2"
-    js-cookie "^2.2.1"
-
-"@sajari/react-hooks@^2.2.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@sajari/react-hooks/-/react-hooks-2.2.0.tgz#30c0e58db576b75a9159d1bfe49fee1dbe222e20"
-  integrity sha512-a0CbPIZhqFTNU/JYoHEDpYMVTvRb5hy4jJDQrgzZiWHOCEwLzMkDQ6VpObula9g13YJPHn0Rol7RveLmrw3OPQ==
+"@sajari/react-hooks@^2.2.1":
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/@sajari/react-hooks/-/react-hooks-2.2.1.tgz#6bbcd6e8cac4b9055c1819631642b7b74f04036f"
+  integrity sha512-8anMjHiliDei39UMsiOWErxeYFnKcZG1tkmrrtb1ZOoApHESFEjRqgqBK6dwGwcms3XDVGO4e4+c/Vzui+ateQ==
   dependencies:
     "@sajari/react-sdk-utils" "^1.3.10"
     "@sajari/sdk-js" "^2.0.0-rc.2"
@@ -2088,15 +2079,30 @@
     tailwindcss-truncate-multiline "^1.0.3"
     twin.macro "^1.12.1"
 
-"@sajari/react-search-ui@^2.2.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-2.2.0.tgz#e416a39ee8fcc80fc33099f7db9d3cf8df99659a"
-  integrity sha512-q7xG3+6EBqjOcAGUElbLgMHQFdx/Ql/bP3zZLBTHYK0RykmIpYnFEbIElRBwc0IQdmj+kWf+QS5AYyg5GGmogA==
+"@sajari/react-sdk-utils@^1.3.11":
+  version "1.3.11"
+  resolved "https://registry.yarnpkg.com/@sajari/react-sdk-utils/-/react-sdk-utils-1.3.11.tgz#a38c98e4dde6768f91da55befe0953c0454bc197"
+  integrity sha512-/rACaAd2yVpfL76PBy3f6pRrlFqdhfSK2qOXZ3yLKlVAyntuQuLGfOctXNDdbYAlDW3gceqISZ/0DyPCyKuRCg==
+  dependencies:
+    "@emotion/core" "^10.1.1"
+    "@emotion/is-prop-valid" "1.0.0"
+    "@emotion/styled" "^10.0.27"
+    "@tailwindcss/ui" "^0.7.2"
+    emotion-theming "^10.0.27"
+    tailwindcss "^1.9.6"
+    tailwindcss-filters "^3.0.0"
+    tailwindcss-truncate-multiline "^1.0.3"
+    twin.macro "^1.12.1"
+
+"@sajari/react-search-ui@^2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-2.4.0.tgz#3c648b0fb20ea326100f053293353a72507e66eb"
+  integrity sha512-pRvuYrfreoEp8M3SvHVLHTFfXgNcKIO/KnXzx8sh9zAo5NocvTZblOyZjFhCna3O1MxARF39cdpa89TVHMKmhQ==
   dependencies:
     "@react-aria/utils" "3.5.0"
-    "@sajari/react-components" "^1.7.16"
-    "@sajari/react-hooks" "^2.1.0"
-    "@sajari/react-sdk-utils" "^1.3.10"
+    "@sajari/react-components" "^1.8.0"
+    "@sajari/react-hooks" "^2.2.1"
+    "@sajari/react-sdk-utils" "^1.3.11"
     i18next "19.8.7"
     i18next-browser-languagedetector "^6.0.1"
     react-aria-live "^2.0.5"
