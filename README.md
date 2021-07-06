@@ -2,9 +2,8 @@
 
 A lightweight search integration for using Sajari as simple embedded widgets. It is a wrapper of our [React SDK](https://react.docs.sajari.com/).
 
-## Example
+See the [configuration reference documentation](/documentation/configuration-reference.md) for available configuration options and examples. 
 
-Coming soon
 
 ## The stack
 
