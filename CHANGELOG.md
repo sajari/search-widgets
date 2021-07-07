@@ -1,5 +1,17 @@
 # @sajari/search-widgets
 
+## 1.8.0
+
+### Minor Changes
+
+- 41759a6: Bump react-search-ui dependency, this enables the sale price feature
+
+### Patch Changes
+
+- 7ed457f: Allow the takeover widget to have other modes other than suggestions
+- 1bc1d26: Fix the incorrect type of `variables`, where it should be the valid parameter of the constructor of `Variables` class.
+- 199458a: Fix unable to customize `config`.
+
 ## 1.7.0
 
 ### Minor Changes
