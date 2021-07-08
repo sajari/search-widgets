@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 1.9.1
+
+### Patch Changes
+
+- 7d03747: Skip typing issues that block the build process.
+
 ## 1.9.0
 
 ### Minor Changes
