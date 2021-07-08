@@ -100,6 +100,8 @@ export function useSearchProviderProps(props: SearchResultsProps) {
           endpoint,
         },
         { name, version },
+        // TODO: note it here if we can resolve the issue
+        // @ts-ignore: missing type NoTracking
         tracking,
       ),
       config,
