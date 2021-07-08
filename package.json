@@ -12,7 +12,7 @@
     "analyze": "cross-env NODE_ENV=production preact build --analyze",
     "lint": "eslint src",
     "lint:fix": "eslint --fix src",
-    "dev": "preact watch --template ./src/dev/index.ejs --no-esm",
+    "dev": "preact watch --host=localhost --template ./src/dev/index.ejs --no-esm",
     "dev:ssl": "preact watch --template ./src/dev/index.ejs --no-esm --host search-widgets.local --https --cert ./src/dev/cert.pem --key ./src/dev/cert.key",
     "deploy": "yarn lint && yarn build:script && node -r esm scripts/deploy.js",
     "deploy:loader-only": "yarn lint && yarn build:script && node -r esm scripts/deploy.js --loader-only",
