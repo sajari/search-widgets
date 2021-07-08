@@ -1,9 +1,49 @@
-export type ResultValue = {
-  variant_ids?: string[];
-  variant_image_ids?: string[];
-  variant_prices: string[];
-  image_ids?: string[];
+export type ShopifySchema = {
+  body_html?: string;
+  collection_ids?: string[];
+  collection_titles?: string[];
+  created_at: string;
+  handle: string;
+  id: string;
+  image_height?: string;
+  image_heights?: string[];
+  image_width?: string;
+  image_widths?: string[];
+  image_tags?: string[];
+  image_url?: string;
   image_urls?: string[];
-  images: string[];
+  inventory_quantity?: string;
   max_price: string;
+  min_price: string;
+  option_color?: string[];
+  option_size?: string[];
+  product_type?: string;
+  published_at?: string;
+  published_scope?: string;
+  requires_shipping?: string; // "true" / "false"
+  status?: string;
+  tags?: string[];
+  taxable?: string; // "true" / "false"
+  template_suffix?: string;
+  title?: string;
+  updated_at?: string;
+  variant_compare_at_prices?: string[];
+  variant_ids?: string[];
+  variant_options_1?: string[];
+  variant_options_1_in_stock?: string[];
+  variant_options_2?: string[];
+  variant_options_2_in_stock?: string[];
+  variant_options_3?: string[];
+  variant_options_3_in_stock?: string[];
+  variant_position?: string[];
+  variant_prices: string[];
+  variant_quantities?: string[];
+  variant_skus?: string[];
+  variant_tax_codes?: string[];
+  variant_titles?: string[];
+  variant_titles_in_stock?: string[];
+  variant_weights?: string[];
+  variant_image_ids?: string[];
+  image_ids?: string[];
+  images: string[];
 };

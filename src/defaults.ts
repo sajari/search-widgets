@@ -3,7 +3,7 @@ import { isArray, isEmpty, isNumber, isString, merge, MergeOptions } from '@saja
 import { cloneDeep } from 'lodash-es';
 
 import { SearchResultsOptions, SearchResultsProps, TrackingType, WidgetType } from './types';
-import { ResultValue as ShopifyResultValue } from './types/shopify';
+import { ShopifySchema } from './types/shopify';
 import { mapAspectRatio } from './utils';
 
 type DeepPartial<T> = {
@@ -56,7 +56,7 @@ export function mergeProps(params: MergePropsParams): MergedSearchResultsProps {
 
   switch (preset) {
     case 'shopify': {
-      const getVariantImages = (values: ShopifyResultValue) => {
+      const getVariantImages = (values: ShopifySchema) => {
         return values.variant_ids?.map((_: string, i: number) => {
           const variantImageId = values.variant_image_ids?.[i];
           const variantImageIndex = values.image_ids?.findIndex((ii: string) => ii === variantImageId);
@@ -72,7 +72,7 @@ export function mergeProps(params: MergePropsParams): MergedSearchResultsProps {
           url: '/products/${handle}',
           subtitle: 'vendor',
           description: 'body_html',
-          image: (values: ShopifyResultValue) => {
+          image: (values: ShopifySchema) => {
             const images = values.image_urls ?? values.images;
             // If there are no variant images to show
             if (!values.variant_image_ids) {
@@ -92,7 +92,7 @@ export function mergeProps(params: MergePropsParams): MergedSearchResultsProps {
 
             return images;
           },
-          price: (values: ShopifyResultValue) => {
+          price: (values: ShopifySchema) => {
             const prices = values.variant_prices ?? values.max_price;
 
             if (!values.variant_image_ids) {
