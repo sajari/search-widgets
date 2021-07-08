@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 1.9.0
+
+### Minor Changes
+
+- 3350de0: Bump version of react-hooks in order to pick up sale price feature.
+
 ## 1.8.0
 
 ### Minor Changes
