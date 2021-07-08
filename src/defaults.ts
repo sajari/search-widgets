@@ -3,6 +3,7 @@ import { isArray, isEmpty, isNumber, isString, merge, MergeOptions } from '@saja
 import { cloneDeep } from 'lodash-es';
 
 import { SearchResultsOptions, SearchResultsProps, TrackingType, WidgetType } from './types';
+import { ResultValue as ShopifyResultValue } from './types/shopify';
 import { mapAspectRatio } from './utils';
 
 type DeepPartial<T> = {
@@ -55,6 +56,15 @@ export function mergeProps(params: MergePropsParams): MergedSearchResultsProps {
 
   switch (preset) {
     case 'shopify': {
+      const getVariantImages = (values: ShopifyResultValue) => {
+        return values.variant_ids?.map((_: string, i: number) => {
+          const variantImageId = values.variant_image_ids?.[i];
+          const variantImageIndex = values.image_ids?.findIndex((ii: string) => ii === variantImageId);
+          const variantImageUrl = values.image_urls?.[variantImageIndex ?? -1];
+
+          return variantImageUrl;
+        });
+      };
       const src: DeepPartial<MergedSearchResultsProps> = {
         tracking: new ClickTracking('id'),
         fields: {
@@ -62,25 +72,46 @@ export function mergeProps(params: MergePropsParams): MergedSearchResultsProps {
           url: '/products/${handle}',
           subtitle: 'vendor',
           description: 'body_html',
-          image: (values: {
-            variant_ids?: string[];
-            variant_image_ids?: string[];
-            image_ids?: string[];
-            image_urls?: string;
-            images: string[];
-          }) => {
-            const variantImages = values.variant_ids?.map((_: string, i: number) => {
-              const variantImageId = values.variant_image_ids?.[i];
-              const variantImageIndex = values.image_ids?.findIndex((ii: string) => ii === variantImageId);
-              const variantImageUrl = values.image_urls?.[variantImageIndex ?? -1];
+          image: (values: ShopifyResultValue) => {
+            const images = values.image_urls ?? values.images;
+            // If there are no variant images to show
+            if (!values.variant_image_ids) {
+              // Just return the list of images
+              return images;
+            }
 
-              return variantImageUrl;
-            });
+            // Get the variant image urls
+            const variantImages = getVariantImages(values);
+            const filteredVariantImages = (variantImages ?? []).filter(Boolean);
+            const variantPrices = values.variant_prices;
 
-            return [values.image_urls?.[0] ?? values.images[0], ...(variantImages ?? [])].filter(Boolean);
+            // If everything matches a.k.a variant image with the corresponding price
+            if (filteredVariantImages.length > 0 && filteredVariantImages.length === variantPrices.length) {
+              return [images[0], ...filteredVariantImages];
+            }
+
+            return images;
           },
-          price: (values: { variant_prices: string[] }) => {
-            return [values.variant_prices, ...values.variant_prices].filter(Boolean);
+          price: (values: ShopifyResultValue) => {
+            const prices = values.variant_prices ?? values.max_price;
+
+            if (!values.variant_image_ids) {
+              return prices;
+            }
+
+            // Get the variant image urls
+            const variantImages = getVariantImages(values);
+            const filteredVariantImages = (variantImages ?? []).filter(Boolean);
+            const variantPrices = values.variant_prices;
+
+            // If everything matches a.k.a variant image with the corresponding price
+            if (filteredVariantImages.length > 0 && filteredVariantImages.length === variantPrices.length) {
+              return [prices, ...prices];
+            }
+
+            // Otherwise return the array with the first one being an array because
+            // the first one in the image urls is not an variant image
+            return prices;
           },
           originalPrice: 'variant_compare_at_prices',
         },
