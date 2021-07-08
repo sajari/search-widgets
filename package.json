@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "@sajari/search-widgets",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "license": "MIT",
   "browserslist": "> 1%",
   "scripts": {
