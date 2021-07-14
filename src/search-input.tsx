@@ -22,9 +22,10 @@ export default (defaultProps: SearchInputProps) => {
     emitter,
   };
 
-  const { mode = 'suggestions', options, redirect, preset } = defaultProps;
+  const { mode = 'suggestions', redirect, preset } = defaultProps;
+  const { options } = context;
   const AppliedInput = (props: InputProps<any> & { name?: string }) => (
-    <Input mode={mode} {...options?.input} {...props} showPoweredBy={preset !== 'shopify'} />
+    <Input {...options?.input} {...props} mode={mode} showPoweredBy={preset !== 'shopify'} />
   );
 
   const RenderInput = () => {

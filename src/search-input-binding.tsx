@@ -34,20 +34,13 @@ const onSelectHandler = (element: Element | null) => () => {
 const Wrapper = ({
   children,
   ...props
-}: Omit<SearchInputBindingProps, 'selector' | 'omittedElementSelectors' | 'mode'> & {
+}: ReturnType<typeof useSearchProviderProps> & {
   children: React.ReactNode;
 }) => {
-  const { searchOnLoad, viewType, defaultFilter, theme, searchContext, currency } = useSearchProviderProps(props);
+  const { searchContext } = props;
 
   return (
-    <SearchProvider
-      search={searchContext}
-      theme={theme}
-      searchOnLoad={searchOnLoad}
-      defaultFilter={defaultFilter}
-      viewType={viewType}
-      currency={currency}
-    >
+    <SearchProvider {...props} search={searchContext}>
       {children}
     </SearchProvider>
   );
@@ -58,6 +51,12 @@ const renderBindingInput = (
   params: Omit<SearchInputBindingProps, 'selector' | 'omittedElementSelectors'>,
 ) => {
   const { mode = 'suggestions', ...props } = params;
+  const searchProviderProps = useSearchProviderProps(props);
+  const {
+    context: {
+      options: { input: inputProps },
+    },
+  } = searchProviderProps;
   targets.forEach((target) => {
     const showPoweredBy = props.preset !== 'shopify';
 
@@ -67,8 +66,9 @@ const renderBindingInput = (
       removeAttributes(target);
 
       render(
-        <Wrapper {...props}>
+        <Wrapper {...searchProviderProps}>
           <Input
+            {...inputProps}
             mode={mode}
             onSelect={onSelectHandler(target)}
             inputElement={{ current: target }}
@@ -89,8 +89,9 @@ const renderBindingInput = (
         removeAttributes(element);
 
         render(
-          <Wrapper {...props}>
+          <Wrapper {...searchProviderProps}>
             <Input
+              {...inputProps}
               mode={mode}
               onSelect={onSelectHandler(element)}
               inputElement={{ current: element }}
