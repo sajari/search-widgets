@@ -1,5 +1,19 @@
 # @sajari/search-widgets
 
+## 2.0.0
+
+### Major Changes
+
+- f7505f4: Clear filters on a new search.
+
+### Minor Changes
+
+- 42ec4ac: Show product's variant images if any
+
+### Patch Changes
+
+- 4388f40: Change `yarn dev` to start at `localhost` instead `0.0.0.0` to avoid permission denied issues.
+
 ## 1.9.1
 
 ### Patch Changes
