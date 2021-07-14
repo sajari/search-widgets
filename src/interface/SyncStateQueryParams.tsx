@@ -41,7 +41,7 @@ const FilterWatcher = ({ filter, replace }: { filter: FilterBuilder; replace: bo
 const RangeFilterWatcher = ({ filter, replace }: { filter: RangeFilterBuilder; replace: boolean }) => {
   const key = filter.getField() || filter.getName();
   const name = filter.getName();
-  const { range, setRange, min, max } = useRangeFilter(name);
+  const { range, setRange, min, max, reset } = useRangeFilter(name);
   const allowSetParam = useRef(false);
   const { response, results } = useSearchContext();
 
@@ -51,14 +51,17 @@ const RangeFilterWatcher = ({ filter, replace }: { filter: RangeFilterBuilder; r
     callback: replace
       ? undefined
       : (value) => {
-          let rangeValue = paramToRange(value);
-          if (!isRange(rangeValue)) {
-            rangeValue = filter.getAggregateMaxRange() as Range;
+          const rangeValue = paramToRange(value);
+          if (!isRange(rangeValue) || rangeValue[0] === rangeValue[1]) {
+            if (filter.isAggregate()) {
+              // if aggregate, call reset to set range "null"
+              reset();
+            } else {
+              setRange([min, max]);
+            }
+          } else {
+            setRange(rangeValue as Range);
           }
-          if (!isRange(rangeValue)) {
-            rangeValue = [min, max];
-          }
-          setRange(rangeValue as Range);
         },
   });
 
@@ -69,11 +72,16 @@ const RangeFilterWatcher = ({ filter, replace }: { filter: RangeFilterBuilder; r
   });
 
   useEffect(() => {
-    if (allowSetParam.current && range) {
-      const shouldSetNewValue = range[0] !== min || range[1] !== max;
-      setFilterParam(shouldSetNewValue ? rangeToParam(range) : '');
-      if (filter.isAggregate()) {
-        setMinMaxParam(shouldSetNewValue ? filter.getMinMax().join(':') : '');
+    if (allowSetParam.current) {
+      if (range) {
+        const shouldSetNewValue = range[0] !== min || range[1] !== max;
+        setFilterParam(shouldSetNewValue ? rangeToParam(range) : '');
+        if (filter.isAggregate()) {
+          setMinMaxParam(shouldSetNewValue ? filter.getMinMax().join(':') : '');
+        }
+      } else {
+        setMinMaxParam('');
+        setFilterParam('');
       }
     }
   }, [range]);
