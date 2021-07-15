@@ -15,9 +15,10 @@ const dirs = {
 const bucketName = 'sajari-public-assets';
 
 class FileUpload {
-  constructor(name, latest = false) {
+  constructor(name, latest = false, loaderVersion) {
     this.name = name;
     this.isLatest = latest;
+    this.loaderVersion = loaderVersion;
   }
 
   get isLoader() {
@@ -29,7 +30,11 @@ class FileUpload {
   }
 
   get destination() {
-    return `embed/${this.isLoader && this.isLatest ? semver.major(version) : version}/${this.name}`;
+    let targetVersion = this.isLoader && this.isLatest ? semver.major(version) : version;
+    if (this.loaderVersion) {
+      targetVersion = this.loaderVersion;
+    }
+    return `embed/${targetVersion}/${this.name}`;
   }
 
   get cacheControl() {
@@ -80,6 +85,13 @@ async function main(...args) {
 
   if (loaderOnly || full) {
     files.push(new FileUpload('loader.js', true));
+  }
+
+  // Edge case: due to an incident from a major bump, we’d want the loader CDN link v1 to point to v2 of the bundle
+  // (so that existing users won’t have to update the CDN link)
+  // https://cdn.sajari.com/embed/1/loader.js -> https://cdn.sajari.com/embed/2.x.x/bundle.js
+  if (semver.major(version) === 2) {
+    files.push(new FileUpload('loader.js', true, '1'));
   }
 
   // https://googleapis.dev/nodejs/storage/latest/global.html#StorageOptions
