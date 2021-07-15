@@ -58,7 +58,7 @@ export type SearchResultsOptions<M = Mode> = {
     }
 );
 
-export type PresetType = 'shopify' | 'website' | undefined;
+export type PresetType = 'shopify' | 'website' | 'app' | undefined;
 export type TrackingType = 'posneg' | 'click';
 
 export interface SearchResultsProps {
