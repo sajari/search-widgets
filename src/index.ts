@@ -28,11 +28,19 @@ const emitter = mitt();
 const renderAll = () => {
   // Build widgets
   Object.entries(components).forEach(([type, component]) => {
+    const selector = `[${attribute}="${type}"]`;
+    const shadowRoot =
+      type === 'overlay'
+        ? document.body.appendChild(document.createElement('div')).attachShadow({ mode: 'open' })
+        : document.querySelector(selector)?.attachShadow({ mode: 'open' });
+    const container = shadowRoot?.appendChild(document.createElement('div'));
+
     habitat(component).render({
-      selector: `[${attribute}="${type}"]`,
+      selector,
       clean: true,
       defaultProps: {
         emitter,
+        container,
       },
     });
   });
