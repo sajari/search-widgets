@@ -85,6 +85,7 @@ export interface SearchResultsProps {
   currency?: ContextProviderValues['currency'];
   options?: SearchResultsOptions;
   emitter: Emitter;
+  container?: HTMLElement;
 }
 
 export interface SearchResultsContextProps
@@ -97,6 +98,11 @@ export interface SearchResultsContextProps
 export interface PubSubContextProps {
   children?: ComponentChildren;
   emitter: Emitter;
+}
+
+export interface CustomContainerContextProps {
+  children?: ComponentChildren;
+  container?: HTMLElement;
 }
 
 export interface InterfaceContextProps {

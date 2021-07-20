@@ -1,7 +1,9 @@
 import { SearchProvider } from '@sajari/react-search-ui';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
+import CustomContainerContextProvider from './container/context';
 import SearchResultsContextProvider from './context';
+import { EmotionCache } from './emotion-cache';
 import { useSearchProviderProps } from './hooks';
 import Interface from './interface';
 import PubSubContextProvider from './pubsub/context';
@@ -10,6 +12,7 @@ import { SearchResultsProps } from './types';
 const messageType = 'sajari-shopify-ui-builder-update';
 
 export default (defaultProps: SearchResultsProps) => {
+  const { container } = defaultProps;
   const [state, setState] = useState(defaultProps);
   const {
     emitter,
@@ -25,9 +28,7 @@ export default (defaultProps: SearchResultsProps) => {
     currency,
   } = useSearchProviderProps(state);
 
-  const emitterContext = {
-    emitter,
-  };
+  const emitterContext = useMemo(() => ({ emitter }), [emitter]);
 
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
@@ -61,7 +62,11 @@ export default (defaultProps: SearchResultsProps) => {
     >
       <PubSubContextProvider value={emitterContext}>
         <SearchResultsContextProvider value={context}>
-          <Interface />
+          <CustomContainerContextProvider value={useMemo(() => ({ container }), [])}>
+            <EmotionCache container={container}>
+              <Interface />
+            </EmotionCache>
+          </CustomContainerContextProvider>
         </SearchResultsContextProvider>
       </PubSubContextProvider>
     </SearchProvider>

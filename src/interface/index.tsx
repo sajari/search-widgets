@@ -1,5 +1,6 @@
 import { isSSR } from '@sajari/react-sdk-utils';
-import { useEffect, useState } from 'preact/hooks';
+import { memo } from 'preact/compat';
+import { useEffect, useMemo, useState } from 'preact/hooks';
 
 import { useSearchResultsContext } from '../context';
 import { useDebounce } from '../hooks';
@@ -8,7 +9,7 @@ import InterfaceContextProvider from './context';
 import OverlayInterface from './OverlayInterface';
 import StandardInterface from './StandardInterface';
 
-export default () => {
+export default memo(() => {
   const [filtersShown, setFiltersShown] = useState(true);
   const {
     options: { mode },
@@ -23,16 +24,19 @@ export default () => {
     }
   }, [JSON.stringify(breakpoints)]);
 
-  const context = {
-    breakpoints,
-    filtersShown,
-    setFiltersShown,
-    setWidth,
-  };
+  const context = useMemo(
+    () => ({
+      breakpoints,
+      filtersShown,
+      setFiltersShown,
+      setWidth,
+    }),
+    [breakpoints, filtersShown, setFiltersShown, setWidth],
+  );
 
   return (
     <InterfaceContextProvider value={context}>
       {mode === 'standard' ? <StandardInterface /> : <OverlayInterface />}
     </InterfaceContextProvider>
   );
-};
+});

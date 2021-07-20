@@ -5,7 +5,9 @@ import { useEffect } from 'preact/hooks';
 import React from 'react';
 import tw from 'twin.macro';
 
+import { useCustomContainer } from '../container/context';
 import { useSearchResultsContext } from '../context';
+import { renderInContainer } from '../emotion-cache';
 import { SearchResultsOptions } from '../types';
 import { useInterfaceContext } from './context';
 import Options from './Options';
@@ -17,6 +19,7 @@ const StandardInterface = () => {
   const { results } = useSearchContext();
   const { setWidth, filtersShown, breakpoints } = useInterfaceContext();
   const { setViewType, viewType } = useSearchUIContext();
+  const { container } = useCustomContainer();
   const tabsFilters = filters?.filter((props) => props.type === 'tabs') || [];
   const hideSidebar =
     (filters?.filter((props) => props.type !== 'tabs') || []).length === 0 && options.input?.position === 'top';
@@ -30,7 +33,7 @@ const StandardInterface = () => {
     }
   }, [isMobile, breakpoints]);
 
-  return (
+  return renderInContainer(
     <React.Fragment>
       {syncURL !== 'none' ? <SyncStateQueryParams /> : null}
       <ResizeObserver onResize={(size) => setWidth(size.width)}>
@@ -56,7 +59,12 @@ const StandardInterface = () => {
                     .map((props) => {
                       const { type, textTransform = 'capitalize-first-letter' } = props;
                       if (type === 'list' || type === 'select') {
-                        return <Filter {...{ ...props, textTransform }} key={props.name} />;
+                        return (
+                          <Filter
+                            {...{ ...props, textTransform }}
+                            key={props.name} // eslint-disable-line react/destructuring-assignment
+                          />
+                        );
                       }
                       return <Filter {...props} key={props.name} />;
                     })}
@@ -79,7 +87,8 @@ const StandardInterface = () => {
           </div>
         </div>
       </ResizeObserver>
-    </React.Fragment>
+    </React.Fragment>,
+    container,
   );
 };
 

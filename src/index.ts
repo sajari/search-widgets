@@ -5,6 +5,7 @@ import habitat from 'preact-habitat';
 import SearchInput from './search-input';
 import SearchInputBinding from './search-input-binding';
 import SearchResults from './search-results';
+import { WidgetType } from './types';
 
 if (!process.env.DEPLOY_SCRIPT) {
   import('./dev/app')
@@ -14,7 +15,7 @@ if (!process.env.DEPLOY_SCRIPT) {
     .catch(console.error);
 }
 
-const components: Record<string, ComponentType> = {
+const components: Record<WidgetType, ComponentType> = {
   'search-results': SearchResults as ComponentType,
   overlay: SearchResults as ComponentType,
   'search-input-binding': SearchInputBinding as ComponentType,
@@ -42,7 +43,7 @@ const renderAll = () => {
       return;
     }
 
-    const type = element.getAttribute(attribute) as string;
+    const type = element.getAttribute(attribute) as WidgetType;
 
     if (!Object.keys(components).includes(type)) {
       return;
@@ -52,6 +53,13 @@ const renderAll = () => {
     const id = `widget-${Date.now()}`;
     element.setAttribute('id', id);
 
+    // create shadowRoot
+    const shadowRoot =
+      type === 'overlay'
+        ? document.body.appendChild(document.createElement('div')).attachShadow({ mode: 'open' })
+        : element.attachShadow({ mode: 'open' });
+
+    const container = shadowRoot.appendChild(document.createElement('div'));
     const component = components[type];
 
     habitat(component).render({
@@ -59,6 +67,7 @@ const renderAll = () => {
       clean: true,
       defaultProps: {
         emitter,
+        container,
       },
     });
   };
