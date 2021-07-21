@@ -1,5 +1,15 @@
 # @sajari/search-widgets
 
+## 2.1.0
+
+### Minor Changes
+
+- 1228c71: Add support for app collections.
+
+### Patch Changes
+
+- 43c261d: Upgrade the SDK packages to include the fix when `_id` is missing in the backend response. See https://github.com/sajari/sdk-react/pull/564.
+
 ## 2.0.1
 
 ### Patch Changes
