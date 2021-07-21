@@ -512,15 +512,16 @@ The Variables is a simple key -> value pair object used for every search request
 
 Value types can be `string | string[] | number | boolean`.
 
-| Name             | Type     | Default       | Description                                    |
-| ---------------- | -------- | ------------- | ---------------------------------------------- |
-| `q`              | `string` | `_`           | The search query.                              |
-| `q.override`     | `string` | `_`           |                                                |
-| `q.suggestions`  | `string` | `_`           | The autocomplete options for the search query. |
-| `filter`         | `string` | `'_id != ""'` | Default filter to apply.                       |
-| `resultsPerPage` | `number` | `15`          | How many results to display per page.          |
-| `page`           | `number` | `1`           | Which page to display.                         |
-| `maxSuggestions` | `number` | `10`          | How many autocomplete suggestions per search.  |
+| Name             | Type     | Default       | Description                                                       |
+| ---------------- | -------- | ------------- | ----------------------------------------------------------------- |
+| `q`              | `string` | `_`           | The search query.                                                 |
+| `q.override`     | `string` | `_`           |                                                                   |
+| `q.suggestions`  | `string` | `_`           | The autocomplete options for the search query.                    |
+| `filter`         | `string` | `'_id != ""'` | Default filter to apply.                                          |
+| `resultsPerPage` | `number` | `15`          | How many results to display per page.                             |
+| `page`           | `number` | `1`           | Which page to display.                                            |
+| `fields`         | `string` | `''`          | What fields are shown in the response. Use "" to show all fields. |
+| `maxSuggestions` | `number` | `10`          | How many autocomplete suggestions per search.                     |
 
 ### Config
 
@@ -533,6 +534,7 @@ The `Config` object defines mapping between key/value pair params to be sent wit
 | `qSuggestionsParam`   | `string` | `'q.suggestions'`  | The key that includes autocomplete options for the search query. |
 | `resultsPerPageParam` | `string` | `'resultsPerPage'` | The key for how many results to display per page.                |
 | `pageParam`           | `string` | `'page'`           | The key for which page to display.                               |
+| `fieldsParam`         | `string` | `'fields'`         | The key for what fields to show in the response.                 |
 | `maxSuggestions`      | `number` | `'maxSuggestions'` | The key for how many autocomplete suggestions per search.        |
 
 ### FieldDictionary
