@@ -37,15 +37,14 @@ const Wrapper = ({
 }: Omit<SearchInputBindingProps, 'selector' | 'omittedElementSelectors' | 'mode'> & {
   children: React.ReactNode;
 }) => {
-  const { searchOnLoad, viewType, defaultFilter, theme, searchContext, currency } = useSearchProviderProps(props);
+  const { defaultFilter, theme, searchContext, currency } = useSearchProviderProps(props);
 
   return (
     <SearchProvider
       search={searchContext}
       theme={theme}
-      searchOnLoad={searchOnLoad}
+      searchOnLoad={false}
       defaultFilter={defaultFilter}
-      viewType={viewType}
       currency={currency}
     >
       {children}
