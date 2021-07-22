@@ -4,7 +4,10 @@ import { createPortal } from 'preact/compat';
 import { useMemo } from 'preact/hooks';
 
 export const EmotionCache = ({ children, container }: { children: JSX.Element; container?: HTMLElement }) => {
-  const emotionCache = useMemo(() => createCache({ container: container ?? document.head }), [container]);
+  const emotionCache = useMemo(
+    () => createCache({ container: (container?.getRootNode() as HTMLElement) ?? document.head }),
+    [container],
+  );
   return <CacheProvider value={emotionCache}>{children}</CacheProvider>;
 };
 
