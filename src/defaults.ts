@@ -163,7 +163,22 @@ export function mergeProps(params: MergePropsParams): MergedSearchResultsProps {
       merge(mergeOptions, props, src);
       break;
     }
-    case 'app':
+
+    case 'app': {
+      const src: DeepPartial<MergedSearchResultsProps> = {
+        options: {
+          syncURL: 'push',
+        },
+      };
+
+      if (fields?.url && typeof fields.url === 'string') {
+        src.tracking = new ClickTracking(fields.url);
+      }
+
+      merge(mergeOptions, props, src);
+      break;
+    }
+
     case 'website': {
       const src: DeepPartial<MergedSearchResultsProps> = {
         tracking: new ClickTracking(),
