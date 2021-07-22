@@ -1,5 +1,16 @@
 # @sajari/search-widgets
 
+## 2.2.0
+
+### Minor Changes
+
+- 0fa76a0: Upgrade new versions of SDK to include the template feature, the variant and the status feature.
+
+### Patch Changes
+
+- 8b823e5: Fix if the schema of app collections does not contain `url`, it will break the app due to the tracking failed to be initialized.
+- e1295a5: Remove search on load calls in takeover input
+
 ## 2.1.0
 
 ### Minor Changes
