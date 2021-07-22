@@ -2035,10 +2035,10 @@
     eslint-config-airbnb-typescript "^12.0.0"
     eslint-config-prettier "^7.1.0"
 
-"@sajari/react-components@^1.8.1":
-  version "1.8.1"
-  resolved "https://registry.yarnpkg.com/@sajari/react-components/-/react-components-1.8.1.tgz#fc4acc716b829092e8a654acb0eb40982d24889b"
-  integrity sha512-hLF2SnQ6j/ZxV2HWh6mGWMaN7fz4VBo3gPkNIoOSp6dSRlAxZwE3V5uTFe7XmniVkiXjcjJTqSJHpv2IByclEA==
+"@sajari/react-components@^1.8.2":
+  version "1.8.2"
+  resolved "https://registry.yarnpkg.com/@sajari/react-components/-/react-components-1.8.2.tgz#88aebfbf4ac499ab3b860285b7438217f6b95003"
+  integrity sha512-epesrymmGxoevGUHjeHDrm9fd5ILadN6x5YFXrYATraLGL6NNxUm/mKxMpgoTA32qW8AdkVdQUDpf0peOw45JA==
   dependencies:
     "@popperjs/core" "^2.9.2"
     "@react-aria/button" "^3.3.0"
@@ -2049,7 +2049,7 @@
     "@react-aria/textfield" "^3.2.2"
     "@react-aria/utils" "^3.5.0"
     "@react-types/button" "^3.3.0"
-    "@sajari/react-sdk-utils" "^1.3.13"
+    "@sajari/react-sdk-utils" "^1.3.14"
     aria-hidden "^1.1.2"
     body-scroll-lock "^3.1.5"
     classnames "^2.2.6"
@@ -2084,20 +2084,37 @@
     tailwindcss-truncate-multiline "^1.0.3"
     twin.macro "^1.12.1"
 
-"@sajari/react-search-ui@^3.3.0":
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-3.3.0.tgz#1b5dd308425e178075744849d9b5764f263cf693"
-  integrity sha512-pFb8JEPFtc75P/tDtrQVnHouxuHbMVCSpty7leWSpJeTn+WOHqBriRxaK5oCTVreQ7WBnBlaV3W7Wt+msHh8EQ==
+"@sajari/react-sdk-utils@^1.3.14":
+  version "1.3.14"
+  resolved "https://registry.yarnpkg.com/@sajari/react-sdk-utils/-/react-sdk-utils-1.3.14.tgz#3df5c5a5c04e8905588eaa93600336f3eaaba389"
+  integrity sha512-v+aVv1DItumfexGoV3/iFT22X9PR/xfADLYGvUU4kLOIA3c+T+Tno2s3bzAG6FDP+lZYYlpq0ZwC6N7d5eoMKA==
+  dependencies:
+    "@emotion/core" "^10.1.1"
+    "@emotion/is-prop-valid" "1.0.0"
+    "@emotion/styled" "^10.0.27"
+    "@tailwindcss/ui" "^0.7.2"
+    emotion-theming "^10.0.27"
+    tailwindcss "^1.9.6"
+    tailwindcss-filters "^3.0.0"
+    tailwindcss-truncate-multiline "^1.0.3"
+    twin.macro "^1.12.1"
+
+"@sajari/react-search-ui@^3.4.1":
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-3.4.1.tgz#4ea9185556a0462439835cd81130e2e5621efab8"
+  integrity sha512-bHp+CYuMNn5Fnel4LucjZdce/0oN/JKKIr2yRrAvZCD86PKdnyVsvB2wqu/mZ83KXpu2mkKTqREu8lTdr6wZrA==
   dependencies:
     "@react-aria/utils" "3.5.0"
-    "@sajari/react-components" "^1.8.1"
+    "@sajari/react-components" "^1.8.2"
     "@sajari/react-hooks" "^3.1.0"
-    "@sajari/react-sdk-utils" "^1.3.13"
+    "@sajari/react-sdk-utils" "^1.3.14"
     dayjs "^1.10.5"
     i18next "19.8.7"
     i18next-browser-languagedetector "^6.0.1"
     react-aria-live "^2.0.5"
+    react-error-boundary "^3.1.3"
     react-i18next "^11.8.5"
+    tempura "^0.2.0"
 
 "@sajari/sdk-js@^2.0.0-rc.2":
   version "2.0.0-rc.2"
@@ -10264,6 +10281,13 @@ react-clientside-effect@^1.2.2:
   dependencies:
     "@babel/runtime" "^7.0.0"
 
+react-error-boundary@^3.1.3:
+  version "3.1.3"
+  resolved "https://registry.yarnpkg.com/react-error-boundary/-/react-error-boundary-3.1.3.tgz#276bfa05de8ac17b863587c9e0647522c25e2a0b"
+  integrity sha512-A+F9HHy9fvt9t8SNDlonq01prnU8AmkjvGKV4kk8seB9kU3xMEO8J/PQlLVmoOIDODl5U2kufSBs4vrWIqhsAA==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+
 react-focus-lock@^2.5.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/react-focus-lock/-/react-focus-lock-2.5.0.tgz#12e3a3940e897c26e2c2a0408cd25ea3c99b3709"
@@ -11783,6 +11807,11 @@ temp-dir@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/temp-dir/-/temp-dir-1.0.0.tgz#0a7c0ea26d3a39afa7e0ebea9c1fc0bc4daa011d"
   integrity sha1-CnwOom06Oa+n4OvqnB/AvE2qAR0=
+
+tempura@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/tempura/-/tempura-0.2.0.tgz#2f0c39b5e3ee97b6a58911f8f7caf1593c22bb55"
+  integrity sha512-jgDGrQIZUS48pED/iFWt847rArUl5xczSlDj5B8ZxwXr4t8yQSBqUwdgmKWVfct7lXSwBzCjrRgEZPaVM2Yzag==
 
 tempy@^0.3.0:
   version "0.3.0"

@@ -30,6 +30,7 @@ export function mergeProps(params: MergePropsParams): MergedSearchResultsProps {
         position: 'aside',
       },
       results: {
+        showStatus: true,
         imageAspectRatio: {
           grid: 1,
           list: 1,
@@ -72,6 +73,7 @@ export function mergeProps(params: MergePropsParams): MergedSearchResultsProps {
           url: '/products/${handle}',
           subtitle: 'vendor',
           description: 'body_html',
+          quantity: 'inventory_quantity',
           image: (values: ShopifySchema) => {
             const images = values.image_urls ?? values.images;
             // If there are no variant images to show
