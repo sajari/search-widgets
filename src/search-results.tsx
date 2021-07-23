@@ -3,7 +3,6 @@ import { useEffect, useMemo, useState } from 'react';
 
 import CustomContainerContextProvider from './container/context';
 import SearchResultsContextProvider from './context';
-import { EmotionCache } from './emotion-cache';
 import { useSearchProviderProps } from './hooks';
 import Interface from './interface';
 import PubSubContextProvider from './pubsub/context';
@@ -63,9 +62,7 @@ export default (defaultProps: SearchResultsProps) => {
       <PubSubContextProvider value={emitterContext}>
         <SearchResultsContextProvider value={context}>
           <CustomContainerContextProvider value={useMemo(() => ({ container }), [])}>
-            <EmotionCache container={container}>
-              <Interface />
-            </EmotionCache>
+            <Interface />
           </CustomContainerContextProvider>
         </SearchResultsContextProvider>
       </PubSubContextProvider>

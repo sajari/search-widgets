@@ -8,8 +8,11 @@ import { parseBreakpoints } from '../utils/styles';
 import InterfaceContextProvider from './context';
 import OverlayInterface from './OverlayInterface';
 import StandardInterface from './StandardInterface';
+import { EmotionCache, renderInContainer } from '../emotion-cache';
+import { useCustomContainer } from '../container/context';
 
 export default memo(() => {
+  const { container } = useCustomContainer();
   const [filtersShown, setFiltersShown] = useState(true);
   const {
     options: { mode },
@@ -34,9 +37,17 @@ export default memo(() => {
     [breakpoints, filtersShown, setFiltersShown, setWidth],
   );
 
+  const cacheKey = `search-results-${mode}`;
+
   return (
     <InterfaceContextProvider value={context}>
-      {mode === 'standard' ? <StandardInterface /> : <OverlayInterface />}
+      {mode === 'standard' ? (
+        renderInContainer(<StandardInterface />, { cacheKey, container })
+      ) : (
+        <EmotionCache cacheKey={cacheKey} container={container}>
+          <OverlayInterface />
+        </EmotionCache>
+      )}
     </InterfaceContextProvider>
   );
 });

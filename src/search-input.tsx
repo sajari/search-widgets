@@ -57,6 +57,6 @@ export default (defaultProps: SearchInputProps) => {
         </SearchResultsContextProvider>
       </PubSubContextProvider>
     </SearchProvider>,
-    container,
+    { cacheKey: 'search-input', container },
   );
 };

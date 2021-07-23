@@ -3,9 +3,17 @@ import { CacheProvider, Global, css } from '@emotion/core';
 import { createPortal } from 'preact/compat';
 import { useMemo } from 'preact/hooks';
 
-export const EmotionCache = ({ children, container }: { children: JSX.Element; container?: HTMLElement }) => {
+export const EmotionCache = ({
+  children,
+  container,
+  cacheKey,
+}: {
+  children: JSX.Element;
+  container?: HTMLElement;
+  cacheKey: string;
+}) => {
   const emotionCache = useMemo(
-    () => createCache({ container: (container?.getRootNode() as HTMLElement) ?? document.head }),
+    () => createCache({ key: cacheKey, container: (container?.getRootNode() as HTMLElement) ?? document.head }),
     [container],
   );
   return (
@@ -28,6 +36,16 @@ export const EmotionCache = ({ children, container }: { children: JSX.Element; c
   );
 };
 
-export const renderInContainer = (node: JSX.Element, container?: HTMLElement) => {
-  return container ? createPortal(<EmotionCache container={container}>{node}</EmotionCache>, container) : node;
+export const renderInContainer = (
+  node: JSX.Element,
+  { cacheKey, container }: { cacheKey: string; container?: HTMLElement },
+) => {
+  return container
+    ? createPortal(
+        <EmotionCache cacheKey={cacheKey} container={container}>
+          {node}
+        </EmotionCache>,
+        container,
+      )
+    : node;
 };
