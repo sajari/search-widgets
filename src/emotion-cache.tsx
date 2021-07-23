@@ -1,5 +1,5 @@
 import createCache from '@emotion/cache';
-import { CacheProvider } from '@emotion/core';
+import { CacheProvider, Global, css } from '@emotion/core';
 import { createPortal } from 'preact/compat';
 import { useMemo } from 'preact/hooks';
 
@@ -8,7 +8,24 @@ export const EmotionCache = ({ children, container }: { children: JSX.Element; c
     () => createCache({ container: (container?.getRootNode() as HTMLElement) ?? document.head }),
     [container],
   );
-  return <CacheProvider value={emotionCache}>{children}</CacheProvider>;
+  return (
+    <CacheProvider value={emotionCache}>
+      <Global
+        styles={css`
+          :host {
+            font-size: 16px;
+            box-sizing: border-box;
+          }
+          *,
+          *:before,
+          *:after {
+            box-sizing: inherit;
+          }
+        `}
+      />
+      {children}
+    </CacheProvider>
+  );
 };
 
 export const renderInContainer = (node: JSX.Element, container?: HTMLElement) => {
