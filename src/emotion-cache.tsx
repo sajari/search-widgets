@@ -37,7 +37,7 @@ export const EmotionCache = ({
               if (Number.isNaN(amount)) {
                 return match;
               }
-              return `${amount * 16}px`;
+              return `calc(var(--root-font-size) * ${amount})`;
             });
           },
         ],
@@ -49,7 +49,8 @@ export const EmotionCache = ({
       <Global
         styles={css`
           :host {
-            font-size: 16px;
+            --root-font-size: 16px;
+            font-size: var(--root-font-size);
             box-sizing: border-box;
           }
           *,
