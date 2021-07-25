@@ -25,11 +25,6 @@ export const EmotionCache = ({
             if (context !== 1 || typeof content !== 'string') {
               return content;
             }
-            // find REM value
-            const [, remValue] = content.split(':');
-            if (!remValue.includes('rem')) {
-              return content;
-            }
             // find digit from REM value
             return content.replace(remUnitRegex, (match, remDigit) => {
               // convert REM to PX
@@ -51,6 +46,7 @@ export const EmotionCache = ({
           :host {
             --root-font-size: 16px;
             font-size: var(--root-font-size);
+            line-height: 1.5;
             box-sizing: border-box;
           }
           *,
