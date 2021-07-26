@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 2.2.1
+
+### Patch Changes
+
+- 5880c10: Add translation for the show/hide filter button
+
 ## 2.2.0
 
 ### Minor Changes
