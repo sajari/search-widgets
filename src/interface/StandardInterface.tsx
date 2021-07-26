@@ -72,7 +72,7 @@ const StandardInterface = () => {
                   })
                 : null}
 
-              <Results {...options.results} />
+              <Results {...options.results} resultTemplate={{ html: '{{ id }}', css: '' }} />
 
               <Pagination {...options.pagination} />
             </div>
