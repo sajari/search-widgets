@@ -7,16 +7,8 @@ import PubSubContextProvider from './pubsub/context';
 import { SearchInputProps } from './types';
 
 export default (defaultProps: SearchInputProps) => {
-  const {
-    emitter,
-    context,
-    searchContext,
-    theme,
-    searchOnLoad,
-    defaultFilter,
-    viewType,
-    currency,
-  } = useSearchProviderProps(defaultProps);
+  const { emitter, context, searchContext, theme, searchOnLoad, defaultFilter, viewType, currency } =
+    useSearchProviderProps(defaultProps);
 
   const emitterContext = {
     emitter,
