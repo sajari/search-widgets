@@ -1,5 +1,12 @@
 # @sajari/search-widgets
 
+## 2.2.2
+
+### Patch Changes
+
+- 329ef0c: Upgrade the SDK packages to fix the issue when the footer of the overlay modal gets hidden on iPad. See https://github.com/sajari/sdk-react/pull/580.
+- 1e9ee0a: Upgrade dev dependencies including TypeScript, husky and various eslint plugins.
+
 ## 2.2.1
 
 ### Patch Changes
