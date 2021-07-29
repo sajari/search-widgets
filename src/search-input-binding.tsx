@@ -74,7 +74,7 @@ const renderBindingInput = (
             showPoweredBy={showPoweredBy}
           />
         </Wrapper>,
-        (fragment as unknown) as Element,
+        fragment as unknown as Element,
       );
     } else {
       target.childNodes.forEach((node) => {
@@ -96,7 +96,7 @@ const renderBindingInput = (
               showPoweredBy={showPoweredBy}
             />
           </Wrapper>,
-          (fragment as unknown) as Element,
+          fragment as unknown as Element,
         );
       });
     }
