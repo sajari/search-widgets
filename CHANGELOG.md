@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 2.2.3
+
+### Patch Changes
+
+- f3794b6: Downgrade prettier beause new version breaks the ci pipeline
+
 ## 2.2.2
 
 ### Patch Changes
