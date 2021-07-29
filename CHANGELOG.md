@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 2.2.4
+
+### Patch Changes
+
+- d18aed3: Fix eslint warnings that is blocking the build.
+
 ## 2.2.3
 
 ### Patch Changes
