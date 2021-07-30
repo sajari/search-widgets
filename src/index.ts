@@ -25,22 +25,23 @@ const components: Record<WidgetType, ComponentType> = {
 const attribute = 'data-widget';
 const emitter = mitt();
 
+const attachShadowRoot = (el: Element | null, { type }: { type: WidgetType }) => {
+  const target = type === 'overlay' ? document.body.appendChild(document.createElement('sajari-portal')) : el;
+  const container = target?.attachShadow({ mode: 'open' }).appendChild(document.createElement('div'));
+  return container;
+};
+
 const renderAll = () => {
   // Build widgets
-  Object.entries(components).forEach(([type, component]) => {
+  (Object.entries(components) as Array<[WidgetType, ComponentType]>).forEach(([type, component]) => {
     const selector = `[${attribute}="${type}"]`;
-    const shadowRoot =
-      type === 'overlay'
-        ? document.body.appendChild(document.createElement('div')).attachShadow({ mode: 'open' })
-        : document.querySelector(selector)?.attachShadow({ mode: 'open' });
-    const container = shadowRoot?.appendChild(document.createElement('div'));
 
     habitat(component).render({
       selector,
       clean: true,
       defaultProps: {
         emitter,
-        container,
+        container: attachShadowRoot(document.querySelector(selector), { type }),
       },
     });
   });
@@ -61,13 +62,6 @@ const renderAll = () => {
     const id = `widget-${Date.now()}`;
     element.setAttribute('id', id);
 
-    // create shadowRoot
-    const shadowRoot =
-      type === 'overlay'
-        ? document.body.appendChild(document.createElement('div')).attachShadow({ mode: 'open' })
-        : element.attachShadow({ mode: 'open' });
-
-    const container = shadowRoot.appendChild(document.createElement('div'));
     const component = components[type];
 
     habitat(component).render({
@@ -75,7 +69,7 @@ const renderAll = () => {
       clean: true,
       defaultProps: {
         emitter,
-        container,
+        container: attachShadowRoot(element, { type }),
       },
     });
   };
