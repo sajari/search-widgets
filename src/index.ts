@@ -24,9 +24,19 @@ const components: Record<WidgetType, ComponentType> = {
 
 const attribute = 'data-widget';
 const emitter = mitt();
+const OVERLAY_PORTAL_NAME = 'sajari-overlay-portal';
 
 const attachShadowRoot = (el: Element | null, { type }: { type: WidgetType }) => {
-  const target = type === 'overlay' ? document.body.appendChild(document.createElement('sajari-portal')) : el;
+  let target = el;
+
+  if (type === 'overlay') {
+    const portalEl = document.querySelector(OVERLAY_PORTAL_NAME);
+    const container = portalEl?.shadowRoot?.querySelector('div');
+    if (container) return container;
+    // create & append new portal element
+    target = document.body.appendChild(document.createElement(OVERLAY_PORTAL_NAME));
+  }
+
   const container = target?.attachShadow({ mode: 'open' }).appendChild(document.createElement('div'));
   return container;
 };
