@@ -31,9 +31,12 @@ const attachShadowRoot = (el: Element | null, { type }: { type: WidgetType }) =>
 
   if (type === 'overlay') {
     const portalEl = document.querySelector(OVERLAY_PORTAL_NAME);
+    // always move portal to end of body
+    if (portalEl) document.body.appendChild(portalEl);
+    // find container div
     const container = portalEl?.shadowRoot?.querySelector('div');
     if (container) return container;
-    // create & append new portal element
+    // otherwise create & append new portal element
     target = document.body.appendChild(document.createElement(OVERLAY_PORTAL_NAME));
   }
 
