@@ -147,13 +147,13 @@ const OverlayInterface = () => {
       fullHeight={isMobile && (!!results || !!error)}
       {...modalProps}
     >
-      <ResizeObserver onResize={(size) => setWidth(size.width)} css={tw`overflow-hidden h-full flex`}>
-        <div css={[tw`w-full flex flex-col flex-none overflow-hidden`]}>
+      <ResizeObserver onResize={(size) => setWidth(size.width)} css={tw`flex h-full overflow-hidden`}>
+        <div css={[tw`flex flex-col flex-none w-full overflow-hidden`]}>
           <div css={tw`flex-none`}>
             <div
               css={[
                 tw`py-4 pl-2.5 flex items-center`,
-                (results || error) && tw`border-gray-200 border-0 border-b border-solid`,
+                (results || error) && tw`border-0 border-b border-gray-200 border-solid`,
               ]}
             >
               <Input
@@ -162,8 +162,9 @@ const OverlayInterface = () => {
                 size={isMobile ? 'xl' : '2xl'}
                 variant="unstyled"
                 showPoweredBy={preset !== 'shopify'}
+                autoFocus={modalProps?.autoFocus ?? true}
               />
-              <div css={tw`flex-none w-14 flex justify-center`}>
+              <div css={tw`flex justify-center flex-none w-14`}>
                 <ModalCloseButton css={tw`m-0`} />
               </div>
             </div>
@@ -185,11 +186,11 @@ const OverlayInterface = () => {
             {results && !isMobile && (
               <div
                 css={[
-                  tw`transition-all duration-200 overflow-y-auto flex-none`,
-                  filtersShown && !hideSidebar ? tw`pr-8 w-86 pl-6` : tw`w-0 opacity-0`,
+                  tw`flex-none overflow-y-auto transition-all duration-200`,
+                  filtersShown && !hideSidebar ? tw`pl-6 pr-8 w-86` : tw`w-0 opacity-0`,
                 ]}
               >
-                <div css={tw`w-72 space-y-6 pb-6`}>
+                <div css={tw`pb-6 space-y-6 w-72`}>
                   {nonTabsFilters.map((props) => {
                     const { type, textTransform = 'capitalize-first-letter' } = props;
                     if (type === 'list' || type === 'select') {
@@ -209,7 +210,7 @@ const OverlayInterface = () => {
                 ]}
               >
                 {tabsFilters.length > 0 && !error ? (
-                  <div css={tw`space-y-6 pr-6`}>
+                  <div css={tw`pr-6 space-y-6`}>
                     {tabsFilters.map((props) => {
                       const { textTransform = 'capitalize-first-letter' } = props;
                       return <Filter {...props} type="tabs" textTransform={textTransform} key={props.name} />;
@@ -219,7 +220,7 @@ const OverlayInterface = () => {
 
                 <div
                   id={containerId}
-                  css={tw`overflow-y-auto pt-6 pr-6`}
+                  css={tw`pt-6 pr-6 overflow-y-auto`}
                   ref={(node) => {
                     if (!node) return;
                     disableBodyScroll(node);
