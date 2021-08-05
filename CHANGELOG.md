@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 2.2.5
+
+### Patch Changes
+
+- 628a691: chore: bump react-sdk deps to enable setting zIndex, trapFocus and autofocus props.
+
 ## 2.2.4
 
 ### Patch Changes
