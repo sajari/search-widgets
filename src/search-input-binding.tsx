@@ -2,6 +2,7 @@ import { Input, SearchProvider } from '@sajari/react-search-ui';
 import { render } from 'preact/compat';
 
 import { getPresetSelector } from './defaults';
+import { EmotionCache } from './emotion-cache';
 import { useSearchProviderProps } from './hooks';
 import { SearchInputBindingProps } from './types';
 
@@ -56,7 +57,8 @@ const renderBindingInput = (
   targets: NodeListOf<HTMLElement>,
   params: Omit<SearchInputBindingProps, 'selector' | 'omittedElementSelectors'>,
 ) => {
-  const { mode = 'suggestions', ...props } = params;
+  const { mode = 'suggestions', container, ...props } = params;
+
   targets.forEach((target) => {
     const showPoweredBy = props.preset !== 'shopify';
 
@@ -67,12 +69,15 @@ const renderBindingInput = (
 
       render(
         <Wrapper {...props}>
-          <Input
-            mode={mode}
-            onSelect={onSelectHandler(target)}
-            inputElement={{ current: target }}
-            showPoweredBy={showPoweredBy}
-          />
+          <EmotionCache cacheKey={mode} container={container}>
+            <Input
+              portalContainer={container}
+              mode={mode}
+              onSelect={onSelectHandler(target)}
+              inputElement={{ current: target }}
+              showPoweredBy={showPoweredBy}
+            />
+          </EmotionCache>
         </Wrapper>,
         fragment as unknown as Element,
       );
@@ -89,12 +94,15 @@ const renderBindingInput = (
 
         render(
           <Wrapper {...props}>
-            <Input
-              mode={mode}
-              onSelect={onSelectHandler(element)}
-              inputElement={{ current: element }}
-              showPoweredBy={showPoweredBy}
-            />
+            <EmotionCache cacheKey={mode} container={container}>
+              <Input
+                portalContainer={container}
+                mode={mode}
+                onSelect={onSelectHandler(element)}
+                inputElement={{ current: element }}
+                showPoweredBy={showPoweredBy}
+              />
+            </EmotionCache>
           </Wrapper>,
           fragment as unknown as Element,
         );

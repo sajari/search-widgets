@@ -24,20 +24,20 @@ const components: Record<WidgetType, ComponentType> = {
 
 const attribute = 'data-widget';
 const emitter = mitt();
-const OVERLAY_PORTAL_NAME = 'sajari-overlay-portal';
 
 const attachShadowRoot = (el: Element | null, { type }: { type: WidgetType }) => {
   let target = el;
 
-  if (type === 'overlay') {
-    const portalEl = document.querySelector(OVERLAY_PORTAL_NAME);
+  if (type === 'overlay' || type === 'search-input-binding') {
+    const name = `sajari-${type}-portal`;
+    const portalEl = document.querySelector(name);
     // always move portal to end of body
     if (portalEl) document.body.appendChild(portalEl);
     // find container div
     const container = portalEl?.shadowRoot?.querySelector('div');
     if (container) return container;
     // otherwise create & append new portal element
-    target = document.body.appendChild(document.createElement(OVERLAY_PORTAL_NAME));
+    target = document.body.appendChild(document.createElement(name));
   }
 
   const container = target?.attachShadow({ mode: 'open' }).appendChild(document.createElement('div'));

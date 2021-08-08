@@ -2,6 +2,7 @@ import createCache from '@emotion/cache';
 import { CacheProvider, css, Global } from '@emotion/core';
 import { createPortal } from 'preact/compat';
 import { useMemo } from 'preact/hooks';
+import type { ReactNode } from 'react';
 
 import { remUnitRegex } from './utils';
 
@@ -10,7 +11,7 @@ export const EmotionCache = ({
   container,
   cacheKey,
 }: {
-  children: JSX.Element;
+  children: ReactNode;
   container?: HTMLElement;
   cacheKey: string;
 }) => {
