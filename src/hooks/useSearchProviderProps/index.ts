@@ -21,6 +21,7 @@ export function useSearchProviderProps(props: SearchResultsProps) {
     preset,
     currency,
     config,
+    clickTokenURL,
   } = props;
 
   const id = `search-ui-${Date.now()}`;
@@ -98,6 +99,7 @@ export function useSearchProviderProps(props: SearchResultsProps) {
           account,
           collection,
           endpoint,
+          clickTokenURL,
         },
         { name, version },
         // TODO: note it here if we can resolve the issue

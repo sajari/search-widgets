@@ -63,6 +63,7 @@ export type TrackingType = 'posneg' | 'click';
 
 export interface SearchResultsProps {
   endpoint?: string;
+  clickTokenURL?: string;
   account: string;
   collection: string;
   pipeline: string | { name: string; version?: string };
