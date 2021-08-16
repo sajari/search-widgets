@@ -20,11 +20,15 @@
     "cert": "openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ./src/dev/cert.key -out ./src/dev/cert.pem -config ./src/dev/req.cnf -sha256",
     "changeset": "changeset",
     "release": "changeset publish",
-    "postinstall": "husky install"
+    "postinstall": "husky install",
+    "format": "prettier -c --write \"*/**\""
   },
   "lint-staged": {
     "*.{css,md,scss}": "prettier --write",
-    "*.{js,jsx,ts,tsx}": "eslint --fix"
+    "**/*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
   },
   "babelMacros": {
     "twin": {
