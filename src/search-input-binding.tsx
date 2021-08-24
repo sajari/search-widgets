@@ -1,9 +1,10 @@
-import { Input, SearchProvider } from '@sajari/react-search-ui';
+import { Input, Pipeline, SearchProvider, Variables } from '@sajari/react-search-ui';
 import { render } from 'preact/compat';
+import { useMemo } from 'react';
 
 import { getPresetSelector } from './defaults';
-import { useSearchProviderProps } from './hooks';
 import { SearchInputBindingProps } from './types';
+import { getPipelineInfo } from './utils';
 
 const attributesToBeRemoved = [
   'data-predictive-search-drawer-input',
@@ -37,7 +38,43 @@ const Wrapper = ({
 }: Omit<SearchInputBindingProps, 'selector' | 'omittedElementSelectors' | 'mode'> & {
   children: React.ReactNode;
 }) => {
-  const { defaultFilter, theme, searchContext, currency } = useSearchProviderProps(props);
+  const {
+    variables: variablesProp,
+    account,
+    collection,
+    endpoint,
+    clickTokenURL,
+    pipeline,
+    config,
+    fields,
+    theme,
+    defaultFilter,
+    currency,
+    tracking,
+  } = props;
+
+  const searchContext = useMemo(() => {
+    const { name, version = undefined } = getPipelineInfo(pipeline);
+    const variables = new Variables({ ...variablesProp });
+
+    return {
+      pipeline: new Pipeline(
+        {
+          account,
+          collection,
+          endpoint,
+          clickTokenURL,
+        },
+        { name, version },
+        // TODO: note it here if we can resolve the issue
+        // @ts-ignore: missing type NoTracking
+        tracking,
+      ),
+      config,
+      variables,
+      fields,
+    };
+  }, []);
 
   return (
     <SearchProvider

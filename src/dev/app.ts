@@ -58,8 +58,8 @@ export default () => {
       case 'overlay':
         extra = `
           <form>
-            <input type="text" id="my-input" />
-            <button type="button" id="open-modal">Open modal</button>
+            <input type="text" id="search-input" />
+            <button type="button" id="button">Open modal</button>
           </form>
         `;
         break;
