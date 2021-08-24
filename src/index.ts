@@ -5,6 +5,7 @@ import habitat from 'preact-habitat';
 import SearchInput from './search-input';
 import SearchInputBinding from './search-input-binding';
 import SearchResults from './search-results';
+import withShadowRoot from './shadow-dom-wrapper';
 import { WidgetType } from './types';
 
 if (!process.env.DEPLOY_SCRIPT) {
@@ -25,36 +26,16 @@ const components: Record<WidgetType, ComponentType> = {
 const attribute = 'data-widget';
 const emitter = mitt();
 
-const attachShadowRoot = (el: Element | null, { type }: { type: WidgetType }) => {
-  let target = el;
-
-  if (type === 'overlay' || type === 'search-input-binding') {
-    const name = `sajari-${type}-portal`;
-    const portalEl = document.querySelector(name);
-    // always move portal to end of body
-    if (portalEl) document.body.appendChild(portalEl);
-    // find container div
-    const container = portalEl?.shadowRoot?.querySelector('div');
-    if (container) return container;
-    // otherwise create & append new portal element
-    target = document.body.appendChild(document.createElement(name));
-  }
-
-  const container = target?.attachShadow({ mode: 'open' }).appendChild(document.createElement('div'));
-  return container;
-};
-
 const renderAll = () => {
   // Build widgets
   (Object.entries(components) as Array<[WidgetType, ComponentType]>).forEach(([type, component]) => {
     const selector = `[${attribute}="${type}"]`;
 
-    habitat(component).render({
+    habitat(withShadowRoot(component, { type, mountElement: document.querySelector(selector) })).render({
       selector,
       clean: true,
       defaultProps: {
         emitter,
-        container: attachShadowRoot(document.querySelector(selector), { type }),
       },
     });
   });
@@ -77,12 +58,11 @@ const renderAll = () => {
 
     const component = components[type];
 
-    habitat(component).render({
+    habitat(withShadowRoot(component, { type, mountElement: element })).render({
       selector: `#${id}`,
       clean: true,
       defaultProps: {
         emitter,
-        container: attachShadowRoot(element, { type }),
       },
     });
   };

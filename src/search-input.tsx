@@ -2,23 +2,13 @@ import { Input, InputProps, SearchProvider } from '@sajari/react-search-ui';
 import { useRef } from 'preact/hooks';
 
 import SearchResultsContextProvider from './context';
-import { renderInContainer } from './emotion-cache';
 import { useSearchProviderProps } from './hooks';
 import PubSubContextProvider from './pubsub/context';
 import { SearchInputProps } from './types';
 
 export default (defaultProps: SearchInputProps) => {
-  const { container } = defaultProps;
-  const {
-    emitter,
-    context,
-    searchContext,
-    theme,
-    searchOnLoad,
-    defaultFilter,
-    viewType,
-    currency,
-  } = useSearchProviderProps(defaultProps);
+  const { emitter, context, searchContext, theme, searchOnLoad, defaultFilter, viewType, currency } =
+    useSearchProviderProps(defaultProps);
 
   const emitterContext = {
     emitter,
@@ -42,7 +32,7 @@ export default (defaultProps: SearchInputProps) => {
     return <AppliedInput />;
   };
 
-  return renderInContainer(
+  return (
     <SearchProvider
       search={searchContext}
       theme={theme}
@@ -56,7 +46,6 @@ export default (defaultProps: SearchInputProps) => {
           <RenderInput />
         </SearchResultsContextProvider>
       </PubSubContextProvider>
-    </SearchProvider>,
-    { cacheKey: 'search-input', container },
+    </SearchProvider>
   );
 };

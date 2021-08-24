@@ -86,6 +86,7 @@ export interface SearchResultsProps {
   options?: SearchResultsOptions;
   emitter: Emitter;
   container?: HTMLElement;
+  useShadowDOM?: boolean;
 }
 
 export interface SearchResultsContextProps
