@@ -123,7 +123,7 @@ export interface SearchInputProps extends SearchWidgetBaseOptions {
     url: string;
     queryParamName: string;
   };
-  emitter: Emitter;
+  emitter?: Emitter;
   options?: {
     input?: InputProps;
   };

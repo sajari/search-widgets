@@ -50,9 +50,12 @@ export default (defaultProps: SearchInputProps) => {
   }, []);
 
   const emitterContext = useMemo(
-    () => ({
-      emitter,
-    }),
+    () =>
+      emitter
+        ? {
+            emitter,
+          }
+        : undefined,
     [emitter],
   );
 
@@ -90,9 +93,13 @@ export default (defaultProps: SearchInputProps) => {
       currency={currency}
       searchOnLoad={false}
     >
-      <PubSubContextProvider value={emitterContext}>
+      {emitterContext ? (
+        <PubSubContextProvider value={emitterContext}>
+          <RenderInput />
+        </PubSubContextProvider>
+      ) : (
         <RenderInput />
-      </PubSubContextProvider>
+      )}
     </SearchProvider>
   );
 };
