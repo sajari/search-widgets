@@ -85,10 +85,16 @@ export type SearchResultsOptions<M = SearchResultsMode> = {
     }
 );
 
+interface ShopifyOptions {
+  collectionHandle?: string;
+  collectionId?: string;
+}
+
 export interface SearchResultsProps extends SearchWidgetBaseOptions {
   filters?: Array<FilterProps & { field: string; textTransform?: TextTransform }>;
   options?: SearchResultsOptions;
   emitter: Emitter;
+  shopifyOptions?: ShopifyOptions;
 }
 
 export interface SearchResultsContextProps

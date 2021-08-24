@@ -1,3 +1,4 @@
+import { isNullOrUndefined } from '@sajari/react-sdk-utils';
 import { FilterBuilder, Pipeline, Range, RangeFilterBuilder, ResultViewType, Variables } from '@sajari/react-search-ui';
 import { useMemo } from 'react';
 
@@ -13,7 +14,7 @@ export function useSearchProviderProps(props: SearchResultsProps) {
     collection,
     pipeline,
     filters: filtersProp = [],
-    defaultFilter,
+    defaultFilter: defaultFilterProp,
     variables: variablesProp,
     theme,
     emitter,
@@ -21,6 +22,7 @@ export function useSearchProviderProps(props: SearchResultsProps) {
     currency,
     config,
     clickTokenURL,
+    shopifyOptions,
   } = props;
 
   const id = `search-ui-${Date.now()}`;
@@ -34,6 +36,23 @@ export function useSearchProviderProps(props: SearchResultsProps) {
   } = mergeProps({ id, ...props });
   const { name, version = undefined } = getPipelineInfo(pipeline);
   const params = options.mode === 'standard' && options?.syncURL === 'none' ? {} : getSearchParams();
+
+  const defaultFilter = useMemo(() => {
+    if (
+      preset === 'shopify' &&
+      !isNullOrUndefined(shopifyOptions?.collectionHandle) &&
+      shopifyOptions?.collectionHandle !== 'all' &&
+      !isNullOrUndefined(shopifyOptions?.collectionId)
+    ) {
+      const collectionFilter = `collection_ids ~ ['${shopifyOptions?.collectionId}']`;
+      if (defaultFilterProp) {
+        return `(${defaultFilterProp}) AND ${collectionFilter}`;
+      }
+      return collectionFilter;
+    }
+
+    return defaultFilterProp;
+  }, []);
 
   const viewType: ResultViewType = ['grid', 'list'].includes(params.viewType)
     ? (params.viewType as ResultViewType)
