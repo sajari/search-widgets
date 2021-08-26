@@ -5,6 +5,7 @@ import { useMemo } from 'react';
 import { getPresetSelector } from './defaults';
 import { SearchInputBindingProps } from './types';
 import { getPipelineInfo } from './utils';
+import { getTracking } from './utils/getTracking';
 
 const attributesToBeRemoved = [
   'data-predictive-search-drawer-input',
@@ -50,8 +51,9 @@ const Wrapper = ({
     theme,
     defaultFilter,
     currency,
-    tracking,
   } = props;
+
+  const tracking = getTracking(props);
 
   const searchContext = useMemo(() => {
     const { name, version = undefined } = getPipelineInfo(pipeline);
@@ -66,8 +68,6 @@ const Wrapper = ({
           clickTokenURL,
         },
         { name, version },
-        // TODO: note it here if we can resolve the issue
-        // @ts-ignore: missing type NoTracking
         tracking,
       ),
       config,
