@@ -4,8 +4,6 @@ import { createPortal } from 'preact/compat';
 import { useMemo } from 'preact/hooks';
 import type { ReactNode } from 'react';
 
-import { remUnitRegex } from './utils';
-
 export const EmotionCache = ({
   children,
   container,
@@ -20,23 +18,6 @@ export const EmotionCache = ({
       createCache({
         key: cacheKey,
         container: (container?.getRootNode() as HTMLElement) ?? document.head,
-        stylisPlugins: container && [
-          (context, content) => {
-            // check for attr values
-            if (context !== 1 || typeof content !== 'string') {
-              return content;
-            }
-            // find digit from REM value
-            return content.replace(remUnitRegex, (match, remDigit) => {
-              // convert REM to PX
-              const amount = Number(remDigit);
-              if (Number.isNaN(amount)) {
-                return match;
-              }
-              return `calc(var(--root-font-size) * ${amount})`;
-            });
-          },
-        ],
       }),
     [container],
   );
@@ -45,8 +26,7 @@ export const EmotionCache = ({
       <Global
         styles={css`
           :host {
-            --root-font-size: 16px;
-            font-size: var(--root-font-size);
+            font-size: 16px;
             line-height: 1.5;
             box-sizing: border-box;
           }
