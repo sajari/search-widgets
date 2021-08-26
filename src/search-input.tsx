@@ -5,6 +5,7 @@ import { useMemo } from 'react';
 import PubSubContextProvider from './pubsub/context';
 import { SearchInputProps } from './types';
 import { getPipelineInfo } from './utils';
+import { getTracking } from './utils/getTracking';
 
 export default (defaultProps: SearchInputProps) => {
   const {
@@ -24,8 +25,9 @@ export default (defaultProps: SearchInputProps) => {
     theme,
     defaultFilter,
     currency,
-    tracking,
   } = defaultProps;
+
+  const tracking = getTracking(defaultProps);
 
   const searchContext = useMemo(() => {
     const { name, version = undefined } = getPipelineInfo(pipeline);
@@ -39,8 +41,6 @@ export default (defaultProps: SearchInputProps) => {
           clickTokenURL,
         },
         { name, version },
-        // TODO: note it here if we can resolve the issue
-        // @ts-ignore: missing type NoTracking
         tracking,
       ),
       config,
