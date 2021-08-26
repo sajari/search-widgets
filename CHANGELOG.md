@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 2.3.1
+
+### Patch Changes
+
+- 64ad2d5: Fix passing a wrong type of tracking object breaks the search input
+
 ## 2.3.0
 
 ### Minor Changes
