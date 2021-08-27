@@ -4,7 +4,6 @@ import { useMemo } from 'react';
 
 import { getPresetSelector } from './defaults';
 import { EmotionCache } from './emotion-cache';
-import { useSearchProviderProps } from './hooks';
 import { SearchInputBindingProps } from './types';
 import { getPipelineInfo } from './utils';
 import { getTracking } from './utils/getTracking';
