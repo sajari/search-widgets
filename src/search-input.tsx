@@ -1,20 +1,64 @@
-import { Input, InputProps, SearchProvider } from '@sajari/react-search-ui';
+import { Input, InputProps, Pipeline, SearchProvider, Variables } from '@sajari/react-search-ui';
 import { useRef } from 'preact/hooks';
+import { useMemo } from 'react';
 
-import SearchResultsContextProvider from './context';
-import { useSearchProviderProps } from './hooks';
 import PubSubContextProvider from './pubsub/context';
 import { SearchInputProps } from './types';
+import { getPipelineInfo } from './utils';
+import { getTracking } from './utils/getTracking';
 
 export default (defaultProps: SearchInputProps) => {
-  const { emitter, context, searchContext, theme, searchOnLoad, defaultFilter, viewType, currency } =
-    useSearchProviderProps(defaultProps);
-
-  const emitterContext = {
+  const {
+    variables: variablesProp,
     emitter,
-  };
+    options,
+    preset,
+    mode = 'suggestions',
+    redirect,
+    account,
+    collection,
+    endpoint,
+    clickTokenURL,
+    pipeline,
+    config,
+    fields,
+    theme,
+    defaultFilter,
+    currency,
+  } = defaultProps;
 
-  const { mode = 'suggestions', options, redirect, preset } = defaultProps;
+  const tracking = getTracking(defaultProps);
+
+  const searchContext = useMemo(() => {
+    const { name, version = undefined } = getPipelineInfo(pipeline);
+    const variables = new Variables({ ...variablesProp });
+    return {
+      pipeline: new Pipeline(
+        {
+          account,
+          collection,
+          endpoint,
+          clickTokenURL,
+        },
+        { name, version },
+        tracking,
+      ),
+      config,
+      variables,
+      fields,
+    };
+  }, []);
+
+  const emitterContext = useMemo(
+    () =>
+      emitter
+        ? {
+            emitter,
+          }
+        : undefined,
+    [emitter],
+  );
+
   const AppliedInput = (props: InputProps<any> & { name?: string }) => (
     <Input mode={mode} {...options?.input} {...props} showPoweredBy={preset !== 'shopify'} />
   );
@@ -24,7 +68,16 @@ export default (defaultProps: SearchInputProps) => {
     if (redirect && mode !== 'results') {
       return (
         <form ref={formRef} action={redirect.url ?? 'search'}>
-          <AppliedInput onSelect={() => formRef.current.submit()} name={redirect.queryParamName || 'q'} />
+          <AppliedInput
+            onSelect={() => {
+              if (typeof formRef.current.requestSubmit === 'function') {
+                formRef.current.requestSubmit();
+                return;
+              }
+              formRef.current.submit();
+            }}
+            name={redirect.queryParamName || 'q'}
+          />
         </form>
       );
     }
@@ -36,16 +89,17 @@ export default (defaultProps: SearchInputProps) => {
     <SearchProvider
       search={searchContext}
       theme={theme}
-      searchOnLoad={searchOnLoad}
       defaultFilter={defaultFilter}
       currency={currency}
-      viewType={viewType}
+      searchOnLoad={false}
     >
-      <PubSubContextProvider value={emitterContext}>
-        <SearchResultsContextProvider value={context}>
+      {emitterContext ? (
+        <PubSubContextProvider value={emitterContext}>
           <RenderInput />
-        </SearchResultsContextProvider>
-      </PubSubContextProvider>
+        </PubSubContextProvider>
+      ) : (
+        <RenderInput />
+      )}
     </SearchProvider>
   );
 };

@@ -40,10 +40,11 @@ The above configuration properties are defined based on the following structure:
 
 The search result widget displays search results to the user on a search result page. The following options can be configured when creating the search results widget.
 
-| Name      | Type                                            | Default | Description                                                                                                  |
-| --------- | ----------------------------------------------- | ------- | ------------------------------------------------------------------------------------------------------------ |
-| `filters` | [`Filter[]`](#filter)                           | `_`     | Define a list of active filters. The configuration is specified as an array of [Filter](#filter) properties. |
-| `options` | [`SearchResultsOptions`](#searchresultsoptions) | `_`     | Specific configuration options.                                                                              |
+| Name             | Type                                            | Default | Description                                                                                                  |
+| ---------------- | ----------------------------------------------- | ------- | ------------------------------------------------------------------------------------------------------------ |
+| `filters`        | [`Filter[]`](#filter)                           | `_`     | Define a list of active filters. The configuration is specified as an array of [Filter](#filter) properties. |
+| `options`        | [`SearchResultsOptions`](#searchresultsoptions) | `_`     | Specific configuration options.                                                                              |
+| `shopifyOptions` | [`ShopifyOptions`](#shopifyoptions)             | `_`     | Specific configuration options for `Shopify` preset.                                                         |
 
 ### Filter
 
@@ -298,13 +299,20 @@ See the example in [Codesandbox](https://codesandbox.io/s/range-filter-ctbvf).
 | `pagination`     | `PaginationProps`                                              | `_`                                                                                          | Options of Pagination component allowing the user to change the current page. See [Pagination props](https://react.docs.sajari.com/components/pagination#props).                                                   |
 | `mode`           | [`'standard'`](#standard-mode) \| [`'overlay'`](#overlay-mode) | `'standard'`                                                                                 | Control the display of the search results. While the `standard` mode is for displaying the search results on a page content, the `overlay` mode places the search results in the middle of an overlay screen.      |
 
+### ShopifyOptions
+
+| Name               | Type     | Default | Description                                                                                                                                                                                                                          |
+| ------------------ | -------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `collectionHandle` | `string` | `_`     | If the handle is `all`, it will look for results from the default collection. Otherwise, only retrive results for the collection which the id is `collectionId`. See [Object handles](https://shopify.dev/api/liquid/basics/handle). |
+| `collectionId`     | `string` | `_`     | The id of a Shopify collection. See [Collection id](https://shopify.dev/api/liquid/objects/collection#collection-id).                                                                                                                |
+
 #### Standard properties
 
 Exclusive props if mode is `standard`.
 
 | Name        | Type                                | Default    | Description                                                                                                                                                         |
 | ----------- | ----------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `'syncURL'` | `'none'` \| `'replace'` \| `'push'` | `'push'`   | Keep the search state in the URL if the option is not `none`. While `replace` prevent adding a new URL entry into the `history` stack, `push` will do the opposite. |
+| `syncURL`   | `'none'` \| `'replace'` \| `'push'` | `'push'`   | Keep the search state in the URL if the option is not `none`. While `replace` prevent adding a new URL entry into the `history` stack, `push` will do the opposite. |
 | `urlParams` | `{q: string}`                       | `{q: 'q'}` | A key -> value pair object maps the URL params to initial values for the search. `q` defines the URL param for the initial search query.                            |
 
 <details>

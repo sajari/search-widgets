@@ -1,10 +1,10 @@
-import { isString } from '@sajari/react-sdk-utils';
+import { isNullOrUndefined } from '@sajari/react-sdk-utils';
 import { FilterBuilder, Pipeline, Range, RangeFilterBuilder, ResultViewType, Variables } from '@sajari/react-search-ui';
 import { useMemo } from 'react';
 
 import { mergeProps } from '../../defaults';
 import { SearchResultsProps } from '../../types';
-import { isRange, paramToRange } from '../../utils';
+import { getPipelineInfo, isRange, paramToRange } from '../../utils';
 import getSearchParams from '../../utils/getSearchParams';
 
 export function useSearchProviderProps(props: SearchResultsProps) {
@@ -14,13 +14,15 @@ export function useSearchProviderProps(props: SearchResultsProps) {
     collection,
     pipeline,
     filters: filtersProp = [],
-    defaultFilter,
+    defaultFilter: defaultFilterProp,
     variables: variablesProp,
     theme,
     emitter,
     preset,
     currency,
     config,
+    clickTokenURL,
+    shopifyOptions,
   } = props;
 
   const id = `search-ui-${Date.now()}`;
@@ -32,8 +34,25 @@ export function useSearchProviderProps(props: SearchResultsProps) {
     disableDefaultStyles = false,
     importantStyles = false,
   } = mergeProps({ id, ...props });
-  const { name, version = undefined } = isString(pipeline) ? { name: pipeline } : pipeline;
+  const { name, version = undefined } = getPipelineInfo(pipeline);
   const params = options.mode === 'standard' && options?.syncURL === 'none' ? {} : getSearchParams();
+
+  const defaultFilter = useMemo(() => {
+    if (
+      preset === 'shopify' &&
+      !isNullOrUndefined(shopifyOptions?.collectionHandle) &&
+      shopifyOptions?.collectionHandle !== 'all' &&
+      !isNullOrUndefined(shopifyOptions?.collectionId)
+    ) {
+      const collectionFilter = `collection_ids ~ ['${shopifyOptions?.collectionId}']`;
+      if (defaultFilterProp) {
+        return `(${defaultFilterProp}) AND ${collectionFilter}`;
+      }
+      return collectionFilter;
+    }
+
+    return defaultFilterProp;
+  }, []);
 
   const viewType: ResultViewType = ['grid', 'list'].includes(params.viewType)
     ? (params.viewType as ResultViewType)
@@ -98,6 +117,7 @@ export function useSearchProviderProps(props: SearchResultsProps) {
           account,
           collection,
           endpoint,
+          clickTokenURL,
         },
         { name, version },
         // TODO: note it here if we can resolve the issue

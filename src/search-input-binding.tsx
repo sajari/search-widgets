@@ -1,10 +1,13 @@
-import { Input, SearchProvider } from '@sajari/react-search-ui';
+import { Input, Pipeline, SearchProvider, Variables } from '@sajari/react-search-ui';
 import { render } from 'preact/compat';
+import { useMemo } from 'react';
 
 import { getPresetSelector } from './defaults';
 import { EmotionCache } from './emotion-cache';
 import { useSearchProviderProps } from './hooks';
 import { SearchInputBindingProps } from './types';
+import { getPipelineInfo } from './utils';
+import { getTracking } from './utils/getTracking';
 
 const attributesToBeRemoved = [
   'data-predictive-search-drawer-input',
@@ -38,7 +41,42 @@ const Wrapper = ({
 }: Omit<SearchInputBindingProps, 'selector' | 'omittedElementSelectors' | 'mode'> & {
   children: React.ReactNode;
 }) => {
-  const { defaultFilter, theme, searchContext, currency } = useSearchProviderProps(props);
+  const {
+    variables: variablesProp,
+    account,
+    collection,
+    endpoint,
+    clickTokenURL,
+    pipeline,
+    config,
+    fields,
+    theme,
+    defaultFilter,
+    currency,
+  } = props;
+
+  const tracking = getTracking(props);
+
+  const searchContext = useMemo(() => {
+    const { name, version = undefined } = getPipelineInfo(pipeline);
+    const variables = new Variables({ ...variablesProp });
+
+    return {
+      pipeline: new Pipeline(
+        {
+          account,
+          collection,
+          endpoint,
+          clickTokenURL,
+        },
+        { name, version },
+        tracking,
+      ),
+      config,
+      variables,
+      fields,
+    };
+  }, []);
 
   return (
     <SearchProvider

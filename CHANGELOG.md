@@ -1,5 +1,38 @@
 # @sajari/search-widgets
 
+## 2.3.1
+
+### Patch Changes
+
+- 64ad2d5: Fix passing a wrong type of tracking object breaks the search input
+
+## 2.3.0
+
+### Minor Changes
+
+- e0dac5e: Support `shopifyOptions` for Search Result Widget to determine whether to pull results for a specific collection.
+
+  ```html
+  <div data-widget="search-results">
+    <script type="application/json">
+      {
+        "shopifyOptions": {
+          "collectionHandle": "{{collection.handle}}",
+          "collectionId": "{{collection.id}}"
+        }
+      }
+    </script>
+  </div>
+  ```
+
+- bf35dcb: feat: allow an alternative clickTokenURL to be provided for testing purposes
+
+### Patch Changes
+
+- 65afbf0: Refactor the base interface of widgets, which should not include the properties of the Search Results Widget.
+- 05c6c6a: Fix `form.submit()` doesn't trigger submit event via `addEventListener('submit')` by using `form.requestSubmit` method.
+- 6c05523: Remove internal `useContext` and reuse the one from `@sajari/react-sdk-utils`.
+
 ## 2.2.5
 
 ### Patch Changes

@@ -19,7 +19,10 @@ import { ComponentChildren } from 'preact';
 
 import { Breakpoints } from '../utils/styles';
 
+export type WidgetType = 'search-results' | 'search-input-binding' | 'overlay' | 'search-input';
 export type InputMode = CoreInputProps<any>['mode'];
+export type PresetType = 'shopify' | 'website' | 'app' | undefined;
+export type TrackingType = 'posneg' | 'click';
 
 interface InputProps extends Omit<CoreInputProps<any>, 'showPoweredBy'> {
   mode?: Exclude<InputMode, 'results'>;
@@ -27,13 +30,37 @@ interface InputProps extends Omit<CoreInputProps<any>, 'showPoweredBy'> {
 }
 
 export type SyncURLType = 'none' | 'replace' | 'push';
-
-type Mode = 'standard' | 'overlay';
-
+type SearchResultsMode = 'standard' | 'overlay';
 type InputPosition = 'top' | 'aside';
 type TextTransform = 'normal-case' | 'uppercase' | 'lowercase' | 'capitalize' | 'capitalize-first-letter';
 
-export type SearchResultsOptions<M = Mode> = {
+export type PipelineOption = string | { name: string; version?: string };
+
+interface SearchWidgetBaseOptions {
+  account: string;
+  collection: string;
+  pipeline: PipelineOption;
+  endpoint?: string;
+  clickTokenURL?: string;
+  tracking?:
+    | TrackingType
+    | {
+        type: TrackingType;
+        field: string;
+      };
+  preset: PresetType;
+  fields?: FieldDictionary;
+  defaultFilter: ContextProviderValues['defaultFilter'];
+  variables: ContextProviderValues['search']['variables'];
+  config: ContextProviderValues['search']['config'];
+  theme: ContextProviderValues['theme'];
+  customClassNames?: ContextProviderValues['customClassNames'];
+  disableDefaultStyles?: ContextProviderValues['disableDefaultStyles'];
+  importantStyles?: ContextProviderValues['importantStyles'];
+  currency?: ContextProviderValues['currency'];
+}
+
+export type SearchResultsOptions<M = SearchResultsMode> = {
   resultsPerPage?: ResultsPerPageProps;
   sorting?: Omit<SortingProps, 'type'>;
   input?: InputProps & { hide?: boolean; position?: InputPosition };
@@ -58,35 +85,18 @@ export type SearchResultsOptions<M = Mode> = {
     }
 );
 
-export type PresetType = 'shopify' | 'website' | 'app' | undefined;
-export type TrackingType = 'posneg' | 'click';
+interface ShopifyOptions {
+  collectionHandle?: string;
+  collectionId?: string;
+}
 
-export interface SearchResultsProps {
-  endpoint?: string;
-  account: string;
-  collection: string;
-  pipeline: string | { name: string; version?: string };
-  tracking?:
-    | TrackingType
-    | {
-        type: TrackingType;
-        field: string;
-      };
-  preset: PresetType;
-  fields?: FieldDictionary;
+export interface SearchResultsProps extends SearchWidgetBaseOptions {
   filters?: Array<FilterProps & { field: string; textTransform?: TextTransform }>;
-  defaultFilter: ContextProviderValues['defaultFilter'];
-  variables: Record<string, Exclude<VariableFieldValue, VariableFn>>;
-  config: ContextProviderValues['search']['config'];
-  theme: ContextProviderValues['theme'];
-  customClassNames?: ContextProviderValues['customClassNames'];
-  disableDefaultStyles?: ContextProviderValues['disableDefaultStyles'];
-  importantStyles?: ContextProviderValues['importantStyles'];
-  currency?: ContextProviderValues['currency'];
   options?: SearchResultsOptions;
   emitter: Emitter;
   container?: HTMLElement;
   useShadowDOM?: boolean;
+  shopifyOptions?: ShopifyOptions;
 }
 
 export interface SearchResultsContextProps
@@ -114,18 +124,20 @@ export interface InterfaceContextProps {
   setFiltersShown: (shown: boolean) => void;
 }
 
-export interface SearchInputBindingProps extends SearchResultsProps {
+export interface SearchInputBindingProps extends SearchWidgetBaseOptions {
   selector: string;
   mode: Exclude<InputMode, 'instant'>;
   omittedElementSelectors?: string | string[];
 }
 
-export type WidgetType = 'search-results' | 'search-input-binding' | 'overlay' | 'search-input';
-
-export interface SearchInputProps extends SearchResultsProps {
+export interface SearchInputProps extends SearchWidgetBaseOptions {
   mode: Exclude<InputMode, 'instant'>;
   redirect?: {
     url: string;
     queryParamName: string;
+  };
+  emitter?: Emitter;
+  options?: {
+    input?: InputProps;
   };
 }

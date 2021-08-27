@@ -1,6 +1,5 @@
 import { ClickTracking, FieldDictionary, PosNegTracking } from '@sajari/react-hooks';
 import { isArray, isEmpty, isNumber, isString, merge, MergeOptions } from '@sajari/react-sdk-utils';
-import { cloneDeep } from 'lodash-es';
 
 import { SearchResultsOptions, SearchResultsProps, TrackingType, WidgetType } from './types';
 import { ShopifySchema } from './types/shopify';
@@ -47,7 +46,7 @@ export function mergeProps(params: MergePropsParams): MergedSearchResultsProps {
         scrollToTop: true,
         scrollTarget: `#${id}`,
       },
-      syncURL: 'none',
+      syncURL: 'push',
       urlParams: {
         q: 'q',
       },
@@ -157,7 +156,6 @@ export function mergeProps(params: MergePropsParams): MergedSearchResultsProps {
               },
             ],
           },
-          syncURL: 'push',
         },
         importantStyles: true,
       };
@@ -289,41 +287,49 @@ export const getPresetSelectorOverlayMode = (preset: SearchResultsProps['preset'
   }
 };
 
-const defaultConfig = JSON.parse(`{
-	    "account": "1603163345448404241",
-	    "collection": "sajari-test-fashion2",
-	    "pipeline": "query",
-	    "preset": "shopify",
-	    "filters": [{
-	            "name": "vendor",
-	            "field": "vendor",
-	            "title": "Vendor",
-	            "searchable": true
-	        },
-	        {
-	            "name": "type",
-	            "field": "product_type",
-	            "title": "Type",
-	            "searchable": true
-	        },
-	        {
-	            "name": "collection",
-	            "field": "collection_titles",
-	            "title": "Collection",
-	            "array": true
-	        }
-	    ]
-	}`);
+const defaultConfig = {
+  account: '1603163345448404241',
+  collection: 'sajari-test-fashion2',
+  pipeline: 'query',
+  preset: 'shopify',
+};
+
+const filters = [
+  {
+    name: 'vendor',
+    field: 'vendor',
+    title: 'Vendor',
+    searchable: true,
+  },
+  {
+    name: 'type',
+    field: 'product_type',
+    title: 'Type',
+    searchable: true,
+  },
+  {
+    name: 'collection',
+    field: 'collection_titles',
+    title: 'Collection',
+    array: true,
+  },
+];
 
 export const widgetDefaultContent: Record<WidgetType, string> = {
-  'search-results': JSON.stringify(cloneDeep(defaultConfig)),
+  'search-results': JSON.stringify({ ...defaultConfig, filters }),
   overlay: JSON.stringify(
-    merge(cloneDeep(defaultConfig), { options: { mode: 'overlay', buttonSelector: '#open-modal' } }),
+    {
+      ...defaultConfig,
+      filters,
+      options: { mode: 'overlay', buttonSelector: '#button', inputSelector: '#search-input' },
+    },
+    null,
+    2,
   ),
-  'search-input-binding': JSON.stringify(
-    merge(cloneDeep(defaultConfig), { selector: '#js-search-input', mode: 'results' }),
-  ),
-  'search-input': JSON.stringify(
-    merge(cloneDeep(defaultConfig), { mode: 'suggestions', redirect: { url: 'search', queryParamName: 'q' } }),
-  ),
+  'search-input-binding': JSON.stringify({ ...defaultConfig, selector: "input[name='q']", mode: 'suggestions' }),
+  'search-input': JSON.stringify({
+    ...defaultConfig,
+    mode: 'suggestions',
+    redirect: { url: 'search', queryParamName: 'q' },
+  }),
 };

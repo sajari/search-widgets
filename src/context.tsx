@@ -1,5 +1,6 @@
+import { createContext } from '@sajari/react-sdk-utils';
+
 import { SearchResultsContextProps } from './types';
-import { createContext } from './utils';
 
 const [SearchResultsContextProvider, useSearchResultsContext] = createContext<SearchResultsContextProps>({
   strict: true,
