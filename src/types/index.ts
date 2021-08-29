@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ModalProps } from '@sajari/react-components';
-import { VariableFieldValue, VariableFn } from '@sajari/react-hooks';
 import {
   ContextProviderValues,
   FieldDictionary,
@@ -64,7 +63,7 @@ export type SearchResultsOptions<M = SearchResultsMode> = {
   resultsPerPage?: ResultsPerPageProps;
   sorting?: Omit<SortingProps, 'type'>;
   input?: InputProps & { hide?: boolean; position?: InputPosition };
-  results?: ResultsProps & { viewType?: ResultViewType };
+  results?: ResultsProps & { viewType?: ResultViewType; mobileViewType?: ResultViewType };
   pagination?: PaginationProps;
   mode?: M;
 } & (

@@ -128,9 +128,6 @@ export default ({ showToggleFilter = true, isMobile = false, onScrollTop, mode =
     if (open) {
       const rangeFilters = filterBuilders
         .filter((fb) => fb instanceof RangeFilterBuilder)
-        // TODO: casting works fine but giving a warning during build
-        // we temporarily skip the issue and will revisit it later
-        // @ts-ignore
         .map((fb) => fb as RangeFilterBuilder);
       rangeFilters.forEach((fb) => fb.setFrozen(true));
       timeout = setTimeout(() => {

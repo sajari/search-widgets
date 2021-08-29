@@ -38,6 +38,7 @@ export function mergeProps(params: MergePropsParams): MergedSearchResultsProps {
           grid: 'cover',
           list: 'contain',
         },
+        mobileViewType: 'list',
       },
       resultsPerPage: {
         options: [15, 25, 50, 100],
@@ -127,6 +128,7 @@ export function mergeProps(params: MergePropsParams): MergedSearchResultsProps {
               list: 'cover',
             },
             viewType: 'grid',
+            mobileViewType: 'grid',
           },
           sorting: {
             options: [
@@ -168,6 +170,9 @@ export function mergeProps(params: MergePropsParams): MergedSearchResultsProps {
       const src: DeepPartial<MergedSearchResultsProps> = {
         options: {
           syncURL: 'push',
+          results: {
+            mobileViewType: 'grid',
+          },
         },
       };
 
