@@ -5,6 +5,7 @@ import habitat from 'preact-habitat';
 import SearchInput from './search-input';
 import SearchInputBinding from './search-input-binding';
 import SearchResults from './search-results';
+import TokenCheck from './token-check';
 
 if (!process.env.DEPLOY_SCRIPT) {
   import('./dev/app')
@@ -19,6 +20,7 @@ const components: Record<string, ComponentType> = {
   overlay: SearchResults as ComponentType,
   'search-input-binding': SearchInputBinding as ComponentType,
   'search-input': SearchInput as ComponentType,
+  'token-check': TokenCheck as ComponentType,
 };
 
 const attribute = 'data-widget';
