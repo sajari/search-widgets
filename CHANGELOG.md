@@ -1,5 +1,12 @@
 # @sajari/search-widgets
 
+## 2.3.3
+
+### Patch Changes
+
+- f44ee2c: Specify 16px font size at the outer most div to avoid the child elements font-size and box model being modified by a container wrapping the widgets.
+- 98e9ed2: Fix margin of buttons is overridden by theme CSS.
+
 ## 2.3.2
 
 ### Patch Changes
