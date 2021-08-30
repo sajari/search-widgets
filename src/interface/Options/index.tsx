@@ -200,13 +200,13 @@ export default ({ showToggleFilter = true, isMobile = false, onScrollTop, mode =
         fullWidth
         fullHeight
       >
-        <ModalHeader>
+        <ModalHeader css={['font-size: 16px;']}>
           <ModalTitle css={tw`text-xl`}>Filters</ModalTitle>
           <ModalCloseButton />
         </ModalHeader>
 
         <ModalBody
-          css={tw`pt-2`}
+          css={[tw`pt-2`, 'font-size: 16px;']}
           ref={(node) => {
             if (!node) return;
             refScrollBox = node;
@@ -225,7 +225,7 @@ export default ({ showToggleFilter = true, isMobile = false, onScrollTop, mode =
               })}
           </div>
         </ModalBody>
-        <div css={[tw`absolute bottom-0 inset-x-0`, count === 0 ? tw`h-0` : tw`h-12`]}>
+        <div css={[tw`absolute bottom-0 inset-x-0`, count === 0 ? tw`h-0` : tw`h-12`, 'font-size: 16px;']}>
           <ModalFooter
             css={[
               tw`flex justify-center absolute bottom-0 inset-x-0 border border-solid border-t border-gray-200 duration-200 transition-all transform bg-white`,
