@@ -2112,10 +2112,10 @@
     tailwindcss-truncate-multiline "^1.0.3"
     twin.macro "^1.12.1"
 
-"@sajari/react-search-ui@^3.8.3":
-  version "3.8.3"
-  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-3.8.3.tgz#3c83c189c7b1b29e26dfe01e95c488744e320c03"
-  integrity sha512-Gxh+eLetzp4mtDWp803xDthNmZveJerflMyMD5l4k9+Lxb1+i5qQyp8F+3OLDpqs5CWyb+uahHGONGfa5CwjjQ==
+"@sajari/react-search-ui@^3.8.4":
+  version "3.8.4"
+  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-3.8.4.tgz#9adf2a9975e4920cc6ce2cc7f65d1a2d40fe314c"
+  integrity sha512-2jeyu3hC0kFaE8hbpjBuynxDpLXBWrosfWjyE7p8z+DoRH4m+qzAz6kP+kqR4S3UYxuRL2EmWXzhFNsRIos1rQ==
   dependencies:
     "@react-aria/utils" "3.5.0"
     "@sajari/react-components" "^1.11.3"
