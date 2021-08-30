@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 2.3.4
+
+### Patch Changes
+
+- 86663b5: Fix ViewType button margin issue.
+
 ## 2.3.3
 
 ### Patch Changes
