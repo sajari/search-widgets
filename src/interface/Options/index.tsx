@@ -164,7 +164,7 @@ export default ({ showToggleFilter = true, isMobile = false, onScrollTop, mode =
           <Button
             onClick={onOpen}
             size="sm"
-            css={[tw`border-none bg-transparent shadow-none h-7`, mode === 'overlay' ? tw`-mr-3` : undefined]}
+            css={[tw`border-none bg-transparent shadow-none h-7`, mode === 'overlay' ? tw`-mr-3 my-0 ml-0` : tw`m-0`]}
             aria-label="Show filters"
           >
             <svg height="16" width="16" viewBox="0 0 16 16" focusable="false" role="presentation">
@@ -237,7 +237,7 @@ export default ({ showToggleFilter = true, isMobile = false, onScrollTop, mode =
                 resetFilters();
                 setActiveFilterList(filters.map(() => false));
               }}
-              css={tw`w-1/2`}
+              css={tw`w-1/2 m-0`}
             >
               {`Clear (${count})`}
             </Button>
@@ -249,7 +249,7 @@ export default ({ showToggleFilter = true, isMobile = false, onScrollTop, mode =
                 }
               }}
               appearance="primary"
-              css={tw`w-1/2`}
+              css={tw`w-1/2 m-0`}
             >
               Apply
             </Button>
