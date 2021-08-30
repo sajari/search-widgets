@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 2.3.2
+
+### Patch Changes
+
+- 48e2cc0: Set default 2 columns grid view on mobile screens for shopify and app preset.
+
 ## 2.3.1
 
 ### Patch Changes
