@@ -149,7 +149,7 @@ const OverlayInterface = () => {
       {...modalProps}
     >
       <ResizeObserver onResize={(size) => setWidth(size.width)} css={tw`flex h-full overflow-hidden`}>
-        <div css={[tw`flex flex-col flex-none w-full overflow-hidden`]}>
+        <div css={[tw`flex flex-col flex-none w-full overflow-hidden`, 'font-size: 16px;']}>
           <div css={tw`flex-none`}>
             <div
               css={[

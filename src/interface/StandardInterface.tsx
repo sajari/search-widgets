@@ -36,7 +36,7 @@ const StandardInterface = () => {
     <React.Fragment>
       {syncURL !== 'none' ? <SyncStateQueryParams /> : null}
       <ResizeObserver onResize={(size) => setWidth(size.width)}>
-        <div id={id} css={tw`space-y-6`}>
+        <div id={id} css={[tw`space-y-6`, 'font-size: 16px;']}>
           {!hide && (topInput || isMobile) && (
             <Input {...inputProps} css={tw`w-full`} showPoweredBy={preset !== 'shopify'} />
           )}

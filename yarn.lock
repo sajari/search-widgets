@@ -2048,10 +2048,10 @@
     eslint-config-airbnb-typescript "^12.0.0"
     eslint-config-prettier "^7.1.0"
 
-"@sajari/react-components@^1.9.0":
-  version "1.9.0"
-  resolved "https://registry.yarnpkg.com/@sajari/react-components/-/react-components-1.9.0.tgz#1a590fc95f9544918c523b18d8f66c415fc180c9"
-  integrity sha512-81adRx7p0shQnYzCtYPqPI7qnf9kUXeNTPY7s/qDL33zgNEWIJattmvc22HkTlSxv+20KFXnwDyHX5SyBENE4Q==
+"@sajari/react-components@^1.11.2":
+  version "1.11.2"
+  resolved "https://registry.yarnpkg.com/@sajari/react-components/-/react-components-1.11.2.tgz#849a5cce6957a49b09837cee5204957b1a7fa195"
+  integrity sha512-KkUuvIIpBSxivARoGKPNS5hKYAxhbQ97Ili5LFnk33KNkJM08hQjqIDBw9AhNiaJk5yKWEUkwxxTaIkEeSLWiw==
   dependencies:
     "@popperjs/core" "^2.9.2"
     "@react-aria/button" "^3.3.0"
@@ -2062,7 +2062,7 @@
     "@react-aria/textfield" "^3.2.2"
     "@react-aria/utils" "^3.5.0"
     "@react-types/button" "^3.3.0"
-    "@sajari/react-sdk-utils" "^1.3.15"
+    "@sajari/react-sdk-utils" "^1.4.1"
     aria-hidden "^1.1.2"
     body-scroll-lock "^3.1.5"
     classnames "^2.2.6"
@@ -2082,21 +2082,6 @@
     "@sajari/sdk-js" "^2.0.2"
     js-cookie "^2.2.1"
 
-"@sajari/react-sdk-utils@^1.3.15":
-  version "1.3.15"
-  resolved "https://registry.yarnpkg.com/@sajari/react-sdk-utils/-/react-sdk-utils-1.3.15.tgz#f1c7cce49922be6b440a1849ac04191aee6afb9d"
-  integrity sha512-CItLBsu7nRR7NzloMre5Rf3SEN+gFPm779GiVCgc5Ew9inZ5vWMXQcx52mW4wik0z4dUL+/bj1qZ6Cipm0TenQ==
-  dependencies:
-    "@emotion/core" "^10.1.1"
-    "@emotion/is-prop-valid" "1.0.0"
-    "@emotion/styled" "^10.0.27"
-    "@tailwindcss/ui" "^0.7.2"
-    emotion-theming "^10.0.27"
-    tailwindcss "^1.9.6"
-    tailwindcss-filters "^3.0.0"
-    tailwindcss-truncate-multiline "^1.0.3"
-    twin.macro "^1.12.1"
-
 "@sajari/react-sdk-utils@^1.3.17":
   version "1.3.17"
   resolved "https://registry.yarnpkg.com/@sajari/react-sdk-utils/-/react-sdk-utils-1.3.17.tgz#5ada3150911af0180b2db3f9fa995a9068bdaca0"
@@ -2112,15 +2097,30 @@
     tailwindcss-truncate-multiline "^1.0.3"
     twin.macro "^1.12.1"
 
-"@sajari/react-search-ui@^3.5.0":
-  version "3.5.0"
-  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-3.5.0.tgz#6b0410123eee8f07100d5adfd3218b1824824cdb"
-  integrity sha512-lnPLsPAjBE7pQcQ0axHWscXNe5SOcDt87gIj5pTY21qPS4qlp8jEvdPE8tphAtsXuMebtrQ+d1LWwueG2mWINg==
+"@sajari/react-sdk-utils@^1.4.1":
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@sajari/react-sdk-utils/-/react-sdk-utils-1.4.1.tgz#56d75df24e68c675d46d56e382a1a2b23decbc85"
+  integrity sha512-3jOEam+NT9SPUwutQA/Mcj596Bz3V6fQ6fCwhpAtRZ4gGAnC0lvS8fEhpuaQ0UoVtXBGfBqbZsJAx7HH7GtvIQ==
+  dependencies:
+    "@emotion/core" "^10.1.1"
+    "@emotion/is-prop-valid" "1.0.0"
+    "@emotion/styled" "^10.0.27"
+    "@tailwindcss/ui" "^0.7.2"
+    emotion-theming "^10.0.27"
+    tailwindcss "^1.9.6"
+    tailwindcss-filters "^3.0.0"
+    tailwindcss-truncate-multiline "^1.0.3"
+    twin.macro "^1.12.1"
+
+"@sajari/react-search-ui@^3.8.2":
+  version "3.8.2"
+  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-3.8.2.tgz#8700028b21a3d7c32c91d59388e7ef6c72449e10"
+  integrity sha512-v27RycyEh02JWyVnFjLU1EKqXOgNDWOlSEVtYjkp/amwixgnXXuz7uzvo/Ah2HtFhqmMKY9sXsEOQVmmt4ACMA==
   dependencies:
     "@react-aria/utils" "3.5.0"
-    "@sajari/react-components" "^1.9.0"
+    "@sajari/react-components" "^1.11.2"
     "@sajari/react-hooks" "^3.2.1"
-    "@sajari/react-sdk-utils" "^1.3.17"
+    "@sajari/react-sdk-utils" "^1.4.1"
     dayjs "^1.10.5"
     i18next "19.8.7"
     i18next-browser-languagedetector "^6.0.1"
