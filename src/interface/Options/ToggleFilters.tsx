@@ -10,7 +10,7 @@ export default () => {
   const { t } = useTranslation('filter');
 
   return (
-    <Button type="button" size="sm" onClick={toggleFilters} css={tw`whitespace-nowrap`}>
+    <Button type="button" size="sm" onClick={toggleFilters} css={tw`whitespace-nowrap m-0`}>
       {filtersShown ? t('hide') : t('show')}
     </Button>
   );
