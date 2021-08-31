@@ -128,9 +128,6 @@ export default ({ showToggleFilter = true, isMobile = false, onScrollTop, mode =
     if (open) {
       const rangeFilters = filterBuilders
         .filter((fb) => fb instanceof RangeFilterBuilder)
-        // TODO: casting works fine but giving a warning during build
-        // we temporarily skip the issue and will revisit it later
-        // @ts-ignore
         .map((fb) => fb as RangeFilterBuilder);
       rangeFilters.forEach((fb) => fb.setFrozen(true));
       timeout = setTimeout(() => {
@@ -167,7 +164,7 @@ export default ({ showToggleFilter = true, isMobile = false, onScrollTop, mode =
           <Button
             onClick={onOpen}
             size="sm"
-            css={[tw`border-none bg-transparent shadow-none h-7`, mode === 'overlay' ? tw`-mr-3` : undefined]}
+            css={[tw`border-none bg-transparent shadow-none h-7`, mode === 'overlay' ? tw`-mr-3 my-0 ml-0` : tw`m-0`]}
             aria-label="Show filters"
           >
             <svg height="16" width="16" viewBox="0 0 16 16" focusable="false" role="presentation">
@@ -203,13 +200,13 @@ export default ({ showToggleFilter = true, isMobile = false, onScrollTop, mode =
         fullWidth
         fullHeight
       >
-        <ModalHeader>
+        <ModalHeader css={['font-size: 16px;']}>
           <ModalTitle css={tw`text-xl`}>Filters</ModalTitle>
           <ModalCloseButton />
         </ModalHeader>
 
         <ModalBody
-          css={tw`pt-2`}
+          css={[tw`pt-2`, 'font-size: 16px;']}
           ref={(node) => {
             if (!node) return;
             refScrollBox = node;
@@ -228,7 +225,7 @@ export default ({ showToggleFilter = true, isMobile = false, onScrollTop, mode =
               })}
           </div>
         </ModalBody>
-        <div css={[tw`absolute bottom-0 inset-x-0`, count === 0 ? tw`h-0` : tw`h-12`]}>
+        <div css={[tw`absolute bottom-0 inset-x-0`, count === 0 ? tw`h-0` : tw`h-12`, 'font-size: 16px;']}>
           <ModalFooter
             css={[
               tw`flex justify-center absolute bottom-0 inset-x-0 border border-solid border-t border-gray-200 duration-200 transition-all transform bg-white`,
@@ -240,7 +237,7 @@ export default ({ showToggleFilter = true, isMobile = false, onScrollTop, mode =
                 resetFilters();
                 setActiveFilterList(filters.map(() => false));
               }}
-              css={tw`w-1/2`}
+              css={tw`w-1/2 m-0`}
             >
               {`Clear (${count})`}
             </Button>
@@ -252,7 +249,7 @@ export default ({ showToggleFilter = true, isMobile = false, onScrollTop, mode =
                 }
               }}
               appearance="primary"
-              css={tw`w-1/2`}
+              css={tw`w-1/2 m-0`}
             >
               Apply
             </Button>

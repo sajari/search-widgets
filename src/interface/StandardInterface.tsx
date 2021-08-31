@@ -23,10 +23,12 @@ const StandardInterface = () => {
   const { hide = false, ...inputProps } = options.input ?? {};
   const topInput = options.input?.position === 'top';
   const isMobile = !breakpoints.sm;
+  const mobileViewType = options?.results?.mobileViewType || 'list';
+  const isMobileGrid = isMobile && viewType === 'grid';
 
   useEffect(() => {
-    if (isMobile && viewType !== 'list') {
-      setViewType('list');
+    if (isMobile && viewType !== mobileViewType) {
+      setViewType(mobileViewType);
     }
   }, [isMobile, breakpoints]);
 
@@ -34,7 +36,7 @@ const StandardInterface = () => {
     <React.Fragment>
       {syncURL !== 'none' ? <SyncStateQueryParams /> : null}
       <ResizeObserver onResize={(size) => setWidth(size.width)}>
-        <div id={id} css={tw`space-y-6`}>
+        <div id={id} css={[tw`space-y-6`, 'font-size: 16px;']}>
           {!hide && (topInput || isMobile) && (
             <Input {...inputProps} css={tw`w-full`} showPoweredBy={preset !== 'shopify'} />
           )}
@@ -77,7 +79,7 @@ const StandardInterface = () => {
                   })
                 : null}
 
-              <Results {...options.results} />
+              <Results columns={isMobileGrid ? 2 : undefined} gap={isMobileGrid ? 2 : undefined} {...options.results} />
 
               <Pagination {...options.pagination} />
             </div>

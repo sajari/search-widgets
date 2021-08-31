@@ -2048,10 +2048,10 @@
     eslint-config-airbnb-typescript "^12.0.0"
     eslint-config-prettier "^7.1.0"
 
-"@sajari/react-components@^1.11.1":
-  version "1.11.1"
-  resolved "https://registry.yarnpkg.com/@sajari/react-components/-/react-components-1.11.1.tgz#8a15d53856ed577e30d45c66383f42a55e68626e"
-  integrity sha512-P3SL58b2sFXysXaxg3M6UKgPK/M/Q9Ub/Qs1EGqnyKaWVZt43XDD/9X3+ErL5gBXDQuyns6wkEiYP3bigyI+FQ==
+"@sajari/react-components@^1.11.3":
+  version "1.11.3"
+  resolved "https://registry.yarnpkg.com/@sajari/react-components/-/react-components-1.11.3.tgz#7843e75fbcd327e87bf67167bc6e2c5036202bac"
+  integrity sha512-WFQGSXYntYDfhKnkLmIm2Pc0CD7BlXgabamBFhQAPZg+lufAC1Go0Y5W9N6ysz9yIOndBoS4NJax8zc3w1HzfQ==
   dependencies:
     "@popperjs/core" "^2.9.2"
     "@react-aria/button" "^3.3.0"
@@ -2062,7 +2062,7 @@
     "@react-aria/textfield" "^3.2.2"
     "@react-aria/utils" "^3.5.0"
     "@react-types/button" "^3.3.0"
-    "@sajari/react-sdk-utils" "^1.4.0"
+    "@sajari/react-sdk-utils" "^1.4.1"
     aria-hidden "^1.1.2"
     body-scroll-lock "^3.1.5"
     classnames "^2.2.6"
@@ -2097,10 +2097,10 @@
     tailwindcss-truncate-multiline "^1.0.3"
     twin.macro "^1.12.1"
 
-"@sajari/react-sdk-utils@^1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@sajari/react-sdk-utils/-/react-sdk-utils-1.4.0.tgz#be3932541a4f0daf09dbfcff0022c41eae9a30ec"
-  integrity sha512-WHFvRJqptxltonJDoEPCHpgMWtKHN/J5VxOCyk9vlg5ne2oJcLpSrkQ1ki1mIbWia3HFOSQEomZPb8C3YrPcvA==
+"@sajari/react-sdk-utils@^1.4.1":
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@sajari/react-sdk-utils/-/react-sdk-utils-1.4.1.tgz#56d75df24e68c675d46d56e382a1a2b23decbc85"
+  integrity sha512-3jOEam+NT9SPUwutQA/Mcj596Bz3V6fQ6fCwhpAtRZ4gGAnC0lvS8fEhpuaQ0UoVtXBGfBqbZsJAx7HH7GtvIQ==
   dependencies:
     "@emotion/core" "^10.1.1"
     "@emotion/is-prop-valid" "1.0.0"
@@ -2112,15 +2112,15 @@
     tailwindcss-truncate-multiline "^1.0.3"
     twin.macro "^1.12.1"
 
-"@sajari/react-search-ui@^3.8.1":
-  version "3.8.1"
-  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-3.8.1.tgz#b662115bd4d9c9f27b46911e760a19d480e2b20f"
-  integrity sha512-wC+2jxVq5H/iNInJueSKp5o6MxOI2GsRQXQz0/Y1TT6sty/CY9uvbX3J930hnHQvTaQxyMOltMjyPe3EQHGywA==
+"@sajari/react-search-ui@^3.8.4":
+  version "3.8.4"
+  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-3.8.4.tgz#9adf2a9975e4920cc6ce2cc7f65d1a2d40fe314c"
+  integrity sha512-2jeyu3hC0kFaE8hbpjBuynxDpLXBWrosfWjyE7p8z+DoRH4m+qzAz6kP+kqR4S3UYxuRL2EmWXzhFNsRIos1rQ==
   dependencies:
     "@react-aria/utils" "3.5.0"
-    "@sajari/react-components" "^1.11.1"
+    "@sajari/react-components" "^1.11.3"
     "@sajari/react-hooks" "^3.2.1"
-    "@sajari/react-sdk-utils" "^1.4.0"
+    "@sajari/react-sdk-utils" "^1.4.1"
     dayjs "^1.10.5"
     i18next "19.8.7"
     i18next-browser-languagedetector "^6.0.1"

@@ -67,7 +67,7 @@ export default (defaultProps: SearchInputProps) => {
     const formRef = useRef<HTMLFormElement>();
     if (redirect && mode !== 'results') {
       return (
-        <form ref={formRef} action={redirect.url ?? 'search'}>
+        <form ref={formRef} action={redirect.url ?? 'search'} css={['font-size: 16px']}>
           <AppliedInput
             onSelect={() => {
               if (typeof formRef.current.requestSubmit === 'function') {

@@ -1,5 +1,24 @@
 # @sajari/search-widgets
 
+## 2.3.4
+
+### Patch Changes
+
+- 86663b5: Fix ViewType button margin issue.
+
+## 2.3.3
+
+### Patch Changes
+
+- f44ee2c: Specify 16px font size at the outer most div to avoid the child elements font-size and box model being modified by a container wrapping the widgets.
+- 98e9ed2: Fix margin of buttons is overridden by theme CSS.
+
+## 2.3.2
+
+### Patch Changes
+
+- 48e2cc0: Set default 2 columns grid view on mobile screens for shopify and app preset.
+
 ## 2.3.1
 
 ### Patch Changes

@@ -32,11 +32,12 @@ const OverlayInterface = () => {
   const { setSorting } = useSorting();
   const { setQuery } = useQuery();
   const { setWidth, filtersShown, breakpoints } = useInterfaceContext();
-  const { setViewType } = useSearchUIContext();
+  const { setViewType, viewType } = useSearchUIContext();
   const { container: modalContainer } = useCustomContainer();
   const tabsFilters = filters?.filter((props) => props.type === 'tabs') || [];
   const nonTabsFilters = filters?.filter((props) => props.type !== 'tabs') || [];
   const inputProps = options.input ?? {};
+  const mobileViewType = options?.results?.mobileViewType || 'list';
 
   const scrollTop = useCallback(() => {
     const container = document.querySelector(`#${containerId}`);
@@ -52,6 +53,8 @@ const OverlayInterface = () => {
   } = options as SearchResultsOptions<'overlay'>;
   const [open, setOpen] = useState(defaultOpen);
   const hideSidebar = nonTabsFilters.length === 0;
+  const isMobile = !breakpoints.sm;
+  const isMobileGrid = isMobile && viewType === 'grid';
 
   useEffect(() => {
     const buttonSelectors = isArray(buttonSelectorProp) ? buttonSelectorProp : [buttonSelectorProp];
@@ -114,11 +117,9 @@ const OverlayInterface = () => {
     };
   }, [buttonSelectorProp, inputSelector]);
 
-  const isMobile = !breakpoints.sm;
-
   useEffect(() => {
     if (isMobile && open) {
-      setViewType('list');
+      setViewType(mobileViewType);
     }
   }, [isMobile, open]);
 
@@ -152,7 +153,7 @@ const OverlayInterface = () => {
       {...modalProps}
     >
       <ResizeObserver onResize={(size) => setWidth(size.width)} css={tw`flex h-full overflow-hidden`}>
-        <div css={[tw`flex flex-col flex-none w-full overflow-hidden`]}>
+        <div css={[tw`flex flex-col flex-none w-full overflow-hidden`, 'font-size: 16px;']}>
           <div css={tw`flex-none`}>
             <div
               css={[
@@ -184,14 +185,16 @@ const OverlayInterface = () => {
             id={id}
             css={[
               tw`flex flex-grow overflow-hidden transition-all duration-200`,
-              (!filtersShown || hideSidebar) && tw`pl-6`,
+              (!filtersShown || hideSidebar) && [isMobileGrid ? tw`pl-2 sm:pl-6` : tw`pl-6`],
             ]}
           >
             {results && !isMobile && (
               <div
                 css={[
                   tw`flex-none overflow-y-auto transition-all duration-200`,
-                  filtersShown && !hideSidebar ? tw`pl-6 pr-8 w-86` : tw`w-0 opacity-0`,
+                  filtersShown && !hideSidebar
+                    ? [tw`w-86`, isMobileGrid ? tw`pl-2 sm:pl-6` : tw`pr-8 pl-6`]
+                    : tw`w-0 opacity-0`,
                 ]}
               >
                 <div css={tw`pb-6 space-y-6 w-72`}>
@@ -214,7 +217,7 @@ const OverlayInterface = () => {
                 ]}
               >
                 {tabsFilters.length > 0 && !error ? (
-                  <div css={tw`pr-6 space-y-6`}>
+                  <div css={[tw`space-y-6`, isMobileGrid ? tw`sm:pr-6 pr-2` : tw`pr-6`]}>
                     {tabsFilters.map((props) => {
                       const { textTransform = 'capitalize-first-letter' } = props;
                       return <Filter {...props} type="tabs" textTransform={textTransform} key={props.name} />;
@@ -224,14 +227,18 @@ const OverlayInterface = () => {
 
                 <div
                   id={containerId}
-                  css={tw`pt-6 pr-6 overflow-y-auto`}
+                  css={[tw`overflow-y-auto`, isMobileGrid ? tw`pt-2 sm:pt-6 pr-2 sm:pr-6` : tw`pt-6 pr-6`]}
                   ref={(node) => {
                     if (!node) return;
                     disableBodyScroll(node);
                   }}
                 >
                   <div css={tw`mb-6`}>
-                    <Results {...options.results} />
+                    <Results
+                      columns={isMobileGrid ? 2 : undefined}
+                      gap={isMobileGrid ? 2 : undefined}
+                      {...options.results}
+                    />
                   </div>
                 </div>
               </div>
