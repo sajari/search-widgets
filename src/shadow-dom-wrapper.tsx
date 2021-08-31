@@ -1,8 +1,9 @@
 import type { ComponentType } from 'preact';
-import { useState } from 'preact/hooks';
+import { useMemo, useState } from 'preact/hooks';
 
 import { renderInContainer } from './emotion-cache';
-import type { SearchResultsProps, WidgetType } from './types';
+import type { SearchWidgetBaseOptions, WidgetType } from './types';
+import { createDownshiftEnvironment } from './utils';
 
 function attachShadowRoot(el: Element | null, { type }: { type: WidgetType }) {
   let target = el;
@@ -13,18 +14,20 @@ function attachShadowRoot(el: Element | null, { type }: { type: WidgetType }) {
     // always move portal to end of body
     if (portalEl) document.body.appendChild(portalEl);
     // find container div
-    const container = portalEl?.shadowRoot?.querySelector('div');
-    if (container) return container;
+    const shadowRoot = portalEl?.shadowRoot;
+    const container = shadowRoot?.querySelector('div');
+    if (container) return { shadowRoot, container };
     // otherwise create & append new portal element
     target = document.body.appendChild(document.createElement(name));
   }
 
-  const container = target?.attachShadow({ mode: 'open' }).appendChild(document.createElement('div'));
-  return container;
+  const shadowRoot = target?.attachShadow({ mode: 'open' });
+  const container = shadowRoot?.appendChild(document.createElement('div'));
+  return { shadowRoot, container };
 }
 
 export default function withShadowRoot(
-  Comp: ComponentType<{ container?: HTMLElement }>,
+  Comp: ComponentType<SearchWidgetBaseOptions>,
   {
     type,
     mountElement,
@@ -33,15 +36,22 @@ export default function withShadowRoot(
     mountElement: Element | null;
   },
 ) {
-  return ({ useShadowDOM, ...props }: SearchResultsProps) => {
-    const [container] = useState(() => (useShadowDOM ? attachShadowRoot(mountElement, { type }) : undefined));
+  return ({ useShadowDOM, ...props }: SearchWidgetBaseOptions) => {
+    const [{ shadowRoot, container }] = useState<ReturnType<typeof attachShadowRoot>>(() =>
+      useShadowDOM ? attachShadowRoot(mountElement, { type }) : { shadowRoot: undefined, container: undefined },
+    );
+
+    const downshiftEnvironment = useMemo(
+      () => (shadowRoot ? createDownshiftEnvironment(shadowRoot) : null),
+      [shadowRoot],
+    );
 
     if (!useShadowDOM) {
       return <Comp {...props} />;
     }
 
     if (type === 'search-results' || type === 'overlay' || type === 'search-input-binding') {
-      return <Comp container={container} {...props} />;
+      return <Comp downshiftEnvironment={downshiftEnvironment} container={container} {...props} />;
     }
 
     return renderInContainer(<Comp {...props} />, { cacheKey: type, container });

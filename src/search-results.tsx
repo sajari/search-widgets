@@ -11,7 +11,7 @@ import { SearchResultsProps } from './types';
 const messageType = 'sajari-shopify-ui-builder-update';
 
 export default (defaultProps: SearchResultsProps) => {
-  const { container } = defaultProps;
+  const { container, downshiftEnvironment } = defaultProps;
   const [state, setState] = useState(defaultProps);
   const {
     emitter,
@@ -58,6 +58,7 @@ export default (defaultProps: SearchResultsProps) => {
       disableDefaultStyles={disableDefaultStyles}
       importantStyles={importantStyles}
       currency={currency}
+      downshiftEnvironment={downshiftEnvironment}
     >
       <PubSubContextProvider value={emitterContext}>
         <SearchResultsContextProvider value={context}>

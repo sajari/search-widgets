@@ -35,7 +35,7 @@ type TextTransform = 'normal-case' | 'uppercase' | 'lowercase' | 'capitalize' | 
 
 export type PipelineOption = string | { name: string; version?: string };
 
-interface SearchWidgetBaseOptions {
+export interface SearchWidgetBaseOptions {
   account: string;
   collection: string;
   pipeline: PipelineOption;
@@ -57,6 +57,9 @@ interface SearchWidgetBaseOptions {
   disableDefaultStyles?: ContextProviderValues['disableDefaultStyles'];
   importantStyles?: ContextProviderValues['importantStyles'];
   currency?: ContextProviderValues['currency'];
+  downshiftEnvironment?: ContextProviderValues['downshiftEnvironment'];
+  useShadowDOM?: boolean;
+  container?: HTMLElement;
 }
 
 export type SearchResultsOptions<M = SearchResultsMode> = {
@@ -93,8 +96,6 @@ export interface SearchResultsProps extends SearchWidgetBaseOptions {
   filters?: Array<FilterProps & { field: string; textTransform?: TextTransform }>;
   options?: SearchResultsOptions;
   emitter: Emitter;
-  container?: HTMLElement;
-  useShadowDOM?: boolean;
   shopifyOptions?: ShopifyOptions;
 }
 
