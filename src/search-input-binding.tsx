@@ -3,6 +3,7 @@ import { render } from 'preact/compat';
 import { useMemo } from 'react';
 
 import { getPresetSelector } from './defaults';
+import { EmotionCache } from './emotion-cache';
 import { SearchInputBindingProps } from './types';
 import { getPipelineInfo } from './utils';
 import { getTracking } from './utils/getTracking';
@@ -93,7 +94,8 @@ const renderBindingInput = (
   targets: NodeListOf<HTMLElement>,
   params: Omit<SearchInputBindingProps, 'selector' | 'omittedElementSelectors'>,
 ) => {
-  const { mode = 'suggestions', ...props } = params;
+  const { mode = 'suggestions', container, ...props } = params;
+
   targets.forEach((target) => {
     const showPoweredBy = props.preset !== 'shopify';
 
@@ -104,12 +106,15 @@ const renderBindingInput = (
 
       render(
         <Wrapper {...props}>
-          <Input
-            mode={mode}
-            onSelect={onSelectHandler(target)}
-            inputElement={{ current: target }}
-            showPoweredBy={showPoweredBy}
-          />
+          <EmotionCache cacheKey={mode} container={container}>
+            <Input
+              portalContainer={container}
+              mode={mode}
+              onSelect={onSelectHandler(target)}
+              inputElement={{ current: target }}
+              showPoweredBy={showPoweredBy}
+            />
+          </EmotionCache>
         </Wrapper>,
         fragment as unknown as Element,
       );
@@ -126,12 +131,15 @@ const renderBindingInput = (
 
         render(
           <Wrapper {...props}>
-            <Input
-              mode={mode}
-              onSelect={onSelectHandler(element)}
-              inputElement={{ current: element }}
-              showPoweredBy={showPoweredBy}
-            />
+            <EmotionCache cacheKey={mode} container={container}>
+              <Input
+                portalContainer={container}
+                mode={mode}
+                onSelect={onSelectHandler(element)}
+                inputElement={{ current: element }}
+                showPoweredBy={showPoweredBy}
+              />
+            </EmotionCache>
           </Wrapper>,
           fragment as unknown as Element,
         );

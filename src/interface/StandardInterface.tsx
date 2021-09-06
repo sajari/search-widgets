@@ -58,7 +58,12 @@ const StandardInterface = () => {
                     .map((props) => {
                       const { type, textTransform = 'capitalize-first-letter' } = props;
                       if (type === 'list' || type === 'select') {
-                        return <Filter {...{ ...props, textTransform }} key={props.name} />;
+                        return (
+                          <Filter
+                            {...{ ...props, textTransform }}
+                            key={props.name} // eslint-disable-line react/destructuring-assignment
+                          />
+                        );
                       }
                       return <Filter {...props} key={props.name} />;
                     })}

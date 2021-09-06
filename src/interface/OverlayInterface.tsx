@@ -5,9 +5,11 @@ import { Filter, Input, Pagination, Results, useSearchUIContext } from '@sajari/
 // TODO: ideally this should be a generic solution in the Modal component
 // making a note here so we (Thanh) can revisit the issue
 import { clearAllBodyScrollLocks, disableBodyScroll } from 'body-scroll-lock';
+import { memo } from 'preact/compat';
 import { useCallback, useEffect, useState } from 'preact/hooks';
 import tw from 'twin.macro';
 
+import { useCustomContainer } from '../container/context';
 import { useSearchResultsContext } from '../context';
 import { getPresetSelectorOverlayMode } from '../defaults';
 import { SearchResultsOptions } from '../types';
@@ -31,6 +33,7 @@ const OverlayInterface = () => {
   const { setQuery } = useQuery();
   const { setWidth, filtersShown, breakpoints } = useInterfaceContext();
   const { setViewType, viewType } = useSearchUIContext();
+  const { container: modalContainer } = useCustomContainer();
   const tabsFilters = filters?.filter((props) => props.type === 'tabs') || [];
   const nonTabsFilters = filters?.filter((props) => props.type !== 'tabs') || [];
   const inputProps = options.input ?? {};
@@ -134,6 +137,7 @@ const OverlayInterface = () => {
 
   return (
     <Modal
+      container={modalContainer}
       open={open}
       onClose={() => {
         setSorting('', false);
@@ -251,4 +255,4 @@ const OverlayInterface = () => {
   );
 };
 
-export default OverlayInterface;
+export default memo(OverlayInterface);

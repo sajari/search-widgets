@@ -5,7 +5,9 @@ import habitat from 'preact-habitat';
 import SearchInput from './search-input';
 import SearchInputBinding from './search-input-binding';
 import SearchResults from './search-results';
+import withShadowRoot from './shadow-dom-wrapper';
 import TokenCheck from './token-check';
+import { WidgetType } from './types';
 
 if (!process.env.DEPLOY_SCRIPT) {
   import('./dev/app')
@@ -15,7 +17,7 @@ if (!process.env.DEPLOY_SCRIPT) {
     .catch(console.error);
 }
 
-const components: Record<string, ComponentType> = {
+const components: Record<WidgetType, ComponentType> = {
   'search-results': SearchResults as ComponentType,
   overlay: SearchResults as ComponentType,
   'search-input-binding': SearchInputBinding as ComponentType,
@@ -28,9 +30,13 @@ const emitter = mitt();
 
 const renderAll = () => {
   // Build widgets
-  Object.entries(components).forEach(([type, component]) => {
-    habitat(component).render({
-      selector: `[${attribute}="${type}"]`,
+  (Object.entries(components) as Array<[WidgetType, ComponentType]>).forEach(([type, component]) => {
+    const selector = `[${attribute}="${type}"]`;
+
+    habitat(
+      withShadowRoot(component, { type, mountElement: document.querySelector(selector) }) as ComponentType,
+    ).render({
+      selector,
       clean: true,
       defaultProps: {
         emitter,
@@ -44,7 +50,7 @@ const renderAll = () => {
       return;
     }
 
-    const type = element.getAttribute(attribute) as string;
+    const type = element.getAttribute(attribute) as WidgetType;
 
     if (!Object.keys(components).includes(type)) {
       return;
@@ -56,7 +62,7 @@ const renderAll = () => {
 
     const component = components[type];
 
-    habitat(component).render({
+    habitat(withShadowRoot(component, { type, mountElement: element }) as ComponentType).render({
       selector: `#${id}`,
       clean: true,
       defaultProps: {

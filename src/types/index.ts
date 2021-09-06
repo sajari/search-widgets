@@ -18,7 +18,7 @@ import { ComponentChildren } from 'preact';
 
 import { Breakpoints } from '../utils/styles';
 
-export type WidgetType = 'search-results' | 'search-input-binding' | 'overlay' | 'search-input';
+export type WidgetType = 'search-results' | 'search-input-binding' | 'overlay' | 'search-input' | 'token-check';
 export type InputMode = CoreInputProps<any>['mode'];
 export type PresetType = 'shopify' | 'website' | 'app' | undefined;
 export type TrackingType = 'posneg' | 'click';
@@ -35,7 +35,7 @@ type TextTransform = 'normal-case' | 'uppercase' | 'lowercase' | 'capitalize' | 
 
 export type PipelineOption = string | { name: string; version?: string };
 
-interface SearchWidgetBaseOptions {
+export interface SearchWidgetBaseOptions {
   account: string;
   collection: string;
   pipeline: PipelineOption;
@@ -57,6 +57,9 @@ interface SearchWidgetBaseOptions {
   disableDefaultStyles?: ContextProviderValues['disableDefaultStyles'];
   importantStyles?: ContextProviderValues['importantStyles'];
   currency?: ContextProviderValues['currency'];
+  downshiftEnvironment?: ContextProviderValues['downshiftEnvironment'];
+  useShadowDOM?: boolean;
+  container?: HTMLElement;
 }
 
 export type SearchResultsOptions<M = SearchResultsMode> = {
@@ -106,6 +109,11 @@ export interface SearchResultsContextProps
 export interface PubSubContextProps {
   children?: ComponentChildren;
   emitter: Emitter;
+}
+
+export interface CustomContainerContextProps {
+  children?: ComponentChildren;
+  container?: HTMLElement;
 }
 
 export interface InterfaceContextProps {

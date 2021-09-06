@@ -1454,7 +1454,7 @@
   dependencies:
     "@babel/plugin-syntax-jsx" "^7.2.0"
 
-"@emotion/cache@^10.0.27":
+"@emotion/cache@^10", "@emotion/cache@^10.0.27":
   version "10.0.29"
   resolved "https://registry.yarnpkg.com/@emotion/cache/-/cache-10.0.29.tgz#87e7e64f412c060102d589fe7c6dc042e6f9d1e0"
   integrity sha512-fU2VtSVlHiF27empSbxi1O2JFdNWZO+2NFHfwO0pxgTep6Xa3uGb+3pVKfLww2l/IBGLNEZl5Xf/++A4wAYDYQ==
@@ -2048,10 +2048,10 @@
     eslint-config-airbnb-typescript "^12.0.0"
     eslint-config-prettier "^7.1.0"
 
-"@sajari/react-components@^1.11.3":
-  version "1.11.3"
-  resolved "https://registry.yarnpkg.com/@sajari/react-components/-/react-components-1.11.3.tgz#7843e75fbcd327e87bf67167bc6e2c5036202bac"
-  integrity sha512-WFQGSXYntYDfhKnkLmIm2Pc0CD7BlXgabamBFhQAPZg+lufAC1Go0Y5W9N6ysz9yIOndBoS4NJax8zc3w1HzfQ==
+"@sajari/react-components@^1.12.0":
+  version "1.12.0"
+  resolved "https://registry.yarnpkg.com/@sajari/react-components/-/react-components-1.12.0.tgz#2c1f840645dcf19d6affd84989a7772ec53b0ab9"
+  integrity sha512-Of3OYqFE5dwlbQ85ZIEHN4A4PaAsiFxAJbj9fJLygLuQDDW8+I7FYdxtmUPZW8nTaq39Abpv1HU/dffJzAFNmQ==
   dependencies:
     "@popperjs/core" "^2.9.2"
     "@react-aria/button" "^3.3.0"
@@ -2112,13 +2112,13 @@
     tailwindcss-truncate-multiline "^1.0.3"
     twin.macro "^1.12.1"
 
-"@sajari/react-search-ui@^3.9.0":
-  version "3.9.0"
-  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-3.9.0.tgz#86a1bec80b6afb7f2c19658f6bb05b0088d478e9"
-  integrity sha512-15WFzM+J0Iwf3qQor5vE9PbKnlBF4ukypVcr2swpfKoPUphyT7W2OaKm7VcQ/kbU/SAzhJdFEidYXhedWKOGcw==
+"@sajari/react-search-ui@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-4.0.0.tgz#b88a04c82139994bde2a8ed713b645555b979566"
+  integrity sha512-CSGhbWbG0pRwjutef2tJrldWTEbC4OLeb1egREuzxbFpkJvPwnkWQonoTrHWEE2atxtiztXuJKK2tgw+rM/tMw==
   dependencies:
     "@react-aria/utils" "3.5.0"
-    "@sajari/react-components" "^1.11.3"
+    "@sajari/react-components" "^1.12.0"
     "@sajari/react-hooks" "^3.3.0"
     "@sajari/react-sdk-utils" "^1.4.1"
     dayjs "^1.10.5"
