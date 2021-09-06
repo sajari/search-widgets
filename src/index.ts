@@ -33,7 +33,9 @@ const renderAll = () => {
   (Object.entries(components) as Array<[WidgetType, ComponentType]>).forEach(([type, component]) => {
     const selector = `[${attribute}="${type}"]`;
 
-    habitat(withShadowRoot(component, { type, mountElement: document.querySelector(selector) })).render({
+    habitat(
+      withShadowRoot(component, { type, mountElement: document.querySelector(selector) }) as ComponentType,
+    ).render({
       selector,
       clean: true,
       defaultProps: {
@@ -60,7 +62,7 @@ const renderAll = () => {
 
     const component = components[type];
 
-    habitat(withShadowRoot(component, { type, mountElement: element })).render({
+    habitat(withShadowRoot(component, { type, mountElement: element }) as ComponentType).render({
       selector: `#${id}`,
       clean: true,
       defaultProps: {

@@ -18,7 +18,7 @@ import { ComponentChildren } from 'preact';
 
 import { Breakpoints } from '../utils/styles';
 
-export type WidgetType = 'search-results' | 'search-input-binding' | 'overlay' | 'search-input';
+export type WidgetType = 'search-results' | 'search-input-binding' | 'overlay' | 'search-input' | 'token-check';
 export type InputMode = CoreInputProps<any>['mode'];
 export type PresetType = 'shopify' | 'website' | 'app' | undefined;
 export type TrackingType = 'posneg' | 'click';
