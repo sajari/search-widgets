@@ -67,7 +67,7 @@ export function mergeProps(params: MergePropsParams): MergedSearchResultsProps {
         });
       };
       const src: DeepPartial<MergedSearchResultsProps> = {
-        tracking: new ClickTracking('id'),
+        tracking: new PosNegTracking('id'),
         fields: {
           // eslint-disable-next-line no-template-curly-in-string
           url: '/products/${handle}',

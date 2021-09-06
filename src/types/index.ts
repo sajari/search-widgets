@@ -133,3 +133,10 @@ export interface SearchInputProps extends SearchWidgetBaseOptions {
     input?: InputProps;
   };
 }
+
+export interface TokenCheckInputProps {
+  account: string;
+  collection: string;
+  pipeline: PipelineOption;
+  endpoint?: string;
+}
