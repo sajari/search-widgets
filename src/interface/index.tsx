@@ -2,14 +2,14 @@ import { isSSR } from '@sajari/react-sdk-utils';
 import { memo } from 'preact/compat';
 import { useEffect, useMemo, useState } from 'preact/hooks';
 
+import { useCustomContainer } from '../container/context';
 import { useSearchResultsContext } from '../context';
+import { EmotionCache, renderInContainer } from '../emotion-cache';
 import { useDebounce } from '../hooks';
 import { parseBreakpoints } from '../utils/styles';
 import InterfaceContextProvider from './context';
 import OverlayInterface from './OverlayInterface';
 import StandardInterface from './StandardInterface';
-import { EmotionCache, renderInContainer } from '../emotion-cache';
-import { useCustomContainer } from '../container/context';
 
 export default memo(() => {
   const { container } = useCustomContainer();
