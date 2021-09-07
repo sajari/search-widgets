@@ -1,5 +1,6 @@
-import { ClickTracking, FieldDictionary, PosNegTracking } from '@sajari/react-hooks';
+import { FieldDictionary } from '@sajari/react-hooks';
 import { isArray, isEmpty, isNumber, isString, merge, MergeOptions } from '@sajari/react-sdk-utils';
+import { ClickTracking, PosNegTracking } from '@sajari/react-search-ui';
 
 import { SearchResultsOptions, SearchResultsProps, TrackingType, WidgetType } from './types';
 import { ShopifySchema } from './types/shopify';
