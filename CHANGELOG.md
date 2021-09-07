@@ -1,5 +1,16 @@
 # @sajari/search-widgets
 
+## 2.4.0
+
+### Minor Changes
+
+- b1ca565: Allow mounting widgets in Shadow DOM with `useShadowDOM` option.
+- ede2c73: feat: implement posneg tracking for shopify
+
+### Patch Changes
+
+- 4f91ecf: chore: bump downstream packages to improve IE11 support
+
 ## 2.3.4
 
 ### Patch Changes
