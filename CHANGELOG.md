@@ -1,5 +1,15 @@
 # @sajari/search-widgets
 
+## 2.5.0
+
+### Minor Changes
+
+- 6819e19: chore: cleanup of build problem to enable release
+
+### Patch Changes
+
+- 6819e19: chore: upgrade dependencies to avoid conflicting type imports
+
 ## 2.4.0
 
 ### Minor Changes
