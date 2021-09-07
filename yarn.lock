@@ -2048,10 +2048,10 @@
     eslint-config-airbnb-typescript "^12.0.0"
     eslint-config-prettier "^7.1.0"
 
-"@sajari/react-components@^1.12.0":
-  version "1.12.0"
-  resolved "https://registry.yarnpkg.com/@sajari/react-components/-/react-components-1.12.0.tgz#2c1f840645dcf19d6affd84989a7772ec53b0ab9"
-  integrity sha512-Of3OYqFE5dwlbQ85ZIEHN4A4PaAsiFxAJbj9fJLygLuQDDW8+I7FYdxtmUPZW8nTaq39Abpv1HU/dffJzAFNmQ==
+"@sajari/react-components@^1.12.2":
+  version "1.12.2"
+  resolved "https://registry.yarnpkg.com/@sajari/react-components/-/react-components-1.12.2.tgz#8de518cc87567c854339079576bff55bd01c29c7"
+  integrity sha512-tQvnXihF/btNXcoExC3IyM/KCz7w9bLP/KbTOiHkHVsQngSAVY0/D9Q4Su5tJ7HliEazpeLXb+qMjFvkYu9NYQ==
   dependencies:
     "@popperjs/core" "^2.9.2"
     "@react-aria/button" "^3.3.0"
@@ -2062,7 +2062,7 @@
     "@react-aria/textfield" "^3.2.2"
     "@react-aria/utils" "^3.5.0"
     "@react-types/button" "^3.3.0"
-    "@sajari/react-sdk-utils" "^1.4.1"
+    "@sajari/react-sdk-utils" "^1.4.3"
     aria-hidden "^1.1.2"
     body-scroll-lock "^3.1.5"
     classnames "^2.2.6"
@@ -2082,6 +2082,15 @@
     "@sajari/sdk-js" "^2.1.2"
     js-cookie "^2.2.1"
 
+"@sajari/react-hooks@^3.3.1":
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/@sajari/react-hooks/-/react-hooks-3.3.1.tgz#d5a1ae51977e631366f5f42f09b6ba17ed025833"
+  integrity sha512-AufiMlNjgL7QImnWmHx1KHcwSEmAHCGDsNKZgDA4/b98UizQZ5a6M0ORHT0K9Y3dyfSSFymRHICmg+XKZmXY5g==
+  dependencies:
+    "@sajari/react-sdk-utils" "^1.4.3"
+    "@sajari/sdk-js" "^2.1.2"
+    js-cookie "^2.2.1"
+
 "@sajari/react-sdk-utils@^1.3.17":
   version "1.3.17"
   resolved "https://registry.yarnpkg.com/@sajari/react-sdk-utils/-/react-sdk-utils-1.3.17.tgz#5ada3150911af0180b2db3f9fa995a9068bdaca0"
@@ -2097,10 +2106,10 @@
     tailwindcss-truncate-multiline "^1.0.3"
     twin.macro "^1.12.1"
 
-"@sajari/react-sdk-utils@^1.4.1":
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/@sajari/react-sdk-utils/-/react-sdk-utils-1.4.1.tgz#56d75df24e68c675d46d56e382a1a2b23decbc85"
-  integrity sha512-3jOEam+NT9SPUwutQA/Mcj596Bz3V6fQ6fCwhpAtRZ4gGAnC0lvS8fEhpuaQ0UoVtXBGfBqbZsJAx7HH7GtvIQ==
+"@sajari/react-sdk-utils@^1.4.3":
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/@sajari/react-sdk-utils/-/react-sdk-utils-1.4.3.tgz#a9c6f1f27dd976bd85b52748e1f275a3af2b40e8"
+  integrity sha512-pWnWnPuv9IbHe+tHZ9NTZZBWOLEyT4I8flPtHYAmSg2VZfE+RUn4oMdh66ouffub5pJYdM0vDHgfdM93JTcYtA==
   dependencies:
     "@emotion/core" "^10.1.1"
     "@emotion/is-prop-valid" "1.0.0"
@@ -2112,15 +2121,15 @@
     tailwindcss-truncate-multiline "^1.0.3"
     twin.macro "^1.12.1"
 
-"@sajari/react-search-ui@^4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-4.0.0.tgz#b88a04c82139994bde2a8ed713b645555b979566"
-  integrity sha512-CSGhbWbG0pRwjutef2tJrldWTEbC4OLeb1egREuzxbFpkJvPwnkWQonoTrHWEE2atxtiztXuJKK2tgw+rM/tMw==
+"@sajari/react-search-ui@^4.0.2":
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-4.0.2.tgz#29a9150d040eaf6d5f180308a6356d441a2d46ed"
+  integrity sha512-ThKmMd0EK0/NdLWkoNI0km8lGgCjARTDes4Th8HU1Ea+TqDt1CcLTIR06iOK+YAx1auz/ctFSP1srVnu8gOD7g==
   dependencies:
     "@react-aria/utils" "3.5.0"
-    "@sajari/react-components" "^1.12.0"
+    "@sajari/react-components" "^1.12.2"
     "@sajari/react-hooks" "^3.3.0"
-    "@sajari/react-sdk-utils" "^1.4.1"
+    "@sajari/react-sdk-utils" "^1.4.3"
     dayjs "^1.10.5"
     i18next "19.8.7"
     i18next-browser-languagedetector "^6.0.1"
