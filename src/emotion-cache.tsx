@@ -1,6 +1,6 @@
 import createCache from '@emotion/cache';
 import { CacheProvider, css, Global } from '@emotion/core';
-import { createPortal } from 'preact/compat';
+import { createPortal, Fragment } from 'preact/compat';
 import { useMemo } from 'preact/hooks';
 import type { ReactNode } from 'react';
 
@@ -15,12 +15,20 @@ export const EmotionCache = ({
 }) => {
   const emotionCache = useMemo(
     () =>
-      createCache({
-        key: cacheKey,
-        container: (container?.getRootNode() as HTMLElement) ?? document.head,
-      }),
+      container
+        ? createCache({
+            key: cacheKey,
+            container: container?.getRootNode() as HTMLElement,
+          })
+        : null,
     [container],
   );
+
+  // if no container provided, render wrapped children as-is
+  if (!emotionCache) {
+    return <Fragment>{children}</Fragment>;
+  }
+
   return (
     <CacheProvider value={emotionCache}>
       <Global
@@ -29,6 +37,12 @@ export const EmotionCache = ({
             font-size: 16px;
             line-height: 1.5;
             box-sizing: border-box;
+
+            *,
+            *:before,
+            *:after {
+              box-sizing: inherit;
+            }
           }
         `}
       />
