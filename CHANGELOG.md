@@ -1,5 +1,15 @@
 # @sajari/search-widgets
 
+## 2.6.0
+
+### Minor Changes
+
+- 6376c30: Bump SDK version to use new features in result template
+
+### Patch Changes
+
+- 1675a03: Fix typing conflict issues due to SDK version mismatch.
+
 ## 2.5.1
 
 ### Patch Changes
