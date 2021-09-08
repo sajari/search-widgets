@@ -1,6 +1,6 @@
 import createCache from '@emotion/cache';
 import { CacheProvider, css, Global } from '@emotion/core';
-import { createPortal } from 'preact/compat';
+import { createPortal, Fragment } from 'preact/compat';
 import { useMemo } from 'preact/hooks';
 import type { ReactNode } from 'react';
 
@@ -26,7 +26,7 @@ export const EmotionCache = ({
 
   // if no container provided, render wrapped children as-is
   if (!emotionCache) {
-    return <>{children}</>;
+    return <Fragment>{children}</Fragment>;
   }
 
   return (
