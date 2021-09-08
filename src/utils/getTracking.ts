@@ -1,5 +1,5 @@
-import { ClickTracking, PosNegTracking } from '@sajari/react-hooks';
 import { isEmpty, isString } from '@sajari/react-sdk-utils';
+import { ClickTracking, PosNegTracking } from '@sajari/react-search-ui';
 
 import { SearchInputBindingProps, SearchInputProps, TrackingType } from '../types';
 

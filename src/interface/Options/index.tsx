@@ -8,10 +8,11 @@ import {
   ModalHeader,
   ModalTitle,
 } from '@sajari/react-components';
-import { RangeFilterBuilder, useFilter, useRangeFilter, useSearchContext } from '@sajari/react-hooks';
+import { useFilter, useRangeFilter, useSearchContext } from '@sajari/react-hooks';
 import {
   Filter,
   FilterProps,
+  RangeFilterBuilder,
   ResultsPerPage,
   Sorting,
   Summary as CoreSummary,
