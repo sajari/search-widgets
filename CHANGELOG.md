@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 2.5.1
+
+### Patch Changes
+
+- 777f03d: chore: quick fix for global box-sizing override
+
 ## 2.5.0
 
 ### Minor Changes
