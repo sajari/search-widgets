@@ -2041,10 +2041,10 @@
     eslint-config-airbnb-typescript "^12.0.0"
     eslint-config-prettier "^7.1.0"
 
-"@sajari/react-components@^1.12.2":
-  version "1.12.2"
-  resolved "https://registry.yarnpkg.com/@sajari/react-components/-/react-components-1.12.2.tgz#8de518cc87567c854339079576bff55bd01c29c7"
-  integrity sha512-tQvnXihF/btNXcoExC3IyM/KCz7w9bLP/KbTOiHkHVsQngSAVY0/D9Q4Su5tJ7HliEazpeLXb+qMjFvkYu9NYQ==
+"@sajari/react-components@^1.12.3":
+  version "1.12.3"
+  resolved "https://registry.yarnpkg.com/@sajari/react-components/-/react-components-1.12.3.tgz#df6ce2d09259deb34bec11fd1c5dc9f6c8030278"
+  integrity sha512-9/0LPfuA654N8AZTBwf6syWcvo+0pEYxxpSlyA1/KyeG6YkkIvNumL7sB9rrvN3c4uAze9bd3/pVHd/SyJnM0Q==
   dependencies:
     "@popperjs/core" "^2.9.2"
     "@react-aria/button" "^3.3.0"
@@ -2055,7 +2055,7 @@
     "@react-aria/textfield" "^3.2.2"
     "@react-aria/utils" "^3.5.0"
     "@react-types/button" "^3.3.0"
-    "@sajari/react-sdk-utils" "^1.4.3"
+    "@sajari/react-sdk-utils" "^1.5.0"
     aria-hidden "^1.1.2"
     body-scroll-lock "^3.1.5"
     classnames "^2.2.6"
@@ -2090,15 +2090,30 @@
     tailwindcss-truncate-multiline "^1.0.3"
     twin.macro "^1.12.1"
 
-"@sajari/react-search-ui@^4.0.2":
-  version "4.0.3"
-  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-4.0.3.tgz#dd198eb171a5fa8b14c7196fed445895252f0874"
-  integrity sha512-jhAr478PUI8FaEOyHlZXdFq77PAhYINB8kie+W/OQR3Y6YqW10Oyq1dkTew9QmNh4Bss1YsrUCPunW2HEV3NJA==
+"@sajari/react-sdk-utils@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@sajari/react-sdk-utils/-/react-sdk-utils-1.5.0.tgz#f24ed75c9ea111f1150899fe291ef943cbff205b"
+  integrity sha512-0j2wgL7B5GGLSCL7CI+S08096pST4vfJLn5DgqTdAp7Ykd/zAC/9TXtKkl+LQSuPdG5yOaErBHFWcBLZvOJRRA==
+  dependencies:
+    "@emotion/core" "^10.1.1"
+    "@emotion/is-prop-valid" "1.0.0"
+    "@emotion/styled" "^10.0.27"
+    "@tailwindcss/ui" "^0.7.2"
+    emotion-theming "^10.0.27"
+    tailwindcss "^1.9.6"
+    tailwindcss-filters "^3.0.0"
+    tailwindcss-truncate-multiline "^1.0.3"
+    twin.macro "^1.12.1"
+
+"@sajari/react-search-ui@^4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-4.1.0.tgz#f6fb52dcd5413e17fa9c6d81c7591cede39dd30f"
+  integrity sha512-GxFHq1OwElJCmllLv9RhCUVSKRpOw492rVXm1M6IPSnUhuSsz3lX1uCXMwYp6XLiAQKA/rDJRF+aQ+D4DAxebw==
   dependencies:
     "@react-aria/utils" "3.5.0"
-    "@sajari/react-components" "^1.12.2"
+    "@sajari/react-components" "^1.12.3"
     "@sajari/react-hooks" "^3.3.2"
-    "@sajari/react-sdk-utils" "^1.4.3"
+    "@sajari/react-sdk-utils" "^1.5.0"
     dayjs "^1.10.5"
     i18next "19.8.7"
     i18next-browser-languagedetector "^6.0.1"
