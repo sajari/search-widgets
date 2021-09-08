@@ -15,12 +15,20 @@ export const EmotionCache = ({
 }) => {
   const emotionCache = useMemo(
     () =>
-      createCache({
-        key: cacheKey,
-        container: (container?.getRootNode() as HTMLElement) ?? document.head,
-      }),
+      container
+        ? createCache({
+            key: cacheKey,
+            container: container?.getRootNode() as HTMLElement,
+          })
+        : null,
     [container],
   );
+
+  // if no container provided, render wrapped children as-is
+  if (!emotionCache) {
+    return <>{children}</>;
+  }
+
   return (
     <CacheProvider value={emotionCache}>
       <Global
@@ -29,6 +37,12 @@ export const EmotionCache = ({
             font-size: 16px;
             line-height: 1.5;
             box-sizing: border-box;
+
+            *,
+            *:before,
+            *:after {
+              box-sizing: inherit;
+            }
           }
         `}
       />
