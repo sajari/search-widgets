@@ -30,11 +30,6 @@ export const EmotionCache = ({
             line-height: 1.5;
             box-sizing: border-box;
           }
-          *,
-          *:before,
-          *:after {
-            box-sizing: inherit;
-          }
         `}
       />
       {children}
