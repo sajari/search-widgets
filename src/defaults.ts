@@ -74,7 +74,9 @@ export function mergeProps(params: MergePropsParams): MergedSearchResultsProps {
           url: '/products/${handle}',
           subtitle: 'vendor',
           description: 'body_html',
-          quantity: 'inventory_quantity',
+          quantity: (values: ShopifySchema) => {
+            return values.variant_options_1_in_stock?.map((s: string) => (s !== '' ? s : '0')) ?? [];
+          },
           image: (values: ShopifySchema) => {
             const images = values.image_urls ?? values.images;
             // If there are no variant images to show
@@ -93,7 +95,8 @@ export function mergeProps(params: MergePropsParams): MergedSearchResultsProps {
               return [images[0], ...filteredVariantImages];
             }
 
-            return images;
+            // If there is variant products but the price list and image list don't match then it's better to not show any images beside the first one
+            return images[0];
           },
           price: (values: ShopifySchema) => {
             const prices = values.variant_prices ?? values.max_price;
@@ -112,9 +115,8 @@ export function mergeProps(params: MergePropsParams): MergedSearchResultsProps {
               return [prices, ...prices];
             }
 
-            // Otherwise return the array with the first one being an array because
-            // the first one in the image urls is not an variant image
-            return prices;
+            // If there is variant products but the price list and image list don't match then only show then overall price
+            return [prices];
           },
           originalPrice: 'variant_compare_at_prices',
         },
