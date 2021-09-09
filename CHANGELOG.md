@@ -1,5 +1,12 @@
 # @sajari/search-widgets
 
+## 2.6.1
+
+### Patch Changes
+
+- 0c670da: bring back `box-sizing` style when using shadowDOM option, and only applies within `:host` select (.eg childs of the shadow-root node)
+- 5502aa2: Update search-ui to fix the variant image bug
+
 ## 2.6.0
 
 ### Minor Changes
