@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 2.7.0
+
+### Minor Changes
+
+- 951f737: feat: handle right and middle click in result tracking
+
 ## 2.6.1
 
 ### Patch Changes
