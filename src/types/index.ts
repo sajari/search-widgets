@@ -128,6 +128,7 @@ export interface SearchInputBindingProps extends SearchWidgetBaseOptions {
   selector: string;
   mode: Exclude<InputMode, 'instant'>;
   omittedElementSelectors?: string | string[];
+  options?: Omit<CoreInputProps, 'mode' | 'retainFilters'>;
 }
 
 export interface SearchInputProps extends SearchWidgetBaseOptions {
@@ -137,7 +138,9 @@ export interface SearchInputProps extends SearchWidgetBaseOptions {
     queryParamName: string;
   };
   emitter?: Emitter;
-  options?: {
+  options?: Omit<CoreInputProps, 'mode' | 'retainFilters'> & {
+    // @deprecated: moved the ability to custom input props into the upper-level options
+    // keep the prop for v2 in case customers used it to customize the input but consider dropping the support for the prop in v3
     input?: InputProps;
   };
 }
