@@ -338,5 +338,4 @@ export const widgetDefaultContent: Record<WidgetType, string> = {
     mode: 'suggestions',
     redirect: { url: 'search', queryParamName: 'q' },
   }),
-  'token-check': JSON.stringify(defaultConfig),
 };

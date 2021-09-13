@@ -9,7 +9,7 @@ export function getTracking(
   const { preset, fields, tracking } = props;
 
   if (preset === 'shopify') {
-    return new ClickTracking('id');
+    return new PosNegTracking('id');
   }
 
   if (preset === 'app' && fields?.url && typeof fields.url === 'string') {

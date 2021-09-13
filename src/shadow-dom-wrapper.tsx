@@ -36,10 +36,6 @@ export default function withShadowRoot(
     mountElement: Element | null;
   },
 ) {
-  if (type === 'token-check') {
-    return Comp;
-  }
-
   return ({ useShadowDOM, ...props }: SearchWidgetBaseOptions) => {
     const [{ shadowRoot, container }] = useState<ReturnType<typeof attachShadowRoot>>(() =>
       useShadowDOM ? attachShadowRoot(mountElement, { type }) : { shadowRoot: undefined, container: undefined },
