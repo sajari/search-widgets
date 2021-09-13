@@ -1,6 +1,7 @@
-import { Input, Pipeline, SearchProvider, Variables } from '@sajari/react-search-ui';
+import { useTracking } from '@sajari/react-hooks';
+import { ContextProviderValues, Input, Pipeline, SearchProvider, Variables } from '@sajari/react-search-ui';
 import { render } from 'preact/compat';
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 
 import { getPresetSelector } from './defaults';
 import { EmotionCache } from './emotion-cache';
@@ -36,47 +37,13 @@ const onSelectHandler = (element: Element | null) => () => {
 
 const Wrapper = ({
   children,
+  searchContext,
   ...props
-}: Omit<SearchInputBindingProps, 'selector' | 'omittedElementSelectors' | 'mode'> & {
+}: Pick<SearchInputBindingProps, 'theme' | 'defaultFilter' | 'currency'> & {
   children: React.ReactNode;
+  searchContext: ContextProviderValues['search'];
 }) => {
-  const {
-    variables: variablesProp,
-    account,
-    collection,
-    endpoint,
-    clickTokenURL,
-    pipeline,
-    config,
-    fields,
-    theme,
-    defaultFilter,
-    currency,
-  } = props;
-
-  const tracking = getTracking(props);
-
-  const searchContext = useMemo(() => {
-    const { name, version = undefined } = getPipelineInfo(pipeline);
-    const variables = new Variables({ ...variablesProp });
-
-    return {
-      pipeline: new Pipeline(
-        {
-          account,
-          collection,
-          endpoint,
-          clickTokenURL,
-        },
-        { name, version },
-        tracking,
-      ),
-      config,
-      variables,
-      fields,
-    };
-  }, []);
-
+  const { theme, defaultFilter, currency } = props;
   return (
     <SearchProvider
       search={searchContext}
@@ -92,6 +59,7 @@ const Wrapper = ({
 
 const renderBindingInput = (
   targets: NodeListOf<HTMLElement>,
+  searchContext: ContextProviderValues['search'],
   params: Omit<SearchInputBindingProps, 'selector' | 'omittedElementSelectors'>,
 ) => {
   const { mode = 'suggestions', container, ...props } = params;
@@ -105,7 +73,7 @@ const renderBindingInput = (
       removeAttributes(target);
 
       render(
-        <Wrapper {...props}>
+        <Wrapper searchContext={searchContext} {...props}>
           <EmotionCache cacheKey={mode} container={container}>
             <Input
               portalContainer={container}
@@ -130,7 +98,7 @@ const renderBindingInput = (
         removeAttributes(element);
 
         render(
-          <Wrapper {...props}>
+          <Wrapper searchContext={searchContext} {...props}>
             <EmotionCache cacheKey={mode} container={container}>
               <Input
                 portalContainer={container}
@@ -148,6 +116,14 @@ const renderBindingInput = (
   });
 };
 
+const TokenCheckBlank = () => {
+  const { posNegLocalStorageManager } = useTracking();
+  useEffect(() => {
+    posNegLocalStorageManager.sendPendingClicks();
+  }, []);
+  return null;
+};
+
 export default ({ selector: selectorProp, omittedElementSelectors, ...rest }: SearchInputBindingProps) => {
   let targets: NodeListOf<HTMLElement> | null = null;
   let selector = selectorProp;
@@ -156,11 +132,38 @@ export default ({ selector: selectorProp, omittedElementSelectors, ...rest }: Se
   }
   targets = document.querySelectorAll(selector);
 
+  const tracking = getTracking(rest);
+  const searchContext = useMemo(() => {
+    const { variables: variablesProp, account, collection, endpoint, clickTokenURL, pipeline, config, fields } = rest;
+    const { name, version = undefined } = getPipelineInfo(pipeline);
+    const variables = new Variables({ ...variablesProp });
+
+    return {
+      pipeline: new Pipeline(
+        {
+          account,
+          collection,
+          endpoint,
+          clickTokenURL,
+        },
+        { name, version },
+        tracking,
+      ),
+      config,
+      variables,
+      fields,
+    };
+  }, []);
+
   if (targets && targets.length > 0) {
     if (omittedElementSelectors) {
       removeThemeElements(omittedElementSelectors);
     }
-    renderBindingInput(targets, rest);
+    renderBindingInput(targets, searchContext, rest);
   }
-  return null;
+  return (
+    <SearchProvider search={searchContext}>
+      <TokenCheckBlank />
+    </SearchProvider>
+  );
 };
