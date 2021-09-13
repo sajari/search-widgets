@@ -1,5 +1,15 @@
 # @sajari/search-widgets
 
+## 2.8.0
+
+### Minor Changes
+
+- 176e935: feat: use posneg by default for shopify search inputs
+
+### Patch Changes
+
+- 5599109: chore: update config reference with accurate information about the shopify preset
+
 ## 2.7.0
 
 ### Minor Changes
