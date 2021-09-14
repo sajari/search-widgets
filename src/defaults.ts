@@ -19,6 +19,68 @@ interface MergedSearchResultsProps extends Omit<SearchResultsProps, 'options' | 
   tracking?: ClickTracking | PosNegTracking;
 }
 
+const getVariantImages = (values: ShopifySchema) => {
+  return values.variant_ids?.map((_: string, i: number) => {
+    const variantImageId = values.variant_image_ids?.[i];
+    const variantImageIndex = values.image_ids?.findIndex((ii: string) => ii === variantImageId);
+    const variantImageUrl = values.image_urls?.[variantImageIndex ?? -1];
+
+    return variantImageUrl;
+  });
+};
+
+export const shopifyFieldMapping: FieldDictionary = {
+  // eslint-disable-next-line no-template-curly-in-string
+  url: '/products/${handle}',
+  subtitle: 'vendor',
+  description: 'body_html',
+  quantity: 'inventory_quantity',
+  image: (record) => {
+    const values = record as ShopifySchema;
+    const images = values.image_urls ?? values.images;
+    // If there are no variant images to show
+    if (!values.variant_image_ids) {
+      // Just return the list of images
+      return images;
+    }
+
+    // Get the variant image urls
+    const variantImages = getVariantImages(values);
+    const filteredVariantImages = (variantImages ?? []).filter(Boolean);
+    const variantPrices = values.variant_prices;
+
+    // If everything matches a.k.a variant image with the corresponding price
+    if (filteredVariantImages.length > 0 && filteredVariantImages.length === variantPrices.length) {
+      return [images[0], ...filteredVariantImages];
+    }
+
+    return images;
+  },
+  price: (record) => {
+    const values = record as ShopifySchema;
+    const prices = values.variant_prices ?? values.max_price;
+
+    if (!values.variant_image_ids) {
+      return prices;
+    }
+
+    // Get the variant image urls
+    const variantImages = getVariantImages(values);
+    const filteredVariantImages = (variantImages ?? []).filter(Boolean);
+    const variantPrices = values.variant_prices;
+
+    // If everything matches a.k.a variant image with the corresponding price
+    if (filteredVariantImages.length > 0 && filteredVariantImages.length === variantPrices.length) {
+      return [prices, ...prices];
+    }
+
+    // Otherwise return the array with the first one being an array because
+    // the first one in the image urls is not an variant image
+    return prices;
+  },
+  originalPrice: 'variant_compare_at_prices',
+};
+
 export function mergeProps(params: MergePropsParams): MergedSearchResultsProps {
   const { preset, options, fields, id, tracking, ...rest } = params;
   const mergeOptions = new MergeOptions({ arrayHandling: 'replace' });
@@ -58,66 +120,9 @@ export function mergeProps(params: MergePropsParams): MergedSearchResultsProps {
 
   switch (preset) {
     case 'shopify': {
-      const getVariantImages = (values: ShopifySchema) => {
-        return values.variant_ids?.map((_: string, i: number) => {
-          const variantImageId = values.variant_image_ids?.[i];
-          const variantImageIndex = values.image_ids?.findIndex((ii: string) => ii === variantImageId);
-          const variantImageUrl = values.image_urls?.[variantImageIndex ?? -1];
-
-          return variantImageUrl;
-        });
-      };
       const src: DeepPartial<MergedSearchResultsProps> = {
         tracking: new PosNegTracking('id'),
-        fields: {
-          // eslint-disable-next-line no-template-curly-in-string
-          url: '/products/${handle}',
-          subtitle: 'vendor',
-          description: 'body_html',
-          quantity: 'inventory_quantity',
-          image: (values: ShopifySchema) => {
-            const images = values.image_urls ?? values.images;
-            // If there are no variant images to show
-            if (!values.variant_image_ids) {
-              // Just return the list of images
-              return images;
-            }
-
-            // Get the variant image urls
-            const variantImages = getVariantImages(values);
-            const filteredVariantImages = (variantImages ?? []).filter(Boolean);
-            const variantPrices = values.variant_prices;
-
-            // If everything matches a.k.a variant image with the corresponding price
-            if (filteredVariantImages.length > 0 && filteredVariantImages.length === variantPrices.length) {
-              return [images[0], ...filteredVariantImages];
-            }
-
-            return images;
-          },
-          price: (values: ShopifySchema) => {
-            const prices = values.variant_prices ?? values.max_price;
-
-            if (!values.variant_image_ids) {
-              return prices;
-            }
-
-            // Get the variant image urls
-            const variantImages = getVariantImages(values);
-            const filteredVariantImages = (variantImages ?? []).filter(Boolean);
-            const variantPrices = values.variant_prices;
-
-            // If everything matches a.k.a variant image with the corresponding price
-            if (filteredVariantImages.length > 0 && filteredVariantImages.length === variantPrices.length) {
-              return [prices, ...prices];
-            }
-
-            // Otherwise return the array with the first one being an array because
-            // the first one in the image urls is not an variant image
-            return prices;
-          },
-          originalPrice: 'variant_compare_at_prices',
-        },
+        fields: shopifyFieldMapping,
         options: {
           results: {
             imageAspectRatio: {
