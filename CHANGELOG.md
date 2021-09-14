@@ -1,5 +1,12 @@
 # @sajari/search-widgets
 
+## 2.8.1
+
+### Patch Changes
+
+- 780f18b: Upgrade packages to fix broken typeahead input - https://github.com/sajari/sdk-react/pull/642.
+- e3ec048: Fix unable to customize Input component and use customClassNames for Search Input and Search Input Binding widget.
+
 ## 2.8.0
 
 ### Minor Changes
