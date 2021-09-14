@@ -5,7 +5,7 @@ import { useEffect, useMemo } from 'react';
 
 import { getPresetSelector } from './defaults';
 import { EmotionCache } from './emotion-cache';
-import { SearchInputBindingProps } from './types';
+import { PresetType, SearchInputBindingProps } from './types';
 import { getPipelineInfo } from './utils';
 import { getTracking } from './utils/getTracking';
 
@@ -30,9 +30,20 @@ const removeThemeElements = (selectorsParam: string | string[]) => {
   });
 };
 
-const onSelectHandler = (element: Element | null) => () => {
+const onSelectHandler = (element: Element | null, preset: PresetType) => {
   const form = element?.closest('form');
-  form?.submit();
+  return (item: any) => {
+    if (!form && preset === 'shopify') {
+      // special treatment for "shopify" preset, since we can assume Shopify's
+      // search's results page is always "/search?q="
+      const url = new URL(window.location.href);
+      url.searchParams.set('q', item?.title);
+      url.pathname = '/search';
+      window.location.href = url.href;
+      return;
+    }
+    form?.submit();
+  };
 };
 
 const Wrapper = ({
@@ -80,7 +91,7 @@ const renderBindingInput = (
               {...options}
               portalContainer={container}
               mode={mode}
-              onSelect={onSelectHandler(target)}
+              onSelect={onSelectHandler(target, props.preset)}
               inputElement={{ current: target }}
               showPoweredBy={showPoweredBy}
             />
@@ -106,7 +117,7 @@ const renderBindingInput = (
                 {...options}
                 portalContainer={container}
                 mode={mode}
-                onSelect={onSelectHandler(element)}
+                onSelect={onSelectHandler(element, props.preset)}
                 inputElement={{ current: element }}
                 showPoweredBy={showPoweredBy}
               />
