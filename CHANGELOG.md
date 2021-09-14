@@ -1,5 +1,12 @@
 # @sajari/search-widgets
 
+## 2.8.2
+
+### Patch Changes
+
+- ef3c7cf: Fix missing Shopify field mapping for the Search Input and Search Input Binding that causes links on the dropdown of `results` mode to be unclickable.
+- 10d11ee: Upgrade search ui
+
 ## 2.8.1
 
 ### Patch Changes
