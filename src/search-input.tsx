@@ -1,4 +1,5 @@
-import { Input, InputProps, Pipeline, SearchProvider, Variables } from '@sajari/react-search-ui';
+import { callAllHandlers } from '@sajari/react-sdk-utils';
+import { Input, Pipeline, SearchProvider, Variables } from '@sajari/react-search-ui';
 import { useRef } from 'preact/hooks';
 import { useMemo } from 'react';
 
@@ -11,7 +12,7 @@ export default (defaultProps: SearchInputProps) => {
   const {
     variables: variablesProp,
     emitter,
-    options,
+    options = {},
     preset,
     mode = 'suggestions',
     redirect,
@@ -25,8 +26,10 @@ export default (defaultProps: SearchInputProps) => {
     theme,
     defaultFilter,
     currency,
+    customClassNames,
   } = defaultProps;
 
+  const formRef = useRef<HTMLFormElement>();
   const tracking = getTracking(defaultProps);
 
   const searchContext = useMemo(() => {
@@ -59,31 +62,31 @@ export default (defaultProps: SearchInputProps) => {
     [emitter],
   );
 
-  const AppliedInput = (props: InputProps<any> & { name?: string }) => (
-    <Input mode={mode} {...options?.input} {...props} showPoweredBy={preset !== 'shopify'} />
-  );
+  const showPoweredBy = options.showPoweredBy ?? preset !== 'shopify';
+  let inputRender: React.ReactNode;
 
-  const RenderInput = () => {
-    const formRef = useRef<HTMLFormElement>();
-    if (redirect && mode !== 'results') {
-      return (
-        <form ref={formRef} action={redirect.url ?? 'search'} css={['font-size: 16px']}>
-          <AppliedInput
-            onSelect={() => {
-              if (typeof formRef.current.requestSubmit === 'function') {
-                formRef.current.requestSubmit();
-                return;
-              }
-              formRef.current.submit();
-            }}
-            name={redirect.queryParamName || 'q'}
-          />
-        </form>
-      );
-    }
-
-    return <AppliedInput />;
-  };
+  if (redirect && mode !== 'results') {
+    inputRender = (
+      <form ref={formRef} action={redirect.url ?? 'search'} css={['font-size: 16px']}>
+        <Input
+          {...options?.input}
+          {...options}
+          onSelect={callAllHandlers(() => {
+            if (typeof formRef.current.requestSubmit === 'function') {
+              formRef.current.requestSubmit();
+              return;
+            }
+            formRef.current.submit();
+          }, options.onSelect)}
+          mode={mode}
+          name={redirect.queryParamName || 'q'}
+          showPoweredBy={showPoweredBy}
+        />
+      </form>
+    );
+  } else {
+    inputRender = <Input mode={mode} {...options?.input} {...options} showPoweredBy={showPoweredBy} />;
+  }
 
   return (
     <SearchProvider
@@ -92,13 +95,12 @@ export default (defaultProps: SearchInputProps) => {
       defaultFilter={defaultFilter}
       currency={currency}
       searchOnLoad={false}
+      customClassNames={customClassNames}
     >
       {emitterContext ? (
-        <PubSubContextProvider value={emitterContext}>
-          <RenderInput />
-        </PubSubContextProvider>
+        <PubSubContextProvider value={emitterContext}>{inputRender}</PubSubContextProvider>
       ) : (
-        <RenderInput />
+        inputRender
       )}
     </SearchProvider>
   );

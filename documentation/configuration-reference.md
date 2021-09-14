@@ -461,6 +461,7 @@ The Takeover Search Input widget allows users to inject Sajari search experience
 | `selector`                | `string`                                                        | `'form[action="/search"] input[name="q"]' if the preset is 'shopify'` | The CSS selector of the input being taken over.                                                             |
 | `mode`                    | `'standard'` \| `'typeahead'` \| `'suggestions'` \| `'results'` | `'results'`                                                           | The mode of the input. For details, see [Input props](https://react.docs.sajari.com/search-ui/input#props). |
 | `omittedElementSelectors` | `string` \| `string[]`                                          | `_`                                                                   | A single or a list of CSS selector of elements to be removed when the widget has mounted.                   |
+| `options`                 | `Omit<InputProps, 'retainFilters' \| 'mode'>`                   | `_`                                                                   | Options to customize Input component. See [Input props](https://react.docs.sajari.com/search-ui/**input**). |
 
 <details>
 <summary>Click to expand example</summary>
@@ -492,6 +493,7 @@ The search input widget is typically used in a global template and positioned in
 | ---------- | --------------------------------------------------------------- | -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `mode`     | `'standard'` \| `'typeahead'` \| `'suggestions'` \| `'results'` | `'suggestions'`                        | The mode of the input. For details, see [Input props](https://react.docs.sajari.com/search-ui/input#props).                                                                |
 | `redirect` | `{url: string, queryParamName: string}`                         | `{url: 'search', queryParamName: 'q'}` | Options to set the redirect URL and the name of the search query param, normally, the destination is where the [Search Results Widget](#search-results-widget) is located. |
+| `options`  | `Omit<InputProps, 'retainFilters' \| 'mode'>`                   | `_`                                    | Options to customize Input component. See [Input props](https://react.docs.sajari.com/search-ui/.**input**)                                                                |
 
 <details>
 <summary>Click to expand example</summary>

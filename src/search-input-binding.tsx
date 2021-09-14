@@ -39,11 +39,11 @@ const Wrapper = ({
   children,
   searchContext,
   ...props
-}: Pick<SearchInputBindingProps, 'theme' | 'defaultFilter' | 'currency'> & {
+}: Pick<SearchInputBindingProps, 'theme' | 'defaultFilter' | 'currency' | 'customClassNames'> & {
   children: React.ReactNode;
   searchContext: ContextProviderValues['search'];
 }) => {
-  const { theme, defaultFilter, currency } = props;
+  const { theme, defaultFilter, currency, customClassNames } = props;
   return (
     <SearchProvider
       search={searchContext}
@@ -51,6 +51,7 @@ const Wrapper = ({
       searchOnLoad={false}
       defaultFilter={defaultFilter}
       currency={currency}
+      customClassNames={customClassNames}
     >
       {children}
     </SearchProvider>
@@ -62,10 +63,10 @@ const renderBindingInput = (
   searchContext: ContextProviderValues['search'],
   params: Omit<SearchInputBindingProps, 'selector' | 'omittedElementSelectors'>,
 ) => {
-  const { mode = 'suggestions', container, ...props } = params;
+  const { mode = 'suggestions', container, options, ...props } = params;
 
   targets.forEach((target) => {
-    const showPoweredBy = props.preset !== 'shopify';
+    const showPoweredBy = options?.showPoweredBy ?? props.preset !== 'shopify';
 
     if (target instanceof HTMLInputElement) {
       const fragment = document.createDocumentFragment();
@@ -76,6 +77,7 @@ const renderBindingInput = (
         <Wrapper searchContext={searchContext} {...props}>
           <EmotionCache cacheKey={mode} container={container}>
             <Input
+              {...options}
               portalContainer={container}
               mode={mode}
               onSelect={onSelectHandler(target)}
@@ -101,6 +103,7 @@ const renderBindingInput = (
           <Wrapper searchContext={searchContext} {...props}>
             <EmotionCache cacheKey={mode} container={container}>
               <Input
+                {...options}
                 portalContainer={container}
                 mode={mode}
                 onSelect={onSelectHandler(element)}
