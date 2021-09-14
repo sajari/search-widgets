@@ -5,7 +5,7 @@ import { useEffect, useMemo } from 'react';
 
 import { getPresetSelector } from './defaults';
 import { EmotionCache } from './emotion-cache';
-import { PresetType, SearchInputBindingProps } from './types';
+import { SearchInputBindingProps } from './types';
 import { getPipelineInfo } from './utils';
 import { getTracking } from './utils/getTracking';
 
@@ -30,14 +30,17 @@ const removeThemeElements = (selectorsParam: string | string[]) => {
   });
 };
 
-const onSelectHandler = (element: Element | null, preset: PresetType) => {
+const onSelectHandler = (
+  element: Element | null,
+  { preset, mode }: Pick<SearchInputBindingProps, 'preset' | 'mode'>,
+) => {
   const form = element?.closest('form');
   return (item: any) => {
-    if (!form && preset === 'shopify') {
+    if (!form && preset === 'shopify' && mode === 'suggestions') {
       // special treatment for "shopify" preset, since we can assume Shopify's
       // search's results page is always "/search?q="
       const url = new URL(window.location.href);
-      url.searchParams.set('q', item?.title);
+      url.searchParams.set('q', item as string);
       url.pathname = '/search';
       window.location.href = url.href;
       return;
@@ -91,7 +94,7 @@ const renderBindingInput = (
               {...options}
               portalContainer={container}
               mode={mode}
-              onSelect={onSelectHandler(target, props.preset)}
+              onSelect={onSelectHandler(target, { preset: props.preset, mode })}
               inputElement={{ current: target }}
               showPoweredBy={showPoweredBy}
             />
@@ -117,7 +120,7 @@ const renderBindingInput = (
                 {...options}
                 portalContainer={container}
                 mode={mode}
-                onSelect={onSelectHandler(element, props.preset)}
+                onSelect={onSelectHandler(element, { preset: props.preset, mode })}
                 inputElement={{ current: element }}
                 showPoweredBy={showPoweredBy}
               />
