@@ -3,6 +3,7 @@ import { Input, Pipeline, SearchProvider, Variables } from '@sajari/react-search
 import { useRef } from 'preact/hooks';
 import { useMemo } from 'react';
 
+import { shopifyFieldMapping } from './defaults';
 import PubSubContextProvider from './pubsub/context';
 import { SearchInputProps } from './types';
 import { getPipelineInfo } from './utils';
@@ -48,7 +49,7 @@ export default (defaultProps: SearchInputProps) => {
       ),
       config,
       variables,
-      fields,
+      fields: preset === 'shopify' ? { ...shopifyFieldMapping, ...fields } : fields,
     };
   }, []);
 

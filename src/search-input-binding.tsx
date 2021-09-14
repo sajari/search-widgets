@@ -3,7 +3,7 @@ import { ContextProviderValues, Input, Pipeline, SearchProvider, Variables } fro
 import { render } from 'preact/compat';
 import { useEffect, useMemo } from 'react';
 
-import { getPresetSelector } from './defaults';
+import { getPresetSelector, shopifyFieldMapping } from './defaults';
 import { EmotionCache } from './emotion-cache';
 import { SearchInputBindingProps } from './types';
 import { getPipelineInfo } from './utils';
@@ -168,7 +168,7 @@ export default ({ selector: selectorProp, omittedElementSelectors, ...rest }: Se
       ),
       config,
       variables,
-      fields,
+      fields: rest.preset === 'shopify' ? { ...shopifyFieldMapping, ...fields } : fields,
     };
   }, []);
 
