@@ -337,7 +337,12 @@ export const widgetDefaultContent: Record<WidgetType, string> = {
     null,
     2,
   ),
-  'search-input-binding': JSON.stringify({ ...defaultConfig, selector: "input[name='q']", mode: 'suggestions' }),
+  'search-input-binding': JSON.stringify({
+    ...defaultConfig,
+    selector: "input[name='q']",
+    mode: 'suggestions',
+    redirect: { url: 'search', queryParamName: 'q' },
+  }),
   'search-input': JSON.stringify({
     ...defaultConfig,
     mode: 'suggestions',

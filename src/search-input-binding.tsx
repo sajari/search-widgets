@@ -32,16 +32,16 @@ const removeThemeElements = (selectorsParam: string | string[]) => {
 
 const onSelectHandler = (
   element: Element | null,
-  { preset, mode }: Pick<SearchInputBindingProps, 'preset' | 'mode'>,
+  { mode, redirect: { url: pathname, queryParamName } }: Pick<SearchInputBindingProps, 'mode' | 'redirect'>,
 ) => {
   const form = element?.closest('form');
-  return (item: any) => {
-    if (!form && preset === 'shopify' && mode === 'suggestions') {
+  return (item: unknown) => {
+    if (!form && mode !== 'results') {
       // special treatment for "shopify" preset, since we can assume Shopify's
       // search's results page is always "/search?q="
       const url = new URL(window.location.href);
-      url.searchParams.set('q', item as string);
-      url.pathname = '/search';
+      url.searchParams.set(queryParamName, item as string);
+      url.pathname = pathname;
       window.location.href = url.href;
       return;
     }
@@ -77,7 +77,7 @@ const renderBindingInput = (
   searchContext: ContextProviderValues['search'],
   params: Omit<SearchInputBindingProps, 'selector' | 'omittedElementSelectors'>,
 ) => {
-  const { mode = 'suggestions', container, options, ...props } = params;
+  const { mode = 'suggestions', container, options, redirect, ...props } = params;
 
   targets.forEach((target) => {
     const showPoweredBy = options?.showPoweredBy ?? props.preset !== 'shopify';
@@ -94,7 +94,7 @@ const renderBindingInput = (
               {...options}
               portalContainer={container}
               mode={mode}
-              onSelect={onSelectHandler(target, { preset: props.preset, mode })}
+              onSelect={onSelectHandler(target, { mode, redirect })}
               inputElement={{ current: target }}
               showPoweredBy={showPoweredBy}
             />
@@ -120,7 +120,7 @@ const renderBindingInput = (
                 {...options}
                 portalContainer={container}
                 mode={mode}
-                onSelect={onSelectHandler(element, { preset: props.preset, mode })}
+                onSelect={onSelectHandler(element, { mode, redirect })}
                 inputElement={{ current: element }}
                 showPoweredBy={showPoweredBy}
               />
