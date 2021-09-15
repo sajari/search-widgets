@@ -31,20 +31,26 @@ const removeThemeElements = (selectorsParam: string | string[]) => {
 };
 
 const onSelectHandler = (
-  element: Element | null,
+  element: Element,
   { mode, redirect: { url: pathname, queryParamName } }: Pick<SearchInputBindingProps, 'mode' | 'redirect'>,
 ) => {
-  const form = element?.closest('form');
+  const form = element.closest('form');
+  if (form) {
+    element.setAttribute('name', queryParamName);
+    form.setAttribute('action', pathname);
+    form.setAttribute('method', 'get');
+  }
+
   return (item: unknown) => {
+    // if no wrapped form element found, use JS to programmatically change url path
     if (!form && mode !== 'results') {
-      // special treatment for "shopify" preset, since we can assume Shopify's
-      // search's results page is always "/search?q="
       const url = new URL(window.location.href);
       url.searchParams.set(queryParamName, item as string);
       url.pathname = pathname;
       window.location.href = url.href;
       return;
     }
+    // otherwise we rely on form element to make the request
     form?.submit();
   };
 };
