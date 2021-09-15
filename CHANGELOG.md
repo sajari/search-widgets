@@ -1,5 +1,12 @@
 # @sajari/search-widgets
 
+## 2.8.3
+
+### Patch Changes
+
+- add6fdb: Upgrade search ui
+- 9d98393: Upgrade search ui
+
 ## 2.8.2
 
 ### Patch Changes
