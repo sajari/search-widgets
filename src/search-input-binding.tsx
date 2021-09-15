@@ -32,7 +32,10 @@ const removeThemeElements = (selectorsParam: string | string[]) => {
 
 const onSelectHandler = (
   element: Element,
-  { mode, redirect: { url: pathname, queryParamName } }: Pick<SearchInputBindingProps, 'mode' | 'redirect'>,
+  {
+    mode,
+    redirect: { url: pathname, queryParamName } = { url: 'search', queryParamName: 'q' },
+  }: Partial<Pick<SearchInputBindingProps, 'mode' | 'redirect'>>,
 ) => {
   const form = element.closest('form');
   if (form) {
