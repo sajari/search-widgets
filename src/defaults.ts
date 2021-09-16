@@ -79,6 +79,11 @@ export const shopifyFieldMapping: FieldDictionary = {
     const originalPrices = values.variant_compare_at_prices ?? [];
     // Get the variant image urls
     const variantImages = getVariantImages(values) ?? [];
+    const filteredVariantImages = variantImages.filter(Boolean);
+
+    if (!values.variant_image_ids || filteredVariantImages.length <= 0) {
+      return originalPrices;
+    }
 
     const filteredOriginalPrices = originalPrices
       .map((op, index) => {
