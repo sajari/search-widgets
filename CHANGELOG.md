@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 2.8.5
+
+### Patch Changes
+
+- 7365eff: Show discount even with no variant images
+
 ## 2.8.4
 
 ### Patch Changes
