@@ -32,13 +32,10 @@ const removeThemeElements = (selectorsParam: string | string[]) => {
 
 const onSelectHandler = (
   element: Element,
-  {
-    mode,
-    redirect: { url: pathname, queryParamName } = { url: 'search', queryParamName: 'q' },
-  }: Partial<Pick<SearchInputBindingProps, 'mode' | 'redirect'>>,
+  { mode, redirect: { url: pathname, queryParamName } }: Required<Pick<SearchInputBindingProps, 'mode' | 'redirect'>>,
 ) => {
   const form = element.closest('form');
-  if (form) {
+  if (form && pathname) {
     element.setAttribute('name', queryParamName);
     form.setAttribute('action', pathname);
     form.setAttribute('method', 'get');
@@ -86,7 +83,13 @@ const renderBindingInput = (
   searchContext: ContextProviderValues['search'],
   params: Omit<SearchInputBindingProps, 'selector' | 'omittedElementSelectors'>,
 ) => {
-  const { mode = 'suggestions', container, options, redirect, ...props } = params;
+  const { mode = 'suggestions', container, options, ...props } = params;
+
+  const redirect = {
+    url: props.preset === 'shopify' ? 'search' : '', // Shopify always use /search for search results page
+    queryParamName: 'q',
+    ...props.redirect,
+  };
 
   targets.forEach((target) => {
     const showPoweredBy = options?.showPoweredBy ?? props.preset !== 'shopify';
