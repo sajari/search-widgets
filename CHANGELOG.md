@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 2.8.4
+
+### Patch Changes
+
+- 292d4c0: Fix variant bugs
+
 ## 2.8.3
 
 ### Patch Changes
