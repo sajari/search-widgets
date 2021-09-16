@@ -35,7 +35,7 @@ const onSelectHandler = (
   { mode, redirect: { url: pathname, queryParamName } }: Required<Pick<SearchInputBindingProps, 'mode' | 'redirect'>>,
 ) => {
   const form = element.closest('form');
-  if (form && pathname) {
+  if (form) {
     element.setAttribute('name', queryParamName);
     form.setAttribute('action', pathname);
     form.setAttribute('method', 'get');
