@@ -38,47 +38,60 @@ export const shopifyFieldMapping: FieldDictionary = {
   image: (record) => {
     const values = record as ShopifySchema;
     const images = values.image_urls ?? values.images;
-    // If there are no variant images to show
-    if (!values.variant_image_ids) {
-      // Just return the list of images
-      return images;
-    }
-
     // Get the variant image urls
     const variantImages = getVariantImages(values);
     const filteredVariantImages = (variantImages ?? []).filter(Boolean);
-    const variantPrices = values.variant_prices;
 
-    // If everything matches a.k.a variant image with the corresponding price
-    if (filteredVariantImages.length > 0 && filteredVariantImages.length === variantPrices.length) {
-      return [images[0], ...filteredVariantImages];
+    // If there are no variant images to show
+    if (!values.variant_image_ids || filteredVariantImages.length <= 0) {
+      // Only show the first two images
+      return [images[0], images[1]];
     }
 
-    return images;
+    return [[], ...filteredVariantImages];
   },
   price: (record) => {
     const values = record as ShopifySchema;
-    const prices = values.variant_prices ?? values.max_price;
+    const prices = values.variant_prices;
+    // Get the variant image urls
+    const variantImages = getVariantImages(values) ?? [];
+    const filteredVariantImages = variantImages.filter(Boolean);
 
-    if (!values.variant_image_ids) {
+    if (!values.variant_image_ids || filteredVariantImages.length <= 0) {
       return prices;
     }
 
-    // Get the variant image urls
-    const variantImages = getVariantImages(values);
-    const filteredVariantImages = (variantImages ?? []).filter(Boolean);
-    const variantPrices = values.variant_prices;
+    // We have to check for undefined elements index in variantIamges array and filter out the price that matches with that index in variantPrices
+    const filteredPrices = prices
+      .map((p, index) => {
+        if (variantImages[index]) {
+          return p;
+        }
 
-    // If everything matches a.k.a variant image with the corresponding price
-    if (filteredVariantImages.length > 0 && filteredVariantImages.length === variantPrices.length) {
-      return [prices, ...prices];
-    }
+        return undefined;
+      })
+      .filter(Boolean);
 
-    // Otherwise return the array with the first one being an array because
-    // the first one in the image urls is not an variant image
-    return prices;
+    return [[], ...filteredPrices];
   },
-  originalPrice: 'variant_compare_at_prices',
+  originalPrice: (record) => {
+    const values = record as ShopifySchema;
+    const originalPrices = values.variant_compare_at_prices ?? [];
+    // Get the variant image urls
+    const variantImages = getVariantImages(values) ?? [];
+
+    const filteredOriginalPrices = originalPrices
+      .map((op, index) => {
+        if (variantImages[index]) {
+          return op;
+        }
+
+        return undefined;
+      })
+      .filter(Boolean);
+
+    return [[], ...filteredOriginalPrices];
+  },
 };
 
 export function mergeProps(params: MergePropsParams): MergedSearchResultsProps {
