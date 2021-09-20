@@ -1,5 +1,12 @@
 # @sajari/search-widgets
 
+## 2.9.0
+
+### Minor Changes
+
+- 2d63cf9: Add option to show/hide viewtype
+- 4f9d716: Upgrade search ui
+
 ## 2.8.6
 
 ### Patch Changes
