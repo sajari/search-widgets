@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 2.8.6
+
+### Patch Changes
+
+- 5c0e842: Return empty list of images when performing mapping if a product has no images
+
 ## 2.8.5
 
 ### Patch Changes
