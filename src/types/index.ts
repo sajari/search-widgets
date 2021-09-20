@@ -63,6 +63,7 @@ export interface SearchWidgetBaseOptions {
 }
 
 export type SearchResultsOptions<M = SearchResultsMode> = {
+  showViewType?: boolean;
   resultsPerPage?: ResultsPerPageProps;
   sorting?: Omit<SortingProps, 'type'>;
   input?: InputProps & { hide?: boolean; position?: InputPosition };
