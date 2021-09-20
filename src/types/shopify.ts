@@ -45,5 +45,4 @@ export type ShopifySchema = {
   variant_weights?: string[];
   variant_image_ids?: string[];
   image_ids?: string[];
-  images: string[];
 };
