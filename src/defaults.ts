@@ -37,7 +37,12 @@ export const shopifyFieldMapping: FieldDictionary = {
   quantity: 'inventory_quantity',
   image: (record) => {
     const values = record as ShopifySchema;
-    const images = values.image_urls ?? values.images;
+    const images = values.image_urls;
+
+    if (!isArray(images) || images.length <= 0) {
+      return [];
+    }
+
     // Get the variant image urls
     const variantImages = getVariantImages(values);
     const filteredVariantImages = (variantImages ?? []).filter(Boolean);
@@ -45,6 +50,7 @@ export const shopifyFieldMapping: FieldDictionary = {
     // If there are no variant images to show
     if (!values.variant_image_ids || filteredVariantImages.length <= 0) {
       // Only show the first two images
+      // images[1] can be undefined here but the results display logic handles that gracefully
       return [images[0], images[1]];
     }
 
