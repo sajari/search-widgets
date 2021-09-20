@@ -156,6 +156,7 @@ export default ({ showToggleFilter = true, isMobile = false, onScrollTop, mode =
   }, []);
 
   const showSorting = options.sorting?.options && options.sorting.options.length;
+  const showViewType = options.showViewType ?? true;
 
   return (
     <div css={md ? tw`flex items-center justify-between space-x-4` : tw`space-y-4`}>
@@ -186,7 +187,7 @@ export default ({ showToggleFilter = true, isMobile = false, onScrollTop, mode =
 
           {showSorting && <Sorting type="select" size="sm" inline={md} options={options.sorting?.options} />}
 
-          <ViewType size="sm" inline={md} />
+          {showViewType && <ViewType size="sm" inline={md} />}
 
           {showToggleFilter && <ToggleFilters />}
         </div>
