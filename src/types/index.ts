@@ -125,13 +125,6 @@ export interface InterfaceContextProps {
   setFiltersShown: (shown: boolean) => void;
 }
 
-export interface SearchInputBindingProps extends SearchWidgetBaseOptions {
-  selector: string;
-  mode: Exclude<InputMode, 'instant'>;
-  omittedElementSelectors?: string | string[];
-  options?: Omit<CoreInputProps, 'mode' | 'retainFilters'>;
-}
-
 export interface SearchInputProps extends SearchWidgetBaseOptions {
   mode: Exclude<InputMode, 'instant'>;
   redirect?: {
@@ -144,6 +137,12 @@ export interface SearchInputProps extends SearchWidgetBaseOptions {
     // keep the prop for v2 in case customers used it to customize the input but consider dropping the support for the prop in v3
     input?: InputProps;
   };
+}
+
+export interface SearchInputBindingProps extends SearchWidgetBaseOptions, Pick<SearchInputProps, 'mode' | 'redirect'> {
+  selector: string;
+  omittedElementSelectors?: string | string[];
+  options?: Omit<CoreInputProps, 'mode' | 'retainFilters'>;
 }
 
 export interface TokenCheckInputProps {

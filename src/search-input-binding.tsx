@@ -30,9 +30,29 @@ const removeThemeElements = (selectorsParam: string | string[]) => {
   });
 };
 
-const onSelectHandler = (element: Element | null) => () => {
-  const form = element?.closest('form');
-  form?.submit();
+const onSelectHandler = (
+  element: Element,
+  { mode, redirect: { url: pathname, queryParamName } }: Required<Pick<SearchInputBindingProps, 'mode' | 'redirect'>>,
+) => {
+  const form = element.closest('form');
+  if (form) {
+    element.setAttribute('name', queryParamName);
+    form.setAttribute('action', pathname);
+    form.setAttribute('method', 'get');
+  }
+
+  return (item: unknown) => {
+    // if no wrapped form element found, use JS to programmatically change url path
+    if (!form && mode !== 'results') {
+      const url = new URL(window.location.href);
+      url.searchParams.set(queryParamName, item as string);
+      url.pathname = pathname;
+      window.location.href = url.href;
+      return;
+    }
+    // otherwise we rely on form element to make the request
+    form?.submit();
+  };
 };
 
 const Wrapper = ({
@@ -65,6 +85,12 @@ const renderBindingInput = (
 ) => {
   const { mode = 'suggestions', container, options, ...props } = params;
 
+  const redirect = {
+    url: props.preset === 'shopify' ? 'search' : '', // Shopify always use /search for search results page
+    queryParamName: 'q',
+    ...props.redirect,
+  };
+
   targets.forEach((target) => {
     const showPoweredBy = options?.showPoweredBy ?? props.preset !== 'shopify';
 
@@ -80,7 +106,7 @@ const renderBindingInput = (
               {...options}
               portalContainer={container}
               mode={mode}
-              onSelect={onSelectHandler(target)}
+              onSelect={onSelectHandler(target, { mode, redirect })}
               inputElement={{ current: target }}
               showPoweredBy={showPoweredBy}
             />
@@ -106,7 +132,7 @@ const renderBindingInput = (
                 {...options}
                 portalContainer={container}
                 mode={mode}
-                onSelect={onSelectHandler(element)}
+                onSelect={onSelectHandler(element, { mode, redirect })}
                 inputElement={{ current: element }}
                 showPoweredBy={showPoweredBy}
               />
