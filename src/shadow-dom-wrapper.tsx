@@ -2,7 +2,7 @@ import type { ComponentType } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 
 import { renderInContainer } from './emotion-cache';
-import type { SearchWidgetBaseOptions, WidgetType } from './types';
+import type { SearchResultsProps, SearchWidgetBaseOptions, WidgetType } from './types';
 import { createDownshiftEnvironment } from './utils';
 
 function attachShadowRoot(el: Element | null, { type }: { type: WidgetType }) {
@@ -51,6 +51,15 @@ export default function withShadowRoot(
     }
 
     if (type === 'search-results' || type === 'overlay' || type === 'search-input-binding') {
+      // If it is a search result and it is using template mode -> turn off shadow root
+      if (type === 'search-results') {
+        const { options } = props as SearchResultsProps;
+        const template = options?.results?.resultTemplate;
+        if (template) {
+          return <Comp {...props} />;
+        }
+      }
+
       return <Comp downshiftEnvironment={downshiftEnvironment} container={container} {...props} />;
     }
 
