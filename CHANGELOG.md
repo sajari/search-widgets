@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 2.10.1
+
+### Patch Changes
+
+- d0c4b1a: Upgrade search ui
+
 ## 2.10.0
 
 ### Minor Changes
