@@ -1,5 +1,15 @@
 # @sajari/search-widgets
 
+## 2.10.0
+
+### Minor Changes
+
+- ba7e49a: adds "redirect" option for Takeover Search Input widget, similar to Search Input widget
+
+### Patch Changes
+
+- fee3fec: Change second image hover object fit from contain to cover
+
 ## 2.9.0
 
 ### Minor Changes
