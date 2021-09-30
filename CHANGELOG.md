@@ -1,5 +1,12 @@
 # @sajari/search-widgets
 
+## 2.10.2
+
+### Patch Changes
+
+- 03b3fdb: chore: bump hooks and search-ui so that we get access to the performance gains in useFilter
+- 6cc18e2: Turn off ShadowRoot in template mode because it is not stable at the moment
+
 ## 2.10.1
 
 ### Patch Changes
