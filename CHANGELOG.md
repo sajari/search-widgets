@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 2.11.0
+
+### Minor Changes
+
+- ddca0bf: feat: integrate redirects into search widgets
+
 ## 2.10.2
 
 ### Patch Changes
