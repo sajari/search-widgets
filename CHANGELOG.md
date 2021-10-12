@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 2.12.0
+
+### Minor Changes
+
+- 37a3448: fix: improve handling of redirect data in search-input
+
 ## 2.11.0
 
 ### Minor Changes
