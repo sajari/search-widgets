@@ -2041,10 +2041,10 @@
     eslint-config-airbnb-typescript "^12.0.0"
     eslint-config-prettier "^7.1.0"
 
-"@sajari/react-components@^1.12.4":
-  version "1.12.4"
-  resolved "https://registry.yarnpkg.com/@sajari/react-components/-/react-components-1.12.4.tgz#ef72f20e18f32f9a23bf5d975cfc226a2c911879"
-  integrity sha512-zUifbhJ7fJeKC6YPdJmI/2e5kXUxJAdhbri9K2carhxVbQV/0cKNQ0nHVgq5/fAvrchN280g0M9LaZ6AmHFq8Q==
+"@sajari/react-components@^1.13.0":
+  version "1.13.0"
+  resolved "https://registry.yarnpkg.com/@sajari/react-components/-/react-components-1.13.0.tgz#856412c164f06c9ab79fb3e8c50ad98eb3363f88"
+  integrity sha512-CdpomhjdsPmWAkdv3DifX/0v6Iy5C4vsEDg0IbNWjaiHGXh59fJiJ2ajU+TlqwO3SbS8tI3Boz/zfeoHJZVLWA==
   dependencies:
     "@popperjs/core" "^2.9.2"
     "@react-aria/button" "^3.3.0"
@@ -2055,7 +2055,7 @@
     "@react-aria/textfield" "^3.2.2"
     "@react-aria/utils" "^3.5.0"
     "@react-types/button" "^3.3.0"
-    "@sajari/react-sdk-utils" "^1.5.0"
+    "@sajari/react-sdk-utils" "^1.6.2"
     aria-hidden "^1.1.2"
     body-scroll-lock "^3.1.5"
     classnames "^2.2.6"
@@ -2066,19 +2066,19 @@
     smoothscroll-polyfill "^0.4.4"
     use-resize-observer "^7.0.0"
 
-"@sajari/react-hooks@^3.5.1":
-  version "3.5.1"
-  resolved "https://registry.yarnpkg.com/@sajari/react-hooks/-/react-hooks-3.5.1.tgz#787871f6ae822c16f5f17240cb9f75082a319ed6"
-  integrity sha512-In4aQBzyhfI8zgmiDhhvSC9j2NxSyXJsjewQgcDpFGy4MiG2jQdQjC4t7YwuMzGYe1MlwZfzqnzhdoCUmWRKWw==
+"@sajari/react-hooks@^3.6.0":
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/@sajari/react-hooks/-/react-hooks-3.6.0.tgz#9367d053b26986f7bea54981e2620cc11a5ef7db"
+  integrity sha512-u0CeEyTMQaUKin3V1rewEujsfqxQpvCrnlFyFuDX/2CvfU7fXNWDm3RNjmtF8dCSgwWLcY++SM0Ql+WQebTZKQ==
   dependencies:
-    "@sajari/react-sdk-utils" "^1.6.1"
+    "@sajari/react-sdk-utils" "^1.6.2"
     "@sajari/sdk-js" "^2.4.0"
     js-cookie "^2.2.1"
 
-"@sajari/react-sdk-utils@^1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@sajari/react-sdk-utils/-/react-sdk-utils-1.5.0.tgz#f24ed75c9ea111f1150899fe291ef943cbff205b"
-  integrity sha512-0j2wgL7B5GGLSCL7CI+S08096pST4vfJLn5DgqTdAp7Ykd/zAC/9TXtKkl+LQSuPdG5yOaErBHFWcBLZvOJRRA==
+"@sajari/react-sdk-utils@^1.6.2":
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/@sajari/react-sdk-utils/-/react-sdk-utils-1.6.2.tgz#cc000b0e6bd7df3542b7380464bb785603c46f78"
+  integrity sha512-a4D3jfVUp2yAJhDfMh9J8h+HYC4XrcCr7+X/a/XDhbOzobO7q09ZC09LilVt2dSlLvqO0COhwaUWViO3ihz77A==
   dependencies:
     "@emotion/core" "^10.1.1"
     "@emotion/is-prop-valid" "1.0.0"
@@ -2090,30 +2090,15 @@
     tailwindcss-truncate-multiline "^1.0.3"
     twin.macro "^1.12.1"
 
-"@sajari/react-sdk-utils@^1.6.1":
-  version "1.6.1"
-  resolved "https://registry.yarnpkg.com/@sajari/react-sdk-utils/-/react-sdk-utils-1.6.1.tgz#14fb424a786a8a64b0277c6d1da77b8d822064f6"
-  integrity sha512-zSw1p3TXg7E12JpgOTg15+byy3k1sct7SzmYOUQVTN9HtwsIPKcVi9IWxYZ1n/fcsy8Osk1E+vo0OoWOMjgkgQ==
-  dependencies:
-    "@emotion/core" "^10.1.1"
-    "@emotion/is-prop-valid" "1.0.0"
-    "@emotion/styled" "^10.0.27"
-    "@tailwindcss/ui" "^0.7.2"
-    emotion-theming "^10.0.27"
-    tailwindcss "^1.9.6"
-    tailwindcss-filters "^3.0.0"
-    tailwindcss-truncate-multiline "^1.0.3"
-    twin.macro "^1.12.1"
-
-"@sajari/react-search-ui@^4.7.1":
-  version "4.7.1"
-  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-4.7.1.tgz#0ded1ba4fa5d87513f9554fa1deeb58b0bfe5317"
-  integrity sha512-nG2vJmjkmXXon6ey3pUPcXLtEX23Ih7ALyXOhJqgmSXGKAtgcIMf7wglURnJkQ25llOFavWKEWLYwbiyf9B11g==
+"@sajari/react-search-ui@^4.8.0":
+  version "4.8.0"
+  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-4.8.0.tgz#811695d81a04526f1233ad1879e3fbd5ccb2033c"
+  integrity sha512-BPZXyRJTFGtR54KXJkeIQTKGX8QmEL9Pw8SVjjDa+kyek6uP2s6G3fnfhgbSqzNu1AgwEbhNt+Dw69ZkzAiLWw==
   dependencies:
     "@react-aria/utils" "3.5.0"
-    "@sajari/react-components" "^1.12.4"
-    "@sajari/react-hooks" "^3.5.1"
-    "@sajari/react-sdk-utils" "^1.6.1"
+    "@sajari/react-components" "^1.13.0"
+    "@sajari/react-hooks" "^3.6.0"
+    "@sajari/react-sdk-utils" "^1.6.2"
     dayjs "^1.10.5"
     i18next "19.8.7"
     i18next-browser-languagedetector "^6.0.1"
