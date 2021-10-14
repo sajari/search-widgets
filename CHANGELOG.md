@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 2.12.1
+
+### Patch Changes
+
+- 8951f48: fix: bump version of message components and utils
+
 ## 2.12.0
 
 ### Minor Changes
