@@ -1,5 +1,12 @@
 # @sajari/search-widgets
 
+## 2.12.2
+
+### Patch Changes
+
+- fa09cfa: fix: clicking on redirect suggestions should follow redirect
+- 3662730: Fix the mobile view switching to non-mobile view loop
+
 ## 2.12.1
 
 ### Patch Changes
