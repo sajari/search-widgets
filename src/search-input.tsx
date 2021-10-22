@@ -58,7 +58,12 @@ const AutocompleteInput = ({
       <Input
         {...options?.input}
         {...options}
-        onSelect={callAllHandlers(() => {
+        onSelect={callAllHandlers((item: string) => {
+          const redirectValue = redirectsRef.current[item];
+          if (redirectValue) {
+            window.location.assign(redirectValue.token || redirectValue.target);
+            return;
+          }
           submitForm(formRef);
         }, options.onSelect)}
         onKeyDown={callAllHandlers(onKeydownMemoized, options.onKeyDown)}
