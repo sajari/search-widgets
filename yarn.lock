@@ -2100,6 +2100,15 @@
     "@sajari/sdk-js" "^2.7.0"
     js-cookie "^2.2.1"
 
+"@sajari/react-hooks@^3.8.0":
+  version "3.8.0"
+  resolved "https://registry.yarnpkg.com/@sajari/react-hooks/-/react-hooks-3.8.0.tgz#419fa90d70931078718fe0f6d1b9decc9c041677"
+  integrity sha512-PuyGcuW2+pp9E8oWhg3p6KANsbIpOxQ9+m+05BbkmFdjQKuQA7sfGOO9f4A4OSQyy68zddzwta25QdeFU4nUSg==
+  dependencies:
+    "@sajari/react-sdk-utils" "^1.6.2"
+    "@sajari/sdk-js" "^2.8.0"
+    js-cookie "^2.2.1"
+
 "@sajari/react-sdk-utils@^1.6.2":
   version "1.6.2"
   resolved "https://registry.yarnpkg.com/@sajari/react-sdk-utils/-/react-sdk-utils-1.6.2.tgz#cc000b0e6bd7df3542b7380464bb785603c46f78"
@@ -2130,14 +2139,14 @@
     tailwindcss-truncate-multiline "^1.0.3"
     twin.macro "^1.12.1"
 
-"@sajari/react-search-ui@^4.9.1":
-  version "4.9.1"
-  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-4.9.1.tgz#582f524685c814ad5d8201afeb4639261507d065"
-  integrity sha512-IdanxbYxAXqBYsBNv15naI7RAO/puSpKy6V1/cpVZXa7A9MRlQaBLy+xpER4BJ8ZlUS4giunmrLWEL4fkgd96g==
+"@sajari/react-search-ui@^4.11.2":
+  version "4.11.2"
+  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-4.11.2.tgz#9c1871d81d8baebe84ebd6b30653787b88a80de1"
+  integrity sha512-aKO+g9OYJkpYAjAXgvYVRd2TQ1JsrV/gl6CdcYA5d5N79R4e0yB+XHEeSwLqAAcxubHfyInrsrlOGfjE3ALpzQ==
   dependencies:
     "@react-aria/utils" "3.5.0"
     "@sajari/react-components" "^1.13.2"
-    "@sajari/react-hooks" "^3.7.0"
+    "@sajari/react-hooks" "^3.8.0"
     "@sajari/react-sdk-utils" "^1.6.3"
     dayjs "^1.10.5"
     i18next "19.8.7"
@@ -2151,6 +2160,11 @@
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/@sajari/sdk-js/-/sdk-js-2.7.0.tgz#9b74a2c458212ef6f295f40681dcce15acb24832"
   integrity sha512-A60Dzf8ssw2li95WxkNMHFNi6saD/+6X03PzkHZNmrXe4sA3eRvTkJQExd5fXW58c0C+H2HqdEBuHfLVflReug==
+
+"@sajari/sdk-js@^2.8.0":
+  version "2.8.1"
+  resolved "https://registry.yarnpkg.com/@sajari/sdk-js/-/sdk-js-2.8.1.tgz#3154b1683b33358288f2ca5f792d091d138a2a97"
+  integrity sha512-l/yRf248fdsuh6/ezY0AMCXS+vH6Gc4k3p4AegkiSfrDX1DhER58O/Su/4wFgS7na2LofHW4DRe/DgFovbDhnQ==
 
 "@sindresorhus/is@^0.14.0":
   version "0.14.0"
