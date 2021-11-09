@@ -160,102 +160,104 @@ const OverlayInterface = () => {
       fullHeight={isMobile && (!!results || !!error)}
       {...modalProps}
     >
-      <div css={[tw`flex flex-col flex-none w-full overflow-hidden`, 'font-size: 16px;']}>
-        <div css={tw`flex-none`}>
+      <div css={tw`flex h-full overflow-hidden`}>
+        <div css={[tw`flex flex-col flex-none w-full overflow-hidden`, 'font-size: 16px;']}>
+          <div css={tw`flex-none`}>
+            <div
+              css={[
+                tw`py-4 pl-2.5 flex items-center`,
+                (results || error) && tw`border-0 border-b border-gray-200 border-solid`,
+              ]}
+            >
+              <Input
+                {...inputProps}
+                css={tw`w-full`}
+                size={isMobile ? 'xl' : '2xl'}
+                variant="unstyled"
+                showPoweredBy={preset !== 'shopify'}
+                autoFocus={modalProps?.autoFocus ?? true}
+              />
+              <div css={tw`flex justify-center flex-none w-14`}>
+                <ModalCloseButton css={tw`m-0`} />
+              </div>
+            </div>
+
+            {results && (
+              <div css={[tw`pt-3.5 px-6`, isMobile ? tw`pb-2` : tw`pb-6`]}>
+                <Options isMobile={isMobile} showToggleFilter={!hideSidebar} onScrollTop={scrollTop} mode="overlay" />
+              </div>
+            )}
+          </div>
+
           <div
+            id={id}
             css={[
-              tw`py-4 pl-2.5 flex items-center`,
-              (results || error) && tw`border-0 border-b border-gray-200 border-solid`,
+              tw`flex flex-grow overflow-hidden transition-all duration-200`,
+              (!filtersShown || hideSidebar) && [isMobileGrid ? tw`pl-2 sm:pl-6` : tw`pl-6`],
             ]}
           >
-            <Input
-              {...inputProps}
-              css={tw`w-full`}
-              size={isMobile ? 'xl' : '2xl'}
-              variant="unstyled"
-              showPoweredBy={preset !== 'shopify'}
-              autoFocus={modalProps?.autoFocus ?? true}
-            />
-            <div css={tw`flex justify-center flex-none w-14`}>
-              <ModalCloseButton css={tw`m-0`} />
-            </div>
-          </div>
-
-          {results && (
-            <div css={[tw`pt-3.5 px-6`, isMobile ? tw`pb-2` : tw`pb-6`]}>
-              <Options isMobile={isMobile} showToggleFilter={!hideSidebar} onScrollTop={scrollTop} mode="overlay" />
-            </div>
-          )}
-        </div>
-
-        <div
-          id={id}
-          css={[
-            tw`flex flex-grow overflow-hidden transition-all duration-200`,
-            (!filtersShown || hideSidebar) && [isMobileGrid ? tw`pl-2 sm:pl-6` : tw`pl-6`],
-          ]}
-        >
-          {results && !isMobile && (
-            <div
-              css={[
-                tw`flex-none overflow-y-auto transition-all duration-200`,
-                filtersShown && !hideSidebar
-                  ? [tw`w-86`, isMobileGrid ? tw`pl-2 sm:pl-6` : tw`pr-8 pl-6`]
-                  : tw`w-0 opacity-0`,
-              ]}
-            >
-              <div css={tw`pb-6 space-y-6 w-72`}>
-                {nonTabsFilters.map((props) => {
-                  const { type, textTransform = 'capitalize-first-letter' } = props;
-                  if (type === 'list' || type === 'select') {
-                    return <Filter {...{ ...props, textTransform }} key={props.name} />;
-                  }
-                  return <Filter {...props} key={props.name} />;
-                })}
-              </div>
-            </div>
-          )}
-
-          {(!!results || !!error) && (
-            <div
-              css={[
-                tw`flex flex-col`,
-                filtersShown && !hideSidebar && !error ? 'width: calc(100% - 21.5rem);' : tw`w-full`,
-              ]}
-            >
-              {tabsFilters.length > 0 && !error ? (
-                <div css={[tw`space-y-6`, isMobileGrid ? tw`sm:pr-6 pr-2` : tw`pr-6`]}>
-                  {tabsFilters.map((props) => {
-                    const { textTransform = 'capitalize-first-letter' } = props;
-                    return <Filter {...props} type="tabs" textTransform={textTransform} key={props.name} />;
+            {results && !isMobile && (
+              <div
+                css={[
+                  tw`flex-none overflow-y-auto transition-all duration-200`,
+                  filtersShown && !hideSidebar
+                    ? [tw`w-86`, isMobileGrid ? tw`pl-2 sm:pl-6` : tw`pr-8 pl-6`]
+                    : tw`w-0 opacity-0`,
+                ]}
+              >
+                <div css={tw`pb-6 space-y-6 w-72`}>
+                  {nonTabsFilters.map((props) => {
+                    const { type, textTransform = 'capitalize-first-letter' } = props;
+                    if (type === 'list' || type === 'select') {
+                      return <Filter {...{ ...props, textTransform }} key={props.name} />;
+                    }
+                    return <Filter {...props} key={props.name} />;
                   })}
                 </div>
-              ) : null}
+              </div>
+            )}
 
+            {(!!results || !!error) && (
               <div
-                id={containerId}
-                css={[tw`overflow-y-auto`, isMobileGrid ? tw`pt-2 sm:pt-6 pr-2 sm:pr-6` : tw`pt-6 pr-6`]}
-                ref={(node) => {
-                  if (!node) return;
-                  disableBodyScroll(node);
-                }}
+                css={[
+                  tw`flex flex-col`,
+                  filtersShown && !hideSidebar && !error ? 'width: calc(100% - 21.5rem);' : tw`w-full`,
+                ]}
               >
-                <div css={tw`mb-6`}>
-                  <Results
-                    columns={isMobileGrid ? 2 : undefined}
-                    gap={isMobileGrid ? 2 : undefined}
-                    {...options.results}
-                  />
+                {tabsFilters.length > 0 && !error ? (
+                  <div css={[tw`space-y-6`, isMobileGrid ? tw`sm:pr-6 pr-2` : tw`pr-6`]}>
+                    {tabsFilters.map((props) => {
+                      const { textTransform = 'capitalize-first-letter' } = props;
+                      return <Filter {...props} type="tabs" textTransform={textTransform} key={props.name} />;
+                    })}
+                  </div>
+                ) : null}
+
+                <div
+                  id={containerId}
+                  css={[tw`overflow-y-auto`, isMobileGrid ? tw`pt-2 sm:pt-6 pr-2 sm:pr-6` : tw`pt-6 pr-6`]}
+                  ref={(node) => {
+                    if (!node) return;
+                    disableBodyScroll(node);
+                  }}
+                >
+                  <div css={tw`mb-6`}>
+                    <Results
+                      columns={isMobileGrid ? 2 : undefined}
+                      gap={isMobileGrid ? 2 : undefined}
+                      {...options.results}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-          )}
-        </div>
-        {pageCount > 1 ? (
-          <div css={tw`flex-none border-0 border-t border-solid border-gray-200 py-3.5 px-6`}>
-            <Pagination {...options.pagination} scrollTarget={`#${containerId}`} />
+            )}
           </div>
-        ) : null}
+          {pageCount > 1 ? (
+            <div css={tw`flex-none border-0 border-t border-solid border-gray-200 py-3.5 px-6`}>
+              <Pagination {...options.pagination} scrollTarget={`#${containerId}`} />
+            </div>
+          ) : null}
+        </div>
       </div>
     </Modal>
   );
