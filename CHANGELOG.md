@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 2.12.3
+
+### Patch Changes
+
+- 9cdd6cf: Fix unable to scroll to view more results on mobile overlay
+
 ## 2.12.2
 
 ### Patch Changes
