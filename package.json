@@ -80,7 +80,6 @@
     "@sajari/react-hooks": "^3.6.1",
     "@sajari/react-sdk-utils": "^1.6.3",
     "@sajari/react-search-ui": "^4.8.2",
-    "body-scroll-lock": "^3.1.5",
     "lodash-es": "^4.17.21",
     "mitt": "^2.1.0",
     "preact": "^10.5.12",

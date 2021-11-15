@@ -2,9 +2,6 @@ import { Modal, ModalCloseButton } from '@sajari/react-components';
 import { useQuery, useSearchContext, useSorting } from '@sajari/react-hooks';
 import { isArray, isNumber } from '@sajari/react-sdk-utils';
 import { Filter, Input, Pagination, Results, useSearchUIContext } from '@sajari/react-search-ui';
-// TODO: ideally this should be a generic solution in the Modal component
-// making a note here so we (Thanh) can revisit the issue
-import { clearAllBodyScrollLocks, disableBodyScroll } from 'body-scroll-lock';
 import { memo } from 'preact/compat';
 import { useCallback, useEffect, useState } from 'preact/hooks';
 import tw from 'twin.macro';
@@ -126,18 +123,6 @@ const OverlayInterface = () => {
   }, [isMobile, open]);
 
   useEffect(() => {
-    if (!open) {
-      clearAllBodyScrollLocks();
-    }
-  }, [open]);
-
-  useEffect(() => {
-    return () => {
-      clearAllBodyScrollLocks();
-    };
-  }, []);
-
-  useEffect(() => {
     if (isNumber(width)) {
       setWidth(width);
     }
@@ -236,10 +221,6 @@ const OverlayInterface = () => {
                 <div
                   id={containerId}
                   css={[tw`overflow-y-auto`, isMobileGrid ? tw`pt-2 sm:pt-6 pr-2 sm:pr-6` : tw`pt-6 pr-6`]}
-                  ref={(node) => {
-                    if (!node) return;
-                    disableBodyScroll(node);
-                  }}
                 >
                   <div css={tw`mb-6`}>
                     <Results

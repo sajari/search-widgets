@@ -18,9 +18,6 @@ import {
   Summary as CoreSummary,
   ViewType,
 } from '@sajari/react-search-ui';
-// TODO: ideally this should be a generic solution in the Modal component
-// making a note here so we (Thanh) can revisit the issue
-import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 import React, { useEffect, useState } from 'react';
 import tw, { styled } from 'twin.macro';
 
@@ -115,7 +112,6 @@ export default ({ showToggleFilter = true, isMobile = false, onScrollTop, mode =
   const nonTabsFilters = filters?.filter((props) => props.type !== 'tabs') || [];
   const [filterList, setActiveFilterList] = useState(filters.map(() => false));
   const count = filterList.filter(Boolean).length;
-  let refScrollBox: HTMLDivElement | null;
 
   const setActiveFilter = (index: number, value: boolean) => {
     const newValues = [...filterList];
@@ -140,20 +136,6 @@ export default ({ showToggleFilter = true, isMobile = false, onScrollTop, mode =
       clearTimeout(timeout);
     };
   }, [open]);
-
-  useEffect(() => {
-    if (refScrollBox && !open) {
-      enableBodyScroll(refScrollBox);
-    }
-  }, [open]);
-
-  useEffect(() => {
-    return () => {
-      if (refScrollBox) {
-        enableBodyScroll(refScrollBox);
-      }
-    };
-  }, []);
 
   const showSorting = options.sorting?.options && options.sorting.options.length;
   const showViewType = options.showViewType ?? true;
@@ -207,14 +189,7 @@ export default ({ showToggleFilter = true, isMobile = false, onScrollTop, mode =
           <ModalCloseButton />
         </ModalHeader>
 
-        <ModalBody
-          css={[tw`pt-2`, 'font-size: 16px;']}
-          ref={(node) => {
-            if (!node) return;
-            refScrollBox = node;
-            disableBodyScroll(node);
-          }}
-        >
+        <ModalBody css={[tw`pt-2`, 'font-size: 16px;']}>
           <div css={[tw`space-y-6 divide-y`, count === 0 ? tw`pb-0` : tw`pb-16`]}>
             {showSorting && <Sorting type="list" size="sm" inline={md} options={options.sorting?.options} />}
             {results &&
