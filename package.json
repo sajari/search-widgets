@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "@sajari/search-widgets",
-  "version": "2.12.2",
+  "version": "2.12.4",
   "license": "MIT",
   "browserslist": "> 1%",
   "scripts": {
@@ -76,10 +76,10 @@
     "@emotion/cache": "^10",
     "@emotion/core": "^10.1.1",
     "@emotion/styled": "^10.0.27",
-    "@sajari/react-components": "^1.13.0",
-    "@sajari/react-hooks": "^3.6.0",
+    "@sajari/react-components": "^1.13.1",
+    "@sajari/react-hooks": "^3.6.1",
     "@sajari/react-sdk-utils": "^1.6.3",
-    "@sajari/react-search-ui": "^4.8.1",
+    "@sajari/react-search-ui": "^4.8.2",
     "body-scroll-lock": "^3.1.5",
     "lodash-es": "^4.17.21",
     "mitt": "^2.1.0",

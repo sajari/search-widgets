@@ -1,5 +1,17 @@
 # @sajari/search-widgets
 
+## 2.12.4
+
+### Patch Changes
+
+- 4f66b00: fix: RangeFilterBuilder generates emptry query when set to min and max value
+
+## 2.12.3
+
+### Patch Changes
+
+- 9cdd6cf: Fix unable to scroll to view more results on mobile overlay
+
 ## 2.12.2
 
 ### Patch Changes
