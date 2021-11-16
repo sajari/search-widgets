@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 2.12.5
+
+### Patch Changes
+
+- 64cd362: Prevent body scroll from locking when overlay modal is closed with the escape key.
+
 ## 2.12.4
 
 ### Patch Changes
