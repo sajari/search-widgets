@@ -238,7 +238,7 @@ const OverlayInterface = () => {
                   css={[tw`overflow-y-auto`, isMobileGrid ? tw`pt-2 sm:pt-6 pr-2 sm:pr-6` : tw`pt-6 pr-6`]}
                   ref={(node) => {
                     if (!node) return;
-                    disableBodyScroll(node);
+                    if (open) disableBodyScroll(node);
                   }}
                 >
                   <div css={tw`mb-6`}>
