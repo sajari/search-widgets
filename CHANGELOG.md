@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 2.13.0
+
+### Minor Changes
+
+- 571ff82: chore: redirect implementation has been moved back to sdk-react repo
+
 ## 2.12.5
 
 ### Patch Changes
