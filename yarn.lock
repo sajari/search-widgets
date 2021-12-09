@@ -2041,6 +2041,31 @@
     eslint-config-airbnb-typescript "^12.0.0"
     eslint-config-prettier "^7.1.0"
 
+"@sajari/react-components@^1.13.0":
+  version "1.13.0"
+  resolved "https://registry.yarnpkg.com/@sajari/react-components/-/react-components-1.13.0.tgz#856412c164f06c9ab79fb3e8c50ad98eb3363f88"
+  integrity sha512-CdpomhjdsPmWAkdv3DifX/0v6Iy5C4vsEDg0IbNWjaiHGXh59fJiJ2ajU+TlqwO3SbS8tI3Boz/zfeoHJZVLWA==
+  dependencies:
+    "@popperjs/core" "^2.9.2"
+    "@react-aria/button" "^3.3.0"
+    "@react-aria/focus" "^3.2.3"
+    "@react-aria/interactions" "^3.3.2"
+    "@react-aria/ssr" "^3.0.1"
+    "@react-aria/switch" "^3.1.1"
+    "@react-aria/textfield" "^3.2.2"
+    "@react-aria/utils" "^3.5.0"
+    "@react-types/button" "^3.3.0"
+    "@sajari/react-sdk-utils" "^1.6.2"
+    aria-hidden "^1.1.2"
+    body-scroll-lock "^3.1.5"
+    classnames "^2.2.6"
+    color "^3.1.3"
+    downshift "^6.1.0"
+    react-focus-lock "^2.5.0"
+    react-ranger "^2.1.0"
+    smoothscroll-polyfill "^0.4.4"
+    use-resize-observer "^7.0.0"
+
 "@sajari/react-components@^1.13.1":
   version "1.13.1"
   resolved "https://registry.yarnpkg.com/@sajari/react-components/-/react-components-1.13.1.tgz#d7b9a605e9e62287d70f2668395e394ea015fdc0"
@@ -2066,38 +2091,13 @@
     smoothscroll-polyfill "^0.4.4"
     use-resize-observer "^7.0.0"
 
-"@sajari/react-components@^1.13.2":
-  version "1.13.2"
-  resolved "https://registry.yarnpkg.com/@sajari/react-components/-/react-components-1.13.2.tgz#9ea8a3a7e01d84e8ca135a1f1430b676899226b4"
-  integrity sha512-MmpEp2tO72nOOI6ACy3h9i2oBgeybCiRj3r+8IyqL7OtF6AHKwfbIO4lj/sXHxYwzcH01l+6rX8qZKxNdokI0w==
-  dependencies:
-    "@popperjs/core" "^2.9.2"
-    "@react-aria/button" "^3.3.0"
-    "@react-aria/focus" "^3.2.3"
-    "@react-aria/interactions" "^3.3.2"
-    "@react-aria/ssr" "^3.0.1"
-    "@react-aria/switch" "^3.1.1"
-    "@react-aria/textfield" "^3.2.2"
-    "@react-aria/utils" "^3.5.0"
-    "@react-types/button" "^3.3.0"
-    "@sajari/react-sdk-utils" "^1.6.2"
-    aria-hidden "^1.1.2"
-    body-scroll-lock "^3.1.5"
-    classnames "^2.2.6"
-    color "^3.1.3"
-    downshift "^6.1.0"
-    react-focus-lock "^2.5.0"
-    react-ranger "^2.1.0"
-    smoothscroll-polyfill "^0.4.4"
-    use-resize-observer "^7.0.0"
-
-"@sajari/react-hooks@^3.7.0":
-  version "3.7.0"
-  resolved "https://registry.yarnpkg.com/@sajari/react-hooks/-/react-hooks-3.7.0.tgz#94c88c91b0e0e770615c042198f46eefab2e6e1a"
-  integrity sha512-nm+DHBYa1znd5SpEwVLIBpkjrGN5m8bNBEaubbo+IIkJRIPTRVhS4kDJotNMPVPE0XtmnwNEMZCimDVDU9CvZQ==
+"@sajari/react-hooks@^3.6.1":
+  version "3.6.1"
+  resolved "https://registry.yarnpkg.com/@sajari/react-hooks/-/react-hooks-3.6.1.tgz#dc781e5644a9ec46005f4545dc2d54d298de6a92"
+  integrity sha512-eEtfw1X59MyFBDtEeY8iKUs8qfIB4qNH/2S83SyXEuEju10FjLDHk12WB+vBaPniDJ+E8zrqPhffaVAE6DsaKA==
   dependencies:
     "@sajari/react-sdk-utils" "^1.6.2"
-    "@sajari/sdk-js" "^2.7.0"
+    "@sajari/sdk-js" "^2.4.0"
     js-cookie "^2.2.1"
 
 "@sajari/react-sdk-utils@^1.6.2":
@@ -2130,14 +2130,14 @@
     tailwindcss-truncate-multiline "^1.0.3"
     twin.macro "^1.12.1"
 
-"@sajari/react-search-ui@^4.9.1":
-  version "4.9.1"
-  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-4.9.1.tgz#582f524685c814ad5d8201afeb4639261507d065"
-  integrity sha512-IdanxbYxAXqBYsBNv15naI7RAO/puSpKy6V1/cpVZXa7A9MRlQaBLy+xpER4BJ8ZlUS4giunmrLWEL4fkgd96g==
+"@sajari/react-search-ui@^4.8.2":
+  version "4.8.2"
+  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-4.8.2.tgz#4f4c9ae12fa02a997cd8e24d81d66e297893ce45"
+  integrity sha512-mvwgiJhUUO3E+zEnhQ/vWDvMrtTbRXigpN+VUBW3yq3084/V4TnaNxvPk8tKr62MOUcAkBwqVAlNPMzvuGp79Q==
   dependencies:
     "@react-aria/utils" "3.5.0"
-    "@sajari/react-components" "^1.13.2"
-    "@sajari/react-hooks" "^3.7.0"
+    "@sajari/react-components" "^1.13.0"
+    "@sajari/react-hooks" "^3.6.1"
     "@sajari/react-sdk-utils" "^1.6.3"
     dayjs "^1.10.5"
     i18next "19.8.7"
@@ -2147,10 +2147,10 @@
     react-i18next "^11.8.5"
     tempura "^0.2.0"
 
-"@sajari/sdk-js@^2.7.0":
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/@sajari/sdk-js/-/sdk-js-2.7.0.tgz#9b74a2c458212ef6f295f40681dcce15acb24832"
-  integrity sha512-A60Dzf8ssw2li95WxkNMHFNi6saD/+6X03PzkHZNmrXe4sA3eRvTkJQExd5fXW58c0C+H2HqdEBuHfLVflReug==
+"@sajari/sdk-js@^2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@sajari/sdk-js/-/sdk-js-2.4.0.tgz#5c32710f8e2ee9615d4ab741444d97d778bd4d0c"
+  integrity sha512-IrZpk0m/a1KRf5ESQfTktMwwAgy/QHh4wQa4LXtqSWDWt9ogt/ivvsZEJ0w86SrtWSE5mXusXMBvhDbX4My7dw==
 
 "@sindresorhus/is@^0.14.0":
   version "0.14.0"
