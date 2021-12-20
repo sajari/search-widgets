@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 2.13.1
+
+### Patch Changes
+
+- 908297d: fix: add support for automatic posneg token consumption to overlay mode
+
 ## 2.13.0
 
 ### Minor Changes
