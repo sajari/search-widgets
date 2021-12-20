@@ -1,10 +1,10 @@
-import { useTracking } from '@sajari/react-hooks';
 import { ContextProviderValues, Input, Pipeline, SearchProvider, Variables } from '@sajari/react-search-ui';
 import { render } from 'preact/compat';
-import { useEffect, useMemo } from 'react';
+import { useMemo } from 'react';
 
 import { getPresetSelector, shopifyFieldMapping } from './defaults';
 import { EmotionCache } from './emotion-cache';
+import TokenCheckBlank from './interface/TokenCheckBlank';
 import { SearchInputBindingProps } from './types';
 import { getPipelineInfo } from './utils';
 import { getTracking } from './utils/getTracking';
@@ -143,14 +143,6 @@ const renderBindingInput = (
       });
     }
   });
-};
-
-const TokenCheckBlank = () => {
-  const { posNegLocalStorageManager } = useTracking();
-  useEffect(() => {
-    posNegLocalStorageManager.sendPendingClicks();
-  }, []);
-  return null;
 };
 
 export default ({ selector: selectorProp, omittedElementSelectors, ...rest }: SearchInputBindingProps) => {
