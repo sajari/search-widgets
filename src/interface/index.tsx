@@ -10,6 +10,7 @@ import { parseBreakpoints } from '../utils/styles';
 import InterfaceContextProvider from './context';
 import OverlayInterface from './OverlayInterface';
 import StandardInterface from './StandardInterface';
+import TokenCheckBlank from './TokenCheckBlank';
 
 export default memo(() => {
   const { container } = useCustomContainer();
@@ -46,6 +47,7 @@ export default memo(() => {
       ) : (
         <EmotionCache cacheKey={cacheKey} container={container}>
           <OverlayInterface />
+          <TokenCheckBlank />
         </EmotionCache>
       )}
     </InterfaceContextProvider>
