@@ -86,7 +86,7 @@ const renderBindingInput = (
   const { mode = 'suggestions', container, options, ...props } = params;
 
   const redirect = {
-    url: props.preset === 'shopify' ? 'search' : '', // Shopify always use /search for search results page
+    url: props.preset === 'shopify' ? '/search' : '', // Shopify always use /search for search results page
     queryParamName: 'q',
     ...props.redirect,
   };
