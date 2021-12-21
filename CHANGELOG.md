@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 2.13.2
+
+### Patch Changes
+
+- 8f51063: Fix the global search to be from domain root
+
 ## 2.13.1
 
 ### Patch Changes
