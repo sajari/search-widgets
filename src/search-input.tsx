@@ -43,7 +43,11 @@ export default (defaultProps: SearchInputProps) => {
   const {
     variables: variablesProp,
     emitter,
-    options = {},
+    options = {
+      input: {
+        minimumCharacters: 3,
+      },
+    },
     preset,
     mode = 'suggestions',
     redirect,
