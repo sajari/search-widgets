@@ -1,5 +1,15 @@
 # @sajari/search-widgets
 
+## 2.14.0
+
+### Minor Changes
+
+- 513c1b0: Add minimum characters before searching
+
+### Patch Changes
+
+- b14827d: Upgrade search-ui package
+
 ## 2.13.2
 
 ### Patch Changes
