@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 2.15.0
+
+### Minor Changes
+
+- 71f8f77: Revert previous release
+
 ## 2.14.0
 
 ### Minor Changes
