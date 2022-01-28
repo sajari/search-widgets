@@ -114,7 +114,6 @@ export function mergeProps(params: MergePropsParams): MergedSearchResultsProps {
       input: {
         mode: 'instant',
         position: 'aside',
-        minimumCharacters: 3,
       },
       results: {
         showStatus: true,
