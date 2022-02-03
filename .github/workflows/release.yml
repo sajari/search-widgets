@@ -30,11 +30,33 @@ jobs:
       #    GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY }}
 
       - name: Create Release Pull Request
+        id: changesets
         uses: changesets/action@master
         with:
           # This will only run when it's a release commit by the changeset bot
           publish: yarn deploy:full
+          title: Release latest to Production
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GOOGLE_CLIENT_EMAIL: ${{ secrets.GOOGLE_CLIENT_EMAIL }}
           GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY }}
+
+      - name: 'Slack notification on build failure'
+        if: failure() && steps.changesets.outputs.published == 'true'
+        uses: act10ns/slack@v1
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_BUILD_BREAKAGES_WEBHOOK_URL }}
+        with:
+          status: ${{ job.status }}
+          channel: '#build-breakages'
+          message: ':octagonal_sign: search-widgets production deploy failed | <{{workflowRunUrl}}'
+
+      - name: 'Slack notification on build production success'
+        if: success() && steps.changesets.outputs.published == 'true'
+        uses: act10ns/slack@v1
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_DEPLOYMENTS_WEBHOOK_URL }}
+        with:
+          status: ${{ job.status }}
+          channel: '#deployments'
+          message: ':mag: new search-widgets deployed to production | <{{workflowRunUrl}}>'
