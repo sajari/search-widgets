@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 2.15.1
+
+### Patch Changes
+
+- fefcb16: chore: checking changes to changesets configuration
+
 ## 2.15.0
 
 ### Minor Changes
