@@ -1,0 +1,12 @@
+name: Run tests
+
+on:
+  pull_request:
+
+jobs:
+  call-workflow-1:
+    name: Build js
+    uses: sajari/search-widgets/.github/workflows/build-js.yml@master
+  call-workflow-2:
+    name: lint js
+    uses: sajari/search-widgets/.github/workflows/lint-js.yml@master
