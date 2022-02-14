@@ -1,5 +1,12 @@
 # @sajari/search-widgets
 
+## 2.16.0
+
+### Minor Changes
+
+- 1b81e09: feat: upgrade downstream dependencies to support banners
+- 7e39a72: upgrading react-search-ui
+
 ## 2.15.1
 
 ### Patch Changes
