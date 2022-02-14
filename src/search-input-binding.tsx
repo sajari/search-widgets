@@ -93,6 +93,7 @@ const renderBindingInput = (
 
   targets.forEach((target) => {
     const showPoweredBy = options?.showPoweredBy ?? props.preset !== 'shopify';
+    const minimumCharacters = options?.minimumCharacters ?? 3;
 
     if (target instanceof HTMLInputElement) {
       const fragment = document.createDocumentFragment();
@@ -104,6 +105,7 @@ const renderBindingInput = (
           <EmotionCache cacheKey={mode} container={container}>
             <Input
               {...options}
+              minimumCharacters={minimumCharacters}
               portalContainer={container}
               mode={mode}
               onSelect={onSelectHandler(target, { mode, redirect })}
@@ -130,6 +132,7 @@ const renderBindingInput = (
             <EmotionCache cacheKey={mode} container={container}>
               <Input
                 {...options}
+                minimumCharacters={minimumCharacters}
                 portalContainer={container}
                 mode={mode}
                 onSelect={onSelectHandler(element, { mode, redirect })}
