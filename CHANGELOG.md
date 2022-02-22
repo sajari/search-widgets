@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 2.16.1
+
+### Patch Changes
+
+- 2510225: Upgrade React SDK to fix result being ignored if having same position with banner - https://github.com/sajari/sdk-react/pull/741
+
 ## 2.16.0
 
 ### Minor Changes
