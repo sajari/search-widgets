@@ -79,7 +79,7 @@
     "@sajari/react-components": "^1.13.2",
     "@sajari/react-hooks": "^3.9.0",
     "@sajari/react-sdk-utils": "^1.6.3",
-    "@sajari/react-search-ui": "^4.12.2",
+    "@sajari/react-search-ui": "^4.12.3",
     "body-scroll-lock": "^3.1.5",
     "lodash-es": "^4.17.21",
     "mitt": "^2.1.0",
