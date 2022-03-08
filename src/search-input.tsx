@@ -7,6 +7,7 @@ import { shopifyFieldMapping } from './defaults';
 import PubSubContextProvider from './pubsub/context';
 import { SearchInputProps } from './types';
 import { getPipelineInfo } from './utils';
+import getSearchParams from './utils/getSearchParams';
 import { getTracking } from './utils/getTracking';
 
 const submitForm = (formRef: React.RefObject<HTMLFormElement | null | undefined>) => {
@@ -47,6 +48,9 @@ export default (defaultProps: SearchInputProps) => {
       input: {
         minimumCharacters: 3,
       },
+      urlParams: {
+        q: 'q',
+      },
     },
     preset,
     mode = 'suggestions',
@@ -68,7 +72,9 @@ export default (defaultProps: SearchInputProps) => {
 
   const searchContext = useMemo(() => {
     const { name, version = undefined } = getPipelineInfo(pipeline);
-    const variables = new Variables({ ...variablesProp });
+    const params = getSearchParams();
+    const q = params[options.urlParams?.q ?? 'q'];
+    const variables = new Variables({ ...variablesProp, q });
     return {
       pipeline: new Pipeline(
         {

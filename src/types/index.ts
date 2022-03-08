@@ -137,6 +137,9 @@ export interface SearchInputProps extends SearchWidgetBaseOptions {
     // @deprecated: moved the ability to custom input props into the upper-level options
     // keep the prop for v2 in case customers used it to customize the input but consider dropping the support for the prop in v3
     input?: InputProps;
+    urlParams?: {
+      q: string;
+    };
   };
 }
 
