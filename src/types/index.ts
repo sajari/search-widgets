@@ -21,7 +21,7 @@ import { Breakpoints } from '../utils/styles';
 export type WidgetType = 'search-results' | 'search-input-binding' | 'overlay' | 'search-input';
 export type InputMode = CoreInputProps<any>['mode'];
 export type PresetType = 'shopify' | 'website' | 'app' | undefined;
-export type TrackingType = 'posneg' | 'click';
+export type TrackingType = 'posneg' | 'click' | 'event';
 
 interface InputProps extends Omit<CoreInputProps<any>, 'showPoweredBy'> {
   mode?: Exclude<InputMode, 'results'>;
@@ -41,6 +41,7 @@ export interface SearchWidgetBaseOptions {
   pipeline: PipelineOption;
   endpoint?: string;
   clickTokenURL?: string;
+  searchIOAnalyticsEndpoint?: string;
   tracking?:
     | TrackingType
     | {

@@ -1,6 +1,6 @@
 import { FieldDictionary } from '@sajari/react-hooks';
 import { isArray, isEmpty, isNumber, isString, merge, MergeOptions } from '@sajari/react-sdk-utils';
-import { ClickTracking, PosNegTracking } from '@sajari/react-search-ui';
+import { ClickTracking, EventTracking, PosNegTracking } from '@sajari/react-search-ui';
 
 import { SearchResultsOptions, SearchResultsProps, TrackingType, WidgetType } from './types';
 import { ShopifySchema } from './types/shopify';
@@ -16,7 +16,7 @@ interface MergePropsParams extends SearchResultsProps {
 
 interface MergedSearchResultsProps extends Omit<SearchResultsProps, 'options' | 'tracking' | 'preset'> {
   options: SearchResultsOptions;
-  tracking?: ClickTracking | PosNegTracking;
+  tracking?: ClickTracking | PosNegTracking | EventTracking;
 }
 
 const getVariantImages = (values: ShopifySchema) => {
@@ -288,6 +288,9 @@ export function mergeProps(params: MergePropsParams): MergedSearchResultsProps {
 
         case 'posneg':
           return new PosNegTracking(field);
+
+        case 'event':
+          return new EventTracking(field, undefined, props.searchIOAnalyticsEndpoint);
 
         default:
           return undefined;
