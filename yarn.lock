@@ -3204,13 +3204,13 @@
     smoothscroll-polyfill "^0.4.4"
     use-resize-observer "^7.0.0"
 
-"@sajari/react-hooks@^3.9.0":
-  version "3.9.0"
-  resolved "https://registry.yarnpkg.com/@sajari/react-hooks/-/react-hooks-3.9.0.tgz#695bbae9711f5885dfbbde8bc97c4f48557ffbe3"
-  integrity sha512-qC2hmbHGoeNt4NOo9s1CQIOzuFBBre3v8aGgMlDUoCsbh6YoJlrXiijxqnRGobrHUfK0GjZR3O4RwQzzlqqTyA==
+"@sajari/react-hooks@^3.10.0":
+  version "3.10.0"
+  resolved "https://registry.yarnpkg.com/@sajari/react-hooks/-/react-hooks-3.10.0.tgz#4299c13e793dd88051c886397bd06dc5fd9b620c"
+  integrity sha512-jRPnryrFN4Vmyi46qsNezCRz4Pz0QuptFf6mFSyTbyERxASskzra885wwiwr7ywrwMM2Zk6oDKB9irngCxaTOg==
   dependencies:
     "@sajari/react-sdk-utils" "^1.6.2"
-    "@sajari/sdk-js" "^2.9.0"
+    "@sajari/sdk-js" "^2.10.2"
     js-cookie "^2.2.1"
 
 "@sajari/react-sdk-utils@^1.6.2", "@sajari/react-sdk-utils@^1.6.3":
@@ -3228,14 +3228,14 @@
     tailwindcss-truncate-multiline "^1.0.3"
     twin.macro "^1.12.1"
 
-"@sajari/react-search-ui@^4.12.3":
-  version "4.12.3"
-  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-4.12.3.tgz#a55b592ea7c0ccc5a3b4a5093369548e93dd831c"
-  integrity sha512-sz0BV11wPYMEBfScX3IvMEawRJDtMCZLiU4ZJpJO3NwEEFFuYJpCMZ/aQYh+FIIkhSwCDydhWTL9lDJzx7YjoQ==
+"@sajari/react-search-ui@^4.13.0":
+  version "4.13.0"
+  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-4.13.0.tgz#4645abab19404d93d3dc5b039409114537cab128"
+  integrity sha512-1fGq193uoZqkbCVCRM9RBveJdqzFxIY/b8nP5QJ+Sk6Y1u2Q06vN5l6B1APsrhCY2A42mLJjG+ual3C+r6M/EA==
   dependencies:
     "@react-aria/utils" "3.5.0"
     "@sajari/react-components" "^1.13.2"
-    "@sajari/react-hooks" "^3.9.0"
+    "@sajari/react-hooks" "^3.10.0"
     "@sajari/react-sdk-utils" "^1.6.3"
     dayjs "^1.10.5"
     i18next "19.8.7"
@@ -3243,12 +3243,12 @@
     react-aria-live "^2.0.5"
     react-error-boundary "^3.1.3"
     react-i18next "^11.8.5"
-    tempura "^0.2.0"
+    tempura "^0.4.0"
 
-"@sajari/sdk-js@^2.9.0":
-  version "2.9.0"
-  resolved "https://registry.yarnpkg.com/@sajari/sdk-js/-/sdk-js-2.9.0.tgz#dab328002e5aa43011c8ae5e75acbc30e3ea9221"
-  integrity sha512-YzVVxCyow9keEpRmVMw7kFy7XmDeCJuPhOQV8sauijqbginmNH5VnyDauOCfkJRgVwnczf+a0mSv/MpgQ/vqbw==
+"@sajari/sdk-js@^2.10.2":
+  version "2.10.2"
+  resolved "https://registry.yarnpkg.com/@sajari/sdk-js/-/sdk-js-2.10.2.tgz#e0bf9cca6c8173c1486dcd08375bf37de596a08f"
+  integrity sha512-IIhlG85Z9G3Fibo3uAPAbgyP6zx4iy2Sc89oSHbQ58th5bwQU4lRdad4Tg/1a7VN+zPnz6qtUcfgTN7fdXebKw==
 
 "@sindresorhus/is@^0.14.0":
   version "0.14.0"
@@ -14560,10 +14560,10 @@ temp-dir@^1.0.0:
   resolved "https://registry.yarnpkg.com/temp-dir/-/temp-dir-1.0.0.tgz#0a7c0ea26d3a39afa7e0ebea9c1fc0bc4daa011d"
   integrity sha1-CnwOom06Oa+n4OvqnB/AvE2qAR0=
 
-tempura@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/tempura/-/tempura-0.2.0.tgz#2f0c39b5e3ee97b6a58911f8f7caf1593c22bb55"
-  integrity sha512-jgDGrQIZUS48pED/iFWt847rArUl5xczSlDj5B8ZxwXr4t8yQSBqUwdgmKWVfct7lXSwBzCjrRgEZPaVM2Yzag==
+tempura@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/tempura/-/tempura-0.4.0.tgz#22eada78b24f796dc714d72e88c91f79960dc8ea"
+  integrity sha512-ghCAK7t3Yuy40NUA/pmS1aDY8M5MfZT4+S465S8YvwwDdgk3jLm/5BGwtMG/rMICDYY8T7Owe1qm91ArBOKd6w==
 
 tempy@^0.3.0:
   version "0.3.0"
