@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 2.17.0
+
+### Minor Changes
+
+- cee935a: Add 'event' tracking type to support simplified event tracking
+
 ## 2.16.1
 
 ### Patch Changes
