@@ -31,13 +31,13 @@ jobs:
 
       - name: Create Release Pull Request
         id: changesets
-        uses: changesets/action@master
+        uses: changesets/action@v1
         with:
           # This will only run when it's a release commit by the changeset bot
           publish: yarn deploy:full
           title: Release latest to Production
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.SAJARI_CI_GITHUB_TOKEN }}
           GOOGLE_CLIENT_EMAIL: ${{ secrets.GOOGLE_CLIENT_EMAIL }}
           GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY }}
 
