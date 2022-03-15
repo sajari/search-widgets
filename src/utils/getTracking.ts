@@ -1,12 +1,12 @@
 import { isEmpty, isString } from '@sajari/react-sdk-utils';
-import { ClickTracking, PosNegTracking } from '@sajari/react-search-ui';
+import { ClickTracking, EventTracking, PosNegTracking } from '@sajari/react-search-ui';
 
 import { SearchInputBindingProps, SearchInputProps, TrackingType } from '../types';
 
 export function getTracking(
   props: Omit<SearchInputBindingProps, 'selector' | 'omittedElementSelectors' | 'mode'> | SearchInputProps,
 ) {
-  const { preset, fields, tracking } = props;
+  const { preset, fields, tracking, searchIOAnalyticsEndpoint } = props;
 
   if (preset === 'shopify') {
     return new PosNegTracking('id');
@@ -29,6 +29,9 @@ export function getTracking(
 
         case 'posneg':
           return new PosNegTracking(field);
+
+        case 'event':
+          return new EventTracking(field, undefined, searchIOAnalyticsEndpoint);
 
         default:
           return undefined;
