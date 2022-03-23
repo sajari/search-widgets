@@ -20,3 +20,11 @@ jobs:
         run: |
           yarn
           yarn test:ci
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          build: yarn build
+          start: yarn start
+          wait-on: 'http://localhost:8080'
+          browser: chrome
+          record: false

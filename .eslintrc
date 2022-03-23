@@ -1,5 +1,5 @@
 {
-  "extends": ["@sajari/eslint-config"],
+  "extends": ["@sajari/eslint-config", "plugin:cypress/recommended"],
   "env": {
     "browser": true
   },
