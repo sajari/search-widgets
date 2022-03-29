@@ -4,10 +4,8 @@ describe('Search Input', async () => {
     cy.get('#toolbar button').click();
     cy.get('[role="listbox"] [role="option"]:nth-child(3)').click();
 
-    cy.waitUntil(() => cy.get('[type="search"]')).then(() => {
-      cy.get('[type="search"]').type('shirt');
-      cy.get('form').submit();
-      cy.url().should('include', '/search?q=shirt');
-    });
+    cy.get('[type="search"]').first().type('shirt');
+    cy.get('form').submit();
+    cy.url().should('include', '/search?q=shirt');
   });
 });
