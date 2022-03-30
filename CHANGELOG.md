@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 2.18.0
+
+### Minor Changes
+
+- 50a054d: Update SDK version
+
 ## 2.17.0
 
 ### Minor Changes
