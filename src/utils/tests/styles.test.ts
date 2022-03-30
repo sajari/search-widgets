@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { getComputedStyleForElement, parseBreakpoints, parseRatio } from '../styles';
+import { getComputedStyleForElement, parseRatio } from '../styles';
 
 test.each([
   [
