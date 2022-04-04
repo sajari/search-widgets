@@ -73,7 +73,7 @@ export default (defaultProps: SearchInputProps) => {
   const searchContext = useMemo(() => {
     const { name, version = undefined } = getPipelineInfo(pipeline);
     const params = getSearchParams();
-    const q = params[options.urlParams?.q ?? 'q'];
+    const q = params[options.urlParams?.q ?? 'q'] || '';
     const variables = new Variables({ ...variablesProp, q });
     return {
       pipeline: new Pipeline(

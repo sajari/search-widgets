@@ -146,7 +146,11 @@ export interface SearchInputProps extends SearchWidgetBaseOptions {
 export interface SearchInputBindingProps extends SearchWidgetBaseOptions, Pick<SearchInputProps, 'mode' | 'redirect'> {
   selector: string;
   omittedElementSelectors?: string | string[];
-  options?: Omit<CoreInputProps, 'mode' | 'retainFilters'>;
+  options?: Omit<CoreInputProps, 'mode' | 'retainFilters'> & {
+    urlParams?: {
+      q: string;
+    };
+  };
 }
 
 export interface TokenCheckInputProps {

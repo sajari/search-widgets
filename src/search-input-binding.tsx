@@ -7,6 +7,7 @@ import { EmotionCache } from './emotion-cache';
 import TokenCheckBlank from './interface/TokenCheckBlank';
 import { SearchInputBindingProps } from './types';
 import { getPipelineInfo } from './utils';
+import getSearchParams from './utils/getSearchParams';
 import { getTracking } from './utils/getTracking';
 
 const attributesToBeRemoved = [
@@ -158,9 +159,21 @@ export default ({ selector: selectorProp, omittedElementSelectors, ...rest }: Se
 
   const tracking = getTracking(rest);
   const searchContext = useMemo(() => {
-    const { variables: variablesProp, account, collection, endpoint, clickTokenURL, pipeline, config, fields } = rest;
+    const {
+      variables: variablesProp,
+      account,
+      collection,
+      endpoint,
+      clickTokenURL,
+      pipeline,
+      config,
+      fields,
+      options,
+    } = rest;
     const { name, version = undefined } = getPipelineInfo(pipeline);
-    const variables = new Variables({ ...variablesProp });
+    const params = getSearchParams();
+    const q = params[options?.urlParams?.q ?? 'q'] || '';
+    const variables = new Variables({ ...variablesProp, q });
 
     return {
       pipeline: new Pipeline(
