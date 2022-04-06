@@ -376,4 +376,5 @@ export const widgetDefaultContent: Record<WidgetType, string> = {
     mode: 'suggestions',
     redirect: { url: 'search', queryParamName: 'q' },
   }),
+  tracking: JSON.stringify({}),
 };
