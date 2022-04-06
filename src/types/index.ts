@@ -170,7 +170,7 @@ interface TrackingEvent {
   metadata: {
     id: string | number;
     event: string;
-    data: Record<string, number | boolean | string>;
+    data?: Record<string, number | boolean | string>;
   };
 }
 
