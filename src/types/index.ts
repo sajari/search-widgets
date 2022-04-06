@@ -18,7 +18,7 @@ import { ComponentChildren } from 'preact';
 
 import { Breakpoints } from '../utils/styles';
 
-export type WidgetType = 'search-results' | 'search-input-binding' | 'overlay' | 'search-input';
+export type WidgetType = 'search-results' | 'search-input-binding' | 'overlay' | 'search-input' | 'tracking';
 export type InputMode = CoreInputProps<any>['mode'];
 export type PresetType = 'shopify' | 'website' | 'app' | undefined;
 export type TrackingType = 'posneg' | 'click' | 'event';
@@ -161,4 +161,19 @@ export interface TokenCheckInputProps {
   collection: string;
   pipeline: PipelineOption;
   endpoint?: string;
+}
+
+interface TrackingEvent {
+  selector: string;
+  // the event to trigger the tracking call (onClick, onSubmit, etc...)
+  event: string;
+  metadata: {
+    id: string | number;
+    event: string;
+    data: Record<string, number | boolean | string>;
+  };
+}
+
+export interface TrackingProps {
+  events: Array<TrackingEvent>;
 }
