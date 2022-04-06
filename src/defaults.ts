@@ -146,7 +146,7 @@ export function mergeProps(params: MergePropsParams): MergedSearchResultsProps {
   switch (preset) {
     case 'shopify': {
       const src: DeepPartial<MergedSearchResultsProps> = {
-        tracking: new PosNegTracking('id'),
+        tracking: new EventTracking('id'),
         fields: shopifyFieldMapping,
         options: {
           results: {
