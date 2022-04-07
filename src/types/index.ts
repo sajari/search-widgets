@@ -163,8 +163,8 @@ export interface TokenCheckInputProps {
   endpoint?: string;
 }
 
-interface TrackingEvent {
-  selector: string;
+export interface TrackingEvent {
+  selector?: string;
   // the event to trigger the tracking call (onClick, onSubmit, etc...)
   event: string;
   metadata: {
@@ -174,6 +174,8 @@ interface TrackingEvent {
   };
 }
 
-export interface TrackingProps {
+export interface TrackingProps extends Pick<SearchWidgetBaseOptions, 'account' | 'collection' | 'pipeline'> {
+  // the field used to pass into EventTracking constructor (must be unique across records)
+  id: string;
   events: Array<TrackingEvent>;
 }
