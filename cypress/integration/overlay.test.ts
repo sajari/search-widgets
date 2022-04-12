@@ -1,25 +1,35 @@
 describe('Search Overlay', async () => {
-  // TODO (thanh): this test is unstable in CI as it occasionally
-  // causes detached DOM element issue. Temporarily disable the test
-  // for further investigation
+  it('Should open modal and run search successfully', () => {
+    cy.visit('/');
+    cy.get('#toolbar button').click();
+    cy.get('[role="listbox"] [role="option"]:last-child').click();
 
-  // it('Should open modal and run search successfully', () => {
-  //   cy.visit('/');
-  //   cy.get('#toolbar button').click();
-  //   cy.get('[role="listbox"] [role="option"]:last-child').click();
+    cy.waitUntil(
+      () =>
+        cy
+          .get('#button')
+          .as('open-modal-button')
+          .then(($el) => Cypress.dom.isAttached($el)),
+      { timeout: 1000, interval: 10 },
+    )
+      .get('@open-modal-button')
+      .click();
 
-  //   cy.get('#button').click({ force: true });
+    cy.waitUntil(
+      () =>
+        cy
+          .get('[type="search"]')
+          .as('search-input')
+          .then(($el) => Cypress.dom.isAttached($el)),
+      { timeout: 1000, interval: 10 },
+    )
+      .get('@search-input')
+      .type('shirt');
 
-  //   // Wait for modal to appear. Without the line, Github CI normally fails
-  //   // to detect the element and is causing the test to fail
-  //   // eslint-disable-next-line cypress/no-unnecessary-waiting
-  //   cy.wait(1000);
-
-  //   cy.get('[type="search"]').type('shirt');
-  //   cy.get('[data-testid="options-bar"] strong').should('have.text', 'shirt');
-  //   cy.get('button[aria-label="Close"]').click();
-  //   cy.get('[data-testid="modal"]').should('not.exist');
-  // });
+    cy.get('[data-testid="options-bar"] strong').should('have.text', 'shirt');
+    cy.get('button[aria-label="Close"]').click();
+    cy.get('[data-testid="modal"]').should('not.exist');
+  });
 
   it('Should use the value from "inputSelector" element to search', () => {
     cy.visit('/');

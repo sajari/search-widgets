@@ -3,7 +3,7 @@
   "include": ["./**/*.ts"],
   "exclude": [],
   "compilerOptions": {
-    "types": ["cypress"],
+    "types": ["cypress", "cypress-wait-until"],
     "lib": ["es2015", "dom"],
     "isolatedModules": false,
     "allowJs": true,
