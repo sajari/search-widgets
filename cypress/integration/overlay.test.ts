@@ -4,27 +4,12 @@ describe('Search Overlay', async () => {
     cy.get('#toolbar button').click();
     cy.get('[role="listbox"] [role="option"]:last-child').click();
 
-    cy.waitUntil(
-      () =>
-        cy
-          .get('#button')
-          .as('open-modal-button')
-          .then(($el) => Cypress.dom.isAttached($el)),
-      { timeout: 1000, interval: 10 },
-    )
-      .get('@open-modal-button')
-      .click();
+    cy.get('#preview')
+      .find('#button')
+      .should('be.visible')
+      .then((e) => Cypress.$(e).trigger('click'));
 
-    cy.waitUntil(
-      () =>
-        cy
-          .get('[type="search"]')
-          .as('search-input')
-          .then(($el) => Cypress.dom.isAttached($el)),
-      { timeout: 1000, interval: 10 },
-    )
-      .get('@search-input')
-      .type('shirt');
+    cy.get('body').find('[type="search"]').should('be.visible').type('shirt');
 
     cy.get('[data-testid="options-bar"] strong').should('have.text', 'shirt');
     cy.get('button[aria-label="Close"]').click();
@@ -36,7 +21,7 @@ describe('Search Overlay', async () => {
     cy.get('#toolbar button').click();
     cy.get('[role="listbox"] [role="option"]:last-child').click();
 
-    cy.get('#search-input').type('jacket');
+    cy.get('#preview').find('#search-input').type('jacket');
     cy.get('#button').click();
     cy.get('[type="search"]').should('have.value', 'jacket');
   });
