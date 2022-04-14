@@ -12,6 +12,7 @@ describe('Tracking Widget', () => {
     const tracking = new EventTracking('some-id');
     const metadata = { event: 'add_to_cart', id: 'product-id' };
     const events = [{ event: 'click', selector: 'article h3 > a', metadata }];
+    // We use simple markup instead of the Results component because otherwise we'd have to mock request/response (install msw)
     const component = (
       <>
         <article>
