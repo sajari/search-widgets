@@ -9,7 +9,7 @@ describe('Search Overlay', async () => {
       .should('be.visible')
       .then((e) => Cypress.$(e).trigger('click'));
 
-    cy.get('body').find('[type="search"]').should('be.visible').type('shirt');
+    cy.get('[data-testid="modal"]').find('[type="search"]').should('be.visible').type('shirt');
 
     cy.get('[data-testid="options-bar"] strong').should('have.text', 'shirt');
     cy.get('button[aria-label="Close"]').click();
