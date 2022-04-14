@@ -12,6 +12,7 @@ import {
   ResultsProps,
   ResultViewType,
   SortingProps,
+  Tracking,
 } from '@sajari/react-search-ui';
 import { Emitter } from 'mitt';
 import { ComponentChildren } from 'preact';
@@ -178,4 +179,5 @@ export interface TrackingProps extends Pick<SearchWidgetBaseOptions, 'account' |
   // the field used to pass into EventTracking constructor (must be unique across records)
   id: string;
   events: Array<TrackingEvent>;
+  tracking?: Tracking;
 }
