@@ -2,7 +2,8 @@ describe('Search Overlay', async () => {
   it('Should open modal and run search successfully', () => {
     cy.visit('/');
     cy.get('#toolbar button').click();
-    cy.get('[role="listbox"] [role="option"]:last-child').click();
+    // eslint-disable-next-line
+    cy.get('[role="listbox"] [role="option"]:last-child').click().wait(3000);
 
     cy.get('#preview')
       .find('#button')
