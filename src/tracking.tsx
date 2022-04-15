@@ -60,7 +60,7 @@ export default (props: TrackingProps) => {
   }, []);
 
   return (
-    <SearchProvider search={searchContext}>
+    <SearchProvider searchOnLoad search={searchContext}>
       <TrackingWidget events={events} />
     </SearchProvider>
   );
