@@ -378,9 +378,10 @@ export const widgetDefaultContent: Record<WidgetType, string> = {
   }),
   tracking: JSON.stringify({
     ...defaultConfig,
+    preset: undefined,
     events: [
       {
-        selector: 'article h3 > a',
+        selector: 'button#addToCart',
         event: 'click',
         metadata: {
           event: 'add_to_cart',
