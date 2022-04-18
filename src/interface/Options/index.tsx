@@ -52,6 +52,9 @@ const animateModalOut = keyframes`
 
 const Summary = styled(CoreSummary)`
   ${tw`text-lg`}
+  button {
+    ${tw`text-lg`}
+  }
 `;
 
 interface Props {
@@ -115,6 +118,7 @@ export default ({ showToggleFilter = true, isMobile = false, onScrollTop, mode =
   const nonTabsFilters = filters?.filter((props) => props.type !== 'tabs') || [];
   const [filterList, setActiveFilterList] = useState(filters.map(() => false));
   const count = filterList.filter(Boolean).length;
+  const { suggest = false } = options.summary ?? {};
   let refScrollBox: HTMLDivElement | null;
 
   const setActiveFilter = (index: number, value: boolean) => {
@@ -161,7 +165,7 @@ export default ({ showToggleFilter = true, isMobile = false, onScrollTop, mode =
   return (
     <div css={md ? tw`flex items-center justify-between space-x-4` : tw`space-y-4`}>
       <div css={[tw`flex`, md ? tw`justify-end items-end` : tw`justify-between items-start`]}>
-        <Summary />
+        <Summary suggest={suggest} />
         {isMobile && (
           <Button
             onClick={onOpen}
