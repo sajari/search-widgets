@@ -1,5 +1,32 @@
 # @sajari/search-widgets
 
+## 2.19.0
+
+### Minor Changes
+
+- 8f95918: Add support Summary props via the API:
+
+  ```html
+  <div data-widget="search-results">
+    <script type="application/json">
+      {
+        "options": {
+          "input": {
+            "mode": "suggestions"
+          },
+          "summary": {
+            "suggest": true
+          }
+        }
+      }
+    </script>
+  </div>
+  ```
+
+### Patch Changes
+
+- 041694a: fix: change shopify default tracking to EventTracking
+
 ## 2.18.0
 
 ### Minor Changes
