@@ -68,6 +68,9 @@ export type SearchResultsOptions<M = SearchResultsMode> = {
   resultsPerPage?: ResultsPerPageProps;
   sorting?: Omit<SortingProps, 'type'>;
   input?: InputProps & { hide?: boolean; position?: InputPosition };
+  summary?: {
+    suggest?: boolean;
+  };
   results?: ResultsProps & { viewType?: ResultViewType; mobileViewType?: ResultViewType };
   pagination?: PaginationProps;
   mode?: M;
