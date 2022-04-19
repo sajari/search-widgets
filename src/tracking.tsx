@@ -1,10 +1,8 @@
-import { EventTracking, Pipeline, Tracking, useTracking, Variables } from '@sajari/react-hooks';
+import { EventTracking, Pipeline, Tracking } from '@sajari/react-hooks';
 import { isNullOrUndefined } from '@sajari/react-sdk-utils';
-import { SearchProvider } from '@sajari/react-search-ui';
-import { useEffect, useMemo } from 'react';
+import { useEffect } from 'react';
 
 import { TrackingProps } from './types';
-import { getPipelineInfo } from './utils';
 
 function isEventTracking(t: Tracking): t is EventTracking {
   return t instanceof EventTracking && 'searchIOAnalytics' in t;
@@ -29,39 +27,14 @@ function attachEventsHandler(events: TrackingProps['events'], tracking: Tracking
   }
 }
 
-function TrackingWidget({ events }: { events: TrackingProps['events'] }) {
-  const { tracking } = useTracking();
+export default (props: TrackingProps) => {
+  const { events, id, account, pipeline: pipelineProp, collection, tracking: trackingProps } = props;
+  const pipeline = new Pipeline({ collection, account }, pipelineProp, trackingProps ?? new EventTracking(id));
+  const tracking = pipeline.getTracking();
 
   useEffect(() => {
     attachEventsHandler(events, tracking);
   }, []);
 
   return null;
-}
-
-export default (props: TrackingProps) => {
-  const { events } = props;
-  const searchContext = useMemo(() => {
-    const { id, account, collection, pipeline, tracking } = props;
-    const { name, version = undefined } = getPipelineInfo(pipeline);
-    const variables = new Variables();
-
-    return {
-      pipeline: new Pipeline(
-        {
-          account,
-          collection,
-        },
-        { name, version },
-        tracking ?? new EventTracking(id),
-      ),
-      variables,
-    };
-  }, []);
-
-  return (
-    <SearchProvider searchOnLoad search={searchContext}>
-      <TrackingWidget events={events} />
-    </SearchProvider>
-  );
 };
