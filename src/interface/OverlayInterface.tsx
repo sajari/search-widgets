@@ -174,7 +174,6 @@ const OverlayInterface = () => {
                 css={tw`w-full`}
                 size={isMobile ? 'xl' : '2xl'}
                 variant="unstyled"
-                showPoweredBy={preset !== 'shopify'}
                 autoFocus={modalProps?.autoFocus ?? true}
               />
               <div css={tw`flex justify-center flex-none w-14`}>

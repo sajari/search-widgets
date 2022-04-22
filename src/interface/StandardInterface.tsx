@@ -37,9 +37,7 @@ const StandardInterface = () => {
       {syncURL !== 'none' ? <SyncStateQueryParams /> : null}
       <ResizeObserver onResize={(size) => setWidth(size.width)}>
         <div id={id} css={[tw`space-y-6`, 'font-size: 16px;']}>
-          {!hide && (topInput || isMobile) && (
-            <Input {...inputProps} css={tw`w-full`} showPoweredBy={preset !== 'shopify'} />
-          )}
+          {!hide && (topInput || isMobile) && <Input {...inputProps} css={tw`w-full`} />}
           {results && <Options isMobile={isMobile} showToggleFilter={!hideSidebar || !topInput} />}
 
           <div css={tw`flex`}>
@@ -51,7 +49,7 @@ const StandardInterface = () => {
                 ]}
               >
                 <div css={tw`w-72 space-y-6`}>
-                  {!hide && !topInput && <Input {...inputProps} showPoweredBy={preset !== 'shopify'} />}
+                  {!hide && !topInput && <Input {...inputProps} />}
 
                   {filters
                     ?.filter((props) => props.type !== 'tabs')
