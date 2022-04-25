@@ -1,0 +1,41 @@
+{
+  "account": "1617855295958267636",
+  "collection": "sajari-thanh-pham",
+  "endpoint": "http://jsonapi-au-staging-valkyrie2.sajari.com",
+  "pipeline": "query",
+  "preset": "shopify",
+  "options": {
+    "input": {
+      "mode": "suggestions"
+    },
+    "summary": {
+      "suggest": true
+    },
+    "results": {
+      "resultTemplate": {
+        "html": "<article class=\"item\">\n  <div class=\"item__image-wrapper\">\n    <img\n      data-search-image-hover\n      class=\"item__image-wrapper__image\"\n      src=\"{{ image_url }}\"\n      />\n  </div>\n  <div data-search-variants></div>\n  <h3 class=\"item__title\">\n    <a href=\"{{ url }}\">\n    {{ title }}\n    </a>\n  </h3>\n  <p class=\"item__vendor\">\n    {{ vendor }}\n  </p>\n  <span class=\"item__price {{#if productStatus.variantOnSale}}sale{{/if}}\">\n  {{ productPrice.displayPrice }}\n  </span>\n  {{#if productStatus.variantOnSale}}\n  <span\n    class=\"item__price {{#if productStatus.variantOnSale}}original{{/if}}\"\n    >{{ productPrice.originalPrice }}</span\n    >\n  {{/if}}\n</article>\n",
+        "css": ".item {\n  display: block;\n  text-align: center;\n}\n\n.item__image-wrapper {\n  position: relative;\n  margin-bottom: 0.5rem;\n}\n\n.item__image-wrapper::before {\n  content: \"\";\n  height: 0px;\n  display: block;\n  padding-bottom: calc(100% / (3 / 4));\n}\n\n.item__image-wrapper__image {\n  position: absolute;\n  top: 0;\n  left: 0;\n  object-fit: cover;\n  height: 100%;\n  width: 100%;\n}\n\n.item__title {\n  margin: 0;\n  margin-top: 1rem;\n  font-weight: 500;\n  font-size: 1rem;\n}\n\n.item__vendor {\n  margin: 0;\n  font-size: 0.875rem;\n  color: gray;\n}\n\n.item__price {\n  font-weight: 500;\n}\n\n.sale {\n  color: red;\n}\n\n.original {\n  text-decoration: line-through;\n  font-size: 0.8rem;\n}\n    .searchio-result-template-grid {      display: grid;      gap: 2rem;      grid-gap: 2rem;      grid-template-columns: repeat(1, minmax(0, 1fr));    }    @media (min-width: 640px) {      .searchio-result-template-grid {        grid-template-columns: repeat(2, minmax(0, 1fr));      }    }    @media (min-width: 768px) {      .searchio-result-template-grid {        grid-template-columns: repeat(3, minmax(0, 1fr));      }    }    @media (min-width: 1024px) {      .searchio-result-template-grid {        grid-template-columns: repeat(4, minmax(0, 1fr));      }    }    @media (min-width: 1024px) {      .searchio-result-template-grid {        grid-template-columns: repeat(5, minmax(0, 1fr));      }    }    .searchio-result-template-list {      display: flex;      flex-direction: column;    }  "
+      }
+    }
+  },
+  "filters": [
+    {
+      "name": "vendor",
+      "field": "vendor",
+      "title": "Vendor",
+      "searchable": true
+    },
+    {
+      "name": "type",
+      "field": "product_type",
+      "title": "Type",
+      "searchable": true
+    },
+    {
+      "name": "collection",
+      "field": "collection_titles",
+      "title": "Collection",
+      "array": true
+    }
+  ]
+}

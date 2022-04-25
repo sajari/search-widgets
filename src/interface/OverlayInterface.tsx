@@ -246,6 +246,7 @@ const OverlayInterface = () => {
                       columns={isMobileGrid ? 2 : undefined}
                       gap={isMobileGrid ? 2 : undefined}
                       {...options.results}
+                      data-testid="results"
                     />
                   </div>
                 </div>
@@ -254,7 +255,7 @@ const OverlayInterface = () => {
           </div>
           {pageCount > 1 ? (
             <div css={tw`flex-none border-0 border-t border-solid border-gray-200 py-3.5 px-6`}>
-              <Pagination {...options.pagination} scrollTarget={`#${containerId}`} />
+              <Pagination {...options.pagination} scrollTarget={`#${containerId}`} data-testid="pagination" />
             </div>
           ) : null}
         </div>
