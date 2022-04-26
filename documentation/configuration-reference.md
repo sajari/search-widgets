@@ -464,7 +464,7 @@ The Takeover Search Input widget allows users to inject Sajari search experience
 | `mode`                    | `'standard'` \| `'typeahead'` \| `'suggestions'` \| `'results'` | `'results'`                                                           | The mode of the input. For details, see [Input props](https://react.docs.sajari.com/search-ui/input#props).                                                                |
 | `redirect`                | `{url: string, queryParamName: string}`                         | `{url: 'search', queryParamName: 'q'}`                                | Options to set the redirect URL and the name of the search query param, normally, the destination is where the [Search Results Widget](#search-results-widget) is located. |
 | `omittedElementSelectors` | `string` \| `string[]`                                          | `_`                                                                   | A single or a list of CSS selector of elements to be removed when the widget has mounted.                                                                                  |
-| `options`                 | `Omit<InputProps, 'retainFilters' \| 'mode'>`                   | `_`                                                                   | Options to customize Input component. See [Input props](https://react.docs.sajari.com/search-ui/input).                                                                    |
+| `options`                 | `[InputWidgetOptions](#InputWidgetOptions)`                     | `_`                                                                   | Specific configuration options.                                                                                                                                            |
 
 <details>
 <summary>Click to expand example</summary>
@@ -496,7 +496,7 @@ The search input widget is typically used in a global template and positioned in
 | ---------- | --------------------------------------------------------------- | -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `mode`     | `'standard'` \| `'typeahead'` \| `'suggestions'` \| `'results'` | `'suggestions'`                        | The mode of the input. For details, see [Input props](https://react.docs.sajari.com/search-ui/input#props).                                                                |
 | `redirect` | `{url: string, queryParamName: string}`                         | `{url: 'search', queryParamName: 'q'}` | Options to set the redirect URL and the name of the search query param, normally, the destination is where the [Search Results Widget](#search-results-widget) is located. |
-| `options`  | `Omit<InputProps, 'retainFilters' \| 'mode'>`                   | `_`                                    | Options to customize Input component. See [Input props](https://react.docs.sajari.com/search-ui/.input)                                                                    |
+| `options`  | `[InputWidgetOptions](#InputWidgetOptions)`                     | `_`                                    | Specific configuration options.                                                                                                                                            |
 
 <details>
 <summary>Click to expand example</summary>
@@ -524,6 +524,14 @@ The search input widget is typically used in a global template and positioned in
 See the example in [Codesandbox](https://codesandbox.io/s/search-input-widget-mui1w).
 
 </details>
+
+### InputWidgetOptions
+
+Options to customize Input component. It is the combination of the props from [Input](https://react.docs.sajari.com/search-ui/input) component (without `retainFilters` and `mode`) and following options:
+
+| Name        | Type          | Default    | Description                                                                                                                              |
+| ----------- | ------------- | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `urlParams` | `{q: string}` | `{q: 'q'}` | A key -> value pair object maps the URL params to initial values for the search. `q` defines the URL param for the initial search query. |
 
 ## Common Config Objects
 
