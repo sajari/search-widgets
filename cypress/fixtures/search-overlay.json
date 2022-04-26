@@ -1,0 +1,80 @@
+{
+  "searchResponse": {
+    "reads": "1",
+    "totalResults": "1",
+    "time": "0.000690s",
+    "aggregates": {
+      "count": {
+        "buckets": {}
+      }
+    },
+    "aggregateFilters": {
+      "count.vendor": {
+        "count": {
+          "counts": {
+            "Aglini": 1
+          }
+        }
+      }
+    },
+    "results": [
+      {
+        "values": {
+          "_id": {
+            "single": "bc45f506-ec58-1f42-bff0-4f893fbfafc2"
+          },
+          "body_html": {
+            "single": "This is a demonstration store. You can purchase products like this from Baby & Company The Ultime Shirt Dress is slightly sheer while soft in structure. V-neckline. Standing collar. Double breasted pockets at front. Schai. Color Sake. 74% Cotton, 26% Silk. Made in U.S.A. Ashley is wearing an XS/S. Also available in Fog and Indigo . Shop our collection of Schai."
+          },
+          "created_at": {
+            "single": "2020-10-20T02:50:08Z"
+          },
+          "handle": {
+            "single": "ultime-shirt-dress-2"
+          },
+          "id": {
+            "single": "5964941885622"
+          },
+          "image": {
+            "single": "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-03-05_Ashley_Look_08_32082_8979.jpg?v=1603162208"
+          },
+          "images": {
+            "repeated": {
+              "values": [
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-03-05_Ashley_Look_08_32082_8979.jpg?v=1603162208",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-03-05_Ashley_Look_08_32082_8976.jpg?v=1603162208",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-03-05_Ashley_Look_08_32082_8970.jpg?v=1603162208",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-03-05_Ashley_Look_08_32082_8987.jpg?v=1603162208",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-03-05_Ashley_Look_08_32082_8980.jpg?v=1603162208"
+              ]
+            }
+          },
+          "inventory_quantity": {
+            "single": "3"
+          },
+          "max_price": {
+            "single": "523.6"
+          },
+          "min_price": {
+            "single": "0"
+          },
+          "title": {
+            "single": "Ultime Shirt Dress"
+          },
+          "updated_at": {
+            "single": "2020-10-20T02:50:09Z"
+          },
+          "vendor": {
+            "single": "Schai"
+          }
+        },
+        "score": 0.9142857142857144,
+        "indexScore": 1,
+        "featureScore": 0.5714285714285715,
+        "relevanceScore": 1
+      }
+    ],
+    "featureScoreWeight": 0.2
+  },
+  "queryId": "6bad7a48-c55d-45cd-988b-5e1030fbf433"
+}
