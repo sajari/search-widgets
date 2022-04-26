@@ -234,6 +234,7 @@ const OverlayInterface = () => {
                 ) : null}
 
                 <div
+                  data-testid="overlay-results"
                   id={containerId}
                   css={[tw`overflow-y-auto`, isMobileGrid ? tw`pt-2 sm:pt-6 pr-2 sm:pr-6` : tw`pt-6 pr-6`]}
                   ref={(node) => {
