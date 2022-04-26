@@ -78,9 +78,14 @@ const StandardInterface = () => {
                   })
                 : null}
 
-              <Results columns={isMobileGrid ? 2 : undefined} gap={isMobileGrid ? 2 : undefined} {...options.results} />
+              <Results
+                columns={isMobileGrid ? 2 : undefined}
+                gap={isMobileGrid ? 2 : undefined}
+                {...options.results}
+                data-testid="result-item"
+              />
 
-              <Pagination {...options.pagination} />
+              <Pagination {...options.pagination} data-testid="pagination" />
             </div>
           </div>
         </div>
