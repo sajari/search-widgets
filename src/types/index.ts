@@ -23,7 +23,7 @@ export type InputMode = CoreInputProps<any>['mode'];
 export type PresetType = 'shopify' | 'website' | 'app' | undefined;
 export type TrackingType = 'posneg' | 'click' | 'event';
 
-interface InputProps extends Omit<CoreInputProps<any>, 'showPoweredBy'> {
+interface InputProps extends CoreInputProps<any> {
   mode?: Exclude<InputMode, 'results'>;
   placeholder?: string;
 }

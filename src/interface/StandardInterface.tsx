@@ -21,6 +21,7 @@ const StandardInterface = () => {
   const hideSidebar =
     (filters?.filter((props) => props.type !== 'tabs') || []).length === 0 && options.input?.position === 'top';
   const { hide = false, ...inputProps } = options.input ?? {};
+  const showPoweredBy = options.input?.showPoweredBy ?? preset !== 'shopify';
   const topInput = options.input?.position === 'top';
   const isMobile = !breakpoints.sm;
   const mobileViewType = options?.results?.mobileViewType || 'list';
@@ -37,9 +38,7 @@ const StandardInterface = () => {
       {syncURL !== 'none' ? <SyncStateQueryParams /> : null}
       <ResizeObserver onResize={(size) => setWidth(size.width)}>
         <div id={id} css={[tw`space-y-6`, 'font-size: 16px;']}>
-          {!hide && (topInput || isMobile) && (
-            <Input {...inputProps} css={tw`w-full`} showPoweredBy={preset !== 'shopify'} />
-          )}
+          {!hide && (topInput || isMobile) && <Input {...inputProps} css={tw`w-full`} showPoweredBy={showPoweredBy} />}
           {results && <Options isMobile={isMobile} showToggleFilter={!hideSidebar || !topInput} />}
 
           <div css={tw`flex`}>
@@ -51,7 +50,7 @@ const StandardInterface = () => {
                 ]}
               >
                 <div css={tw`w-72 space-y-6`}>
-                  {!hide && !topInput && <Input {...inputProps} showPoweredBy={preset !== 'shopify'} />}
+                  {!hide && !topInput && <Input {...inputProps} showPoweredBy={showPoweredBy} />}
 
                   {filters
                     ?.filter((props) => props.type !== 'tabs')
@@ -79,9 +78,14 @@ const StandardInterface = () => {
                   })
                 : null}
 
-              <Results columns={isMobileGrid ? 2 : undefined} gap={isMobileGrid ? 2 : undefined} {...options.results} />
+              <Results
+                columns={isMobileGrid ? 2 : undefined}
+                gap={isMobileGrid ? 2 : undefined}
+                {...options.results}
+                data-testid="result-item"
+              />
 
-              <Pagination {...options.pagination} />
+              <Pagination {...options.pagination} data-testid="pagination" />
             </div>
           </div>
         </div>

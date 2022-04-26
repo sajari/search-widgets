@@ -39,6 +39,7 @@ const OverlayInterface = () => {
   const tabsFilters = filters?.filter((props) => props.type === 'tabs') || [];
   const nonTabsFilters = filters?.filter((props) => props.type !== 'tabs') || [];
   const inputProps = options.input ?? {};
+  const showPoweredBy = options.input?.showPoweredBy ?? preset !== 'shopify';
   const mobileViewType = options?.results?.mobileViewType || 'list';
 
   const scrollTop = useCallback(() => {
@@ -174,8 +175,8 @@ const OverlayInterface = () => {
                 css={tw`w-full`}
                 size={isMobile ? 'xl' : '2xl'}
                 variant="unstyled"
-                showPoweredBy={preset !== 'shopify'}
                 autoFocus={modalProps?.autoFocus ?? true}
+                showPoweredBy={showPoweredBy}
               />
               <div css={tw`flex justify-center flex-none w-14`}>
                 <ModalCloseButton css={tw`m-0`} />
@@ -247,6 +248,7 @@ const OverlayInterface = () => {
                       columns={isMobileGrid ? 2 : undefined}
                       gap={isMobileGrid ? 2 : undefined}
                       {...options.results}
+                      data-testid="results"
                     />
                   </div>
                 </div>
@@ -255,7 +257,7 @@ const OverlayInterface = () => {
           </div>
           {pageCount > 1 ? (
             <div css={tw`flex-none border-0 border-t border-solid border-gray-200 py-3.5 px-6`}>
-              <Pagination {...options.pagination} scrollTarget={`#${containerId}`} />
+              <Pagination {...options.pagination} scrollTarget={`#${containerId}`} data-testid="pagination" />
             </div>
           ) : null}
         </div>
