@@ -1,4 +1,4 @@
-const defaultSearchInputBindingConfig: any = {
+const defaultConfig: any = {
   account: '1603163345448404241',
   collection: 'sajari-test-fashion2',
   pipeline: 'query',
@@ -8,7 +8,7 @@ const defaultSearchInputBindingConfig: any = {
   redirect: { url: 'search', queryParamName: 'q' },
 };
 
-const visitTakeoverInput = (config = defaultSearchInputBindingConfig) => {
+const visitTakeoverInput = (config = defaultConfig) => {
   cy.setLocalStorage('code-content-search-input-binding', JSON.stringify(config));
   cy.setLocalStorage('active-widget', 'search-input-binding');
   cy.visit('/');
@@ -36,7 +36,7 @@ describe('Search Takeover Input', async () => {
 
   it('Should mount the input to a different element base on the selector', () => {
     visitTakeoverInput({
-      ...defaultSearchInputBindingConfig,
+      ...defaultConfig,
       selector: '#js-search-input',
     });
 
@@ -53,12 +53,18 @@ describe('Search Takeover Input', async () => {
 
   it('Should remove elements according to the `omittedElementSelectors` prop', () => {
     visitTakeoverInput({
-      ...defaultSearchInputBindingConfig,
+      ...defaultConfig,
       omittedElementSelectors: '#js-search-input',
     });
 
-    visitTakeoverInput();
-
     cy.get('#js-search-input').should('not.exist');
+  });
+
+  it('Should show dropdown on results mode', () => {
+    cy.intercept({ url: '**/Search', method: 'POST' });
+    visitTakeoverInput({ ...defaultConfig, mode: 'results' });
+
+    cy.get('form input').first().type('shirt', { force: true, delay: 500 });
+    cy.get('h6').contains('Results').should('be.visible');
   });
 });
