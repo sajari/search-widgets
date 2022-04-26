@@ -1,5 +1,13 @@
 # @sajari/search-widgets
 
+## 2.19.1
+
+### Patch Changes
+
+- 32f3d25: ci: tests on pr
+- 34a9e26: Upgrade SDK packages to include the ability to add data-\* attributes for components
+- 592005b: Respect the `showPoweredBy` prop by removing our own logic for determining whether to show the "Powered by Search.IO" or not
+
 ## 2.19.0
 
 ### Minor Changes
