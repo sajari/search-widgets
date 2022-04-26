@@ -28,8 +28,20 @@ function attachEventsHandler(events: TrackingProps['events'], tracking: Tracking
 }
 
 export default (props: TrackingProps) => {
-  const { events, id, account, pipeline: pipelineProp, collection, tracking: trackingProps } = props;
-  const pipeline = new Pipeline({ collection, account }, pipelineProp, trackingProps ?? new EventTracking(id));
+  const {
+    events,
+    id,
+    account,
+    pipeline: pipelineProp,
+    collection,
+    tracking: trackingProps,
+    searchIOAnalyticsEndpoint,
+  } = props;
+  const pipeline = new Pipeline(
+    { collection, account },
+    pipelineProp,
+    trackingProps ?? new EventTracking(id, undefined, searchIOAnalyticsEndpoint),
+  );
   const tracking = pipeline.getTracking();
 
   useEffect(() => {

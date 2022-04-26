@@ -180,4 +180,5 @@ export interface TrackingProps extends Pick<SearchWidgetBaseOptions, 'account' |
   id: string;
   events: Array<TrackingEvent>;
   tracking?: Tracking;
+  searchIOAnalyticsEndpoint?: string;
 }
