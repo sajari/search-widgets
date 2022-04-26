@@ -12,3 +12,7 @@ key.json
 size-plugin.json
 
 coverage
+
+cypress/screenshots
+cypress/videos
+
