@@ -187,9 +187,16 @@ export default ({ showToggleFilter = true, isMobile = false, onScrollTop, mode =
 
       {!isMobile && (
         <div css={[tw`flex items-end space-x-4`, md ? tw`justify-end` : tw`justify-between`]}>
-          <ResultsPerPage size="sm" inline={md} options={options.resultsPerPage?.options} />
+          <ResultsPerPage
+            size="sm"
+            inline={md}
+            options={options.resultsPerPage?.options}
+            data-testid="results-per-page"
+          />
 
-          {showSorting && <Sorting type="select" size="sm" inline={md} options={options.sorting?.options} />}
+          {showSorting && (
+            <Sorting type="select" size="sm" inline={md} options={options.sorting?.options} data-testid="sorting" />
+          )}
 
           {showViewType && <ViewType size="sm" inline={md} />}
 
@@ -220,7 +227,9 @@ export default ({ showToggleFilter = true, isMobile = false, onScrollTop, mode =
           }}
         >
           <div css={[tw`space-y-6 divide-y`, count === 0 ? tw`pb-0` : tw`pb-16`]}>
-            {showSorting && <Sorting type="list" size="sm" inline={md} options={options.sorting?.options} />}
+            {showSorting && (
+              <Sorting type="list" size="sm" inline={md} options={options.sorting?.options} data-testid="sorting" />
+            )}
             {results &&
               nonTabsFilters.map((props) => {
                 const { type, textTransform = 'capitalize-first-letter' } = props;
