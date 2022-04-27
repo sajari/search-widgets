@@ -3263,13 +3263,13 @@
     smoothscroll-polyfill "^0.4.4"
     use-resize-observer "^7.0.0"
 
-"@sajari/react-hooks@^3.11.0":
-  version "3.11.0"
-  resolved "https://registry.yarnpkg.com/@sajari/react-hooks/-/react-hooks-3.11.0.tgz#2be60ff95ea6fb2d6329e4a2c6cea402ddacc82f"
-  integrity sha512-xE/2vG7wRRkYyCHV9KUfY3g/nszfkuS4NPx5Hi/Gro7m0I5L31DIPNVZNWt6UZsRHfQfzTMsVR2oiBT5AtmZuQ==
+"@sajari/react-hooks@^3.12.0":
+  version "3.12.0"
+  resolved "https://registry.yarnpkg.com/@sajari/react-hooks/-/react-hooks-3.12.0.tgz#c9f269ec07a3746e1a980e2e06852b6a720ae7d8"
+  integrity sha512-zIarKKU2MgTCjJP/7VVWXtKDOd/rCWvpIrOgEqE1k+JbS3rCpk0tEWFtMGQK9aSgxRSXEtzd27sU+sC1Y0KutA==
   dependencies:
     "@sajari/react-sdk-utils" "^1.6.4"
-    "@sajari/sdk-js" "^2.10.2"
+    "@sajari/sdk-js" "^2.10.4"
     js-cookie "^2.2.1"
 
 "@sajari/react-sdk-utils@^1.6.4":
@@ -3287,14 +3287,14 @@
     tailwindcss-truncate-multiline "^1.0.3"
     twin.macro "^1.12.1"
 
-"@sajari/react-search-ui@^4.13.5":
-  version "4.13.5"
-  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-4.13.5.tgz#0b5252e6ef2045960bd1c4712884351142b4a0a8"
-  integrity sha512-gw5i5bwChZI//sG+syihXmLVsxz/4bj7yS/DU3kex6M82Wjbny/IHL+IVeSbM4/LQUU1tGh/tiWbsrMRrqd6yA==
+"@sajari/react-search-ui@^4.14.0":
+  version "4.14.0"
+  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-4.14.0.tgz#4dc6058eb8066ce635a171c950a28c94764fc400"
+  integrity sha512-MkM9EEmZil1FStrh2FQgnEDP2sLKNvQ3Poji1J3GZh1nvi1gCja9aIlcwC/gBUKfpjXlzg5W7xw314qs/tsFEg==
   dependencies:
     "@react-aria/utils" "3.5.0"
     "@sajari/react-components" "^1.14.1"
-    "@sajari/react-hooks" "^3.11.0"
+    "@sajari/react-hooks" "^3.12.0"
     "@sajari/react-sdk-utils" "^1.6.4"
     dayjs "^1.10.5"
     i18next "19.8.7"
@@ -3304,10 +3304,10 @@
     react-i18next "^11.8.5"
     tempura "^0.4.0"
 
-"@sajari/sdk-js@^2.10.2":
-  version "2.10.3"
-  resolved "https://registry.yarnpkg.com/@sajari/sdk-js/-/sdk-js-2.10.3.tgz#e9b268d411616f38e47596d364dfb1769a3ef9d2"
-  integrity sha512-/TUYvoXG9jBmTsgxxLtLfJhqgeLZbOHQ21g6WIHPOaRT4mnSAnrxihD4+qRBwTVYJYr0ALszhqfwu3BzYxpAKQ==
+"@sajari/sdk-js@^2.10.4":
+  version "2.10.4"
+  resolved "https://registry.yarnpkg.com/@sajari/sdk-js/-/sdk-js-2.10.4.tgz#fd08b08971436d4f65909adc419da6e540981753"
+  integrity sha512-hDuUVqmxo9F/yZfWHky34vjEt1qyi1QyumOnGTNfANwjJTaDDCPcdmRXNqFCoiTNoRrVBQfOJSMCNZm0KDnl/Q==
 
 "@sindresorhus/is@^0.14.0":
   version "0.14.0"
