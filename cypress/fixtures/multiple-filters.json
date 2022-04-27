@@ -1,0 +1,27 @@
+{
+  "account": "1603163345448404241",
+  "collection": "sajari-test-fashion2",
+  "pipeline": "query",
+  "preset": "shopify",
+  "filters": [
+    {
+      "name": "vendor",
+      "field": "vendor",
+      "title": "Vendor",
+      "searchable": true
+    },
+    {
+      "name": "type",
+      "field": "product_type",
+      "title": "Type",
+      "searchable": true
+    },
+    {
+      "name": "color",
+      "field": "option_color",
+      "title": "Colors",
+      "array": true,
+      "type": "color"
+    }
+  ]
+}
