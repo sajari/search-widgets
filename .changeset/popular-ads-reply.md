@@ -2,7 +2,5 @@
 '@sajari/search-widgets': patch
 ---
 
-Update SDK's search UI version from 4.13.3 to 4.13.4 with 2 fixes
-
-- Fix the output of mergeBannersWithResults
-- Fix the banner collapsing to zero height in some cases
+Update SDK's search UI version to 4.14.0
+Update SDK's hook version to 3.12.0
