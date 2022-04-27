@@ -6,6 +6,7 @@ import SearchInput from './search-input';
 import SearchInputBinding from './search-input-binding';
 import SearchResults from './search-results';
 import withShadowRoot from './shadow-dom-wrapper';
+import Tracking from './tracking';
 import { WidgetType } from './types';
 
 if (!process.env.DEPLOY_SCRIPT) {
@@ -21,6 +22,7 @@ const components: Record<WidgetType, ComponentType> = {
   overlay: SearchResults as ComponentType,
   'search-input-binding': SearchInputBinding as ComponentType,
   'search-input': SearchInput as ComponentType,
+  tracking: Tracking as ComponentType,
 };
 
 const attribute = 'data-widget';

@@ -376,4 +376,18 @@ export const widgetDefaultContent: Record<WidgetType, string> = {
     mode: 'suggestions',
     redirect: { url: 'search', queryParamName: 'q' },
   }),
+  tracking: JSON.stringify({
+    ...defaultConfig,
+    preset: undefined,
+    events: [
+      {
+        selector: 'button#addToCart',
+        event: 'click',
+        metadata: {
+          event: 'add_to_cart',
+          id: 'product-id',
+        },
+      },
+    ],
+  }),
 };

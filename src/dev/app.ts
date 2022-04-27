@@ -43,7 +43,7 @@ export default () => {
 
   const convertJSON = (json: string, widget: WidgetType) =>
     `
-    <div data-widget-hide="${widget === 'overlay' || widget === 'search-input-binding'}" data-widget="${widget}">
+    <div data-widget-hide="${['overlay', 'search-input-binding', 'tracking'].includes(widget)}" data-widget="${widget}">
       <script type="application/json">
         ${json}
       </script>
@@ -84,6 +84,12 @@ export default () => {
           </div>
           <p>Try switching between <code>"selector": "#js-search-input"</code> and not specifiying a selector at all (which defaults to <code>form[action="/search"] input[name="q"]</code>) to see the difference and use cases.</p>
         `;
+        break;
+      case 'tracking':
+        extra = `<div>
+   <button id="addToCart">Add to cart</button>
+   <p>Try clicking the button and watch the network tab, there should be a request call to tracking with the right metadata.</p>
+</div>`;
         break;
       case 'search-results':
       default:

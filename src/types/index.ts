@@ -12,13 +12,14 @@ import {
   ResultsProps,
   ResultViewType,
   SortingProps,
+  Tracking,
 } from '@sajari/react-search-ui';
 import { Emitter } from 'mitt';
 import { ComponentChildren } from 'preact';
 
 import { Breakpoints } from '../utils/styles';
 
-export type WidgetType = 'search-results' | 'search-input-binding' | 'overlay' | 'search-input';
+export type WidgetType = 'search-results' | 'search-input-binding' | 'overlay' | 'search-input' | 'tracking';
 export type InputMode = CoreInputProps<any>['mode'];
 export type PresetType = 'shopify' | 'website' | 'app' | undefined;
 export type TrackingType = 'posneg' | 'click' | 'event';
@@ -161,4 +162,23 @@ export interface TokenCheckInputProps {
   collection: string;
   pipeline: PipelineOption;
   endpoint?: string;
+}
+
+export interface TrackingEvent {
+  selector?: string;
+  // the event to trigger the tracking call (onClick, onSubmit, etc...)
+  event: string;
+  metadata: {
+    id: string | number;
+    event: string;
+    data?: Record<string, number | boolean | string>;
+  };
+}
+
+export interface TrackingProps extends Pick<SearchWidgetBaseOptions, 'account' | 'collection' | 'pipeline'> {
+  // the field used to pass into EventTracking constructor (must be unique across records)
+  id: string;
+  events: Array<TrackingEvent>;
+  tracking?: Tracking;
+  searchIOAnalyticsEndpoint?: string;
 }
