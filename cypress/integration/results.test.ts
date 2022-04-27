@@ -1,13 +1,18 @@
+const visitSearchResults = (url = '/') => {
+  cy.setLocalStorage('active-widget', 'search-results');
+  cy.visit(url);
+};
+
 describe('Search Results', async () => {
   it('Should sync input query with URL bar', () => {
-    cy.visit('/');
+    visitSearchResults();
     cy.get('input[type="search"]').first().type('shirt');
     cy.get('input[type="search"]').first().should('have.value', 'shirt');
     cy.url().should('include', '?q=shirt');
   });
 
   it('Should search with query params', () => {
-    cy.visit('/?q=jacket');
+    visitSearchResults('/?q=jacket');
     cy.get('input[type="search"]').first().should('have.value', 'jacket');
   });
 });
@@ -19,7 +24,7 @@ describe('Pagination', async () => {
 
   it('Should match the max page and current page', () => {
     cy.intercept('POST', '**/Search', { fixture: 'promotion' }).as('search');
-    cy.visit('/');
+    visitSearchResults();
     cy.wait('@search')
       .then(({ response }) => {
         expect(response).property('statusCode').to.eq(200);
@@ -52,7 +57,7 @@ describe('Pagination', async () => {
 
   it('Should match the request when changing page number', () => {
     cy.intercept('POST', '**/Search', { fixture: 'promotion' }).as('search');
-    cy.visit('/');
+    visitSearchResults();
     cy.wait('@search').then(({ request }) => {
       expect(JSON.parse(request.body)).property('request').property('values').not.property('page');
     });
@@ -88,7 +93,7 @@ describe('Result items display', async () => {
   });
 
   it('Should match the view widget', () => {
-    cy.visit('/');
+    visitSearchResults();
 
     cy.get('button[aria-label="Grid"]').should('not.have.css', 'background-color', 'rgb(255, 255, 255)');
     cy.get('button[aria-label="List"]').should('have.css', 'background-color', 'rgb(255, 255, 255)');
@@ -116,7 +121,7 @@ describe('Promotions', async () => {
 
   it('Should match the pin items', () => {
     cy.intercept('POST', '**/Search', { fixture: 'promotion' }).as('search');
-    cy.visit('/');
+    visitSearchResults();
 
     cy.wait('@search');
 
@@ -128,7 +133,7 @@ describe('Promotions', async () => {
 
   it('Should match the result values', () => {
     cy.intercept('POST', '**/Search', { fixture: 'promotion' }).as('search');
-    cy.visit('/');
+    visitSearchResults();
 
     cy.wait('@search').then(({ response }) => {
       const item = response?.body.searchResponse.results[0];
@@ -150,7 +155,7 @@ describe('Banners', async () => {
 
   it('Should match the banner item', () => {
     cy.intercept('POST', '**/Search', { fixture: 'banner' }).as('search');
-    cy.visit('/');
+    visitSearchResults();
 
     cy.wait('@search').then(({ response }) => {
       const banners = response?.body.banners;
@@ -187,9 +192,9 @@ describe('Custom result template', async () => {
   it('Should match the custom result template', () => {
     cy.intercept({ url: '**/Search', method: 'POST' }).as('search');
     cy.fixture('template').then((template) => {
-      window.localStorage.setItem('code-content-search-results', template);
+      cy.setLocalStorage('code-content-search-results', template);
     });
-    cy.visit('/');
+    visitSearchResults();
 
     cy.wait('@search');
     cy.get('article.item')
