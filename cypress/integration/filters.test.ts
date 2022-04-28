@@ -205,7 +205,7 @@ describe('List filter', async () => {
   });
 });
 
-describe.only('Rating filter', async () => {
+describe('Rating filter', async () => {
   beforeEach(() => {
     cy.intercept('POST', '**/Search', { fixture: 'rating-filter' }).as('search');
     visitSearchResult({
