@@ -30,6 +30,7 @@ const getVariantImages = (values: ShopifySchema) => {
 };
 
 export const shopifyFieldMapping: FieldDictionary = {
+  id: 'id',
   // eslint-disable-next-line no-template-curly-in-string
   url: '/products/${handle}',
   subtitle: 'vendor',
