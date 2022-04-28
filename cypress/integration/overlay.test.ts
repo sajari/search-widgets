@@ -1,4 +1,4 @@
-const defaultConfigs = {
+const defaultOverlayConfigs = {
   account: '1603163345448404241',
   collection: 'sajari-test-fashion2',
   pipeline: 'query',
@@ -18,18 +18,18 @@ const defaultConfigs = {
   },
 };
 
-const visitSearchOverlay = (configs = defaultConfigs) => {
-  cy.setLocalStorage('code-content-search-input', JSON.stringify(configs));
-  cy.setLocalStorage('active-widget', 'overlay');
+const visitSearchOverlay = (configs = defaultOverlayConfigs) => {
+  localStorage.setItem('code-content-search-input', JSON.stringify(configs));
+  localStorage.setItem('active-widget', 'overlay');
   cy.visit('/');
 };
 
-beforeEach(() => {
-  cy.intercept('POST', '**/Search', { fixture: 'search-overlay' });
-  visitSearchOverlay();
-});
-
 describe('Search Overlay', () => {
+  beforeEach(() => {
+    visitSearchOverlay();
+    cy.intercept('POST', '**/Search', { fixture: 'search-overlay' }).as('search');
+  });
+
   it('Should open modal and run search successfully', () => {
     cy.get('#preview').find('#button').should('be.visible').click();
     cy.get('[data-testid="modal"]').find('[type="search"]').should('be.visible').type('shirt');

@@ -9,8 +9,8 @@ const defaultConfig: any = {
 };
 
 const visitTakeoverInput = (config = defaultConfig) => {
-  cy.setLocalStorage('code-content-search-input-binding', JSON.stringify(config));
-  cy.setLocalStorage('active-widget', 'search-input-binding');
+  localStorage.setItem('code-content-search-input-binding', JSON.stringify(config));
+  localStorage.setItem('active-widget', 'search-input-binding');
   cy.visit('/');
 };
 
