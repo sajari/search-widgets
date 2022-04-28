@@ -1,4 +1,4 @@
-name: Run test
+name: Run e2e tests
 
 on:
   pull_request:
@@ -16,10 +16,6 @@ jobs:
         uses: styfle/cancel-workflow-action@0.8.0
         with:
           access_token: ${{ github.token }}
-      - name: Jest run
-        run: |
-          yarn
-          yarn test:ci
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
