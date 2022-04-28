@@ -1,5 +1,17 @@
 # @sajari/search-widgets
 
+## 2.20.0
+
+### Minor Changes
+
+- 434f5ae: Add Tracking widget to support EventTracking
+
+### Patch Changes
+
+- ab9fc6b: fix: sync url params to search input
+- 4c31372: Update SDK's search UI version to 4.14.0
+  Update SDK's hook version to 3.12.0
+
 ## 2.19.1
 
 ### Patch Changes
