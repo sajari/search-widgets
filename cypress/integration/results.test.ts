@@ -1,5 +1,5 @@
 const visitSearchResults = (url = '/') => {
-  cy.setLocalStorage('active-widget', 'search-results');
+  localStorage.setItem('active-widget', 'search-results');
   cy.visit(url);
 };
 
@@ -192,7 +192,7 @@ describe('Custom result template', async () => {
   it('Should match the custom result template', () => {
     cy.intercept({ url: '**/Search', method: 'POST' }).as('search');
     cy.fixture('template').then((template) => {
-      cy.setLocalStorage('code-content-search-results', template);
+      localStorage.setItem('code-content-search-results', template);
     });
     visitSearchResults();
 
