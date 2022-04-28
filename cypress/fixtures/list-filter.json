@@ -1,0 +1,51 @@
+{
+  "searchResponse": {
+    "totalResults": "66",
+    "time": "0.000910s",
+    "aggregates": {
+      "count": {
+        "buckets": {}
+      }
+    },
+    "aggregateFilters": {
+      "count.vendor": {
+        "count": {
+          "counts": {
+            "vendor 1": 1,
+            "vendor 2": 2,
+            "vendor 3": 1,
+            "vendor 4": 2,
+            "vendor 5": 1,
+            "vendor 6": 1,
+            "vendor 7": 1,
+            "vendor 8": 2,
+            "vendor 9": 3,
+            "vendor 10": 1,
+            "vendor 11": 1
+          }
+        }
+      }
+    },
+    "results": [
+      {
+        "values": {
+          "handle": {
+            "single": "ultime-shirt-dress-2"
+          },
+          "title": {
+            "single": "Ultime Shirt Dress"
+          },
+          "vendor": {
+            "single": "vendor 1"
+          }
+        },
+        "score": 0.9142857142857144,
+        "indexScore": 1,
+        "featureScore": 0.5714285714285715,
+        "relevanceScore": 1
+      }
+    ],
+    "featureScoreWeight": 0.2
+  },
+  "queryId": "f1a48a6a-ba39-443b-b2bc-e6fde78735ca"
+}
