@@ -24,6 +24,10 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
+beforeEach(() => {
+  cy.viewport(1600, 900);
+});
+
 afterEach(() => {
   cy.clearLocalStorage();
 });
