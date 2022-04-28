@@ -1,5 +1,29 @@
 import { Swatch } from '@sajari/react-components';
 
+const defaultFilterConfigs = {
+  account: '1603163345448404241',
+  collection: 'sajari-test-fashion2',
+  pipeline: 'query',
+  preset: 'shopify',
+  filters: [
+    {
+      name: 'vendor',
+      type: 'list',
+      field: 'vendor',
+      title: 'Vendor',
+      searchable: true,
+    },
+  ],
+};
+
+const visitSearchResult = (configs = defaultFilterConfigs) => {
+  localStorage.setItem('code-content-search-results', JSON.stringify(configs));
+  localStorage.setItem('active-widget', 'search-results');
+  cy.visit('/');
+
+  cy.get('#preview').find('[type="search"]').first().should('be.visible');
+};
+
 describe('Sort', async () => {
   beforeEach(() => {
     cy.viewport(1440, 720);
@@ -111,5 +135,139 @@ describe('Multiple filters', async () => {
           });
         });
     });
+  });
+});
+
+describe('List filter', async () => {
+  beforeEach(() => {
+    cy.intercept('POST', '**/Search', { fixture: 'list-filter' }).as('search');
+    visitSearchResult();
+  });
+
+  it('Should call search api with correct count param', () => {
+    cy.wait('@search').then(({ request }) => {
+      const body = JSON.parse(request.body);
+      expect(body.request.values.count).to.equal('vendor');
+    });
+  });
+
+  it('Should render filters with show more button', () => {
+    cy.get('#list-vendor > div > div').should('have.length', 10);
+    cy.get('#list-vendor + div button').should('contain', 'Show more');
+
+    const order = [9, 2, 4, 8, 1, 3, 5, 6, 7, 10];
+    order.forEach((vendorNumber, index) => {
+      cy.get(`#list-vendor > div > div:nth-of-type(${index + 1}) label`).should('contain', `vendor ${vendorNumber}`);
+    });
+    cy.get('#list-vendor > div > div:nth-of-type(11)').should('not.exist');
+  });
+
+  it('Should show more when click show more button', () => {
+    cy.get('#list-vendor + div button').should('contain', 'Show more').click();
+    cy.get('#list-vendor + div button').should('contain', 'Show less');
+    cy.get('#list-vendor > div > div').should('have.length', 11);
+  });
+
+  it('Should check and uncheck filter and call api with correct param', () => {
+    cy.intercept('POST', '**/Search').as('search-vendor-9');
+
+    cy.get('#list-vendor > div > div:nth-of-type(1) label').click();
+    cy.get('#list-vendor > div > div:nth-of-type(1) input').should('be.checked');
+    cy.url().should('include', '?vendor=vendor+9');
+
+    cy.wait('@search-vendor-9').then(({ request }) => {
+      const body = JSON.parse(request.body);
+      expect(body.request.values.countFilters).to.equal('vendor = "vendor 9"');
+    });
+
+    cy.intercept('POST', '**/Search').as('search');
+
+    cy.get('#list-vendor > div > div:nth-of-type(1) label').click();
+    cy.get('#list-vendor > div > div:nth-of-type(1) input').should('not.be.checked');
+    cy.url().should('not.include', '?vendor=vendor+9');
+
+    cy.wait('@search-vendor-9').then(({ request }) => {
+      const body = JSON.parse(request.body);
+      expect(body.request.values.countFilters).to.equal('');
+    });
+  });
+
+  it('Should reset when reset button is clicked', () => {
+    cy.intercept('POST', '**/Search').as('search-vendor-9');
+
+    cy.get('#list-vendor > div > div:nth-of-type(1) label').click();
+    cy.get('#list-vendor > div > div:nth-of-type(1) input').should('be.checked');
+    cy.url().should('include', '?vendor=vendor+9');
+
+    cy.get('#filter-vendor-label + button').should('contain', 'Reset').click();
+    cy.get('#list-vendor > div > div:nth-of-type(1) input').should('not.be.checked');
+    cy.url().should('not.include', '?vendor=vendor+9');
+  });
+});
+
+describe.only('Rating filter', async () => {
+  beforeEach(() => {
+    cy.intercept('POST', '**/Search', { fixture: 'rating-filter' }).as('search');
+    visitSearchResult({
+      ...defaultFilterConfigs,
+      filters: [
+        {
+          name: 'rating',
+          type: 'rating',
+          field: 'rating',
+          title: 'Rating',
+          searchable: false,
+        },
+      ],
+    });
+  });
+
+  it('Should call search api with correct count param', () => {
+    cy.wait('@search').then(({ request }) => {
+      const body = JSON.parse(request.body);
+      expect(body.request.values.count).to.equal('rating');
+    });
+  });
+
+  it('Should render filters in descending rating order', () => {
+    cy.get('#list-rating > div > div').should('have.length', 6);
+
+    new Array(6).fill(null).forEach((_, index) => {
+      cy.get(`#list-rating > div > div:nth-of-type(${index + 1}) [role="img"]`)
+        .invoke('attr', 'aria-label')
+        .should('equal', `Rating: ${5 - index} out of 5 stars`);
+    });
+  });
+
+  it('Should check and uncheck filter and call api with correct param', () => {
+    cy.intercept('POST', '**/Search', { fixture: 'rating-filter' }).as('search-rating-5');
+
+    cy.get('#list-rating > div > div:nth-of-type(1) input[type="checkbox"]').click();
+    cy.get('#list-rating > div > div:nth-of-type(1) input[type="checkbox"]').should('be.checked');
+    cy.url().should('include', '?rating=5');
+
+    cy.wait('@search-rating-5').then(({ request }) => {
+      const body = JSON.parse(request.body);
+      expect(body.request.values.countFilters).to.equal('rating = "5"');
+    });
+
+    cy.get('#list-rating > div > div:nth-of-type(1) input[type="checkbox"]').click();
+    cy.get('#list-rating > div > div:nth-of-type(1) input[type="checkbox"]').should('not.be.checked');
+    cy.url().should('not.include', '?rating=5');
+
+    cy.wait('@search-rating-5').then(({ request }) => {
+      const body = JSON.parse(request.body);
+      expect(body.request.values.countFilters).to.equal('');
+    });
+  });
+
+  it('Should reset when reset button is clicked', () => {
+    cy.get('#list-rating > div > div:nth-of-type(1) input[type="checkbox"]').click();
+    cy.get('#list-rating > div > div:nth-of-type(1) input[type="checkbox"]').should('be.checked');
+    cy.url().should('include', '?rating=5');
+
+    cy.get('#filter-rating-label + button').should('contain', 'Reset').click();
+    cy.get('#list-rating > div > div:nth-of-type(1) input[type="checkbox"]').should('not.be.checked');
+    cy.url().should('not.include', '?rating=5');
   });
 });

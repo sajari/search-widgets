@@ -1,0 +1,28 @@
+{
+  "searchResponse": {
+    "totalResults": "66",
+    "time": "0.000910s",
+    "aggregates": {
+      "count": {
+        "buckets": {}
+      }
+    },
+    "aggregateFilters": {
+      "count.rating": {
+        "count": {
+          "counts": {
+            "0": 6,
+            "1": 5,
+            "2": 4,
+            "3": 3,
+            "4": 2,
+            "5": 1
+          }
+        }
+      }
+    },
+    "results": [],
+    "featureScoreWeight": 0.2
+  },
+  "queryId": "f1a48a6a-ba39-443b-b2bc-e6fde78735ca"
+}
