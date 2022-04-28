@@ -8,7 +8,7 @@ const defaultFilterConfigs = {
   filters: [
     {
       name: 'vendor',
-      type: 'list',
+      type: '',
       field: 'vendor',
       title: 'Vendor',
       searchable: true,
