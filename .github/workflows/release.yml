@@ -46,6 +46,9 @@ jobs:
         name: Deploy to Staging
         if: steps.changesets.outputs.published == 'false'
         run: yarn deploy:staging
+        env:
+          GOOGLE_CLIENT_EMAIL: ${{ secrets.GOOGLE_CLIENT_EMAIL }}
+          GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY }}
 
       - name: 'Slack notification on build failure'
         if: failure() && steps.changesets.outputs.published == 'true'
