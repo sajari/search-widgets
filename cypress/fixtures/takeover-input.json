@@ -1,0 +1,4444 @@
+{
+  "searchResponse": {
+    "reads": "294",
+    "totalResults": "129",
+    "time": "0.000639s",
+    "aggregates": {
+      "count": {
+        "buckets": {}
+      }
+    },
+    "results": [
+      {
+        "values": {
+          "_id": {
+            "single": "6d2a721e-d69e-df3f-01c6-1556882bd088"
+          },
+          "body_html": {
+            "single": "This is a demonstration store. You can purchase products like this from Baby & Company The Milano Shirt is classically tailored as the everyday button up shirt for both casual and more formal wear. Red embroidery cascades the center back seam as a nicely added detail. Covered button placket closure at front. Homecore. Color Navy. 100% Cotton. Made in Portugal. Jacob is wearing a Large. Also available in White . Shop our collection of Homecore."
+          },
+          "collection_ids": {
+            "repeated": {}
+          },
+          "collection_titles": {
+            "repeated": {}
+          },
+          "created_at": {
+            "single": "2020-10-20T02:18:28Z"
+          },
+          "handle": {
+            "single": "milano-shirt-navy"
+          },
+          "id": {
+            "single": "5964853018806"
+          },
+          "image": {
+            "single": "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-03-30_Jake_Look_45_20172_16925.jpg?v=1603160308"
+          },
+          "image_tags": {
+            "repeated": {}
+          },
+          "images": {
+            "repeated": {
+              "values": [
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-03-30_Jake_Look_45_20172_16925.jpg?v=1603160308",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-03-30_Jake_Look_45_20172_16935.jpg?v=1603160308",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-03-30_Jake_Look_45_20172_16937.jpg?v=1603160308",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-03-30_Jake_Look_45_20172_16938.jpg?v=1603160308",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-03-30_Jake_Look_46_23637_16943.jpg?v=1603160308"
+              ]
+            }
+          },
+          "inventory_quantity": {
+            "single": "3"
+          },
+          "max_price": {
+            "single": "178"
+          },
+          "meta": {
+            "repeated": {}
+          },
+          "metafields_global_description_tag": {
+            "single": ""
+          },
+          "metafields_global_title_tag": {
+            "single": ""
+          },
+          "min_price": {
+            "single": "0"
+          },
+          "option_color": {
+            "repeated": {
+              "values": [
+                "Navy"
+              ]
+            }
+          },
+          "option_size": {
+            "repeated": {
+              "values": [
+                "Medium",
+                "Large",
+                "X Large",
+                "XX Large"
+              ]
+            }
+          },
+          "product_type": {
+            "single": "men's button-ups"
+          },
+          "published_at": {
+            "single": "2020-10-20T02:18:24Z"
+          },
+          "published_scope": {
+            "single": "web"
+          },
+          "requires_shipping": {
+            "single": "true"
+          },
+          "tags": {
+            "repeated": {
+              "values": [
+                "03/20",
+                "AW15",
+                "Button-ups",
+                "homecore",
+                "man",
+                "navy",
+                "Shot 3/30",
+                "signature",
+                "stripesmen",
+                "tops"
+              ]
+            }
+          },
+          "taxable": {
+            "single": "true"
+          },
+          "template_suffix": {
+            "single": ""
+          },
+          "title": {
+            "single": "Milano Shirt"
+          },
+          "updated_at": {
+            "single": "2020-10-20T02:18:28Z"
+          },
+          "variant_compare_at_prices": {
+            "repeated": {
+              "values": [
+                "0",
+                "0",
+                "0",
+                "0"
+              ]
+            }
+          },
+          "variant_ids": {
+            "repeated": {
+              "values": [
+                "37150681170102",
+                "37150681202870",
+                "37150681235638",
+                "37150681268406"
+              ]
+            }
+          },
+          "variant_options_1": {
+            "repeated": {
+              "values": [
+                "Medium",
+                "Large",
+                "X Large",
+                "XX Large"
+              ]
+            }
+          },
+          "variant_options_1_in_stock": {
+            "repeated": {
+              "values": [
+                "Medium",
+                "",
+                "X Large",
+                ""
+              ]
+            }
+          },
+          "variant_options_2": {
+            "repeated": {
+              "values": [
+                "Navy",
+                "Navy",
+                "Navy",
+                "Navy"
+              ]
+            }
+          },
+          "variant_options_2_in_stock": {
+            "repeated": {
+              "values": [
+                "Navy",
+                "",
+                "Navy",
+                ""
+              ]
+            }
+          },
+          "variant_options_3": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_options_3_in_stock": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_positions": {
+            "repeated": {
+              "values": [
+                "1",
+                "2",
+                "3",
+                "4"
+              ]
+            }
+          },
+          "variant_prices": {
+            "repeated": {
+              "values": [
+                "178",
+                "178",
+                "178",
+                "178"
+              ]
+            }
+          },
+          "variant_quantities": {
+            "repeated": {
+              "values": [
+                "1",
+                "0",
+                "2",
+                "0"
+              ]
+            }
+          },
+          "variant_skus": {
+            "repeated": {
+              "values": [
+                "20712",
+                "20713",
+                "20714",
+                "20715"
+              ]
+            }
+          },
+          "variant_tax_codes": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_titles": {
+            "repeated": {
+              "values": [
+                "Medium / Navy",
+                "Large / Navy",
+                "X Large / Navy",
+                "XX Large / Navy"
+              ]
+            }
+          },
+          "variant_titles_in_stock": {
+            "repeated": {
+              "values": [
+                "Medium / Navy",
+                "Large / Navy",
+                "X Large / Navy",
+                "XX Large / Navy"
+              ]
+            }
+          },
+          "variant_weights": {
+            "repeated": {
+              "values": [
+                "0",
+                "0",
+                "0",
+                "0"
+              ]
+            }
+          },
+          "vendor": {
+            "single": "Homecore"
+          }
+        },
+        "score": 0.9142857142857144,
+        "indexScore": 1,
+        "featureScore": 0.5714285714285715,
+        "relevanceScore": 1
+      },
+      {
+        "values": {
+          "_id": {
+            "single": "a96bb186-e0e9-410d-27bb-614f06e8267c"
+          },
+          "body_html": {
+            "single": "This is a demonstration store. You can purchase products like this from Baby & Company The Boy Shirt from Pip-Squeak Chapeau is anything but boyish. Classically cut and slim throughout, this top remains uniquely feminine. With a intentional wrinkled body, never worry about an iron. Color Pin. 100% Cotton. Made in U.S.A. Lana is wearing a Small."
+          },
+          "collection_ids": {
+            "repeated": {}
+          },
+          "collection_titles": {
+            "repeated": {}
+          },
+          "created_at": {
+            "single": "2020-10-20T02:10:55Z"
+          },
+          "handle": {
+            "single": "boy-shirt-in-pin"
+          },
+          "id": {
+            "single": "5964825100470"
+          },
+          "image": {
+            "single": "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2014_11_17_Lana_Look35_03.jpg?v=1603159855"
+          },
+          "image_tags": {
+            "repeated": {}
+          },
+          "images": {
+            "repeated": {
+              "values": [
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2014_11_17_Lana_Look35_03.jpg?v=1603159855",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2014_11_17_Lana_Look35_02.jpg?v=1603159855",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2014_11_17_Lana_Look35_04.jpg?v=1603159855",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2014_11_17_Lana_Look35_05.jpg?v=1603159855"
+              ]
+            }
+          },
+          "inventory_quantity": {
+            "single": "1"
+          },
+          "max_price": {
+            "single": "166.6"
+          },
+          "meta": {
+            "repeated": {}
+          },
+          "metafields_global_description_tag": {
+            "single": ""
+          },
+          "metafields_global_title_tag": {
+            "single": ""
+          },
+          "min_price": {
+            "single": "0"
+          },
+          "option_color": {
+            "repeated": {
+              "values": [
+                "Pin"
+              ]
+            }
+          },
+          "option_size": {
+            "repeated": {
+              "values": [
+                "X Small",
+                "Small",
+                "Medium",
+                "Large",
+                "X Large"
+              ]
+            }
+          },
+          "product_type": {
+            "single": "women's button-ups"
+          },
+          "published_at": {
+            "single": "2020-10-20T02:10:51Z"
+          },
+          "published_scope": {
+            "single": "web"
+          },
+          "requires_shipping": {
+            "single": "true"
+          },
+          "tags": {
+            "repeated": {
+              "values": [
+                "11/10",
+                "button up",
+                "FW14",
+                "Pip-Squeak Chapeau",
+                "SALE",
+                "shirt",
+                "SS15",
+                "stripe",
+                "tops",
+                "woman",
+                "women"
+              ]
+            }
+          },
+          "taxable": {
+            "single": "true"
+          },
+          "template_suffix": {
+            "single": ""
+          },
+          "title": {
+            "single": "Boy Shirt in Pin"
+          },
+          "updated_at": {
+            "single": "2020-10-20T02:10:56Z"
+          },
+          "variant_compare_at_prices": {
+            "repeated": {
+              "values": [
+                "196",
+                "196",
+                "196",
+                "196",
+                "196"
+              ]
+            }
+          },
+          "variant_ids": {
+            "repeated": {
+              "values": [
+                "37150593548470",
+                "37150593581238",
+                "37150593614006",
+                "37150593646774",
+                "37150593679542"
+              ]
+            }
+          },
+          "variant_options_1": {
+            "repeated": {
+              "values": [
+                "X Small",
+                "Small",
+                "Medium",
+                "Large",
+                "X Large"
+              ]
+            }
+          },
+          "variant_options_1_in_stock": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                "Medium",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_options_2": {
+            "repeated": {
+              "values": [
+                "Pin",
+                "Pin",
+                "Pin",
+                "Pin",
+                "Pin"
+              ]
+            }
+          },
+          "variant_options_2_in_stock": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                "Pin",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_options_3": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_options_3_in_stock": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_positions": {
+            "repeated": {
+              "values": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5"
+              ]
+            }
+          },
+          "variant_prices": {
+            "repeated": {
+              "values": [
+                "166.6",
+                "166.6",
+                "166.6",
+                "166.6",
+                "166.6"
+              ]
+            }
+          },
+          "variant_quantities": {
+            "repeated": {
+              "values": [
+                "0",
+                "0",
+                "1",
+                "0",
+                "0"
+              ]
+            }
+          },
+          "variant_skus": {
+            "repeated": {
+              "values": [
+                "20086",
+                "20087",
+                "20088",
+                "20089",
+                "20104"
+              ]
+            }
+          },
+          "variant_tax_codes": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_titles": {
+            "repeated": {
+              "values": [
+                "X Small / Pin",
+                "Small / Pin",
+                "Medium / Pin",
+                "Large / Pin",
+                "X Large / Pin"
+              ]
+            }
+          },
+          "variant_titles_in_stock": {
+            "repeated": {
+              "values": [
+                "X Small / Pin",
+                "Small / Pin",
+                "Medium / Pin",
+                "Large / Pin",
+                "X Large / Pin"
+              ]
+            }
+          },
+          "variant_weights": {
+            "repeated": {
+              "values": [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ]
+            }
+          },
+          "vendor": {
+            "single": "Pip-Squeak Chapeau"
+          }
+        },
+        "score": 0.9142857142857144,
+        "indexScore": 1,
+        "featureScore": 0.5714285714285715,
+        "relevanceScore": 1
+      },
+      {
+        "values": {
+          "_id": {
+            "single": "2e0d2fc5-7544-baf0-5039-73ef59094446"
+          },
+          "body_html": {
+            "single": "This is a demonstration store. You can purchase products like this from Baby & Company The Boy Shirt from Pip-Squeak Chapeau is anything but boyish. Classically cut and slim throughout, this top remains uniquely feminine. With a intentional wrinkled body, never worry about an iron. Color #11 Pin. 100% Cotton. Made in U.S.A. Ashley is wearing an X-Small. Also available in Chambra y and Pin . ﻿ Shop our collection of Pip-Squeak Chapeau ."
+          },
+          "collection_ids": {
+            "repeated": {}
+          },
+          "collection_titles": {
+            "repeated": {}
+          },
+          "created_at": {
+            "single": "2020-10-20T02:11:01Z"
+          },
+          "handle": {
+            "single": "boy-shirt-in-11-pin"
+          },
+          "id": {
+            "single": "5964825559222"
+          },
+          "image": {
+            "single": "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-05-14_Ashley_Look13_2009_22076.jpg?v=1603159861"
+          },
+          "image_tags": {
+            "repeated": {}
+          },
+          "images": {
+            "repeated": {
+              "values": [
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-05-14_Ashley_Look13_2009_22076.jpg?v=1603159861",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-05-14_Ashley_Look13_2009_22062.jpg?v=1603159861",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-05-14_Ashley_Look13_2009_22069.jpg?v=1603159861",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-05-14_Ashley_Look13_2009_22067.jpg?v=1603159861",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-05-14_Ashley_Look13_2009_22084.jpg?v=1603159861"
+              ]
+            }
+          },
+          "inventory_quantity": {
+            "single": "2"
+          },
+          "max_price": {
+            "single": "166.6"
+          },
+          "meta": {
+            "repeated": {}
+          },
+          "metafields_global_description_tag": {
+            "single": ""
+          },
+          "metafields_global_title_tag": {
+            "single": ""
+          },
+          "min_price": {
+            "single": "0"
+          },
+          "option_color": {
+            "repeated": {
+              "values": [
+                "11 Pin"
+              ]
+            }
+          },
+          "option_size": {
+            "repeated": {
+              "values": [
+                "X Small",
+                "Small",
+                "Medium",
+                "Large",
+                "X Large"
+              ]
+            }
+          },
+          "product_type": {
+            "single": "women's button-ups"
+          },
+          "published_at": {
+            "single": "2020-10-20T02:10:57Z"
+          },
+          "published_scope": {
+            "single": "web"
+          },
+          "requires_shipping": {
+            "single": "true"
+          },
+          "tags": {
+            "repeated": {
+              "values": [
+                "11/10",
+                "button-up",
+                "FW14",
+                "Pip-Squeak Chapeau",
+                "SALE",
+                "shirt",
+                "Shot 5/14",
+                "SS15",
+                "tops",
+                "visible",
+                "Woman",
+                "women"
+              ]
+            }
+          },
+          "taxable": {
+            "single": "true"
+          },
+          "template_suffix": {
+            "single": ""
+          },
+          "title": {
+            "single": "Boy Shirt in 11 Pin"
+          },
+          "updated_at": {
+            "single": "2020-10-20T02:11:02Z"
+          },
+          "variant_compare_at_prices": {
+            "repeated": {
+              "values": [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ]
+            }
+          },
+          "variant_ids": {
+            "repeated": {
+              "values": [
+                "37150594400438",
+                "37150594433206",
+                "37150594465974",
+                "37150594498742",
+                "37150594531510"
+              ]
+            }
+          },
+          "variant_options_1": {
+            "repeated": {
+              "values": [
+                "X Small",
+                "Small",
+                "Medium",
+                "Large",
+                "X Large"
+              ]
+            }
+          },
+          "variant_options_1_in_stock": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                "Medium",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_options_2": {
+            "repeated": {
+              "values": [
+                "11 Pin",
+                "11 Pin",
+                "11 Pin",
+                "11 Pin",
+                "11 Pin"
+              ]
+            }
+          },
+          "variant_options_2_in_stock": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                "11 Pin",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_options_3": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_options_3_in_stock": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_positions": {
+            "repeated": {
+              "values": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5"
+              ]
+            }
+          },
+          "variant_prices": {
+            "repeated": {
+              "values": [
+                "166.6",
+                "166.6",
+                "166.6",
+                "166.6",
+                "166.6"
+              ]
+            }
+          },
+          "variant_quantities": {
+            "repeated": {
+              "values": [
+                "0",
+                "0",
+                "2",
+                "0",
+                "0"
+              ]
+            }
+          },
+          "variant_skus": {
+            "repeated": {
+              "values": [
+                "20094",
+                "20095",
+                "20096",
+                "20097",
+                "20102"
+              ]
+            }
+          },
+          "variant_tax_codes": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_titles": {
+            "repeated": {
+              "values": [
+                "X Small / 11 Pin",
+                "Small / 11 Pin",
+                "Medium / 11 Pin",
+                "Large / 11 Pin",
+                "X Large / 11 Pin"
+              ]
+            }
+          },
+          "variant_titles_in_stock": {
+            "repeated": {
+              "values": [
+                "X Small / 11 Pin",
+                "Small / 11 Pin",
+                "Medium / 11 Pin",
+                "Large / 11 Pin",
+                "X Large / 11 Pin"
+              ]
+            }
+          },
+          "variant_weights": {
+            "repeated": {
+              "values": [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ]
+            }
+          },
+          "vendor": {
+            "single": "Pip-Squeak Chapeau"
+          }
+        },
+        "score": 0.9142857142857144,
+        "indexScore": 1,
+        "featureScore": 0.5714285714285715,
+        "relevanceScore": 1
+      },
+      {
+        "values": {
+          "_id": {
+            "single": "892824b7-192c-045e-3906-5194712c7f45"
+          },
+          "body_html": {
+            "single": "This is a demonstration store. You can purchase products like this from Baby & Company Inspired by working class uniforms of the industrial revolution, with accentuations of British military repurposing, Nigel Cabourn has been labeled a \"cult\" designer for his misfit aesthetic. Heirloom apparel is its core, the 2015 collection embraces his essence ever more. The British Officer's Shirt is that heirloom piece you'll wear again, and again. Button placket closure at front. Color Sky. 100% Cotton. Made in Japan. Jacob is wearing a Size 50."
+          },
+          "collection_ids": {
+            "repeated": {}
+          },
+          "collection_titles": {
+            "repeated": {}
+          },
+          "created_at": {
+            "single": "2020-10-20T02:48:59Z"
+          },
+          "handle": {
+            "single": "british-officers-shirt"
+          },
+          "id": {
+            "single": "5964939198646"
+          },
+          "image": {
+            "single": "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-04-03_Jake_Look_17_32013_18171.jpg?v=1603162139"
+          },
+          "image_tags": {
+            "repeated": {}
+          },
+          "images": {
+            "repeated": {
+              "values": [
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-04-03_Jake_Look_17_32013_18171.jpg?v=1603162139",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-04-03_Jake_Look_17_32013_18180.jpg?v=1603162139",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-04-03_Jake_Look_17_32013_18178.jpg?v=1603162139",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-04-03_Jake_Look_17_32013_18173.jpg?v=1603162139"
+              ]
+            }
+          },
+          "inventory_quantity": {
+            "single": "4"
+          },
+          "max_price": {
+            "single": "278.6"
+          },
+          "meta": {
+            "repeated": {}
+          },
+          "metafields_global_description_tag": {
+            "single": ""
+          },
+          "metafields_global_title_tag": {
+            "single": ""
+          },
+          "min_price": {
+            "single": "0"
+          },
+          "option_color": {
+            "repeated": {
+              "values": [
+                "Sky"
+              ]
+            }
+          },
+          "option_size": {
+            "repeated": {
+              "values": [
+                "48",
+                "50",
+                "52",
+                "54"
+              ]
+            }
+          },
+          "product_type": {
+            "single": "men's button-ups"
+          },
+          "published_at": {
+            "single": "2020-10-20T02:48:55Z"
+          },
+          "published_scope": {
+            "single": "web"
+          },
+          "requires_shipping": {
+            "single": "true"
+          },
+          "tags": {
+            "repeated": {
+              "values": [
+                "03/03",
+                "blue",
+                "bounty",
+                "button ups",
+                "man",
+                "newman",
+                "nigel cabourne",
+                "SALE",
+                "Shot 3/5",
+                "sky",
+                "ss15",
+                "tops",
+                "visible",
+                "WEEK10"
+              ]
+            }
+          },
+          "taxable": {
+            "single": "true"
+          },
+          "template_suffix": {
+            "single": ""
+          },
+          "title": {
+            "single": "British Officer's Shirt"
+          },
+          "updated_at": {
+            "single": "2020-10-20T02:48:59Z"
+          },
+          "variant_compare_at_prices": {
+            "repeated": {
+              "values": [
+                "0",
+                "0",
+                "0",
+                "0"
+              ]
+            }
+          },
+          "variant_ids": {
+            "repeated": {
+              "values": [
+                "37150855397558",
+                "37150855430326",
+                "37150855495862",
+                "37150855561398"
+              ]
+            }
+          },
+          "variant_options_1": {
+            "repeated": {
+              "values": [
+                "48",
+                "50",
+                "52",
+                "54"
+              ]
+            }
+          },
+          "variant_options_1_in_stock": {
+            "repeated": {
+              "values": [
+                "",
+                "50",
+                "52",
+                "54"
+              ]
+            }
+          },
+          "variant_options_2": {
+            "repeated": {
+              "values": [
+                "Sky",
+                "Sky",
+                "Sky",
+                "Sky"
+              ]
+            }
+          },
+          "variant_options_2_in_stock": {
+            "repeated": {
+              "values": [
+                "",
+                "Sky",
+                "Sky",
+                "Sky"
+              ]
+            }
+          },
+          "variant_options_3": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_options_3_in_stock": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_positions": {
+            "repeated": {
+              "values": [
+                "1",
+                "2",
+                "3",
+                "4"
+              ]
+            }
+          },
+          "variant_prices": {
+            "repeated": {
+              "values": [
+                "278.6",
+                "278.6",
+                "278.6",
+                "278.6"
+              ]
+            }
+          },
+          "variant_quantities": {
+            "repeated": {
+              "values": [
+                "0",
+                "2",
+                "1",
+                "1"
+              ]
+            }
+          },
+          "variant_skus": {
+            "repeated": {
+              "values": [
+                "32012",
+                "32013",
+                "32014",
+                "32015"
+              ]
+            }
+          },
+          "variant_tax_codes": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_titles": {
+            "repeated": {
+              "values": [
+                "48 / Sky",
+                "50 / Sky",
+                "52 / Sky",
+                "54 / Sky"
+              ]
+            }
+          },
+          "variant_titles_in_stock": {
+            "repeated": {
+              "values": [
+                "48 / Sky",
+                "50 / Sky",
+                "52 / Sky",
+                "54 / Sky"
+              ]
+            }
+          },
+          "variant_weights": {
+            "repeated": {
+              "values": [
+                "0",
+                "0",
+                "0",
+                "0"
+              ]
+            }
+          },
+          "vendor": {
+            "single": "Nigel Cabourn"
+          }
+        },
+        "score": 0.9142857142857144,
+        "indexScore": 1,
+        "featureScore": 0.5714285714285715,
+        "relevanceScore": 1
+      },
+      {
+        "values": {
+          "_id": {
+            "single": "06a903b6-871f-e066-d8be-f0480b96f0db"
+          },
+          "body_html": {
+            "single": "This is a demonstration store. You can purchase products like this from Baby & Company The Chaleb acts as the standard Circle of Gentlemen shirt in excellence of tailoring. Button placket closure at front. Color White. 100% Cotton. Made in Turkey. Jacob is wearing a Size 39. Shop our collection of Circle of Gentlemen."
+          },
+          "collection_ids": {
+            "repeated": {}
+          },
+          "collection_titles": {
+            "repeated": {}
+          },
+          "created_at": {
+            "single": "2020-10-20T02:48:36Z"
+          },
+          "handle": {
+            "single": "chaleb-shirt"
+          },
+          "id": {
+            "single": "5964937887926"
+          },
+          "image": {
+            "single": "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-04-03_Jake_Look30_30186_18431.jpg?v=1603162116"
+          },
+          "image_tags": {
+            "repeated": {}
+          },
+          "images": {
+            "repeated": {
+              "values": [
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-04-03_Jake_Look30_30186_18431.jpg?v=1603162116",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-04-03_Jake_Look30_30186_18410.jpg?v=1603162116",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-04-03_Jake_Look30_30186_18416.jpg?v=1603162116",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-04-03_Jake_Look30_30186_18422.jpg?v=1603162116",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-04-03_Jake_Look30_30186_18427.jpg?v=1603162116",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-04-03_Jake_Look30_30186_18418.jpg?v=1603162116",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-04-03_Jake_Look30_30186_18438.jpg?v=1603162116"
+              ]
+            }
+          },
+          "inventory_quantity": {
+            "single": "6"
+          },
+          "max_price": {
+            "single": "187.6"
+          },
+          "meta": {
+            "repeated": {}
+          },
+          "metafields_global_description_tag": {
+            "single": ""
+          },
+          "metafields_global_title_tag": {
+            "single": ""
+          },
+          "min_price": {
+            "single": "0"
+          },
+          "option_color": {
+            "repeated": {
+              "values": [
+                "White"
+              ]
+            }
+          },
+          "option_size": {
+            "repeated": {
+              "values": [
+                "38",
+                "39",
+                "40",
+                "41",
+                "42"
+              ]
+            }
+          },
+          "product_type": {
+            "single": "men's button-ups"
+          },
+          "published_at": {
+            "single": "2020-10-20T02:48:30Z"
+          },
+          "published_scope": {
+            "single": "web"
+          },
+          "requires_shipping": {
+            "single": "true"
+          },
+          "tags": {
+            "repeated": {
+              "values": [
+                "03/02",
+                "black",
+                "bounty",
+                "button ups",
+                "checks",
+                "circle of gentlemen",
+                "man",
+                "newman",
+                "SALE",
+                "Shot 3/5",
+                "Shot 4/3",
+                "ss15",
+                "tops",
+                "WEEK10",
+                "white"
+              ]
+            }
+          },
+          "taxable": {
+            "single": "true"
+          },
+          "template_suffix": {
+            "single": ""
+          },
+          "title": {
+            "single": "Chaleb Shirt"
+          },
+          "updated_at": {
+            "single": "2020-10-20T02:48:37Z"
+          },
+          "variant_compare_at_prices": {
+            "repeated": {
+              "values": [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ]
+            }
+          },
+          "variant_ids": {
+            "repeated": {
+              "values": [
+                "37150852481206",
+                "37150852513974",
+                "37150852546742",
+                "37150852579510",
+                "37150852612278"
+              ]
+            }
+          },
+          "variant_options_1": {
+            "repeated": {
+              "values": [
+                "38",
+                "39",
+                "40",
+                "41",
+                "42"
+              ]
+            }
+          },
+          "variant_options_1_in_stock": {
+            "repeated": {
+              "values": [
+                "38",
+                "39",
+                "40",
+                "41",
+                "42"
+              ]
+            }
+          },
+          "variant_options_2": {
+            "repeated": {
+              "values": [
+                "White",
+                "White",
+                "White",
+                "White",
+                "White"
+              ]
+            }
+          },
+          "variant_options_2_in_stock": {
+            "repeated": {
+              "values": [
+                "White",
+                "White",
+                "White",
+                "White",
+                "White"
+              ]
+            }
+          },
+          "variant_options_3": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_options_3_in_stock": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_positions": {
+            "repeated": {
+              "values": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5"
+              ]
+            }
+          },
+          "variant_prices": {
+            "repeated": {
+              "values": [
+                "187.6",
+                "187.6",
+                "187.6",
+                "187.6",
+                "187.6"
+              ]
+            }
+          },
+          "variant_quantities": {
+            "repeated": {
+              "values": [
+                "1",
+                "2",
+                "1",
+                "1",
+                "1"
+              ]
+            }
+          },
+          "variant_skus": {
+            "repeated": {
+              "values": [
+                "31085",
+                "31086",
+                "31087",
+                "31088",
+                "31089"
+              ]
+            }
+          },
+          "variant_tax_codes": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_titles": {
+            "repeated": {
+              "values": [
+                "38 / White",
+                "39 / White",
+                "40 / White",
+                "41 / White",
+                "42 / White"
+              ]
+            }
+          },
+          "variant_titles_in_stock": {
+            "repeated": {
+              "values": [
+                "38 / White",
+                "39 / White",
+                "40 / White",
+                "41 / White",
+                "42 / White"
+              ]
+            }
+          },
+          "variant_weights": {
+            "repeated": {
+              "values": [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ]
+            }
+          },
+          "vendor": {
+            "single": "Circle of Gentlemen"
+          }
+        },
+        "score": 0.9142857142857144,
+        "indexScore": 1,
+        "featureScore": 0.5714285714285715,
+        "relevanceScore": 1
+      },
+      {
+        "values": {
+          "_id": {
+            "single": "a3137cb4-f864-5411-254a-f0485967a5f9"
+          },
+          "body_html": {
+            "single": "This is a demonstration store. You can purchase products like this from Baby & Company The Ultime Silk Shirt Dress is slightly sheer while soft in structure. V-neckline. Standing collar. Double breasted pockets at front. Schai. Color Sprout. 93% Silk, 7% Spandex. Made in U.S.A. Ashley is wearing a, XS/S. Also available in Indigo . Shop our collection of Schai."
+          },
+          "collection_ids": {
+            "repeated": {}
+          },
+          "collection_titles": {
+            "repeated": {}
+          },
+          "created_at": {
+            "single": "2020-10-20T02:50:13Z"
+          },
+          "handle": {
+            "single": "ultime-silk-shirt-dress-1"
+          },
+          "id": {
+            "single": "5964942114998"
+          },
+          "image": {
+            "single": "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-03-05_Ashley_Look_03_32085_8812.jpg?v=1603162213"
+          },
+          "image_tags": {
+            "repeated": {}
+          },
+          "images": {
+            "repeated": {
+              "values": [
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-03-05_Ashley_Look_03_32085_8812.jpg?v=1603162213",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-03-05_Ashley_Look_03_32085_8810.jpg?v=1603162213",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-03-05_Ashley_Look_03_32085_8817.jpg?v=1603162214",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-03-05_Ashley_Look_03_32085_8798.jpg?v=1603162214"
+              ]
+            }
+          },
+          "inventory_quantity": {
+            "single": "2"
+          },
+          "max_price": {
+            "single": "593.6"
+          },
+          "meta": {
+            "repeated": {}
+          },
+          "metafields_global_description_tag": {
+            "single": ""
+          },
+          "metafields_global_title_tag": {
+            "single": ""
+          },
+          "min_price": {
+            "single": "0"
+          },
+          "option_color": {
+            "repeated": {
+              "values": [
+                "Sprout"
+              ]
+            }
+          },
+          "option_size": {
+            "repeated": {
+              "values": [
+                "XS/S",
+                "S/M",
+                "M/L"
+              ]
+            }
+          },
+          "product_type": {
+            "single": "women's dresses"
+          },
+          "published_at": {
+            "single": "2020-10-20T02:50:10Z"
+          },
+          "published_scope": {
+            "single": "web"
+          },
+          "requires_shipping": {
+            "single": "true"
+          },
+          "tags": {
+            "repeated": {
+              "values": [
+                "03/04",
+                "dresses",
+                "publish",
+                "SALE",
+                "schai",
+                "shirtdresses",
+                "Shot 3/15",
+                "Shot 3/5",
+                "silk",
+                "spring8",
+                "sprout",
+                "ss15",
+                "visible",
+                "WEEK10",
+                "WEEK11",
+                "woman"
+              ]
+            }
+          },
+          "taxable": {
+            "single": "true"
+          },
+          "template_suffix": {
+            "single": ""
+          },
+          "title": {
+            "single": "Ultime Silk Shirt Dress"
+          },
+          "updated_at": {
+            "single": "2020-10-20T02:50:14Z"
+          },
+          "variant_compare_at_prices": {
+            "repeated": {
+              "values": [
+                "0",
+                "0",
+                "0"
+              ]
+            }
+          },
+          "variant_ids": {
+            "repeated": {
+              "values": [
+                "37150861885622",
+                "37150861951158",
+                "37150861983926"
+              ]
+            }
+          },
+          "variant_options_1": {
+            "repeated": {
+              "values": [
+                "XS/S",
+                "S/M",
+                "M/L"
+              ]
+            }
+          },
+          "variant_options_1_in_stock": {
+            "repeated": {
+              "values": [
+                "XS/S",
+                "S/M",
+                ""
+              ]
+            }
+          },
+          "variant_options_2": {
+            "repeated": {
+              "values": [
+                "Sprout",
+                "Sprout",
+                "Sprout"
+              ]
+            }
+          },
+          "variant_options_2_in_stock": {
+            "repeated": {
+              "values": [
+                "Sprout",
+                "Sprout",
+                ""
+              ]
+            }
+          },
+          "variant_options_3": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_options_3_in_stock": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_positions": {
+            "repeated": {
+              "values": [
+                "1",
+                "2",
+                "3"
+              ]
+            }
+          },
+          "variant_prices": {
+            "repeated": {
+              "values": [
+                "593.6",
+                "593.6",
+                "593.6"
+              ]
+            }
+          },
+          "variant_quantities": {
+            "repeated": {
+              "values": [
+                "1",
+                "1",
+                "0"
+              ]
+            }
+          },
+          "variant_skus": {
+            "repeated": {
+              "values": [
+                "32088",
+                "32089",
+                "32090"
+              ]
+            }
+          },
+          "variant_tax_codes": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_titles": {
+            "repeated": {
+              "values": [
+                "XS/S / Sprout",
+                "S/M / Sprout",
+                "M/L / Sprout"
+              ]
+            }
+          },
+          "variant_titles_in_stock": {
+            "repeated": {
+              "values": [
+                "XS/S / Sprout",
+                "S/M / Sprout",
+                "M/L / Sprout"
+              ]
+            }
+          },
+          "variant_weights": {
+            "repeated": {
+              "values": [
+                "0",
+                "0",
+                "0"
+              ]
+            }
+          },
+          "vendor": {
+            "single": "Schai"
+          }
+        },
+        "score": 0.9142857142857144,
+        "indexScore": 1,
+        "featureScore": 0.5714285714285715,
+        "relevanceScore": 1
+      },
+      {
+        "values": {
+          "_id": {
+            "single": "03a68a7d-a24f-b594-13a7-5cd6848b3b8b"
+          },
+          "body_html": {
+            "single": "This is a demonstration store. You can purchase products like this from Baby & Company The Standard Shirt borrows its' silhouette from menswear for a unique tomboy feel. Button placket closure at front. Nicholson & Nicholson. Color Blue. 100% Cotton. Made in Japan. Lana is wearing a French 38. Also available in White Check . Shop our collection of NICO, Nicholson & Nicholson."
+          },
+          "collection_ids": {
+            "repeated": {}
+          },
+          "collection_titles": {
+            "repeated": {}
+          },
+          "created_at": {
+            "single": "2020-10-20T02:24:09Z"
+          },
+          "handle": {
+            "single": "standard-shirt-in-blue"
+          },
+          "id": {
+            "single": "5964873269430"
+          },
+          "image": {
+            "single": "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-02-16_Lana_Look_12_21453_4871.jpg?v=1603160649"
+          },
+          "image_tags": {
+            "repeated": {}
+          },
+          "images": {
+            "repeated": {
+              "values": [
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-02-16_Lana_Look_12_21453_4871.jpg?v=1603160649",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-02-16_Lana_Look_12_21453_4875.jpg?v=1603160649",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-02-16_Lana_Look_12_21453_4878.jpg?v=1603160649",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-02-16_Lana_Look_12_21453_4890.jpg?v=1603160649",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-02-16_Lana_Look_12_21453_4894.jpg?v=1603160649",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-02-16_Lana_Look_12_21453_4896.jpg?v=1603160649"
+              ]
+            }
+          },
+          "inventory_quantity": {
+            "single": "1"
+          },
+          "max_price": {
+            "single": "187.6"
+          },
+          "meta": {
+            "repeated": {}
+          },
+          "metafields_global_description_tag": {
+            "single": ""
+          },
+          "metafields_global_title_tag": {
+            "single": ""
+          },
+          "min_price": {
+            "single": "0"
+          },
+          "option_color": {
+            "repeated": {
+              "values": [
+                "Blue"
+              ]
+            }
+          },
+          "option_size": {
+            "repeated": {
+              "values": [
+                "38",
+                "40",
+                "42"
+              ]
+            }
+          },
+          "product_type": {
+            "single": "women's button-ups"
+          },
+          "published_at": {
+            "single": "2020-10-20T02:24:04Z"
+          },
+          "published_scope": {
+            "single": "web"
+          },
+          "requires_shipping": {
+            "single": "true"
+          },
+          "tags": {
+            "repeated": {
+              "values": [
+                "02/12",
+                "blue",
+                "button ups",
+                "cooloff",
+                "nautical",
+                "NICO",
+                "SALE",
+                "spring7",
+                "ss15",
+                "tops",
+                "visible",
+                "woman",
+                "womens"
+              ]
+            }
+          },
+          "taxable": {
+            "single": "true"
+          },
+          "template_suffix": {
+            "single": ""
+          },
+          "title": {
+            "single": "Standard Shirt"
+          },
+          "updated_at": {
+            "single": "2020-10-20T02:24:09Z"
+          },
+          "variant_compare_at_prices": {
+            "repeated": {
+              "values": [
+                "0",
+                "0",
+                "0"
+              ]
+            }
+          },
+          "variant_ids": {
+            "repeated": {
+              "values": [
+                "37150717477046",
+                "37150717509814",
+                "37150717542582"
+              ]
+            }
+          },
+          "variant_options_1": {
+            "repeated": {
+              "values": [
+                "38",
+                "40",
+                "42"
+              ]
+            }
+          },
+          "variant_options_1_in_stock": {
+            "repeated": {
+              "values": [
+                "38",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_options_2": {
+            "repeated": {
+              "values": [
+                "Blue",
+                "Blue",
+                "Blue"
+              ]
+            }
+          },
+          "variant_options_2_in_stock": {
+            "repeated": {
+              "values": [
+                "Blue",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_options_3": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_options_3_in_stock": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_positions": {
+            "repeated": {
+              "values": [
+                "1",
+                "2",
+                "3"
+              ]
+            }
+          },
+          "variant_prices": {
+            "repeated": {
+              "values": [
+                "187.6",
+                "187.6",
+                "187.6"
+              ]
+            }
+          },
+          "variant_quantities": {
+            "repeated": {
+              "values": [
+                "1",
+                "0",
+                "0"
+              ]
+            }
+          },
+          "variant_skus": {
+            "repeated": {
+              "values": [
+                "21456",
+                "21457",
+                "21458"
+              ]
+            }
+          },
+          "variant_tax_codes": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_titles": {
+            "repeated": {
+              "values": [
+                "38 / Blue",
+                "40 / Blue",
+                "42 / Blue"
+              ]
+            }
+          },
+          "variant_titles_in_stock": {
+            "repeated": {
+              "values": [
+                "38 / Blue",
+                "40 / Blue",
+                "42 / Blue"
+              ]
+            }
+          },
+          "variant_weights": {
+            "repeated": {
+              "values": [
+                "0",
+                "0",
+                "0"
+              ]
+            }
+          },
+          "vendor": {
+            "single": "NICO"
+          }
+        },
+        "score": 0.9142857142857144,
+        "indexScore": 1,
+        "featureScore": 0.5714285714285715,
+        "relevanceScore": 1
+      },
+      {
+        "values": {
+          "_id": {
+            "single": "9d003cbb-0a23-f7db-d64c-21a93e864b53"
+          },
+          "body_html": {
+            "single": "Almost as ubiquitous as the cotton T-shirt, but, made from the finest Italian cotton, Frank & Eileen shirts feature an intentional wrinkled effect adding even more personality to a brand that takes its name from an old-fashioned love story. A closet staple made more interesting by its wrinkled effect, features slim orange stripes, a breast pocket and center back seam. 100% Cotton. Made in U.S.A. Addis is wearing a size Large. Addis is 6’2”, Chest 38.5”, Waist 31”, Inseam 32”."
+          },
+          "collection_ids": {
+            "repeated": {}
+          },
+          "collection_titles": {
+            "repeated": {}
+          },
+          "created_at": {
+            "single": "2020-10-20T01:59:34Z"
+          },
+          "handle": {
+            "single": "paul-shirt-sherbet-stripe"
+          },
+          "id": {
+            "single": "5964779618486"
+          },
+          "image": {
+            "single": "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2014_10_18_Addis_Look0301.jpg?v=1603159174"
+          },
+          "image_tags": {
+            "repeated": {}
+          },
+          "images": {
+            "repeated": {
+              "values": [
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2014_10_18_Addis_Look0301.jpg?v=1603159174",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2014_10_18_Addis_Look0302.jpg?v=1603159174",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2014_10_18_Addis_Look0303.jpg?v=1603159174"
+              ]
+            }
+          },
+          "inventory_quantity": {
+            "single": "2"
+          },
+          "max_price": {
+            "single": "108"
+          },
+          "meta": {
+            "repeated": {}
+          },
+          "metafields_global_description_tag": {
+            "single": ""
+          },
+          "metafields_global_title_tag": {
+            "single": ""
+          },
+          "min_price": {
+            "single": "0"
+          },
+          "option_color": {
+            "repeated": {
+              "values": [
+                "Sherbet Stripe"
+              ]
+            }
+          },
+          "option_size": {
+            "repeated": {
+              "values": [
+                "Small",
+                "Medium",
+                "Large",
+                "X-Large"
+              ]
+            }
+          },
+          "product_type": {
+            "single": "men's button-ups"
+          },
+          "published_at": {
+            "single": "2020-10-20T01:59:33Z"
+          },
+          "published_scope": {
+            "single": "web"
+          },
+          "requires_shipping": {
+            "single": "true"
+          },
+          "tags": {
+            "repeated": {
+              "values": [
+                "Button-ups",
+                "cotton",
+                "F14",
+                "Frank & Eileen",
+                "Man",
+                "orange",
+                "SALE",
+                "SALE30",
+                "SALE30_3",
+                "shirt",
+                "striped",
+                "stripesmen",
+                "top",
+                "tops",
+                "visible"
+              ]
+            }
+          },
+          "taxable": {
+            "single": "true"
+          },
+          "template_suffix": {
+            "single": ""
+          },
+          "title": {
+            "single": "Paul Shirt in Sherbet Stripe"
+          },
+          "updated_at": {
+            "single": "2020-10-20T01:59:35Z"
+          },
+          "variant_compare_at_prices": {
+            "repeated": {
+              "values": [
+                "0",
+                "0",
+                "0",
+                "0"
+              ]
+            }
+          },
+          "variant_ids": {
+            "repeated": {
+              "values": [
+                "37150518476982",
+                "37150518509750",
+                "37150518542518",
+                "37150518575286"
+              ]
+            }
+          },
+          "variant_options_1": {
+            "repeated": {
+              "values": [
+                "Sherbet Stripe",
+                "Sherbet Stripe",
+                "Sherbet Stripe",
+                "Sherbet Stripe"
+              ]
+            }
+          },
+          "variant_options_1_in_stock": {
+            "repeated": {
+              "values": [
+                "Sherbet Stripe",
+                "Sherbet Stripe",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_options_2": {
+            "repeated": {
+              "values": [
+                "Small",
+                "Medium",
+                "Large",
+                "X-Large"
+              ]
+            }
+          },
+          "variant_options_2_in_stock": {
+            "repeated": {
+              "values": [
+                "Small",
+                "Medium",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_options_3": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_options_3_in_stock": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_positions": {
+            "repeated": {
+              "values": [
+                "1",
+                "2",
+                "3",
+                "4"
+              ]
+            }
+          },
+          "variant_prices": {
+            "repeated": {
+              "values": [
+                "108",
+                "108",
+                "108",
+                "108"
+              ]
+            }
+          },
+          "variant_quantities": {
+            "repeated": {
+              "values": [
+                "1",
+                "1",
+                "0",
+                "0"
+              ]
+            }
+          },
+          "variant_skus": {
+            "repeated": {
+              "values": [
+                "17169",
+                "17170",
+                "17171",
+                "17172"
+              ]
+            }
+          },
+          "variant_tax_codes": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_titles": {
+            "repeated": {
+              "values": [
+                "Sherbet Stripe / Small",
+                "Sherbet Stripe / Medium",
+                "Sherbet Stripe / Large",
+                "Sherbet Stripe / X-Large"
+              ]
+            }
+          },
+          "variant_titles_in_stock": {
+            "repeated": {
+              "values": [
+                "Sherbet Stripe / Small",
+                "Sherbet Stripe / Medium",
+                "Sherbet Stripe / Large",
+                "Sherbet Stripe / X-Large"
+              ]
+            }
+          },
+          "variant_weights": {
+            "repeated": {
+              "values": [
+                "0",
+                "0",
+                "0",
+                "0"
+              ]
+            }
+          },
+          "vendor": {
+            "single": "Frank & Eileen"
+          }
+        },
+        "score": 0.9142857142857144,
+        "indexScore": 1,
+        "featureScore": 0.5714285714285715,
+        "relevanceScore": 1
+      },
+      {
+        "values": {
+          "_id": {
+            "single": "478c8110-25fe-5fe9-c0dd-3e8edffb41be"
+          },
+          "body_html": {
+            "single": "This is a demonstration store. You can purchase products like this from Baby & Company The Daydream offers rhythmic symmetry freshly represented in foil patterning. Oversized boxy fit with classic sleeves. Button packet closure at front. Single pocket at front left. Color Silver. 100% Cotton. Made in Japan. ﻿Lana is wearing a French 36. Shop our collection of NICO, Nicholson & Nicholson."
+          },
+          "collection_ids": {
+            "repeated": {}
+          },
+          "collection_titles": {
+            "repeated": {}
+          },
+          "created_at": {
+            "single": "2020-10-20T02:24:14Z"
+          },
+          "handle": {
+            "single": "daydream-shirt-in-silver"
+          },
+          "id": {
+            "single": "5964873531574"
+          },
+          "image": {
+            "single": "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-02-16_Lana_Look_08_21459_4773.jpg?v=1603160654"
+          },
+          "image_tags": {
+            "repeated": {}
+          },
+          "images": {
+            "repeated": {
+              "values": [
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-02-16_Lana_Look_08_21459_4773.jpg?v=1603160654",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-02-16_Lana_Look_08_21459_4777.jpg?v=1603160654",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-02-16_Lana_Look_08_21459_4771.jpg?v=1603160654",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-02-16_Lana_Look_08_21459_4778.jpg?v=1603160654",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-02-16_Lana_Look_08_21459_4784.jpg?v=1603160654",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-02-16_Lana_Look_08_21459_4790.jpg?v=1603160654"
+              ]
+            }
+          },
+          "inventory_quantity": {
+            "single": "1"
+          },
+          "max_price": {
+            "single": "264.6"
+          },
+          "meta": {
+            "repeated": {}
+          },
+          "metafields_global_description_tag": {
+            "single": ""
+          },
+          "metafields_global_title_tag": {
+            "single": ""
+          },
+          "min_price": {
+            "single": "0"
+          },
+          "option_color": {
+            "repeated": {
+              "values": [
+                "Silver"
+              ]
+            }
+          },
+          "option_size": {
+            "repeated": {
+              "values": [
+                "French 36",
+                "French 38",
+                "French 40",
+                "French 42"
+              ]
+            }
+          },
+          "product_type": {
+            "single": "women's button-ups"
+          },
+          "published_at": {
+            "single": "2020-10-20T02:24:10Z"
+          },
+          "published_scope": {
+            "single": "web"
+          },
+          "requires_shipping": {
+            "single": "true"
+          },
+          "tags": {
+            "repeated": {
+              "values": [
+                "02/12",
+                "button ups",
+                "NICO",
+                "SALE",
+                "ss15",
+                "tops",
+                "visible",
+                "white",
+                "woman",
+                "womens"
+              ]
+            }
+          },
+          "taxable": {
+            "single": "true"
+          },
+          "template_suffix": {
+            "single": ""
+          },
+          "title": {
+            "single": "Daydream Shirt"
+          },
+          "updated_at": {
+            "single": "2020-10-20T02:24:14Z"
+          },
+          "variant_compare_at_prices": {
+            "repeated": {
+              "values": [
+                "0",
+                "0",
+                "0",
+                "0"
+              ]
+            }
+          },
+          "variant_ids": {
+            "repeated": {
+              "values": [
+                "37150718853302",
+                "37150718886070",
+                "37150718951606",
+                "37150718984374"
+              ]
+            }
+          },
+          "variant_options_1": {
+            "repeated": {
+              "values": [
+                "French 36",
+                "French 38",
+                "French 40",
+                "French 42"
+              ]
+            }
+          },
+          "variant_options_1_in_stock": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                "French 40",
+                ""
+              ]
+            }
+          },
+          "variant_options_2": {
+            "repeated": {
+              "values": [
+                "Silver",
+                "Silver",
+                "Silver",
+                "Silver"
+              ]
+            }
+          },
+          "variant_options_2_in_stock": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                "Silver",
+                ""
+              ]
+            }
+          },
+          "variant_options_3": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_options_3_in_stock": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_positions": {
+            "repeated": {
+              "values": [
+                "1",
+                "2",
+                "3",
+                "4"
+              ]
+            }
+          },
+          "variant_prices": {
+            "repeated": {
+              "values": [
+                "264.6",
+                "264.6",
+                "264.6",
+                "264.6"
+              ]
+            }
+          },
+          "variant_quantities": {
+            "repeated": {
+              "values": [
+                "0",
+                "0",
+                "1",
+                "0"
+              ]
+            }
+          },
+          "variant_skus": {
+            "repeated": {
+              "values": [
+                "21459",
+                "21460",
+                "21461",
+                "21462"
+              ]
+            }
+          },
+          "variant_tax_codes": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_titles": {
+            "repeated": {
+              "values": [
+                "French 36 / Silver",
+                "French 38 / Silver",
+                "French 40 / Silver",
+                "French 42 / Silver"
+              ]
+            }
+          },
+          "variant_titles_in_stock": {
+            "repeated": {
+              "values": [
+                "French 36 / Silver",
+                "French 38 / Silver",
+                "French 40 / Silver",
+                "French 42 / Silver"
+              ]
+            }
+          },
+          "variant_weights": {
+            "repeated": {
+              "values": [
+                "0",
+                "0",
+                "0",
+                "0"
+              ]
+            }
+          },
+          "vendor": {
+            "single": "NICO"
+          }
+        },
+        "score": 0.9142857142857144,
+        "indexScore": 1,
+        "featureScore": 0.5714285714285715,
+        "relevanceScore": 1
+      },
+      {
+        "values": {
+          "_id": {
+            "single": "8dafae93-4e16-ebd2-9f2e-ef4ec3a340a2"
+          },
+          "body_html": {
+            "single": "This is a demonstration store. You can purchase products like this from Baby & Company The Finnigan acts as the standard Circle of Gentlemen shirt in excellence of tailoring. Button placket closure at front. Circle of Gentlemen. Color Blue. 100% Cotton. Made in Turkey. Jacob is wearing a 39. Shop our collection of Circle of Gentlemen."
+          },
+          "collection_ids": {
+            "repeated": {}
+          },
+          "collection_titles": {
+            "repeated": {}
+          },
+          "created_at": {
+            "single": "2020-10-20T02:48:42Z"
+          },
+          "handle": {
+            "single": "finnigan-shirt"
+          },
+          "id": {
+            "single": "5964938215606"
+          },
+          "image": {
+            "single": "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-04-03_Jake_Look_20_31091_18244.jpg?v=1603162122"
+          },
+          "image_tags": {
+            "repeated": {}
+          },
+          "images": {
+            "repeated": {
+              "values": [
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-04-03_Jake_Look_20_31091_18244.jpg?v=1603162122",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-04-03_Jake_Look_20_31091_18246.jpg?v=1603162122",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-04-03_Jake_Look_20_31091_18248.jpg?v=1603162122",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-04-03_Jake_Look_20_31091_18249.jpg?v=1603162122",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-04-03_Jake_Look_20_31091_18250.jpg?v=1603162122"
+              ]
+            }
+          },
+          "inventory_quantity": {
+            "single": "3"
+          },
+          "max_price": {
+            "single": "187.6"
+          },
+          "meta": {
+            "repeated": {}
+          },
+          "metafields_global_description_tag": {
+            "single": ""
+          },
+          "metafields_global_title_tag": {
+            "single": ""
+          },
+          "min_price": {
+            "single": "0"
+          },
+          "option_color": {
+            "repeated": {
+              "values": [
+                "Blue"
+              ]
+            }
+          },
+          "option_size": {
+            "repeated": {
+              "values": [
+                "38",
+                "39",
+                "40",
+                "41",
+                "42"
+              ]
+            }
+          },
+          "product_type": {
+            "single": "men's button-ups"
+          },
+          "published_at": {
+            "single": "2020-10-20T02:48:38Z"
+          },
+          "published_scope": {
+            "single": "web"
+          },
+          "requires_shipping": {
+            "single": "true"
+          },
+          "tags": {
+            "repeated": {
+              "values": [
+                "03/20",
+                "blue",
+                "bounty",
+                "button ups",
+                "checks",
+                "circle of gentlemen",
+                "man",
+                "newman",
+                "SALE",
+                "Shot 3/5",
+                "Shot 4/3",
+                "ss15",
+                "tops",
+                "visible",
+                "WEEK10"
+              ]
+            }
+          },
+          "taxable": {
+            "single": "true"
+          },
+          "template_suffix": {
+            "single": ""
+          },
+          "title": {
+            "single": "Finnigan Shirt"
+          },
+          "updated_at": {
+            "single": "2020-10-20T02:48:43Z"
+          },
+          "variant_compare_at_prices": {
+            "repeated": {
+              "values": [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ]
+            }
+          },
+          "variant_ids": {
+            "repeated": {
+              "values": [
+                "37150853464246",
+                "37150853497014",
+                "37150853529782",
+                "37150853562550",
+                "37150853595318"
+              ]
+            }
+          },
+          "variant_options_1": {
+            "repeated": {
+              "values": [
+                "38",
+                "39",
+                "40",
+                "41",
+                "42"
+              ]
+            }
+          },
+          "variant_options_1_in_stock": {
+            "repeated": {
+              "values": [
+                "38",
+                "39",
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_options_2": {
+            "repeated": {
+              "values": [
+                "Blue",
+                "Blue",
+                "Blue",
+                "Blue",
+                "Blue"
+              ]
+            }
+          },
+          "variant_options_2_in_stock": {
+            "repeated": {
+              "values": [
+                "Blue",
+                "Blue",
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_options_3": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_options_3_in_stock": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_positions": {
+            "repeated": {
+              "values": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5"
+              ]
+            }
+          },
+          "variant_prices": {
+            "repeated": {
+              "values": [
+                "187.6",
+                "187.6",
+                "187.6",
+                "187.6",
+                "187.6"
+              ]
+            }
+          },
+          "variant_quantities": {
+            "repeated": {
+              "values": [
+                "1",
+                "2",
+                "0",
+                "0",
+                "0"
+              ]
+            }
+          },
+          "variant_skus": {
+            "repeated": {
+              "values": [
+                "31090",
+                "31091",
+                "31092",
+                "31093",
+                "31094"
+              ]
+            }
+          },
+          "variant_tax_codes": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_titles": {
+            "repeated": {
+              "values": [
+                "38 / Blue",
+                "39 / Blue",
+                "40 / Blue",
+                "41 / Blue",
+                "42 / Blue"
+              ]
+            }
+          },
+          "variant_titles_in_stock": {
+            "repeated": {
+              "values": [
+                "38 / Blue",
+                "39 / Blue",
+                "40 / Blue",
+                "41 / Blue",
+                "42 / Blue"
+              ]
+            }
+          },
+          "variant_weights": {
+            "repeated": {
+              "values": [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ]
+            }
+          },
+          "vendor": {
+            "single": "Circle of Gentlemen"
+          }
+        },
+        "score": 0.9142857142857144,
+        "indexScore": 1,
+        "featureScore": 0.5714285714285715,
+        "relevanceScore": 1
+      },
+      {
+        "values": {
+          "_id": {
+            "single": "78b71bf6-269c-53f4-7a83-b0977ee8d8f2"
+          },
+          "body_html": {
+            "single": "A crisp and clean white button-up with pointed collar. A slim navy cotton tie is attached smartly using the existing placket buttons. We like the suggestion to wear a tie, and also appreciate the versatility of taking it off. Sibel Saral. Color White. 100% Cotton. Ashley is wearing an Extra-Small."
+          },
+          "collection_ids": {
+            "repeated": {}
+          },
+          "collection_titles": {
+            "repeated": {}
+          },
+          "created_at": {
+            "single": "2020-10-20T02:08:48Z"
+          },
+          "handle": {
+            "single": "pau-shirt-in-white"
+          },
+          "id": {
+            "single": "5964815007926"
+          },
+          "image": {
+            "single": "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2014-09-30_Ashley_Look_26_8757.jpg?v=1603159728"
+          },
+          "image_tags": {
+            "repeated": {}
+          },
+          "images": {
+            "repeated": {
+              "values": [
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2014-09-30_Ashley_Look_26_8757.jpg?v=1603159728",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2014-09-30_Ashley_Look_26_8756.jpg?v=1603159728",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2014-09-30_Ashley_Look_26_8755.jpg?v=1603159728",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2014-09-30_Ashley_Look_26_8761.jpg?v=1603159728",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2014-09-30_Ashley_Look_26_8754.jpg?v=1603159728",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2014-09-30_Ashley_Look_26_8762.jpg?v=1603159728"
+              ]
+            }
+          },
+          "inventory_quantity": {
+            "single": "2"
+          },
+          "max_price": {
+            "single": "228"
+          },
+          "meta": {
+            "repeated": {}
+          },
+          "metafields_global_description_tag": {
+            "single": ""
+          },
+          "metafields_global_title_tag": {
+            "single": ""
+          },
+          "min_price": {
+            "single": "0"
+          },
+          "option_color": {
+            "repeated": {
+              "values": [
+                "White"
+              ]
+            }
+          },
+          "option_size": {
+            "repeated": {
+              "values": [
+                "X-Small",
+                "Small",
+                "Medium",
+                "Large"
+              ]
+            }
+          },
+          "product_type": {
+            "single": "women's button-ups"
+          },
+          "published_at": {
+            "single": "2020-10-20T02:08:45Z"
+          },
+          "published_scope": {
+            "single": "web"
+          },
+          "requires_shipping": {
+            "single": "true"
+          },
+          "tags": {
+            "repeated": {
+              "values": [
+                "blouse",
+                "button down",
+                "buttons",
+                "collar",
+                "cotton",
+                "F14",
+                "Jill's Travel Essentials",
+                "long sleeve",
+                "Minimalism",
+                "navy",
+                "shirt",
+                "sibel saral",
+                "tie",
+                "tops",
+                "visible",
+                "white",
+                "woman",
+                "women's"
+              ]
+            }
+          },
+          "taxable": {
+            "single": "true"
+          },
+          "template_suffix": {
+            "single": ""
+          },
+          "title": {
+            "single": "Pau Shirt in White"
+          },
+          "updated_at": {
+            "single": "2020-10-20T02:08:49Z"
+          },
+          "variant_compare_at_prices": {
+            "repeated": {
+              "values": [
+                "0",
+                "0",
+                "0",
+                "0"
+              ]
+            }
+          },
+          "variant_ids": {
+            "repeated": {
+              "values": [
+                "37150577164470",
+                "37150577197238",
+                "37150577230006",
+                "37150577262774"
+              ]
+            }
+          },
+          "variant_options_1": {
+            "repeated": {
+              "values": [
+                "White",
+                "White",
+                "White",
+                "White"
+              ]
+            }
+          },
+          "variant_options_1_in_stock": {
+            "repeated": {
+              "values": [
+                "White",
+                "",
+                "",
+                "White"
+              ]
+            }
+          },
+          "variant_options_2": {
+            "repeated": {
+              "values": [
+                "X-Small",
+                "Small",
+                "Medium",
+                "Large"
+              ]
+            }
+          },
+          "variant_options_2_in_stock": {
+            "repeated": {
+              "values": [
+                "X-Small",
+                "",
+                "",
+                "Large"
+              ]
+            }
+          },
+          "variant_options_3": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_options_3_in_stock": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_positions": {
+            "repeated": {
+              "values": [
+                "1",
+                "2",
+                "3",
+                "4"
+              ]
+            }
+          },
+          "variant_prices": {
+            "repeated": {
+              "values": [
+                "228",
+                "228",
+                "228",
+                "228"
+              ]
+            }
+          },
+          "variant_quantities": {
+            "repeated": {
+              "values": [
+                "1",
+                "0",
+                "0",
+                "1"
+              ]
+            }
+          },
+          "variant_skus": {
+            "repeated": {
+              "values": [
+                "19200",
+                "19201",
+                "19202",
+                "19203"
+              ]
+            }
+          },
+          "variant_tax_codes": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_titles": {
+            "repeated": {
+              "values": [
+                "White / X-Small",
+                "White / Small",
+                "White / Medium",
+                "White / Large"
+              ]
+            }
+          },
+          "variant_titles_in_stock": {
+            "repeated": {
+              "values": [
+                "White / X-Small",
+                "White / Small",
+                "White / Medium",
+                "White / Large"
+              ]
+            }
+          },
+          "variant_weights": {
+            "repeated": {
+              "values": [
+                "0",
+                "0",
+                "0",
+                "0"
+              ]
+            }
+          },
+          "vendor": {
+            "single": "Sibel Saral"
+          }
+        },
+        "score": 0.9142857142857144,
+        "indexScore": 1,
+        "featureScore": 0.5714285714285715,
+        "relevanceScore": 1
+      },
+      {
+        "values": {
+          "_id": {
+            "single": "ced0548b-9fa4-4c93-a661-ee7735ee9fde"
+          },
+          "body_html": {
+            "single": "This is a demonstration store. You can purchase products like this from Baby & Company Homecore's Hibi is the t-shirt of your dreams. Incredibly soft cotton in a classic style makes everyday casual Friday. Exposed seam down back. Color White. 100% Cotton. Made in Portugal. Jacob is wearing a Medium. Shop our collection of Homecore ."
+          },
+          "collection_ids": {
+            "repeated": {}
+          },
+          "collection_titles": {
+            "repeated": {}
+          },
+          "created_at": {
+            "single": "2020-10-20T02:18:38Z"
+          },
+          "handle": {
+            "single": "hibi-top-white"
+          },
+          "id": {
+            "single": "5964853346486"
+          },
+          "image": {
+            "single": "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-04-03_Jake_Look_01_2072017913.jpg?v=1603160318"
+          },
+          "image_tags": {
+            "repeated": {}
+          },
+          "images": {
+            "repeated": {
+              "values": [
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-04-03_Jake_Look_01_2072017913.jpg?v=1603160318",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-04-03_Jake_Look_01_2072017912.jpg?v=1603160318",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-04-03_Jake_Look_01_2072017911.jpg?v=1603160318",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-04-03_Jake_Look_01_2072017914.jpg?v=1603160318",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-04-03_Jake_Look_01_2072017923.jpg?v=1603160318"
+              ]
+            }
+          },
+          "inventory_quantity": {
+            "single": "6"
+          },
+          "max_price": {
+            "single": "78"
+          },
+          "meta": {
+            "repeated": {}
+          },
+          "metafields_global_description_tag": {
+            "single": ""
+          },
+          "metafields_global_title_tag": {
+            "single": ""
+          },
+          "min_price": {
+            "single": "0"
+          },
+          "option_color": {
+            "repeated": {
+              "values": [
+                "White"
+              ]
+            }
+          },
+          "option_size": {
+            "repeated": {
+              "values": [
+                "Small",
+                "Medium",
+                "Large",
+                "X Large"
+              ]
+            }
+          },
+          "product_type": {
+            "single": "men's t-shirts"
+          },
+          "published_at": {
+            "single": "2020-10-20T02:18:33Z"
+          },
+          "published_scope": {
+            "single": "web"
+          },
+          "requires_shipping": {
+            "single": "true"
+          },
+          "tags": {
+            "repeated": {
+              "values": [
+                "03/20",
+                "AW15",
+                "full moon",
+                "homecore",
+                "man",
+                "Shot 4/3",
+                "signature",
+                "stripesmen",
+                "t-shirts",
+                "tees",
+                "tops",
+                "white"
+              ]
+            }
+          },
+          "taxable": {
+            "single": "true"
+          },
+          "template_suffix": {
+            "single": ""
+          },
+          "title": {
+            "single": "Hibi T-Shirt"
+          },
+          "updated_at": {
+            "single": "2020-10-20T02:18:38Z"
+          },
+          "variant_compare_at_prices": {
+            "repeated": {
+              "values": [
+                "0",
+                "0",
+                "0",
+                "0"
+              ]
+            }
+          },
+          "variant_ids": {
+            "repeated": {
+              "values": [
+                "37150681759926",
+                "37150681825462",
+                "37150681858230",
+                "37150681956534"
+              ]
+            }
+          },
+          "variant_options_1": {
+            "repeated": {
+              "values": [
+                "Small",
+                "Medium",
+                "Large",
+                "X Large"
+              ]
+            }
+          },
+          "variant_options_1_in_stock": {
+            "repeated": {
+              "values": [
+                "Small",
+                "Medium",
+                "Large",
+                "X Large"
+              ]
+            }
+          },
+          "variant_options_2": {
+            "repeated": {
+              "values": [
+                "White",
+                "White",
+                "White",
+                "White"
+              ]
+            }
+          },
+          "variant_options_2_in_stock": {
+            "repeated": {
+              "values": [
+                "White",
+                "White",
+                "White",
+                "White"
+              ]
+            }
+          },
+          "variant_options_3": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_options_3_in_stock": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_positions": {
+            "repeated": {
+              "values": [
+                "1",
+                "2",
+                "3",
+                "4"
+              ]
+            }
+          },
+          "variant_prices": {
+            "repeated": {
+              "values": [
+                "78",
+                "78",
+                "78",
+                "78"
+              ]
+            }
+          },
+          "variant_quantities": {
+            "repeated": {
+              "values": [
+                "1",
+                "1",
+                "2",
+                "2"
+              ]
+            }
+          },
+          "variant_skus": {
+            "repeated": {
+              "values": [
+                "20719",
+                "20720",
+                "20721",
+                "20722"
+              ]
+            }
+          },
+          "variant_tax_codes": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_titles": {
+            "repeated": {
+              "values": [
+                "Small / White",
+                "Medium / White",
+                "Large / White",
+                "X Large / White"
+              ]
+            }
+          },
+          "variant_titles_in_stock": {
+            "repeated": {
+              "values": [
+                "Small / White",
+                "Medium / White",
+                "Large / White",
+                "X Large / White"
+              ]
+            }
+          },
+          "variant_weights": {
+            "repeated": {
+              "values": [
+                "0",
+                "0",
+                "0",
+                "0"
+              ]
+            }
+          },
+          "vendor": {
+            "single": "Homecore"
+          }
+        },
+        "score": 0.9142857142857144,
+        "indexScore": 1,
+        "featureScore": 0.5714285714285715,
+        "relevanceScore": 1
+      },
+      {
+        "values": {
+          "_id": {
+            "single": "93bc9e52-df2e-fe48-fccb-8135a3db240a"
+          },
+          "body_html": {
+            "single": "This is a demonstration store. You can purchase products like this from Baby & Company The perfect blouse is a coveted thing. The German brand has devoted itself to harnessing the mastery and construction of this timeless piece. The Laney is a delightful selection for both formal and casual needs. Flattering fit with princess seaming. Single button closure at center back neck. Single button closures at sleeve cuffs. Lareida. Color Marple. 100% Cotton. Made in Portugal. Ashley is wearing a Size 36. Also available in Marple . Shop our collection of Lareida."
+          },
+          "collection_ids": {
+            "repeated": {}
+          },
+          "collection_titles": {
+            "repeated": {}
+          },
+          "created_at": {
+            "single": "2020-10-20T02:48:10Z"
+          },
+          "handle": {
+            "single": "laney-shirt-1"
+          },
+          "id": {
+            "single": "5964936839350"
+          },
+          "image": {
+            "single": "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-03-02_Ashley_Look_05_31057_7593.jpg?v=1603162090"
+          },
+          "image_tags": {
+            "repeated": {}
+          },
+          "images": {
+            "repeated": {
+              "values": [
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-03-02_Ashley_Look_05_31057_7593.jpg?v=1603162090",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-03-02_Ashley_Look_05_31057_7604.jpg?v=1603162090",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-03-02_Ashley_Look_05_31057_7607.jpg?v=1603162090",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-03-02_Ashley_Look_05_31057_7614.jpg?v=1603162090",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-03-02_Ashley_Look_05_31057_7617.jpg?v=1603162090",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-03-02_Ashley_Look_05_31057_7629.jpg?v=1603162091",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-03-02_Ashley_Look_05_31057_7634.jpg?v=1603162091"
+              ]
+            }
+          },
+          "inventory_quantity": {
+            "single": "1"
+          },
+          "max_price": {
+            "single": "328"
+          },
+          "meta": {
+            "repeated": {}
+          },
+          "metafields_global_description_tag": {
+            "single": ""
+          },
+          "metafields_global_title_tag": {
+            "single": ""
+          },
+          "min_price": {
+            "single": "0"
+          },
+          "option_color": {
+            "repeated": {
+              "values": [
+                "Asphalt"
+              ]
+            }
+          },
+          "option_size": {
+            "repeated": {
+              "values": [
+                "36",
+                "38",
+                "40",
+                "42"
+              ]
+            }
+          },
+          "product_type": {
+            "single": "women's tops"
+          },
+          "published_at": {
+            "single": "2020-10-20T02:48:05Z"
+          },
+          "published_scope": {
+            "single": "web"
+          },
+          "requires_shipping": {
+            "single": "true"
+          },
+          "tags": {
+            "repeated": {
+              "values": [
+                "02/28",
+                "6/1one",
+                "arrivals",
+                "asphalt",
+                "AW15",
+                "grey",
+                "lareida",
+                "last",
+                "one",
+                "one6/11",
+                "publish",
+                "Shot 3/2",
+                "signature",
+                "tops",
+                "visible",
+                "WEEK10",
+                "woman",
+                "womens"
+              ]
+            }
+          },
+          "taxable": {
+            "single": "true"
+          },
+          "template_suffix": {
+            "single": ""
+          },
+          "title": {
+            "single": "Laney Shirt"
+          },
+          "updated_at": {
+            "single": "2020-10-20T02:48:11Z"
+          },
+          "variant_compare_at_prices": {
+            "repeated": {
+              "values": [
+                "0",
+                "0",
+                "0",
+                "0"
+              ]
+            }
+          },
+          "variant_ids": {
+            "repeated": {
+              "values": [
+                "37150850121910",
+                "37150850154678",
+                "37150850187446",
+                "37150850220214"
+              ]
+            }
+          },
+          "variant_options_1": {
+            "repeated": {
+              "values": [
+                "36",
+                "38",
+                "40",
+                "42"
+              ]
+            }
+          },
+          "variant_options_1_in_stock": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                "",
+                "42"
+              ]
+            }
+          },
+          "variant_options_2": {
+            "repeated": {
+              "values": [
+                "Asphalt",
+                "Asphalt",
+                "Asphalt",
+                "Asphalt"
+              ]
+            }
+          },
+          "variant_options_2_in_stock": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                "",
+                "Asphalt"
+              ]
+            }
+          },
+          "variant_options_3": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_options_3_in_stock": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_positions": {
+            "repeated": {
+              "values": [
+                "1",
+                "2",
+                "3",
+                "4"
+              ]
+            }
+          },
+          "variant_prices": {
+            "repeated": {
+              "values": [
+                "328",
+                "328",
+                "328",
+                "328"
+              ]
+            }
+          },
+          "variant_quantities": {
+            "repeated": {
+              "values": [
+                "0",
+                "0",
+                "0",
+                "1"
+              ]
+            }
+          },
+          "variant_skus": {
+            "repeated": {
+              "values": [
+                "31069",
+                "31070",
+                "31071",
+                "31072"
+              ]
+            }
+          },
+          "variant_tax_codes": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_titles": {
+            "repeated": {
+              "values": [
+                "36 / Asphalt",
+                "38 / Asphalt",
+                "40 / Asphalt",
+                "42 / Asphalt"
+              ]
+            }
+          },
+          "variant_titles_in_stock": {
+            "repeated": {
+              "values": [
+                "36 / Asphalt",
+                "38 / Asphalt",
+                "40 / Asphalt",
+                "42 / Asphalt"
+              ]
+            }
+          },
+          "variant_weights": {
+            "repeated": {
+              "values": [
+                "0",
+                "0",
+                "0",
+                "0"
+              ]
+            }
+          },
+          "vendor": {
+            "single": "Lareida"
+          }
+        },
+        "score": 0.9142857142857144,
+        "indexScore": 1,
+        "featureScore": 0.5714285714285715,
+        "relevanceScore": 1
+      },
+      {
+        "values": {
+          "_id": {
+            "single": "1ec9150f-e729-48f3-7f4e-f52f08df0b21"
+          },
+          "body_html": {
+            "single": "This is a demonstration store. You can purchase products like this from Baby & Company The perfect blouse is a coveted thing. The German brand has devoted itself to harnessing the mastery and construction of this timeless piece. The Laney is a delightful selection for both formal and casual needs. Flattering fit with princess seaming. Single button closure at center back neck. Single button closures at sleeve cuffs. Lareida. Color Marple. 100% Cotton. Made in Portugal. Ashley is wearing a Size 36. Also available in Asphalt . ﻿Shop our collection of Lareida."
+          },
+          "collection_ids": {
+            "repeated": {}
+          },
+          "collection_titles": {
+            "repeated": {}
+          },
+          "created_at": {
+            "single": "2020-10-20T02:48:02Z"
+          },
+          "handle": {
+            "single": "laney-shirt"
+          },
+          "id": {
+            "single": "5964936478902"
+          },
+          "image": {
+            "single": "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-03-05_Ashley_Look_23_31065_9434.jpg?v=1603162083"
+          },
+          "image_tags": {
+            "repeated": {}
+          },
+          "images": {
+            "repeated": {
+              "values": [
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-03-05_Ashley_Look_23_31065_9434.jpg?v=1603162083",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-03-05_Ashley_Look_23_31065_9429.jpg?v=1603162083",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-03-05_Ashley_Look_23_31065_9431.jpg?v=1603162083",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-03-05_Ashley_Look_23_31065_9447.jpg?v=1603162083",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2015-03-05_Ashley_Look_23_31065_9451.jpg?v=1603162083"
+              ]
+            }
+          },
+          "inventory_quantity": {
+            "single": "5"
+          },
+          "max_price": {
+            "single": "328"
+          },
+          "meta": {
+            "repeated": {}
+          },
+          "metafields_global_description_tag": {
+            "single": ""
+          },
+          "metafields_global_title_tag": {
+            "single": ""
+          },
+          "min_price": {
+            "single": "0"
+          },
+          "option_color": {
+            "repeated": {
+              "values": [
+                "Marple"
+              ]
+            }
+          },
+          "option_size": {
+            "repeated": {
+              "values": [
+                "36",
+                "38",
+                "40",
+                "42"
+              ]
+            }
+          },
+          "product_type": {
+            "single": "women's tops"
+          },
+          "published_at": {
+            "single": "2020-10-20T02:47:58Z"
+          },
+          "published_scope": {
+            "single": "web"
+          },
+          "requires_shipping": {
+            "single": "true"
+          },
+          "tags": {
+            "repeated": {
+              "values": [
+                "02/28",
+                "arrivals",
+                "AW15",
+                "blue",
+                "lareida",
+                "marple",
+                "new",
+                "publish",
+                "salefav2",
+                "Shot 3/5",
+                "signature",
+                "spring5",
+                "spring7",
+                "spring9",
+                "tops",
+                "visible",
+                "WEEK10",
+                "woman"
+              ]
+            }
+          },
+          "taxable": {
+            "single": "true"
+          },
+          "template_suffix": {
+            "single": ""
+          },
+          "title": {
+            "single": "Laney Shirt"
+          },
+          "updated_at": {
+            "single": "2020-10-20T02:48:03Z"
+          },
+          "variant_compare_at_prices": {
+            "repeated": {
+              "values": [
+                "0",
+                "0",
+                "0",
+                "0"
+              ]
+            }
+          },
+          "variant_ids": {
+            "repeated": {
+              "values": [
+                "37150849401014",
+                "37150849433782",
+                "37150849466550",
+                "37150849532086"
+              ]
+            }
+          },
+          "variant_options_1": {
+            "repeated": {
+              "values": [
+                "36",
+                "38",
+                "40",
+                "42"
+              ]
+            }
+          },
+          "variant_options_1_in_stock": {
+            "repeated": {
+              "values": [
+                "36",
+                "38",
+                "40",
+                "42"
+              ]
+            }
+          },
+          "variant_options_2": {
+            "repeated": {
+              "values": [
+                "Marple",
+                "Marple",
+                "Marple",
+                "Marple"
+              ]
+            }
+          },
+          "variant_options_2_in_stock": {
+            "repeated": {
+              "values": [
+                "Marple",
+                "Marple",
+                "Marple",
+                "Marple"
+              ]
+            }
+          },
+          "variant_options_3": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_options_3_in_stock": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_positions": {
+            "repeated": {
+              "values": [
+                "1",
+                "2",
+                "3",
+                "4"
+              ]
+            }
+          },
+          "variant_prices": {
+            "repeated": {
+              "values": [
+                "328",
+                "328",
+                "328",
+                "328"
+              ]
+            }
+          },
+          "variant_quantities": {
+            "repeated": {
+              "values": [
+                "1",
+                "1",
+                "2",
+                "1"
+              ]
+            }
+          },
+          "variant_skus": {
+            "repeated": {
+              "values": [
+                "31065",
+                "31066",
+                "31067",
+                "31068"
+              ]
+            }
+          },
+          "variant_tax_codes": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_titles": {
+            "repeated": {
+              "values": [
+                "36 / Marple",
+                "38 / Marple",
+                "40 / Marple",
+                "42 / Marple"
+              ]
+            }
+          },
+          "variant_titles_in_stock": {
+            "repeated": {
+              "values": [
+                "36 / Marple",
+                "38 / Marple",
+                "40 / Marple",
+                "42 / Marple"
+              ]
+            }
+          },
+          "variant_weights": {
+            "repeated": {
+              "values": [
+                "0",
+                "0",
+                "0",
+                "0"
+              ]
+            }
+          },
+          "vendor": {
+            "single": "Lareida"
+          }
+        },
+        "score": 0.9142857142857144,
+        "indexScore": 1,
+        "featureScore": 0.5714285714285715,
+        "relevanceScore": 1
+      },
+      {
+        "values": {
+          "_id": {
+            "single": "8bd2735e-c037-a958-591e-83952136a76f"
+          },
+          "body_html": {
+            "single": "This is a demonstration store. You can purchase products like this from Baby & Company Internationally respected for merging art and fashion, Avant Toi specially dyed T’s are indispensable for the growing collection. Color Navy. Made in Italy. Addis is wearing a size Medium. Addis is 6’2”, Chest 38.5”, Waist 31”, Inseam 32”."
+          },
+          "collection_ids": {
+            "repeated": {}
+          },
+          "collection_titles": {
+            "repeated": {}
+          },
+          "created_at": {
+            "single": "2020-10-20T01:50:20Z"
+          },
+          "handle": {
+            "single": "overprint-tunic-navy"
+          },
+          "id": {
+            "single": "5964755009718"
+          },
+          "image": {
+            "single": "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2014_11_3_Addis_Look13_01.jpg?v=1603158620"
+          },
+          "image_tags": {
+            "repeated": {}
+          },
+          "images": {
+            "repeated": {
+              "values": [
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2014_11_3_Addis_Look13_01.jpg?v=1603158620",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2014_11_3_Addis_Look13_03.jpg?v=1603158620",
+                "https://cdn.shopify.com/s/files/1/0505/4542/6614/products/2014_11_3_Addis_Look13_02.jpg?v=1603158620"
+              ]
+            }
+          },
+          "inventory_quantity": {
+            "single": "3"
+          },
+          "max_price": {
+            "single": "88"
+          },
+          "meta": {
+            "repeated": {}
+          },
+          "metafields_global_description_tag": {
+            "single": ""
+          },
+          "metafields_global_title_tag": {
+            "single": ""
+          },
+          "min_price": {
+            "single": "0"
+          },
+          "option_color": {
+            "repeated": {
+              "values": [
+                "Navy"
+              ]
+            }
+          },
+          "option_size": {
+            "repeated": {
+              "values": [
+                "Small",
+                "Medium",
+                "Large"
+              ]
+            }
+          },
+          "product_type": {
+            "single": "men's t-shirts"
+          },
+          "published_at": {
+            "single": "2020-10-20T01:50:17Z"
+          },
+          "published_scope": {
+            "single": "web"
+          },
+          "requires_shipping": {
+            "single": "true"
+          },
+          "tags": {
+            "repeated": {
+              "values": [
+                "Avant Toi",
+                "blue",
+                "cyber",
+                "dyed",
+                "Man",
+                "ombre",
+                "S14",
+                "SALE",
+                "SALE50",
+                "t-shirts",
+                "tee",
+                "tops",
+                "visible"
+              ]
+            }
+          },
+          "taxable": {
+            "single": "true"
+          },
+          "template_suffix": {
+            "single": ""
+          },
+          "title": {
+            "single": "Overprint T-Shirt in Navy"
+          },
+          "updated_at": {
+            "single": "2020-10-20T01:50:20Z"
+          },
+          "variant_compare_at_prices": {
+            "repeated": {
+              "values": [
+                "0",
+                "0",
+                "0"
+              ]
+            }
+          },
+          "variant_ids": {
+            "repeated": {
+              "values": [
+                "37150464868534",
+                "37150464901302",
+                "37150464934070"
+              ]
+            }
+          },
+          "variant_options_1": {
+            "repeated": {
+              "values": [
+                "Navy",
+                "Navy",
+                "Navy"
+              ]
+            }
+          },
+          "variant_options_1_in_stock": {
+            "repeated": {
+              "values": [
+                "Navy",
+                "Navy",
+                "Navy"
+              ]
+            }
+          },
+          "variant_options_2": {
+            "repeated": {
+              "values": [
+                "Small",
+                "Medium",
+                "Large"
+              ]
+            }
+          },
+          "variant_options_2_in_stock": {
+            "repeated": {
+              "values": [
+                "Small",
+                "Medium",
+                "Large"
+              ]
+            }
+          },
+          "variant_options_3": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_options_3_in_stock": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_positions": {
+            "repeated": {
+              "values": [
+                "1",
+                "2",
+                "3"
+              ]
+            }
+          },
+          "variant_prices": {
+            "repeated": {
+              "values": [
+                "88",
+                "88",
+                "88"
+              ]
+            }
+          },
+          "variant_quantities": {
+            "repeated": {
+              "values": [
+                "1",
+                "1",
+                "1"
+              ]
+            }
+          },
+          "variant_skus": {
+            "repeated": {
+              "values": [
+                "12172",
+                "12173",
+                "12174"
+              ]
+            }
+          },
+          "variant_tax_codes": {
+            "repeated": {
+              "values": [
+                "",
+                "",
+                ""
+              ]
+            }
+          },
+          "variant_titles": {
+            "repeated": {
+              "values": [
+                "Navy / Small",
+                "Navy / Medium",
+                "Navy / Large"
+              ]
+            }
+          },
+          "variant_titles_in_stock": {
+            "repeated": {
+              "values": [
+                "Navy / Small",
+                "Navy / Medium",
+                "Navy / Large"
+              ]
+            }
+          },
+          "variant_weights": {
+            "repeated": {
+              "values": [
+                "0",
+                "0",
+                "0"
+              ]
+            }
+          },
+          "vendor": {
+            "single": "Avant Toi"
+          }
+        },
+        "score": 0.9142857142857144,
+        "indexScore": 1,
+        "featureScore": 0.5714285714285715,
+        "relevanceScore": 1
+      }
+    ],
+    "featureScoreWeight": 0.2
+  },
+  "tokens": [
+    {
+      "posNeg": {
+        "pos": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdXJwb3NlIjoicG9zIiwiZGVzdGluYXRpb24iOiIiLCJ2YWxzIjp7ImNvbGxlY3Rpb24iOlsic2FqYXJpLXRlc3QtZmFzaGlvbjIiXSwiY29tcGFueSI6WyIxNjAzMTYzMzQ1NDQ4NDA0MjQxIl0sImZpZWxkIjpbImlkIl0sInByb2plY3QiOlsiMTYwMzE2MzM0NTQ0ODQwNDI0MSJdLCJxLmlkIjpbImd3MW9tYmh5c3Zmb3M5bHYiXSwicS5zbCI6WyIxIl0sInEudWlkIjpbImd3MW9tYmh5c3Zmb3M5bHYyIl0sInZhbHVlIjpbIjU5NjQ4NTMwMTg4MDYiXX19.tPIdGWKuw3BVoyEIWClwfhumqByHCUFUvKUKk-_CbUo",
+        "neg": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdXJwb3NlIjoibmVnIiwiZGVzdGluYXRpb24iOiIiLCJ2YWxzIjp7ImNvbGxlY3Rpb24iOlsic2FqYXJpLXRlc3QtZmFzaGlvbjIiXSwiY29tcGFueSI6WyIxNjAzMTYzMzQ1NDQ4NDA0MjQxIl0sImZpZWxkIjpbImlkIl0sInByb2plY3QiOlsiMTYwMzE2MzM0NTQ0ODQwNDI0MSJdLCJxLmlkIjpbImd3MW9tYmh5c3Zmb3M5bHYiXSwicS5zbCI6WyIxIl0sInEudWlkIjpbImd3MW9tYmh5c3Zmb3M5bHYyIl0sInZhbHVlIjpbIjU5NjQ4NTMwMTg4MDYiXX19.K9neNS43ou3_QCS3OJKsoqXP_Qd1Gz0Q7Buib-45kik"
+      }
+    },
+    {
+      "posNeg": {
+        "pos": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdXJwb3NlIjoicG9zIiwiZGVzdGluYXRpb24iOiIiLCJ2YWxzIjp7ImNvbGxlY3Rpb24iOlsic2FqYXJpLXRlc3QtZmFzaGlvbjIiXSwiY29tcGFueSI6WyIxNjAzMTYzMzQ1NDQ4NDA0MjQxIl0sImZpZWxkIjpbImlkIl0sInByb2plY3QiOlsiMTYwMzE2MzM0NTQ0ODQwNDI0MSJdLCJxLmlkIjpbImd3MW9tYmh5c3Zmb3M5bHYiXSwicS5zbCI6WyIyIl0sInEudWlkIjpbImd3MW9tYmh5c3Zmb3M5bHYyIl0sInZhbHVlIjpbIjU5NjQ4MjUxMDA0NzAiXX19.r22lPzDa1NSRBz7whptr_LnfJnAfD7zyUECMQocmKBU",
+        "neg": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdXJwb3NlIjoibmVnIiwiZGVzdGluYXRpb24iOiIiLCJ2YWxzIjp7ImNvbGxlY3Rpb24iOlsic2FqYXJpLXRlc3QtZmFzaGlvbjIiXSwiY29tcGFueSI6WyIxNjAzMTYzMzQ1NDQ4NDA0MjQxIl0sImZpZWxkIjpbImlkIl0sInByb2plY3QiOlsiMTYwMzE2MzM0NTQ0ODQwNDI0MSJdLCJxLmlkIjpbImd3MW9tYmh5c3Zmb3M5bHYiXSwicS5zbCI6WyIyIl0sInEudWlkIjpbImd3MW9tYmh5c3Zmb3M5bHYyIl0sInZhbHVlIjpbIjU5NjQ4MjUxMDA0NzAiXX19.Lj92KeKKuPRl-HgQbOB6LSJ3izCWGjtsNri3EGzt4Es"
+      }
+    },
+    {
+      "posNeg": {
+        "pos": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdXJwb3NlIjoicG9zIiwiZGVzdGluYXRpb24iOiIiLCJ2YWxzIjp7ImNvbGxlY3Rpb24iOlsic2FqYXJpLXRlc3QtZmFzaGlvbjIiXSwiY29tcGFueSI6WyIxNjAzMTYzMzQ1NDQ4NDA0MjQxIl0sImZpZWxkIjpbImlkIl0sInByb2plY3QiOlsiMTYwMzE2MzM0NTQ0ODQwNDI0MSJdLCJxLmlkIjpbImd3MW9tYmh5c3Zmb3M5bHYiXSwicS5zbCI6WyIzIl0sInEudWlkIjpbImd3MW9tYmh5c3Zmb3M5bHYyIl0sInZhbHVlIjpbIjU5NjQ4MjU1NTkyMjIiXX19.045tfzSepa_6Xlhh0l9he7j7EAw8s6lIFSUv3sSD2zE",
+        "neg": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdXJwb3NlIjoibmVnIiwiZGVzdGluYXRpb24iOiIiLCJ2YWxzIjp7ImNvbGxlY3Rpb24iOlsic2FqYXJpLXRlc3QtZmFzaGlvbjIiXSwiY29tcGFueSI6WyIxNjAzMTYzMzQ1NDQ4NDA0MjQxIl0sImZpZWxkIjpbImlkIl0sInByb2plY3QiOlsiMTYwMzE2MzM0NTQ0ODQwNDI0MSJdLCJxLmlkIjpbImd3MW9tYmh5c3Zmb3M5bHYiXSwicS5zbCI6WyIzIl0sInEudWlkIjpbImd3MW9tYmh5c3Zmb3M5bHYyIl0sInZhbHVlIjpbIjU5NjQ4MjU1NTkyMjIiXX19.VJHWis3wFyBD8aI9bavrKftJcnRTWNyPZqLWoju4vrM"
+      }
+    },
+    {
+      "posNeg": {
+        "pos": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdXJwb3NlIjoicG9zIiwiZGVzdGluYXRpb24iOiIiLCJ2YWxzIjp7ImNvbGxlY3Rpb24iOlsic2FqYXJpLXRlc3QtZmFzaGlvbjIiXSwiY29tcGFueSI6WyIxNjAzMTYzMzQ1NDQ4NDA0MjQxIl0sImZpZWxkIjpbImlkIl0sInByb2plY3QiOlsiMTYwMzE2MzM0NTQ0ODQwNDI0MSJdLCJxLmlkIjpbImd3MW9tYmh5c3Zmb3M5bHYiXSwicS5zbCI6WyI0Il0sInEudWlkIjpbImd3MW9tYmh5c3Zmb3M5bHYyIl0sInZhbHVlIjpbIjU5NjQ5MzkxOTg2NDYiXX19.V79igdZKfV-sQdLWz01Hp9dx4jgkhtYUjsQvn-skPIU",
+        "neg": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdXJwb3NlIjoibmVnIiwiZGVzdGluYXRpb24iOiIiLCJ2YWxzIjp7ImNvbGxlY3Rpb24iOlsic2FqYXJpLXRlc3QtZmFzaGlvbjIiXSwiY29tcGFueSI6WyIxNjAzMTYzMzQ1NDQ4NDA0MjQxIl0sImZpZWxkIjpbImlkIl0sInByb2plY3QiOlsiMTYwMzE2MzM0NTQ0ODQwNDI0MSJdLCJxLmlkIjpbImd3MW9tYmh5c3Zmb3M5bHYiXSwicS5zbCI6WyI0Il0sInEudWlkIjpbImd3MW9tYmh5c3Zmb3M5bHYyIl0sInZhbHVlIjpbIjU5NjQ5MzkxOTg2NDYiXX19.BCcZbh-vCV4mHSY1xapRloFsvYt2bS1oxWcZSKax8Do"
+      }
+    },
+    {
+      "posNeg": {
+        "pos": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdXJwb3NlIjoicG9zIiwiZGVzdGluYXRpb24iOiIiLCJ2YWxzIjp7ImNvbGxlY3Rpb24iOlsic2FqYXJpLXRlc3QtZmFzaGlvbjIiXSwiY29tcGFueSI6WyIxNjAzMTYzMzQ1NDQ4NDA0MjQxIl0sImZpZWxkIjpbImlkIl0sInByb2plY3QiOlsiMTYwMzE2MzM0NTQ0ODQwNDI0MSJdLCJxLmlkIjpbImd3MW9tYmh5c3Zmb3M5bHYiXSwicS5zbCI6WyI1Il0sInEudWlkIjpbImd3MW9tYmh5c3Zmb3M5bHYyIl0sInZhbHVlIjpbIjU5NjQ5Mzc4ODc5MjYiXX19.8j1MjVBLKvZQ_QcDP8YUQ5Hs-ndlBdgz9sJXfkYejJI",
+        "neg": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdXJwb3NlIjoibmVnIiwiZGVzdGluYXRpb24iOiIiLCJ2YWxzIjp7ImNvbGxlY3Rpb24iOlsic2FqYXJpLXRlc3QtZmFzaGlvbjIiXSwiY29tcGFueSI6WyIxNjAzMTYzMzQ1NDQ4NDA0MjQxIl0sImZpZWxkIjpbImlkIl0sInByb2plY3QiOlsiMTYwMzE2MzM0NTQ0ODQwNDI0MSJdLCJxLmlkIjpbImd3MW9tYmh5c3Zmb3M5bHYiXSwicS5zbCI6WyI1Il0sInEudWlkIjpbImd3MW9tYmh5c3Zmb3M5bHYyIl0sInZhbHVlIjpbIjU5NjQ5Mzc4ODc5MjYiXX19.XHpWNjA21asUg1oxn6J9cMQ5F-IMPUitltIhAGzkoo4"
+      }
+    },
+    {
+      "posNeg": {
+        "pos": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdXJwb3NlIjoicG9zIiwiZGVzdGluYXRpb24iOiIiLCJ2YWxzIjp7ImNvbGxlY3Rpb24iOlsic2FqYXJpLXRlc3QtZmFzaGlvbjIiXSwiY29tcGFueSI6WyIxNjAzMTYzMzQ1NDQ4NDA0MjQxIl0sImZpZWxkIjpbImlkIl0sInByb2plY3QiOlsiMTYwMzE2MzM0NTQ0ODQwNDI0MSJdLCJxLmlkIjpbImd3MW9tYmh5c3Zmb3M5bHYiXSwicS5zbCI6WyI2Il0sInEudWlkIjpbImd3MW9tYmh5c3Zmb3M5bHYyIl0sInZhbHVlIjpbIjU5NjQ5NDIxMTQ5OTgiXX19.Ghk0pAzXcoRxOHdX9Y4a0xiPdyfsDgNJtPryWRgfL6w",
+        "neg": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdXJwb3NlIjoibmVnIiwiZGVzdGluYXRpb24iOiIiLCJ2YWxzIjp7ImNvbGxlY3Rpb24iOlsic2FqYXJpLXRlc3QtZmFzaGlvbjIiXSwiY29tcGFueSI6WyIxNjAzMTYzMzQ1NDQ4NDA0MjQxIl0sImZpZWxkIjpbImlkIl0sInByb2plY3QiOlsiMTYwMzE2MzM0NTQ0ODQwNDI0MSJdLCJxLmlkIjpbImd3MW9tYmh5c3Zmb3M5bHYiXSwicS5zbCI6WyI2Il0sInEudWlkIjpbImd3MW9tYmh5c3Zmb3M5bHYyIl0sInZhbHVlIjpbIjU5NjQ5NDIxMTQ5OTgiXX19.c9PuLndG0ANYHNTAt85yAxgUw_f8ngQgpyMOMsLbwfg"
+      }
+    },
+    {
+      "posNeg": {
+        "pos": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdXJwb3NlIjoicG9zIiwiZGVzdGluYXRpb24iOiIiLCJ2YWxzIjp7ImNvbGxlY3Rpb24iOlsic2FqYXJpLXRlc3QtZmFzaGlvbjIiXSwiY29tcGFueSI6WyIxNjAzMTYzMzQ1NDQ4NDA0MjQxIl0sImZpZWxkIjpbImlkIl0sInByb2plY3QiOlsiMTYwMzE2MzM0NTQ0ODQwNDI0MSJdLCJxLmlkIjpbImd3MW9tYmh5c3Zmb3M5bHYiXSwicS5zbCI6WyI3Il0sInEudWlkIjpbImd3MW9tYmh5c3Zmb3M5bHYyIl0sInZhbHVlIjpbIjU5NjQ4NzMyNjk0MzAiXX19.Oc62nfL7BTg46bqV-tgFJ7D-oOiYeKCpxMHXOwmT2XE",
+        "neg": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdXJwb3NlIjoibmVnIiwiZGVzdGluYXRpb24iOiIiLCJ2YWxzIjp7ImNvbGxlY3Rpb24iOlsic2FqYXJpLXRlc3QtZmFzaGlvbjIiXSwiY29tcGFueSI6WyIxNjAzMTYzMzQ1NDQ4NDA0MjQxIl0sImZpZWxkIjpbImlkIl0sInByb2plY3QiOlsiMTYwMzE2MzM0NTQ0ODQwNDI0MSJdLCJxLmlkIjpbImd3MW9tYmh5c3Zmb3M5bHYiXSwicS5zbCI6WyI3Il0sInEudWlkIjpbImd3MW9tYmh5c3Zmb3M5bHYyIl0sInZhbHVlIjpbIjU5NjQ4NzMyNjk0MzAiXX19.gK93XYY-qPUE2dsayqsT63sxGpWpjSJvGDJmwajQ358"
+      }
+    },
+    {
+      "posNeg": {
+        "pos": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdXJwb3NlIjoicG9zIiwiZGVzdGluYXRpb24iOiIiLCJ2YWxzIjp7ImNvbGxlY3Rpb24iOlsic2FqYXJpLXRlc3QtZmFzaGlvbjIiXSwiY29tcGFueSI6WyIxNjAzMTYzMzQ1NDQ4NDA0MjQxIl0sImZpZWxkIjpbImlkIl0sInByb2plY3QiOlsiMTYwMzE2MzM0NTQ0ODQwNDI0MSJdLCJxLmlkIjpbImd3MW9tYmh5c3Zmb3M5bHYiXSwicS5zbCI6WyI4Il0sInEudWlkIjpbImd3MW9tYmh5c3Zmb3M5bHYyIl0sInZhbHVlIjpbIjU5NjQ3Nzk2MTg0ODYiXX19.4hpex4I5yDgbF5rM9xnSqTR4ExHUwqX0E9kj6iIbeWA",
+        "neg": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdXJwb3NlIjoibmVnIiwiZGVzdGluYXRpb24iOiIiLCJ2YWxzIjp7ImNvbGxlY3Rpb24iOlsic2FqYXJpLXRlc3QtZmFzaGlvbjIiXSwiY29tcGFueSI6WyIxNjAzMTYzMzQ1NDQ4NDA0MjQxIl0sImZpZWxkIjpbImlkIl0sInByb2plY3QiOlsiMTYwMzE2MzM0NTQ0ODQwNDI0MSJdLCJxLmlkIjpbImd3MW9tYmh5c3Zmb3M5bHYiXSwicS5zbCI6WyI4Il0sInEudWlkIjpbImd3MW9tYmh5c3Zmb3M5bHYyIl0sInZhbHVlIjpbIjU5NjQ3Nzk2MTg0ODYiXX19.TQm_7oipAYnOlFAo0EZvaoz6ltVuMiPdoOW5f73Da34"
+      }
+    },
+    {
+      "posNeg": {
+        "pos": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdXJwb3NlIjoicG9zIiwiZGVzdGluYXRpb24iOiIiLCJ2YWxzIjp7ImNvbGxlY3Rpb24iOlsic2FqYXJpLXRlc3QtZmFzaGlvbjIiXSwiY29tcGFueSI6WyIxNjAzMTYzMzQ1NDQ4NDA0MjQxIl0sImZpZWxkIjpbImlkIl0sInByb2plY3QiOlsiMTYwMzE2MzM0NTQ0ODQwNDI0MSJdLCJxLmlkIjpbImd3MW9tYmh5c3Zmb3M5bHYiXSwicS5zbCI6WyI5Il0sInEudWlkIjpbImd3MW9tYmh5c3Zmb3M5bHYyIl0sInZhbHVlIjpbIjU5NjQ4NzM1MzE1NzQiXX19.Gxasc_kdvJflN3JZguHkgeRZIuxCgnVIXByNfJUv-hg",
+        "neg": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdXJwb3NlIjoibmVnIiwiZGVzdGluYXRpb24iOiIiLCJ2YWxzIjp7ImNvbGxlY3Rpb24iOlsic2FqYXJpLXRlc3QtZmFzaGlvbjIiXSwiY29tcGFueSI6WyIxNjAzMTYzMzQ1NDQ4NDA0MjQxIl0sImZpZWxkIjpbImlkIl0sInByb2plY3QiOlsiMTYwMzE2MzM0NTQ0ODQwNDI0MSJdLCJxLmlkIjpbImd3MW9tYmh5c3Zmb3M5bHYiXSwicS5zbCI6WyI5Il0sInEudWlkIjpbImd3MW9tYmh5c3Zmb3M5bHYyIl0sInZhbHVlIjpbIjU5NjQ4NzM1MzE1NzQiXX19.73Dt_pMqqIInGqoe665vPslOaQJ0v1jXSxVjqvVJrtg"
+      }
+    },
+    {
+      "posNeg": {
+        "pos": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdXJwb3NlIjoicG9zIiwiZGVzdGluYXRpb24iOiIiLCJ2YWxzIjp7ImNvbGxlY3Rpb24iOlsic2FqYXJpLXRlc3QtZmFzaGlvbjIiXSwiY29tcGFueSI6WyIxNjAzMTYzMzQ1NDQ4NDA0MjQxIl0sImZpZWxkIjpbImlkIl0sInByb2plY3QiOlsiMTYwMzE2MzM0NTQ0ODQwNDI0MSJdLCJxLmlkIjpbImd3MW9tYmh5c3Zmb3M5bHYiXSwicS5zbCI6WyIxMCJdLCJxLnVpZCI6WyJndzFvbWJoeXN2Zm9zOWx2MiJdLCJ2YWx1ZSI6WyI1OTY0OTM4MjE1NjA2Il19fQ.VzaHpzfWujAfPaaTEtWD9jyjDus0iGgOiqJPFs5nhjk",
+        "neg": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdXJwb3NlIjoibmVnIiwiZGVzdGluYXRpb24iOiIiLCJ2YWxzIjp7ImNvbGxlY3Rpb24iOlsic2FqYXJpLXRlc3QtZmFzaGlvbjIiXSwiY29tcGFueSI6WyIxNjAzMTYzMzQ1NDQ4NDA0MjQxIl0sImZpZWxkIjpbImlkIl0sInByb2plY3QiOlsiMTYwMzE2MzM0NTQ0ODQwNDI0MSJdLCJxLmlkIjpbImd3MW9tYmh5c3Zmb3M5bHYiXSwicS5zbCI6WyIxMCJdLCJxLnVpZCI6WyJndzFvbWJoeXN2Zm9zOWx2MiJdLCJ2YWx1ZSI6WyI1OTY0OTM4MjE1NjA2Il19fQ.Gja7IZ9Aro_q7weRNaq03e7h7lYmXbuR4ZCQYvC_58E"
+      }
+    },
+    {
+      "posNeg": {
+        "pos": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdXJwb3NlIjoicG9zIiwiZGVzdGluYXRpb24iOiIiLCJ2YWxzIjp7ImNvbGxlY3Rpb24iOlsic2FqYXJpLXRlc3QtZmFzaGlvbjIiXSwiY29tcGFueSI6WyIxNjAzMTYzMzQ1NDQ4NDA0MjQxIl0sImZpZWxkIjpbImlkIl0sInByb2plY3QiOlsiMTYwMzE2MzM0NTQ0ODQwNDI0MSJdLCJxLmlkIjpbImd3MW9tYmh5c3Zmb3M5bHYiXSwicS5zbCI6WyIxMSJdLCJxLnVpZCI6WyJndzFvbWJoeXN2Zm9zOWx2MiJdLCJ2YWx1ZSI6WyI1OTY0ODE1MDA3OTI2Il19fQ.fB6tI8gPCyNr1NBfHsKpDlC6su2Ev4grg8SGefvHayA",
+        "neg": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdXJwb3NlIjoibmVnIiwiZGVzdGluYXRpb24iOiIiLCJ2YWxzIjp7ImNvbGxlY3Rpb24iOlsic2FqYXJpLXRlc3QtZmFzaGlvbjIiXSwiY29tcGFueSI6WyIxNjAzMTYzMzQ1NDQ4NDA0MjQxIl0sImZpZWxkIjpbImlkIl0sInByb2plY3QiOlsiMTYwMzE2MzM0NTQ0ODQwNDI0MSJdLCJxLmlkIjpbImd3MW9tYmh5c3Zmb3M5bHYiXSwicS5zbCI6WyIxMSJdLCJxLnVpZCI6WyJndzFvbWJoeXN2Zm9zOWx2MiJdLCJ2YWx1ZSI6WyI1OTY0ODE1MDA3OTI2Il19fQ.mOLh5H5AKPSFjGr4fbTpUAaJ5goKW0VBT3HQ1OcNImw"
+      }
+    },
+    {
+      "posNeg": {
+        "pos": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdXJwb3NlIjoicG9zIiwiZGVzdGluYXRpb24iOiIiLCJ2YWxzIjp7ImNvbGxlY3Rpb24iOlsic2FqYXJpLXRlc3QtZmFzaGlvbjIiXSwiY29tcGFueSI6WyIxNjAzMTYzMzQ1NDQ4NDA0MjQxIl0sImZpZWxkIjpbImlkIl0sInByb2plY3QiOlsiMTYwMzE2MzM0NTQ0ODQwNDI0MSJdLCJxLmlkIjpbImd3MW9tYmh5c3Zmb3M5bHYiXSwicS5zbCI6WyIxMiJdLCJxLnVpZCI6WyJndzFvbWJoeXN2Zm9zOWx2MiJdLCJ2YWx1ZSI6WyI1OTY0ODUzMzQ2NDg2Il19fQ.ILdoZlMwkZnfQHxeb1V-radHoOfSLEwdMVZlr8SQeBg",
+        "neg": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdXJwb3NlIjoibmVnIiwiZGVzdGluYXRpb24iOiIiLCJ2YWxzIjp7ImNvbGxlY3Rpb24iOlsic2FqYXJpLXRlc3QtZmFzaGlvbjIiXSwiY29tcGFueSI6WyIxNjAzMTYzMzQ1NDQ4NDA0MjQxIl0sImZpZWxkIjpbImlkIl0sInByb2plY3QiOlsiMTYwMzE2MzM0NTQ0ODQwNDI0MSJdLCJxLmlkIjpbImd3MW9tYmh5c3Zmb3M5bHYiXSwicS5zbCI6WyIxMiJdLCJxLnVpZCI6WyJndzFvbWJoeXN2Zm9zOWx2MiJdLCJ2YWx1ZSI6WyI1OTY0ODUzMzQ2NDg2Il19fQ.zNV1jWOclLWu3M7YPOHc6UTLeoC76PsoE1gxur6KADQ"
+      }
+    },
+    {
+      "posNeg": {
+        "pos": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdXJwb3NlIjoicG9zIiwiZGVzdGluYXRpb24iOiIiLCJ2YWxzIjp7ImNvbGxlY3Rpb24iOlsic2FqYXJpLXRlc3QtZmFzaGlvbjIiXSwiY29tcGFueSI6WyIxNjAzMTYzMzQ1NDQ4NDA0MjQxIl0sImZpZWxkIjpbImlkIl0sInByb2plY3QiOlsiMTYwMzE2MzM0NTQ0ODQwNDI0MSJdLCJxLmlkIjpbImd3MW9tYmh5c3Zmb3M5bHYiXSwicS5zbCI6WyIxMyJdLCJxLnVpZCI6WyJndzFvbWJoeXN2Zm9zOWx2MiJdLCJ2YWx1ZSI6WyI1OTY0OTM2ODM5MzUwIl19fQ.0kSZWME-_sevK4T5YpmUjxlUD4TiHDPvrvMFf2dLnBs",
+        "neg": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdXJwb3NlIjoibmVnIiwiZGVzdGluYXRpb24iOiIiLCJ2YWxzIjp7ImNvbGxlY3Rpb24iOlsic2FqYXJpLXRlc3QtZmFzaGlvbjIiXSwiY29tcGFueSI6WyIxNjAzMTYzMzQ1NDQ4NDA0MjQxIl0sImZpZWxkIjpbImlkIl0sInByb2plY3QiOlsiMTYwMzE2MzM0NTQ0ODQwNDI0MSJdLCJxLmlkIjpbImd3MW9tYmh5c3Zmb3M5bHYiXSwicS5zbCI6WyIxMyJdLCJxLnVpZCI6WyJndzFvbWJoeXN2Zm9zOWx2MiJdLCJ2YWx1ZSI6WyI1OTY0OTM2ODM5MzUwIl19fQ.Mu0pq_VttLr6GJuaVM4YB9080FwyMHKegDfPXWNGqnI"
+      }
+    },
+    {
+      "posNeg": {
+        "pos": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdXJwb3NlIjoicG9zIiwiZGVzdGluYXRpb24iOiIiLCJ2YWxzIjp7ImNvbGxlY3Rpb24iOlsic2FqYXJpLXRlc3QtZmFzaGlvbjIiXSwiY29tcGFueSI6WyIxNjAzMTYzMzQ1NDQ4NDA0MjQxIl0sImZpZWxkIjpbImlkIl0sInByb2plY3QiOlsiMTYwMzE2MzM0NTQ0ODQwNDI0MSJdLCJxLmlkIjpbImd3MW9tYmh5c3Zmb3M5bHYiXSwicS5zbCI6WyIxNCJdLCJxLnVpZCI6WyJndzFvbWJoeXN2Zm9zOWx2MiJdLCJ2YWx1ZSI6WyI1OTY0OTM2NDc4OTAyIl19fQ.Nid2dS1cRaAI-KkcmEZPhMV23J6Zk_Ul8g143a8vRGM",
+        "neg": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdXJwb3NlIjoibmVnIiwiZGVzdGluYXRpb24iOiIiLCJ2YWxzIjp7ImNvbGxlY3Rpb24iOlsic2FqYXJpLXRlc3QtZmFzaGlvbjIiXSwiY29tcGFueSI6WyIxNjAzMTYzMzQ1NDQ4NDA0MjQxIl0sImZpZWxkIjpbImlkIl0sInByb2plY3QiOlsiMTYwMzE2MzM0NTQ0ODQwNDI0MSJdLCJxLmlkIjpbImd3MW9tYmh5c3Zmb3M5bHYiXSwicS5zbCI6WyIxNCJdLCJxLnVpZCI6WyJndzFvbWJoeXN2Zm9zOWx2MiJdLCJ2YWx1ZSI6WyI1OTY0OTM2NDc4OTAyIl19fQ.5OjF_TEXy6tHlRikAA7eyi-3_oSccwTYxq2ckIj6mng"
+      }
+    },
+    {
+      "posNeg": {
+        "pos": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdXJwb3NlIjoicG9zIiwiZGVzdGluYXRpb24iOiIiLCJ2YWxzIjp7ImNvbGxlY3Rpb24iOlsic2FqYXJpLXRlc3QtZmFzaGlvbjIiXSwiY29tcGFueSI6WyIxNjAzMTYzMzQ1NDQ4NDA0MjQxIl0sImZpZWxkIjpbImlkIl0sInByb2plY3QiOlsiMTYwMzE2MzM0NTQ0ODQwNDI0MSJdLCJxLmlkIjpbImd3MW9tYmh5c3Zmb3M5bHYiXSwicS5zbCI6WyIxNSJdLCJxLnVpZCI6WyJndzFvbWJoeXN2Zm9zOWx2MiJdLCJ2YWx1ZSI6WyI1OTY0NzU1MDA5NzE4Il19fQ.CffpKf8wMX405XMte_xQTZaXUXXEfML5qS0S_Av3iW8",
+        "neg": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdXJwb3NlIjoibmVnIiwiZGVzdGluYXRpb24iOiIiLCJ2YWxzIjp7ImNvbGxlY3Rpb24iOlsic2FqYXJpLXRlc3QtZmFzaGlvbjIiXSwiY29tcGFueSI6WyIxNjAzMTYzMzQ1NDQ4NDA0MjQxIl0sImZpZWxkIjpbImlkIl0sInByb2plY3QiOlsiMTYwMzE2MzM0NTQ0ODQwNDI0MSJdLCJxLmlkIjpbImd3MW9tYmh5c3Zmb3M5bHYiXSwicS5zbCI6WyIxNSJdLCJxLnVpZCI6WyJndzFvbWJoeXN2Zm9zOWx2MiJdLCJ2YWx1ZSI6WyI1OTY0NzU1MDA5NzE4Il19fQ.POwLKzgVuuk191Lry8CeJEIAeet-q4RCUQLTCF0_v7k"
+      }
+    }
+  ]
+}
