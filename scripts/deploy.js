@@ -77,6 +77,7 @@ const buildLoader = async () =>
 
 async function main({ full, loaderOnly, staging }) {
   await buildLoader();
+  // base files /embed/n.n.n/[loader|bundle|map]
   const files = !loaderOnly
     ? [new FileUpload('loader.js'), new FileUpload('bundle.js'), new FileUpload('bundle.js.map')]
     : [];
@@ -89,7 +90,8 @@ async function main({ full, loaderOnly, staging }) {
     throw new Error('GOOGLE_CLIENT_EMAIL missing');
   }
 
-  if (loaderOnly || full) {
+  // Another loader for the root of version /embed/n/loader.js but which loads latest
+  if (!staging && (loaderOnly || full)) {
     files.push(new FileUpload('loader.js', true));
   }
 
