@@ -20,6 +20,8 @@ const visitSearchInput = (configs = defaultInputConfigs) => {
 
 describe('Search Input', async () => {
   it('Should redirect after running a search', () => {
+    cy.intercept('POST', '**/Search', { body: {} });
+
     visitSearchInput();
 
     cy.get('[type="search"]').first().type('shirt');
@@ -46,6 +48,8 @@ describe('Search Input', async () => {
   });
 
   it('Should redirect to /search when redirect.url is "search"', () => {
+    cy.intercept('POST', '**/Search', { body: {} });
+
     visitSearchInput({
       ...defaultInputConfigs,
       mode: 'typeahead',
@@ -61,6 +65,8 @@ describe('Search Input', async () => {
   });
 
   it('Should use the value from q param as the default value for the input', () => {
+    cy.intercept('POST', '**/Search', { body: {} });
+
     cy.visit('/?q=jacket');
     cy.get('#toolbar button').click();
     cy.get('[role="listbox"] [role="option"]:nth-child(3)').click();

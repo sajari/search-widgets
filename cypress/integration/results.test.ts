@@ -5,6 +5,7 @@ const visitSearchResults = (url = '/') => {
 
 describe('Search Results', async () => {
   it('Should sync input query with URL bar', () => {
+    cy.intercept('POST', '**/Search', { body: {} });
     visitSearchResults();
     cy.get('input[type="search"]').first().type('shirt');
     cy.get('input[type="search"]').first().should('have.value', 'shirt');
@@ -12,6 +13,7 @@ describe('Search Results', async () => {
   });
 
   it('Should search with query params', () => {
+    cy.intercept('POST', '**/Search', { body: {} });
     visitSearchResults('/?q=jacket');
     cy.get('input[type="search"]').first().should('have.value', 'jacket');
   });
@@ -20,10 +22,10 @@ describe('Search Results', async () => {
 describe('Pagination', async () => {
   beforeEach(() => {
     cy.viewport(1440, 720);
+    cy.intercept('POST', '**/Search', { fixture: 'promotion' }).as('search');
   });
 
   it('Should match the max page and current page', () => {
-    cy.intercept('POST', '**/Search', { fixture: 'promotion' }).as('search');
     visitSearchResults();
     cy.wait('@search')
       .then(({ response }) => {
@@ -56,7 +58,6 @@ describe('Pagination', async () => {
   });
 
   it('Should match the request when changing page number', () => {
-    cy.intercept('POST', '**/Search', { fixture: 'promotion' }).as('search');
     visitSearchResults();
     cy.wait('@search').then(({ request }) => {
       expect(JSON.parse(request.body)).property('request').property('values').not.property('page');
@@ -90,10 +91,13 @@ describe('Pagination', async () => {
 describe('Result items display', async () => {
   beforeEach(() => {
     cy.viewport(1440, 720);
+    cy.intercept('POST', '**/Search', { fixture: 'promotion' }).as('search');
   });
 
   it('Should match the view widget', () => {
     visitSearchResults();
+
+    cy.wait('@search');
 
     cy.get('button[aria-label="Grid"]').should('not.have.css', 'background-color', 'rgb(255, 255, 255)');
     cy.get('button[aria-label="List"]').should('have.css', 'background-color', 'rgb(255, 255, 255)');
@@ -107,7 +111,10 @@ describe('Result items display', async () => {
   });
 
   it('Should match the query params', () => {
-    cy.visit('/?viewType=list');
+    visitSearchResults('/?viewType=list');
+
+    cy.wait('@search');
+
     cy.get('button[aria-label="Grid"]').should('have.css', 'background-color', 'rgb(255, 255, 255)');
     cy.get('button[aria-label="List"]').should('not.have.css', 'background-color', 'rgb(255, 255, 255)');
     cy.get('article[data-testid="result-item"]').parent().should('have.css', 'display', 'flex');
@@ -117,10 +124,10 @@ describe('Result items display', async () => {
 describe('Promotions', async () => {
   beforeEach(() => {
     cy.viewport(2560, 1440);
+    cy.intercept('POST', '**/Search', { fixture: 'promotion' }).as('search');
   });
 
   it('Should match the pin items', () => {
-    cy.intercept('POST', '**/Search', { fixture: 'promotion' }).as('search');
     visitSearchResults();
 
     cy.wait('@search');
@@ -132,7 +139,6 @@ describe('Promotions', async () => {
   });
 
   it('Should match the result values', () => {
-    cy.intercept('POST', '**/Search', { fixture: 'promotion' }).as('search');
     visitSearchResults();
 
     cy.wait('@search').then(({ response }) => {
@@ -190,7 +196,7 @@ describe('Banners', async () => {
 
 describe('Custom result template', async () => {
   it('Should match the custom result template', () => {
-    cy.intercept({ url: '**/Search', method: 'POST' }).as('search');
+    cy.intercept('POST', '**/Search', { fixture: 'banner' }).as('search');
     cy.fixture('template').then((template) => {
       localStorage.setItem('code-content-search-results', template);
     });
