@@ -1,5 +1,14 @@
 import { Swatch } from '@sajari/react-components';
 
+type Filter = {
+  name: string;
+  type?: string;
+  field: string;
+  title: string;
+  searchable: boolean;
+  initial?: string[];
+};
+
 const defaultFilterConfigs = {
   account: '1603163345448404241',
   collection: 'sajari-test-fashion2',
@@ -12,7 +21,7 @@ const defaultFilterConfigs = {
       field: 'vendor',
       title: 'Vendor',
       searchable: true,
-    },
+    } as Filter,
   ],
 };
 
@@ -202,6 +211,24 @@ describe('List filter', async () => {
     cy.get('#filter-vendor-label + button').should('contain', 'Reset').click();
     cy.get('#list-vendor > div > div:nth-of-type(1) input').should('not.be.checked');
     cy.url().should('not.include', '?vendor=vendor+9');
+  });
+
+  it('Should accept initial', () => {
+    visitSearchResult({
+      ...defaultFilterConfigs,
+      filters: [
+        {
+          name: 'vendor',
+          field: 'vendor',
+          title: 'Vendor',
+          searchable: true,
+          initial: ['vendor 2'],
+        },
+      ],
+    });
+
+    cy.get('#list-vendor input[type="checkbox"]').first().should('be.checked');
+    cy.url().should('include', '?vendor=vendor+2');
   });
 });
 
