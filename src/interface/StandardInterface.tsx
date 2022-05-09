@@ -64,7 +64,7 @@ const StandardInterface = () => {
                           />
                         );
                       }
-                      return <Filter {...props} key={props.name} />;
+                      return <Filter data-testid={`${props.field}-filter`} {...props} key={props.name} />;
                     })}
                 </div>
               </div>
