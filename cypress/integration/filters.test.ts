@@ -180,7 +180,7 @@ describe('List filter', async () => {
     cy.intercept('POST', '**/Search').as('search-vendor-9');
 
     cy.get('#list-vendor label').first().click();
-    cy.get('#list-vendor input[type="checkbox"]').should('be.checked');
+    cy.get('#list-vendor input[type="checkbox"]').first().should('be.checked');
     cy.url().should('include', '?vendor=vendor+9');
 
     cy.wait('@search-vendor-9').then(({ request }) => {
@@ -191,7 +191,7 @@ describe('List filter', async () => {
     cy.intercept('POST', '**/Search').as('search');
 
     cy.get('#list-vendor label').first().click();
-    cy.get('#list-vendor input[type="checkbox"]').should('not.be.checked');
+    cy.get('#list-vendor input[type="checkbox"]').first().should('not.be.checked');
     cy.url().should('not.include', '?vendor=vendor+9');
 
     cy.wait('@search-vendor-9').then(({ request }) => {
@@ -204,7 +204,7 @@ describe('List filter', async () => {
     cy.intercept('POST', '**/Search').as('search-vendor-9');
 
     cy.get('#list-vendor label').first().click();
-    cy.get('#list-vendor input[type="checkbox"]').should('be.checked');
+    cy.get('#list-vendor input[type="checkbox"]').first().should('be.checked');
     cy.url().should('include', '?vendor=vendor+9');
 
     cy.get('#filter-vendor-label + button').should('contain', 'Reset').click();
