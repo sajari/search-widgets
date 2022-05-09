@@ -301,7 +301,7 @@ describe('Rating filter', async () => {
   });
 });
 
-describe.only('Color filter', async () => {
+describe('Color filter', async () => {
   beforeEach(() => {
     cy.intercept('POST', '**/Search', { fixture: 'color-filter' }).as('search');
     visitSearchResult({
@@ -357,8 +357,52 @@ describe.only('Color filter', async () => {
     cy.get('[data-testid="option_color-filter"] svg').first().should('be.visible');
     cy.url().should('include', '?option_color=Black');
 
-    cy.get('[data-testid="option_color-filter"] div:nth-of-type(1) button').should('contain', 'Reset').click();
+    cy.get('[data-testid="option_color-filter"] button').first().should('contain', 'Reset').click();
     cy.get('[data-testid="option_color-filter"] svg').first().should('not.be.visible');
     cy.url().should('not.include', '?option_color=Black');
+  });
+});
+
+describe.only('Range filter', async () => {
+  beforeEach(() => {
+    cy.intercept('POST', '**/Search', { fixture: 'range-filter' }).as('search');
+    visitSearchResult({
+      ...defaultFilterConfigs,
+      filters: [
+        {
+          name: 'price',
+          type: 'range',
+          field: 'price',
+          title: 'Price',
+          searchable: false,
+        },
+      ],
+    });
+  });
+
+  it('Should call search api with correct params', () => {
+    cy.wait('@search').then(({ request }) => {
+      const body = JSON.parse(request.body);
+      expect(body.request.values.max).to.equal('price');
+      expect(body.request.values.min).to.equal('price');
+    });
+
+    cy.get('[data-testid="range-filter-track"]').click('center');
+
+    cy.wait('@search').then(({ request }) => {
+      const body = JSON.parse(request.body);
+      expect(body.request.values.filter).to.equal('(price >= 250 AND price <= 500)');
+    });
+  });
+
+  it('Should reset when reset button is clicked', () => {
+    cy.get('[data-testid="range-filter-track"]').click('center');
+
+    cy.get('[data-testid="price-filter"] button').first().should('contain', 'Reset').click();
+
+    cy.wait('@search').then(({ request }) => {
+      const body = JSON.parse(request.body);
+      expect(body.request.values.filter).to.equal('_id != ""');
+    });
   });
 });
