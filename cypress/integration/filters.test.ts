@@ -161,27 +161,26 @@ describe('List filter', async () => {
   });
 
   it('Should render filters with show more button', () => {
-    cy.get('#list-vendor > div > div').should('have.length', 10);
+    cy.get('#list-vendor [role="group"]').children().should('have.length', 10);
     cy.get('#list-vendor + div button').should('contain', 'Show more');
 
     const order = [9, 2, 4, 8, 1, 3, 5, 6, 7, 10];
     order.forEach((vendorNumber, index) => {
-      cy.get(`#list-vendor > div > div:nth-of-type(${index + 1}) label`).should('contain', `vendor ${vendorNumber}`);
+      cy.get('#list-vendor [role="group"] > div').eq(index).find('label').should('contain', `vendor ${vendorNumber}`);
     });
-    cy.get('#list-vendor > div > div:nth-of-type(11)').should('not.exist');
   });
 
   it('Should show more when click show more button', () => {
-    cy.get('#list-vendor + div button').should('contain', 'Show more').click();
-    cy.get('#list-vendor + div button').should('contain', 'Show less');
-    cy.get('#list-vendor > div > div').should('have.length', 11);
+    cy.get('[aria-controls="list-vendor"]').should('contain', 'Show more').click();
+    cy.get('[aria-controls="list-vendor"]').should('contain', 'Show less');
+    cy.get('#list-vendor [role="group"]').children().should('have.length', 11);
   });
 
   it('Should check and uncheck filter and call api with correct param', () => {
     cy.intercept('POST', '**/Search').as('search-vendor-9');
 
-    cy.get('#list-vendor > div > div:nth-of-type(1) label').click();
-    cy.get('#list-vendor > div > div:nth-of-type(1) input').should('be.checked');
+    cy.get('#list-vendor label').first().click();
+    cy.get('#list-vendor input[type="checkbox"]').first().should('be.checked');
     cy.url().should('include', '?vendor=vendor+9');
 
     cy.wait('@search-vendor-9').then(({ request }) => {
@@ -191,8 +190,8 @@ describe('List filter', async () => {
 
     cy.intercept('POST', '**/Search').as('search');
 
-    cy.get('#list-vendor > div > div:nth-of-type(1) label').click();
-    cy.get('#list-vendor > div > div:nth-of-type(1) input').should('not.be.checked');
+    cy.get('#list-vendor label').first().click();
+    cy.get('#list-vendor input[type="checkbox"]').first().should('not.be.checked');
     cy.url().should('not.include', '?vendor=vendor+9');
 
     cy.wait('@search-vendor-9').then(({ request }) => {
@@ -204,12 +203,12 @@ describe('List filter', async () => {
   it('Should reset when reset button is clicked', () => {
     cy.intercept('POST', '**/Search').as('search-vendor-9');
 
-    cy.get('#list-vendor > div > div:nth-of-type(1) label').click();
-    cy.get('#list-vendor > div > div:nth-of-type(1) input').should('be.checked');
+    cy.get('#list-vendor label').first().click();
+    cy.get('#list-vendor input[type="checkbox"]').first().should('be.checked');
     cy.url().should('include', '?vendor=vendor+9');
 
     cy.get('#filter-vendor-label + button').should('contain', 'Reset').click();
-    cy.get('#list-vendor > div > div:nth-of-type(1) input').should('not.be.checked');
+    cy.get('#list-vendor input[type="checkbox"]').first().should('not.be.checked');
     cy.url().should('not.include', '?vendor=vendor+9');
   });
 
@@ -257,10 +256,11 @@ describe('Rating filter', async () => {
   });
 
   it('Should render filters in descending rating order', () => {
-    cy.get('#list-rating > div > div').should('have.length', 6);
+    cy.get('#list-rating [role="group"]').children().should('have.length', 6);
 
     new Array(6).fill(null).forEach((_, index) => {
-      cy.get(`#list-rating > div > div:nth-of-type(${index + 1}) [role="img"]`)
+      cy.get('#list-rating [role="img"]')
+        .eq(index)
         .invoke('attr', 'aria-label')
         .should('equal', `Rating: ${5 - index} out of 5 stars`);
     });
@@ -269,8 +269,8 @@ describe('Rating filter', async () => {
   it('Should check and uncheck filter and call api with correct param', () => {
     cy.intercept('POST', '**/Search', { fixture: 'rating-filter' }).as('search-rating-5');
 
-    cy.get('#list-rating > div > div:nth-of-type(1) input[type="checkbox"]').click();
-    cy.get('#list-rating > div > div:nth-of-type(1) input[type="checkbox"]').should('be.checked');
+    cy.get('#list-rating input[type="checkbox"]').first().click();
+    cy.get('#list-rating input[type="checkbox"]').first().should('be.checked');
     cy.url().should('include', '?rating=5');
 
     cy.wait('@search-rating-5').then(({ request }) => {
@@ -278,8 +278,8 @@ describe('Rating filter', async () => {
       expect(body.request.values.countFilters).to.equal('rating = "5"');
     });
 
-    cy.get('#list-rating > div > div:nth-of-type(1) input[type="checkbox"]').click();
-    cy.get('#list-rating > div > div:nth-of-type(1) input[type="checkbox"]').should('not.be.checked');
+    cy.get('#list-rating input[type="checkbox"]').first().click();
+    cy.get('#list-rating input[type="checkbox"]').first().should('not.be.checked');
     cy.url().should('not.include', '?rating=5');
 
     cy.wait('@search-rating-5').then(({ request }) => {
@@ -289,12 +289,12 @@ describe('Rating filter', async () => {
   });
 
   it('Should reset when reset button is clicked', () => {
-    cy.get('#list-rating > div > div:nth-of-type(1) input[type="checkbox"]').click();
-    cy.get('#list-rating > div > div:nth-of-type(1) input[type="checkbox"]').should('be.checked');
+    cy.get('#list-rating input[type="checkbox"]').first().click();
+    cy.get('#list-rating input[type="checkbox"]').first().should('be.checked');
     cy.url().should('include', '?rating=5');
 
     cy.get('#filter-rating-label + button').should('contain', 'Reset').click();
-    cy.get('#list-rating > div > div:nth-of-type(1) input[type="checkbox"]').should('not.be.checked');
+    cy.get('#list-rating input[type="checkbox"]').first().should('not.be.checked');
     cy.url().should('not.include', '?rating=5');
   });
 });
