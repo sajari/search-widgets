@@ -1,0 +1,27 @@
+{
+  "searchResponse": {
+    "totalResults": "66",
+    "time": "0.000910s",
+    "aggregates": {
+      "count": {
+        "buckets": {}
+      }
+    },
+    "aggregateFilters": {
+      "count.option_color": {
+        "count": {
+          "counts": {
+            "Black": 5,
+            "White": 4,
+            "Yellow": 3,
+            "Red": 2,
+            "Green": 1
+          }
+        }
+      }
+    },
+    "results": [],
+    "featureScoreWeight": 0.2
+  },
+  "queryId": "f1a48a6a-ba39-443b-b2bc-e6fde78735ca"
+}

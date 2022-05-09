@@ -7,6 +7,7 @@ type Filter = {
   title: string;
   searchable: boolean;
   initial?: string[];
+  array?: boolean;
 };
 
 const defaultFilterConfigs = {
@@ -243,6 +244,7 @@ describe('Rating filter', async () => {
           field: 'rating',
           title: 'Rating',
           searchable: false,
+          array: false,
         },
       ],
     });
@@ -296,5 +298,67 @@ describe('Rating filter', async () => {
     cy.get('#filter-rating-label + button').should('contain', 'Reset').click();
     cy.get('#list-rating input[type="checkbox"]').first().should('not.be.checked');
     cy.url().should('not.include', '?rating=5');
+  });
+});
+
+describe.only('Color filter', async () => {
+  beforeEach(() => {
+    cy.intercept('POST', '**/Search', { fixture: 'color-filter' }).as('search');
+    visitSearchResult({
+      ...defaultFilterConfigs,
+      filters: [
+        {
+          name: 'color',
+          type: 'color',
+          field: 'option_color',
+          title: 'Color',
+          searchable: false,
+          array: true,
+        },
+      ],
+    });
+  });
+
+  it('Should call search api with correct count param', () => {
+    cy.wait('@search').then(({ request }) => {
+      const body = JSON.parse(request.body);
+      expect(body.request.values.count).to.equal('option_color');
+    });
+  });
+
+  it('Should render 5 filter options', () => {
+    cy.get('[data-testid="option_color-filter"] label').should('have.length', 5);
+  });
+
+  it('Should check and uncheck filter and call api with correct param', () => {
+    cy.intercept('POST', '**/Search', { fixture: 'color-filter' }).as('search-black');
+
+    cy.get('[data-testid="option_color-filter"] label').first().click();
+    cy.get('[data-testid="option_color-filter"] svg').first().should('be.visible');
+    cy.url().should('include', '?option_color=Black');
+
+    cy.wait('@search-black').then(({ request }) => {
+      const body = JSON.parse(request.body);
+      expect(body.request.values.countFilters).to.equal('option_color ~ ["Black"]');
+    });
+
+    cy.get('[data-testid="option_color-filter"] label').first().click();
+    cy.get('[data-testid="option_color-filter"] svg').first().should('not.be.visible');
+    cy.url().should('not.include', '?option_color=Black');
+
+    cy.wait('@search-black').then(({ request }) => {
+      const body = JSON.parse(request.body);
+      expect(body.request.values.countFilters).to.equal('');
+    });
+  });
+
+  it('Should reset when reset button is clicked', () => {
+    cy.get('[data-testid="option_color-filter"] label').first().click();
+    cy.get('[data-testid="option_color-filter"] svg').first().should('be.visible');
+    cy.url().should('include', '?option_color=Black');
+
+    cy.get('[data-testid="option_color-filter"] div:nth-of-type(1) button').should('contain', 'Reset').click();
+    cy.get('[data-testid="option_color-filter"] svg').first().should('not.be.visible');
+    cy.url().should('not.include', '?option_color=Black');
   });
 });
