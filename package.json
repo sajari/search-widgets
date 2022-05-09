@@ -15,8 +15,9 @@
     "dev": "preact watch --host=localhost --template ./src/dev/index.ejs --no-esm",
     "dev:ssl": "preact watch --template ./src/dev/index.ejs --no-esm --host search-widgets.local --https --cert ./src/dev/cert.pem --key ./src/dev/cert.key",
     "deploy": "yarn lint && yarn build:script && node -r esm scripts/deploy.js",
-    "deploy:loader-only": "yarn lint && yarn build:script && node -r esm scripts/deploy.js --loader-only",
+    "deploy:loader-only": "yarn lint && yarn build:script && node -r esm scripts/deploy.js --loaderOnly",
     "deploy:full": "yarn lint && yarn build:script && node -r esm scripts/deploy.js --full && changeset tag",
+    "deploy:staging": "yarn lint && yarn build:script && node -r esm scripts/deploy.js --full --staging",
     "cert": "openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ./src/dev/cert.key -out ./src/dev/cert.pem -config ./src/dev/req.cnf -sha256",
     "changeset": "changeset",
     "release": "changeset publish",
@@ -88,7 +89,8 @@
     "terser": "^5.7.1",
     "ts-jest": "^27.0.5",
     "typescript": "^4.3.5",
-    "whatwg-fetch": "^3.6.2"
+    "whatwg-fetch": "^3.6.2",
+    "yargs": "^17.4.1"
   },
   "dependencies": {
     "@emotion/cache": "^10",

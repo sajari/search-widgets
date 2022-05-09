@@ -5,6 +5,8 @@ import fs from 'fs';
 import path from 'path';
 import semver from 'semver';
 import { minify } from 'terser';
+import yargs from 'yargs';
+import { hideBin } from 'yargs/helpers';
 
 import { version } from '../package.json';
 
@@ -19,6 +21,11 @@ class FileUpload {
     this.name = name;
     this.isLatest = latest;
     this.loaderVersion = loaderVersion;
+    this.staging = false;
+  }
+
+  setStaging() {
+    this.staging = true;
   }
 
   get isLoader() {
@@ -33,6 +40,9 @@ class FileUpload {
     let targetVersion = this.isLoader && this.isLatest ? semver.major(version) : version;
     if (this.loaderVersion) {
       targetVersion = this.loaderVersion;
+    }
+    if (this.staging) {
+      targetVersion = 'staging';
     }
     return `embed/${targetVersion}/${this.name}`;
   }
@@ -65,12 +75,9 @@ const buildLoader = async () =>
     }),
   );
 
-async function main(...args) {
+async function main({ full, loaderOnly, staging }) {
   await buildLoader();
-
-  const [arg] = args;
-  const full = arg === '--full';
-  const loaderOnly = arg === '--loader-only';
+  // base files /embed/n.n.n/[loader|bundle|map]
   const files = !loaderOnly
     ? [new FileUpload('loader.js'), new FileUpload('bundle.js'), new FileUpload('bundle.js.map')]
     : [];
@@ -83,7 +90,8 @@ async function main(...args) {
     throw new Error('GOOGLE_CLIENT_EMAIL missing');
   }
 
-  if (loaderOnly || full) {
+  // Another loader for the root of version /embed/n/loader.js but which loads latest
+  if (!staging && (loaderOnly || full)) {
     files.push(new FileUpload('loader.js', true));
   }
 
@@ -108,12 +116,19 @@ async function main(...args) {
       },
     });
 
-    log(`${ansi.green.bold(isLatest ? `${name} (latest)` : name)} uploaded to ${ansi.cyan(bucketName)}...`);
+    log(
+      `${ansi.green.bold(isLatest ? `${name} (latest)` : name)} uploaded to ${ansi.cyan(bucketName)} ${
+        staging && ' staging'
+      }...`,
+    );
   }
 
-  files.forEach((file) =>
-    uploadFile(file).catch((error) => log(`${ansi.red.bold(`${file.name} failed!`)} ${error.message}`)),
-  );
+  files.forEach((file) => {
+    if (staging) {
+      file.setStaging();
+    }
+    uploadFile(file).catch((error) => log(`${ansi.red.bold(`${file.name} failed!`)} ${error.message}`));
+  });
 }
 
-main(...process.argv.slice(2));
+main(yargs(hideBin(process.argv)).argv);

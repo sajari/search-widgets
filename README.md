@@ -2,8 +2,7 @@
 
 A lightweight search integration for using Sajari as simple embedded widgets. It is a wrapper of our [React SDK](https://react.docs.sajari.com/).
 
-See the [configuration reference documentation](/documentation/configuration-reference.md) for available configuration options and examples. 
-
+See the [configuration reference documentation](/documentation/configuration-reference.md) for available configuration options and examples.
 
 ## The stack
 
@@ -41,3 +40,4 @@ You should never need to manually deploy, but if you do:
 - `yarn deploy` will create a production build, using the version from the package.json and deploy to GCS (cdn.sajari.com/embed).
 - `yarn deploy:loader-only` will update the major-version loader.js (e.g. `/1/loader.js`) to point to the version in package.json.
 - `yarn deploy:full` will do a full deployment of all files and point the major version loader to the current version in package.json. Essentially, it's a shortcut for `yarn deploy && yarn deploy:loader-only`.
+- `yarn deploy:staging` will deploy both the loader and built files to a staging environment (cdn.sajari.com/embed/staging).

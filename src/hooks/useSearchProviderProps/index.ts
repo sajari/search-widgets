@@ -103,7 +103,7 @@ export function useSearchProviderProps(props: SearchResultsProps) {
           filterBuilder.setFrozen(true);
         }
       } else {
-        filterBuilder.set(value ? value.split(',') : []);
+        filterBuilder.set(value ? value.split(',') : [], true);
       }
 
       return filterBuilder;
