@@ -19,6 +19,36 @@ describe('Search Results', async () => {
   });
 });
 
+describe('Network count', async () => {
+  it('Should call /Search API only once after init app', () => {
+    let count = 0;
+    cy.intercept('POST', '**/Search', { body: {} });
+    cy.intercept('POST', '**/Search', () => {
+      count += 1;
+    }).as('search');
+
+    visitSearchResults();
+
+    cy.wait('@search').then(() => {
+      expect(count).to.equal(1);
+    });
+  });
+
+  it('Should call /Search API only once if URL params is available', () => {
+    let count = 0;
+    cy.intercept('POST', '**/Search', { body: {} });
+    cy.intercept('POST', '**/Search', () => {
+      count += 1;
+    }).as('search');
+
+    visitSearchResults('/?q=test&show=25&sort=max_price&vendor=Hannes+Roether');
+
+    cy.wait('@search').then(() => {
+      expect(count).to.equal(1);
+    });
+  });
+});
+
 describe('Pagination', async () => {
   beforeEach(() => {
     cy.viewport(1440, 720);
