@@ -6,14 +6,11 @@ import React from 'react';
 import tw from 'twin.macro';
 
 import { useSearchResultsContext } from '../context';
-import { SearchResultsOptions } from '../types';
 import { useInterfaceContext } from './context';
 import Options from './Options';
-import SyncStateQueryParams from './SyncStateQueryParams';
 
 const StandardInterface = () => {
   const { options, filters, id, preset } = useSearchResultsContext();
-  const { syncURL } = options as SearchResultsOptions<'standard'>;
   const { results } = useSearchContext();
   const { setWidth, filtersShown, breakpoints } = useInterfaceContext();
   const { setViewType, viewType } = useSearchUIContext();
@@ -35,7 +32,6 @@ const StandardInterface = () => {
 
   return (
     <React.Fragment>
-      {syncURL !== 'none' ? <SyncStateQueryParams /> : null}
       <ResizeObserver onResize={(size) => setWidth(size.width)}>
         <div id={id} css={[tw`space-y-6`, 'font-size: 16px;']}>
           {!hide && (topInput || isMobile) && <Input {...inputProps} css={tw`w-full`} showPoweredBy={showPoweredBy} />}

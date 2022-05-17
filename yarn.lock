@@ -3263,13 +3263,13 @@
     smoothscroll-polyfill "^0.4.4"
     use-resize-observer "^7.0.0"
 
-"@sajari/react-hooks@^3.12.0":
-  version "3.12.0"
-  resolved "https://registry.yarnpkg.com/@sajari/react-hooks/-/react-hooks-3.12.0.tgz#c9f269ec07a3746e1a980e2e06852b6a720ae7d8"
-  integrity sha512-zIarKKU2MgTCjJP/7VVWXtKDOd/rCWvpIrOgEqE1k+JbS3rCpk0tEWFtMGQK9aSgxRSXEtzd27sU+sC1Y0KutA==
+"@sajari/react-hooks@^3.13.2":
+  version "3.13.2"
+  resolved "https://registry.yarnpkg.com/@sajari/react-hooks/-/react-hooks-3.13.2.tgz#a26c2a6be666172983406a30c384064abca00e76"
+  integrity sha512-Mkb6xXZWJzKMaHAq83UExQe2cWvcLT6ezTQ6ThQd0iNiDfQsmAQcbZTVYp83cVZ6FET6pg//mDJH3nTAjvgRzQ==
   dependencies:
     "@sajari/react-sdk-utils" "^1.6.4"
-    "@sajari/sdk-js" "^2.10.4"
+    "@sajari/sdk-js" "^2.10.5"
     js-cookie "^2.2.1"
 
 "@sajari/react-sdk-utils@^1.6.4":
@@ -3287,14 +3287,14 @@
     tailwindcss-truncate-multiline "^1.0.3"
     twin.macro "^1.12.1"
 
-"@sajari/react-search-ui@^4.15.0":
-  version "4.15.0"
-  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-4.15.0.tgz#200bf3be2d66b1787936919fb40b87ea941de61d"
-  integrity sha512-yMOtajI97cvee+MDhAeQSQ1DBCcIq3zM54gg48x1TvIGVztyifFDD8l4pUjTbpOBAiFfLyizuLyWOdgK4qZH2w==
+"@sajari/react-search-ui@^4.16.2":
+  version "4.16.2"
+  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-4.16.2.tgz#db08187f9d1abdf4621fce6207edaccb1427a51a"
+  integrity sha512-GITem1Pe7uUbBUyHD7WLE9TJbgjQO04NsoAnu3EMVcVnSdSHRuFSTVY1Y2QTmiEw5MmBXWgems0XVTjjnCN5jA==
   dependencies:
     "@react-aria/utils" "3.5.0"
     "@sajari/react-components" "^1.14.4"
-    "@sajari/react-hooks" "^3.12.0"
+    "@sajari/react-hooks" "^3.13.2"
     "@sajari/react-sdk-utils" "^1.6.4"
     dayjs "^1.10.5"
     i18next "19.8.7"
@@ -3304,7 +3304,7 @@
     react-i18next "^11.8.5"
     tempura "^0.4.0"
 
-"@sajari/sdk-js@^2.10.4":
+"@sajari/sdk-js@^2.10.5":
   version "2.10.5"
   resolved "https://registry.yarnpkg.com/@sajari/sdk-js/-/sdk-js-2.10.5.tgz#876be97d78c7b192314b06d41e68d25577ee5011"
   integrity sha512-Uusuop9qNQ9kpXa9RL8RJsCVbf/8g9MNypaR/LItgJQsPdc2zIK7Ej0JSbjhi5yotKRURAah9R5jWlOl6N5Mxw==

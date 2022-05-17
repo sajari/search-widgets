@@ -6,12 +6,12 @@ import SearchResultsContextProvider from './context';
 import { useSearchProviderProps } from './hooks';
 import Interface from './interface';
 import PubSubContextProvider from './pubsub/context';
-import { SearchResultsProps } from './types';
+import { SearchResultsOptions, SearchResultsProps } from './types';
 
 const messageType = 'sajari-shopify-ui-builder-update';
 
 export default (defaultProps: SearchResultsProps) => {
-  const { container, downshiftEnvironment } = defaultProps;
+  const { container, downshiftEnvironment, options = {} } = defaultProps;
   const [state, setState] = useState(defaultProps);
   const {
     emitter,
@@ -20,13 +20,12 @@ export default (defaultProps: SearchResultsProps) => {
     theme,
     searchOnLoad,
     defaultFilter,
-    viewType,
     customClassNames,
     disableDefaultStyles,
     importantStyles,
     currency,
   } = useSearchProviderProps(state);
-
+  const { syncURL = 'none' } = context.options as SearchResultsOptions<'standard'>;
   const emitterContext = useMemo(() => ({ emitter }), [emitter]);
 
   useEffect(() => {
@@ -53,12 +52,12 @@ export default (defaultProps: SearchResultsProps) => {
       theme={theme}
       searchOnLoad={searchOnLoad}
       defaultFilter={defaultFilter}
-      viewType={viewType}
       customClassNames={customClassNames}
       disableDefaultStyles={disableDefaultStyles}
       importantStyles={importantStyles}
       currency={currency}
       downshiftEnvironment={downshiftEnvironment}
+      syncURLState={syncURL !== 'none' ? { replace: syncURL === 'replace' } : false}
     >
       <PubSubContextProvider value={emitterContext}>
         <SearchResultsContextProvider value={context}>
