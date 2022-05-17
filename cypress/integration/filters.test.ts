@@ -363,7 +363,7 @@ describe('Color filter', async () => {
   });
 });
 
-describe.only('Range filter', async () => {
+describe('Range filter', async () => {
   beforeEach(() => {
     cy.intercept('POST', '**/Search', { fixture: 'range-filter' }).as('search');
     visitSearchResult({
