@@ -1,4 +1,4 @@
-import { Button } from '@sajari/react-components';
+import { Button, Label } from '@sajari/react-components';
 import { useTranslation } from 'react-i18next';
 import tw from 'twin.macro';
 
@@ -8,10 +8,23 @@ export default () => {
   const { filtersShown, setFiltersShown } = useInterfaceContext();
   const toggleFilters = () => setFiltersShown(!filtersShown);
   const { t } = useTranslation('filter');
+  const label = filtersShown ? t('hide') : t('show');
+  const screenReaderLabel = t('toggleFilters');
 
   return (
-    <Button type="button" size="sm" onClick={toggleFilters} css={tw`whitespace-nowrap m-0`}>
-      {filtersShown ? t('hide') : t('show')}
+    <Button
+      role="switch"
+      aria-checked={filtersShown}
+      type="button"
+      size="sm"
+      onClick={toggleFilters}
+      css={tw`whitespace-nowrap m-0`}
+      id="toggle-filters"
+    >
+      {label}
+      <Label css={tw`sr-only`} htmlFor="toggle-filters">
+        {screenReaderLabel}
+      </Label>
     </Button>
   );
 };
