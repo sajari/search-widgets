@@ -9,6 +9,7 @@ export default () => {
   const toggleFilters = () => setFiltersShown(!filtersShown);
   const { t } = useTranslation('filter');
   const label = filtersShown ? t('hide') : t('show');
+  const screenReaderLabel = t('toggleFilters');
 
   return (
     <Button
@@ -22,7 +23,7 @@ export default () => {
     >
       {label}
       <Label css={tw`sr-only`} htmlFor="toggle-filters">
-        Toggle Filters
+        {screenReaderLabel}
       </Label>
     </Button>
   );
