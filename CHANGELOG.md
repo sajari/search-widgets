@@ -1,5 +1,16 @@
 # @sajari/search-widgets
 
+## 2.20.1
+
+### Patch Changes
+
+- 1211785: fix initial value is omitted
+- eadc8b6: Remap the id property if using shopify preset
+- 9f7a539: bug: bumps locked sdk-js to get access to promotion bug fix
+- c81dee2: chore: pass creds with staging build this time
+- d24756d: Add assistive labels for toggle filter button
+- f738ed2: build: enable staging deploy
+
 ## 2.20.0
 
 ### Minor Changes
