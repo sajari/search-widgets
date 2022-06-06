@@ -3238,10 +3238,10 @@
     eslint-config-airbnb-typescript "^12.0.0"
     eslint-config-prettier "^7.1.0"
 
-"@sajari/react-components@^1.14.4":
-  version "1.14.4"
-  resolved "https://registry.yarnpkg.com/@sajari/react-components/-/react-components-1.14.4.tgz#fff4ad20abf82b19720b3350147c9c0771f86c57"
-  integrity sha512-cXGcF+bPWPx/EKRem1j5o1z2QyhPWSXqxb6d/8963Zeg0ZLPJEf3Fd4sTXcbev0I0jsE5Qf5peq2S1dE3EorhQ==
+"@sajari/react-components@^1.14.5":
+  version "1.14.5"
+  resolved "https://registry.yarnpkg.com/@sajari/react-components/-/react-components-1.14.5.tgz#03ed39665ba7efdaec7aa5183ad3d14964ce90f2"
+  integrity sha512-+EVAbaJszYrH8aw669HKQQb+PjYfHlQjIAS2EzYbtQtsfHKieAsubnntVuBwOsCz4tOH5PSjDGkAzGTnBgm1RQ==
   dependencies:
     "@popperjs/core" "^2.9.2"
     "@react-aria/button" "^3.3.0"
@@ -3252,7 +3252,7 @@
     "@react-aria/textfield" "^3.2.2"
     "@react-aria/utils" "^3.5.0"
     "@react-types/button" "^3.3.0"
-    "@sajari/react-sdk-utils" "^1.6.4"
+    "@sajari/react-sdk-utils" "^1.6.5"
     aria-hidden "^1.1.2"
     body-scroll-lock "^3.1.5"
     classnames "^2.2.6"
@@ -3263,19 +3263,19 @@
     smoothscroll-polyfill "^0.4.4"
     use-resize-observer "^7.0.0"
 
-"@sajari/react-hooks@^3.12.0":
-  version "3.12.0"
-  resolved "https://registry.yarnpkg.com/@sajari/react-hooks/-/react-hooks-3.12.0.tgz#c9f269ec07a3746e1a980e2e06852b6a720ae7d8"
-  integrity sha512-zIarKKU2MgTCjJP/7VVWXtKDOd/rCWvpIrOgEqE1k+JbS3rCpk0tEWFtMGQK9aSgxRSXEtzd27sU+sC1Y0KutA==
+"@sajari/react-hooks@^3.13.3":
+  version "3.13.3"
+  resolved "https://registry.yarnpkg.com/@sajari/react-hooks/-/react-hooks-3.13.3.tgz#bc99f29bf1a97313812c8f44f317c13bee2ff901"
+  integrity sha512-E4F3r6rlCvenAR1sSPOKloyuWp85liO5vFo1Hd8UbQynATj4VLN+N79cQxpKCnkXX4YfV4zp1r36OdMcJt4c6A==
   dependencies:
-    "@sajari/react-sdk-utils" "^1.6.4"
-    "@sajari/sdk-js" "^2.10.4"
+    "@sajari/react-sdk-utils" "^1.6.5"
+    "@sajari/sdk-js" "^2.10.5"
     js-cookie "^2.2.1"
 
-"@sajari/react-sdk-utils@^1.6.4":
-  version "1.6.4"
-  resolved "https://registry.yarnpkg.com/@sajari/react-sdk-utils/-/react-sdk-utils-1.6.4.tgz#5bcd04c7f52fb0cbbf906ec738614c439e5a644a"
-  integrity sha512-4xyBOaRYFMzuG5Iz7DTkj9GnTV8nR4rbUlXJkKd7c1jJMLE+lL+6Wkq7ekw4nqHLFT4PfszZYUg/V7RofRz8GA==
+"@sajari/react-sdk-utils@^1.6.5":
+  version "1.6.5"
+  resolved "https://registry.yarnpkg.com/@sajari/react-sdk-utils/-/react-sdk-utils-1.6.5.tgz#b0dac6b607e15f96b99ac5fc7dfe9d116af2beaf"
+  integrity sha512-+wTYhxst34AZ6IOwXVC+HT1ifhnO1cSieRaK1gvxLa0txroMU5EiBzgKOH57C9D/S4ihbQqkY3OgOw+EyrsLiQ==
   dependencies:
     "@emotion/core" "^10.1.1"
     "@emotion/is-prop-valid" "1.0.0"
@@ -3287,15 +3287,15 @@
     tailwindcss-truncate-multiline "^1.0.3"
     twin.macro "^1.12.1"
 
-"@sajari/react-search-ui@^4.15.0":
-  version "4.15.0"
-  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-4.15.0.tgz#200bf3be2d66b1787936919fb40b87ea941de61d"
-  integrity sha512-yMOtajI97cvee+MDhAeQSQ1DBCcIq3zM54gg48x1TvIGVztyifFDD8l4pUjTbpOBAiFfLyizuLyWOdgK4qZH2w==
+"@sajari/react-search-ui@^4.16.3":
+  version "4.16.3"
+  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-4.16.3.tgz#711365cd8976b106dc28d1419248a498ae0d30ce"
+  integrity sha512-Ggxv/pCcYHdfhJ3uIh8RbXPLwlNbVRZ/Ti3dTNEH73y44+2hEMcs/CZ2cnxeg//HjdTeFNmzvrOkOUd/rTgYcw==
   dependencies:
     "@react-aria/utils" "3.5.0"
-    "@sajari/react-components" "^1.14.4"
-    "@sajari/react-hooks" "^3.12.0"
-    "@sajari/react-sdk-utils" "^1.6.4"
+    "@sajari/react-components" "^1.14.5"
+    "@sajari/react-hooks" "^3.13.3"
+    "@sajari/react-sdk-utils" "^1.6.5"
     dayjs "^1.10.5"
     i18next "19.8.7"
     i18next-browser-languagedetector "^6.0.1"
@@ -3304,7 +3304,7 @@
     react-i18next "^11.8.5"
     tempura "^0.4.0"
 
-"@sajari/sdk-js@^2.10.4":
+"@sajari/sdk-js@^2.10.5":
   version "2.10.5"
   resolved "https://registry.yarnpkg.com/@sajari/sdk-js/-/sdk-js-2.10.5.tgz#876be97d78c7b192314b06d41e68d25577ee5011"
   integrity sha512-Uusuop9qNQ9kpXa9RL8RJsCVbf/8g9MNypaR/LItgJQsPdc2zIK7Ej0JSbjhi5yotKRURAah9R5jWlOl6N5Mxw==
