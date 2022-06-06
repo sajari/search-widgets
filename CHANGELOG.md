@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 2.20.2
+
+### Patch Changes
+
+- bc99c7e: Refactor to use URLStateSync from React SDK
+
 ## 2.20.1
 
 ### Patch Changes
