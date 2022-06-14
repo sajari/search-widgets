@@ -159,6 +159,7 @@ const OverlayInterface = () => {
       animationDuration={75}
       fullWidth={isMobile}
       fullHeight={isMobile && (!!results || !!error)}
+      autoFocus={false}
       {...modalProps}
     >
       <div css={tw`flex h-full overflow-hidden`}>
@@ -175,7 +176,6 @@ const OverlayInterface = () => {
                 css={tw`w-full`}
                 size={isMobile ? 'xl' : '2xl'}
                 variant="unstyled"
-                autoFocus={modalProps?.autoFocus ?? true}
                 showPoweredBy={showPoweredBy}
               />
               <div css={tw`flex justify-center flex-none w-14`}>
