@@ -22,6 +22,7 @@ import {
 // making a note here so we (Thanh) can revisit the issue
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import tw, { styled } from 'twin.macro';
 
 import { useSearchResultsContext } from '../../context';
@@ -120,6 +121,7 @@ export default ({ showToggleFilter = true, isMobile = false, onScrollTop, mode =
   const count = filterList.filter(Boolean).length;
   const { suggest = false } = options.summary ?? {};
   let refScrollBox: HTMLDivElement | null;
+  const { t } = useTranslation('filter');
 
   const setActiveFilter = (index: number, value: boolean) => {
     const newValues = [...filterList];
@@ -254,7 +256,7 @@ export default ({ showToggleFilter = true, isMobile = false, onScrollTop, mode =
               }}
               css={tw`w-1/2 m-0`}
             >
-              {`Clear (${count})`}
+              {`${t('clear')} (${count})`}
             </Button>
             <Button
               onClick={() => {
@@ -266,7 +268,7 @@ export default ({ showToggleFilter = true, isMobile = false, onScrollTop, mode =
               appearance="primary"
               css={tw`w-1/2 m-0`}
             >
-              Apply
+              {t('apply')}
             </Button>
           </ModalFooter>
         </div>
