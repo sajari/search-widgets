@@ -3238,10 +3238,10 @@
     eslint-config-airbnb-typescript "^12.0.0"
     eslint-config-prettier "^7.1.0"
 
-"@sajari/react-components@^1.14.5":
-  version "1.14.5"
-  resolved "https://registry.yarnpkg.com/@sajari/react-components/-/react-components-1.14.5.tgz#03ed39665ba7efdaec7aa5183ad3d14964ce90f2"
-  integrity sha512-+EVAbaJszYrH8aw669HKQQb+PjYfHlQjIAS2EzYbtQtsfHKieAsubnntVuBwOsCz4tOH5PSjDGkAzGTnBgm1RQ==
+"@sajari/react-components@^1.14.6":
+  version "1.14.6"
+  resolved "https://registry.yarnpkg.com/@sajari/react-components/-/react-components-1.14.6.tgz#4b10edb93908653b685e85b0d7093ffea13f601c"
+  integrity sha512-IDRzYHHOR6T39T3pKsZrYTJmxueGPQe/Stxuqueu/LtH7P0TY9f+Io1V0LU3c6IIbI0Zxjt5ZVmkns3I4Ogj8Q==
   dependencies:
     "@popperjs/core" "^2.9.2"
     "@react-aria/button" "^3.3.0"
@@ -3263,10 +3263,10 @@
     smoothscroll-polyfill "^0.4.4"
     use-resize-observer "^7.0.0"
 
-"@sajari/react-hooks@^3.13.3":
-  version "3.13.3"
-  resolved "https://registry.yarnpkg.com/@sajari/react-hooks/-/react-hooks-3.13.3.tgz#bc99f29bf1a97313812c8f44f317c13bee2ff901"
-  integrity sha512-E4F3r6rlCvenAR1sSPOKloyuWp85liO5vFo1Hd8UbQynATj4VLN+N79cQxpKCnkXX4YfV4zp1r36OdMcJt4c6A==
+"@sajari/react-hooks@^3.14.1":
+  version "3.14.1"
+  resolved "https://registry.yarnpkg.com/@sajari/react-hooks/-/react-hooks-3.14.1.tgz#33ce6363bc483f4d847bf21424745554acab1e34"
+  integrity sha512-QWywNtKIAbqe21SXwd7xY1NcNjCnz4zXKVKyn8R5MUkIw41hNq0tkCZgaT6YokZN3p9R2Ze9Y9blft8wE0r65g==
   dependencies:
     "@sajari/react-sdk-utils" "^1.6.5"
     "@sajari/sdk-js" "^2.10.5"
@@ -3287,14 +3287,14 @@
     tailwindcss-truncate-multiline "^1.0.3"
     twin.macro "^1.12.1"
 
-"@sajari/react-search-ui@^4.16.3":
-  version "4.16.3"
-  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-4.16.3.tgz#711365cd8976b106dc28d1419248a498ae0d30ce"
-  integrity sha512-Ggxv/pCcYHdfhJ3uIh8RbXPLwlNbVRZ/Ti3dTNEH73y44+2hEMcs/CZ2cnxeg//HjdTeFNmzvrOkOUd/rTgYcw==
+"@sajari/react-search-ui@^4.17.1":
+  version "4.17.1"
+  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-4.17.1.tgz#c736fe5ce54980864ba7355bf0dec294017efb4e"
+  integrity sha512-9Xx5fdgrb82kWVS7vTA8A6QAPbIYYcX6fuQ5zDZiPjP3/krHJwL4vthNkz4bV4zn420eSQWY5LdDgnQDha/zEg==
   dependencies:
     "@react-aria/utils" "3.5.0"
-    "@sajari/react-components" "^1.14.5"
-    "@sajari/react-hooks" "^3.13.3"
+    "@sajari/react-components" "^1.14.6"
+    "@sajari/react-hooks" "^3.14.1"
     "@sajari/react-sdk-utils" "^1.6.5"
     dayjs "^1.10.5"
     i18next "19.8.7"
@@ -3305,9 +3305,9 @@
     tempura "^0.4.0"
 
 "@sajari/sdk-js@^2.10.5":
-  version "2.10.5"
-  resolved "https://registry.yarnpkg.com/@sajari/sdk-js/-/sdk-js-2.10.5.tgz#876be97d78c7b192314b06d41e68d25577ee5011"
-  integrity sha512-Uusuop9qNQ9kpXa9RL8RJsCVbf/8g9MNypaR/LItgJQsPdc2zIK7Ej0JSbjhi5yotKRURAah9R5jWlOl6N5Mxw==
+  version "2.10.7"
+  resolved "https://registry.yarnpkg.com/@sajari/sdk-js/-/sdk-js-2.10.7.tgz#7b19fd70a876f14484d00dc84d2a823441dac84d"
+  integrity sha512-BDeRiJZF54GaEE15v6HF4zP0PillJfEr8VofQ4cq3NjeqWSIMwXX9V1biVjSccO92FgK6czq2cXqCHjpV5ZMXw==
 
 "@sindresorhus/is@^0.14.0":
   version "0.14.0"
