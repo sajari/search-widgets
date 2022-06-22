@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 2.21.1
+
+### Patch Changes
+
+- 8fa38b3: Fix setting `urlParams.q` doesn't keep the URL state value after refresh
+
 ## 2.21.0
 
 ### Minor Changes
