@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 2.21.0
+
+### Minor Changes
+
+- cb88f3c: feat: upgrade react-sdk latest to pick up recent bug fixes and features
+
 ## 2.20.2
 
 ### Patch Changes
