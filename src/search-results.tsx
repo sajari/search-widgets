@@ -25,7 +25,7 @@ export default (defaultProps: SearchResultsProps) => {
     importantStyles,
     currency,
   } = useSearchProviderProps(state);
-  const { syncURL = 'none', urlParams } = context.options as SearchResultsOptions<'standard'>;
+  const { syncURL = 'push', urlParams } = context.options as SearchResultsOptions<'standard'>;
   const emitterContext = useMemo(() => ({ emitter }), [emitter]);
 
   useEffect(() => {
