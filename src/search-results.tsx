@@ -11,7 +11,7 @@ import { SearchResultsOptions, SearchResultsProps } from './types';
 const messageType = 'sajari-shopify-ui-builder-update';
 
 export default (defaultProps: SearchResultsProps) => {
-  const { container, downshiftEnvironment, options = {} } = defaultProps;
+  const { container, downshiftEnvironment } = defaultProps;
   const [state, setState] = useState(defaultProps);
   const {
     emitter,
@@ -25,7 +25,7 @@ export default (defaultProps: SearchResultsProps) => {
     importantStyles,
     currency,
   } = useSearchProviderProps(state);
-  const { syncURL = 'none' } = context.options as SearchResultsOptions<'standard'>;
+  const { syncURL = 'none', urlParams } = context.options as SearchResultsOptions<'standard'>;
   const emitterContext = useMemo(() => ({ emitter }), [emitter]);
 
   useEffect(() => {
@@ -57,7 +57,9 @@ export default (defaultProps: SearchResultsProps) => {
       importantStyles={importantStyles}
       currency={currency}
       downshiftEnvironment={downshiftEnvironment}
-      syncURLState={syncURL !== 'none' ? { replace: syncURL === 'replace' } : false}
+      syncURLState={
+        syncURL !== 'none' ? { replace: syncURL === 'replace', paramKeys: { q: urlParams?.q ?? 'q' } } : false
+      }
     >
       <PubSubContextProvider value={emitterContext}>
         <SearchResultsContextProvider value={context}>
