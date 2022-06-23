@@ -3238,10 +3238,10 @@
     eslint-config-airbnb-typescript "^12.0.0"
     eslint-config-prettier "^7.1.0"
 
-"@sajari/react-components@^1.14.6":
-  version "1.14.6"
-  resolved "https://registry.yarnpkg.com/@sajari/react-components/-/react-components-1.14.6.tgz#4b10edb93908653b685e85b0d7093ffea13f601c"
-  integrity sha512-IDRzYHHOR6T39T3pKsZrYTJmxueGPQe/Stxuqueu/LtH7P0TY9f+Io1V0LU3c6IIbI0Zxjt5ZVmkns3I4Ogj8Q==
+"@sajari/react-components@^1.14.7":
+  version "1.14.7"
+  resolved "https://registry.yarnpkg.com/@sajari/react-components/-/react-components-1.14.7.tgz#610dbdef3f5d743b7a72fc7c31ca6458ca1144b2"
+  integrity sha512-uxdLqG/7fW/g9/W5Luq9VXvUhwWugkc5GJSMdYmTVLKGHjVNnvzbhGZTFcMMzl6hk0n9lBaMJ+/osr8eVhECPg==
   dependencies:
     "@popperjs/core" "^2.9.2"
     "@react-aria/button" "^3.3.0"
@@ -3287,13 +3287,13 @@
     tailwindcss-truncate-multiline "^1.0.3"
     twin.macro "^1.12.1"
 
-"@sajari/react-search-ui@^4.17.2":
-  version "4.17.2"
-  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-4.17.2.tgz#c9a77481e5e04f749af4567196bd30bc759d6c2a"
-  integrity sha512-bOuZG4vapikuM/TimYhqYKPc97L7b3j6HxWwcCxPWSg+LlzSLeKqLls3V0CgXGSflrlPjKvHWKonlB37ofkp1A==
+"@sajari/react-search-ui@^4.17.4":
+  version "4.17.4"
+  resolved "https://registry.yarnpkg.com/@sajari/react-search-ui/-/react-search-ui-4.17.4.tgz#6801b0feb290ec72eacd04c6ed76022b0660d35b"
+  integrity sha512-boNUEtt5DgOUu7YkpmkwlQXucnK+BsePdKuy5uLtjN+7kBgSpb22xuzyXb1WBSPWWfLzvc+O5rc/XINRgBgtGw==
   dependencies:
     "@react-aria/utils" "3.5.0"
-    "@sajari/react-components" "^1.14.6"
+    "@sajari/react-components" "^1.14.7"
     "@sajari/react-hooks" "^3.14.2"
     "@sajari/react-sdk-utils" "^1.6.5"
     dayjs "^1.10.5"
