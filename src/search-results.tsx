@@ -25,7 +25,7 @@ export default (defaultProps: SearchResultsProps) => {
     importantStyles,
     currency,
   } = useSearchProviderProps(state);
-  const { syncURL = 'push', urlParams } = context.options as SearchResultsOptions<'standard'>;
+  const { syncURL = 'push', mode, urlParams } = context.options as SearchResultsOptions<'standard'>;
   const emitterContext = useMemo(() => ({ emitter }), [emitter]);
 
   useEffect(() => {
@@ -58,7 +58,9 @@ export default (defaultProps: SearchResultsProps) => {
       currency={currency}
       downshiftEnvironment={downshiftEnvironment}
       syncURLState={
-        syncURL !== 'none' ? { replace: syncURL === 'replace', paramKeys: { q: urlParams?.q ?? 'q' } } : false
+        syncURL !== 'none' && mode === 'standard'
+          ? { replace: syncURL === 'replace', paramKeys: { q: urlParams?.q ?? 'q' } }
+          : false
       }
     >
       <PubSubContextProvider value={emitterContext}>
