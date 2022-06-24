@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - master
-  pull_request:
-    types:
-      - closed
 
 jobs:
   release:
@@ -30,7 +27,6 @@ jobs:
       - name: Create Release Pull Request
         id: changesets
         uses: changesets/action@v1
-        if: github.event_name == 'pull_request' && github.event.pull_request.merged == true && github.event.pull_request.title == 'Release latest to Production'
         with:
           # This will only run when it's a release commit by the changeset bot
           publish: yarn deploy:full
@@ -42,7 +38,7 @@ jobs:
 
       - id: deploytostaging
         name: Deploy to Staging
-        if: github.event_name == 'push' || steps.changesets.outputs.published == 'false'
+        if: steps.changesets.outputs.published == 'false'
         run: yarn deploy:staging
         env:
           GOOGLE_CLIENT_EMAIL: ${{ secrets.GOOGLE_CLIENT_EMAIL }}
