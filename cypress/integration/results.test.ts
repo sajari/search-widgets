@@ -247,7 +247,7 @@ describe('Custom result template', async () => {
 });
 
 describe('Custom default value of variables', async () => {
-  it.only('Custom resultsPerPage should work', () => {
+  it('Custom resultsPerPage should work', () => {
     const config: any = {
       account: '1603163345448404241',
       collection: 'sajari-test-fashion2',
@@ -280,7 +280,7 @@ describe('Custom default value of variables', async () => {
   });
 });
 
-describe.only('Custom urlParams', async () => {
+describe('Custom urlParams', async () => {
   const config: any = {
     account: '1603163345448404241',
     collection: 'sajari-test-fashion2',
