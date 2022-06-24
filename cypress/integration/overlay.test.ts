@@ -50,4 +50,13 @@ describe('Search Overlay', () => {
     cy.get('[data-testid="overlay-results"]').find('a').first().click();
     cy.url().should('include', '/products/ultime-shirt-dress-2');
   });
+
+  it('Should not inject URL param after changing UI state', () => {
+    cy.get('#button').click();
+    cy.get('[data-testid="modal"]').find('[type="search"]').should('be.visible').type('jacket');
+    // Wait a bit for the URL updated due to debouncing effect
+    // eslint-disable-next-line
+    cy.wait(500);
+    cy.url().should('not.include', 'q=jacket');
+  });
 });
