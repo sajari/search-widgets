@@ -1,5 +1,12 @@
 # @sajari/search-widgets
 
+## 2.21.3
+
+### Patch Changes
+
+- 9e5c000: Fix sync state URL appears in `overlay` mode
+- 3e1fc8a: fix: adopt recent bug fix from react components
+
 ## 2.21.2
 
 ### Patch Changes
