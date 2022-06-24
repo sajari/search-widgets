@@ -247,7 +247,7 @@ describe('Custom result template', async () => {
 });
 
 describe('Custom default value of variables', async () => {
-  it('Custom resultsPerPage should work', () => {
+  it.only('Custom resultsPerPage should work', () => {
     const config: any = {
       account: '1603163345448404241',
       collection: 'sajari-test-fashion2',
@@ -269,6 +269,14 @@ describe('Custom default value of variables', async () => {
       });
 
     cy.url().should('include', 'show=15');
+
+    cy.get('[data-testid="results-per-page"]')
+      .click()
+      .within(() => {
+        cy.get('li:nth-child(2)').click();
+      });
+
+    cy.url().should('not.include', 'show');
   });
 });
 
