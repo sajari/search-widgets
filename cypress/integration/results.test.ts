@@ -245,3 +245,69 @@ describe('Custom result template', async () => {
       });
   });
 });
+
+describe('Custom default value of variables', async () => {
+  it('Custom resultsPerPage should work', () => {
+    const config: any = {
+      account: '1603163345448404241',
+      collection: 'sajari-test-fashion2',
+      pipeline: 'query',
+      preset: 'shopify',
+      variables: {
+        resultsPerPage: 25,
+      },
+    };
+    localStorage.setItem('code-content-search-results', JSON.stringify(config));
+    cy.intercept('POST', '**/Search', { fixture: 'promotion' }).as('search');
+    visitSearchResults();
+    cy.url().should('not.include', 'show');
+
+    cy.get('[data-testid="results-per-page"]')
+      .click()
+      .within(() => {
+        cy.get('li:nth-child(1)').click();
+      });
+
+    cy.url().should('include', 'show=15');
+
+    cy.get('[data-testid="results-per-page"]')
+      .click()
+      .within(() => {
+        cy.get('li:nth-child(2)').click();
+      });
+
+    cy.url().should('not.include', 'show');
+  });
+});
+
+describe('Custom urlParams', async () => {
+  const config: any = {
+    account: '1603163345448404241',
+    collection: 'sajari-test-fashion2',
+    pipeline: 'query',
+    preset: 'shopify',
+    options: {
+      urlParams: {
+        q: 'query',
+      },
+    },
+  };
+
+  it('Should change default value of q param', () => {
+    localStorage.setItem('code-content-search-results', JSON.stringify(config));
+    cy.intercept('POST', '**/Search', { fixture: 'promotion' }).as('search');
+    visitSearchResults();
+
+    cy.get('input[type="search"]').first().type('shirt');
+    cy.get('input[type="search"]').first().should('have.value', 'shirt');
+    cy.url().should('include', '?query=shirt');
+  });
+
+  it('Should sync state from URL param', () => {
+    localStorage.setItem('code-content-search-results', JSON.stringify(config));
+    cy.intercept('POST', '**/Search', { fixture: 'promotion' }).as('search');
+    visitSearchResults('/?query=test');
+
+    cy.get('input[type="search"]').first().should('have.value', 'test');
+  });
+});
