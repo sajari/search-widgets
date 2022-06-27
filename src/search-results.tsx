@@ -24,6 +24,7 @@ export default (defaultProps: SearchResultsProps) => {
     disableDefaultStyles,
     importantStyles,
     currency,
+    viewType,
   } = useSearchProviderProps(state);
   const { syncURL = 'push', mode, urlParams } = context.options as SearchResultsOptions<'standard'>;
   const emitterContext = useMemo(() => ({ emitter }), [emitter]);
@@ -57,6 +58,7 @@ export default (defaultProps: SearchResultsProps) => {
       importantStyles={importantStyles}
       currency={currency}
       downshiftEnvironment={downshiftEnvironment}
+      viewType={viewType}
       syncURLState={
         syncURL !== 'none' && mode === 'standard'
           ? { replace: syncURL === 'replace', paramKeys: { q: urlParams?.q ?? 'q' } }

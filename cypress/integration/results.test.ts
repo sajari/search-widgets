@@ -149,6 +149,24 @@ describe('Result items display', async () => {
     cy.get('button[aria-label="List"]').should('not.have.css', 'background-color', 'rgb(255, 255, 255)');
     cy.get('article[data-testid="result-item"]').parent().should('have.css', 'display', 'flex');
   });
+
+  it.only('Should be able to change default viewType from grid to list', () => {
+    const config: any = {
+      account: '1603163345448404241',
+      collection: 'sajari-test-fashion2',
+      pipeline: 'query',
+      preset: 'shopify',
+      options: {
+        results: {
+          viewType: 'list',
+        },
+      },
+    };
+    localStorage.setItem('code-content-search-results', JSON.stringify(config));
+    visitSearchResults('/');
+    cy.get('button[aria-label="Grid"]').should('have.attr', 'aria-checked', 'false');
+    cy.get('button[aria-label="List"]').should('have.attr', 'aria-checked', 'true');
+  });
 });
 
 describe('Promotions', async () => {
