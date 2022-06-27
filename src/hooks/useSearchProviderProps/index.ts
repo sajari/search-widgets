@@ -1,5 +1,5 @@
 import { isNullOrUndefined } from '@sajari/react-sdk-utils';
-import { FilterBuilder, Pipeline, RangeFilterBuilder, Variables } from '@sajari/react-search-ui';
+import { FilterBuilder, Pipeline, RangeFilterBuilder, ResultViewType, Variables } from '@sajari/react-search-ui';
 import { useMemo } from 'react';
 
 import { mergeProps } from '../../defaults';
@@ -53,6 +53,7 @@ export function useSearchProviderProps(props: SearchResultsProps) {
   }, []);
 
   const variables = useMemo(() => new Variables({ ...variablesProp }), []);
+  const viewType: ResultViewType = options.results?.viewType ?? 'grid';
 
   const filters = useMemo(() => {
     return filtersProp.map((filter) => {
@@ -102,5 +103,6 @@ export function useSearchProviderProps(props: SearchResultsProps) {
     disableDefaultStyles,
     importantStyles,
     currency,
+    viewType,
   };
 }
