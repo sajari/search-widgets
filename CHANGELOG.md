@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 2.21.4
+
+### Patch Changes
+
+- b6c9036: Fix the issue when setting `options.results.viewType` doesn't work. It was because the code to set the default viewType was unwantedly removed during the refactor Sync State URL
+
 ## 2.21.3
 
 ### Patch Changes
