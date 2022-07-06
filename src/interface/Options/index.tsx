@@ -22,6 +22,7 @@ import {
 // making a note here so we (Thanh) can revisit the issue
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import tw, { styled } from 'twin.macro';
 
 import { useSearchResultsContext } from '../../context';
@@ -120,6 +121,7 @@ export default ({ showToggleFilter = true, isMobile = false, onScrollTop, mode =
   const count = filterList.filter(Boolean).length;
   const { suggest = false } = options.summary ?? {};
   let refScrollBox: HTMLDivElement | null;
+  const { t } = useTranslation('filter');
 
   const setActiveFilter = (index: number, value: boolean) => {
     const newValues = [...filterList];
@@ -164,13 +166,13 @@ export default ({ showToggleFilter = true, isMobile = false, onScrollTop, mode =
 
   return (
     <div css={md ? tw`flex items-center justify-between space-x-4` : tw`space-y-4`}>
-      <div css={[tw`flex`, md ? tw`justify-end items-end` : tw`justify-between items-start`]}>
+      <div css={[tw`flex`, md ? tw`items-end justify-end` : tw`items-start justify-between`]}>
         <Summary suggest={suggest} />
         {isMobile && (
           <Button
             onClick={onOpen}
             size="sm"
-            css={[tw`border-none bg-transparent shadow-none h-7`, mode === 'overlay' ? tw`-mr-3 my-0 ml-0` : tw`m-0`]}
+            css={[tw`bg-transparent border-none shadow-none h-7`, mode === 'overlay' ? tw`my-0 ml-0 -mr-3` : tw`m-0`]}
             aria-label="Show filters"
           >
             <svg height="16" width="16" viewBox="0 0 16 16" focusable="false" role="presentation">
@@ -214,7 +216,7 @@ export default ({ showToggleFilter = true, isMobile = false, onScrollTop, mode =
         fullHeight
       >
         <ModalHeader css={['font-size: 16px;']}>
-          <ModalTitle css={tw`text-xl`}>Filters</ModalTitle>
+          <ModalTitle css={tw`text-xl`}>{t('label')}</ModalTitle>
           <ModalCloseButton />
         </ModalHeader>
 
@@ -240,11 +242,11 @@ export default ({ showToggleFilter = true, isMobile = false, onScrollTop, mode =
               })}
           </div>
         </ModalBody>
-        <div css={[tw`absolute bottom-0 inset-x-0`, count === 0 ? tw`h-0` : tw`h-12`, 'font-size: 16px;']}>
+        <div css={[tw`absolute inset-x-0 bottom-0`, count === 0 ? tw`h-0` : tw`h-12`, 'font-size: 16px;']}>
           <ModalFooter
             css={[
-              tw`flex justify-center absolute bottom-0 inset-x-0 border border-solid border-t border-gray-200 duration-200 transition-all transform bg-white`,
-              count === 0 ? tw`translate-y-full opacity-0 h-0` : tw`translate-y-0 opacity-100`,
+              tw`absolute inset-x-0 bottom-0 flex justify-center transition-all duration-200 transform bg-white border border-t border-gray-200 border-solid`,
+              count === 0 ? tw`h-0 translate-y-full opacity-0` : tw`translate-y-0 opacity-100`,
             ]}
           >
             <Button
@@ -254,7 +256,7 @@ export default ({ showToggleFilter = true, isMobile = false, onScrollTop, mode =
               }}
               css={tw`w-1/2 m-0`}
             >
-              {`Clear (${count})`}
+              {`${t('clear')} (${count})`}
             </Button>
             <Button
               onClick={() => {
@@ -266,7 +268,7 @@ export default ({ showToggleFilter = true, isMobile = false, onScrollTop, mode =
               appearance="primary"
               css={tw`w-1/2 m-0`}
             >
-              Apply
+              {t('apply')}
             </Button>
           </ModalFooter>
         </div>
