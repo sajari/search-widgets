@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 2.22.0
+
+### Minor Changes
+
+- b8f39fe: lang: use i18n for labels in several overlay widget strings
+
 ## 2.21.4
 
 ### Patch Changes
