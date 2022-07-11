@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 2.23.0
+
+### Minor Changes
+
+- b844c2a: feat: upgarde react-search-ui to get date template helper function
+
 ## 2.22.0
 
 ### Minor Changes
