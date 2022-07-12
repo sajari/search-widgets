@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 2.23.1
+
+### Patch Changes
+
+- a9bcf9d: Improve French translations
+
 ## 2.23.0
 
 ### Minor Changes
