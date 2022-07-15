@@ -1,5 +1,12 @@
 # @sajari/search-widgets
 
+## 2.23.2
+
+### Patch Changes
+
+- 3c817dc: fix: pull filter fix from search-ui
+- 3c817dc: chore: upgrade react-search-ui version to get German, Italian, Spanish translations fix
+
 ## 2.23.1
 
 ### Patch Changes
