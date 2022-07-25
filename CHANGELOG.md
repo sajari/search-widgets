@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 2.23.3
+
+### Patch Changes
+
+- 7c8268b: fix: upgrade react-search-ui for improved french translations
+
 ## 2.23.2
 
 ### Patch Changes
