@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 2.23.4
+
+### Patch Changes
+
+- 42f8c28: fix: integrate latests react components to get chrome pw manager fix
+
 ## 2.23.3
 
 ### Patch Changes
