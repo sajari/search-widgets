@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 2.24.0
+
+### Minor Changes
+
+- de4f7bb: Bump sdk-react components to pick up fixes
+
 ## 2.23.4
 
 ### Patch Changes
