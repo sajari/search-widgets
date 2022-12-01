@@ -249,12 +249,14 @@ export function mergeProps(params: MergePropsParams): MergedSearchResultsProps {
     const newRatio = options.results.imageAspectRatio;
     const newRatios = isNumber(newRatio) ? { list: newRatio, grid: newRatio } : newRatio;
 
-    Object.assign(props.options.results, {
-      imageAspectRatio: mapAspectRatio({
-        ...defaultRatios,
-        ...newRatios,
-      }),
-    });
+    if (props.options.results !== undefined) {
+      Object.assign(props.options.results, {
+        imageAspectRatio: mapAspectRatio({
+          ...defaultRatios,
+          ...newRatios,
+        }),
+      });
+    }
   }
 
   // Inject "Most relevant" option if required
