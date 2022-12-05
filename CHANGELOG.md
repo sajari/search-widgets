@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 3.0.0
+
+### Major Changes
+
+- 101dad8: feat: upgrade tailwind and adopt latest downstream bug fixes
+
 ## 2.24.0
 
 ### Minor Changes
