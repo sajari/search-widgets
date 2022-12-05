@@ -1,5 +1,3 @@
-import { Swatch } from '@sajari/react-components';
-
 type Filter = {
   name: string;
   type?: string;
@@ -79,8 +77,6 @@ describe('Results per page', async () => {
   });
 });
 
-const { colorKeys } = Swatch;
-
 describe('Multiple filters', async () => {
   beforeEach(() => {
     cy.viewport(2560, 1440);
@@ -130,20 +126,6 @@ describe('Multiple filters', async () => {
           cy.get('span:last').invoke('text').should('eq', String(typeFilter[typeLabels[0]]));
         });
       });
-
-      const colorFilter = aggregateFilters['count.option_color'].count.counts;
-      const colorLabel = Object.keys(colorFilter).filter((c) =>
-        colorKeys.some((o) => c.toLowerCase() === o.toLowerCase()),
-      );
-      cy.get('#list-type')
-        .parent()
-        .next()
-        .within(() => {
-          cy.get('label').should('have.length', colorLabel.length);
-          cy.get('label').each(($el, index) => {
-            expect($el).contain(colorLabel[index]);
-          });
-        });
     });
   });
 });
