@@ -150,7 +150,7 @@ describe('Result items display', async () => {
     cy.get('article[data-testid="result-item"]').parent().should('have.css', 'display', 'flex');
   });
 
-  it.only('Should be able to change default viewType from grid to list', () => {
+  it('Should be able to change default viewType from grid to list', () => {
     const config: any = {
       account: '1603163345448404241',
       collection: 'sajari-test-fashion2',

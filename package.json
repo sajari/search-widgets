@@ -68,7 +68,7 @@
     "babel-plugin-macros": "^3.1.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "cross-env": "^7.0.3",
-    "cypress": "^9.5.2",
+    "cypress": "^11.2.0",
     "eslint": "^7.31.0",
     "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-import": "^2.23.4",
