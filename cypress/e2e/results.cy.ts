@@ -116,6 +116,41 @@ describe('Pagination', async () => {
       .next()
       .should('have.attr', 'aria-label', 'Page 2, current page');
   });
+
+  it('Back button should move to previous result page', () => {
+    // regression test, back button to page 1 use to cause error
+    visitSearchResults();
+    cy.wait('@search').then(({ request }) => {
+      expect(JSON.parse(request.body)).property('request').property('values').not.property('page');
+    });
+
+    // Move to page 2
+    cy.get('nav[data-testid="pagination"]').children('[aria-label^="Page"]').first().next().click();
+    cy.wait('@search').then(({ request }) => {
+      expect(JSON.parse(request.body)).property('request').property('values').property('page').eq('2');
+    });
+
+    // Check that we're on page 2
+    cy.get('nav[data-testid="pagination"]')
+      .children('[aria-label^="Page"]')
+      .first()
+      .next()
+      .should('have.attr', 'aria-label', 'Page 2, current page');
+
+    // Back button
+    // Unfortunately sdk-react is weak to very quick navigation, debounce timers need to settle
+    // eslint-disable-next-line cypress/no-unnecessary-waiting
+    cy.wait(600);
+    cy.go('back');
+    cy.wait('@search').then(({ request }) => {
+      expect(JSON.parse(request.body)).property('request').property('values').property('page').eq('1');
+    });
+
+    cy.get('nav[data-testid="pagination"]')
+      .children('[aria-label^="Page"]')
+      .first()
+      .should('have.attr', 'aria-label', 'Page 1, current page');
+  });
 });
 
 describe('Result items display', async () => {
