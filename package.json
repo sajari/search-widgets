@@ -101,7 +101,7 @@
     "@sajari/react-components": "^2.1.0",
     "@sajari/react-hooks": "^4.0.1",
     "@sajari/react-sdk-utils": "^2.0.0",
-    "@sajari/react-search-ui": "^5.0.2",
+    "@sajari/react-search-ui": "^6.0.0",
     "@types/react-dom": "^17.0.9",
     "body-scroll-lock": "^3.1.5",
     "lodash-es": "^4.17.21",
