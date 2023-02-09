@@ -1,5 +1,13 @@
 # @sajari/search-widgets
 
+## 4.0.0
+
+### Major Changes
+
+- fca854e: feat: make redirects via the search input widget case-insensitive
+
+  Note: This update includes a breaking change to the way redirects work in the Search Input and Takeover Search Input widgets. The components no longer support case-sensitive redirects.
+
 ## 3.0.0
 
 ### Major Changes
