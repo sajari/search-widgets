@@ -109,7 +109,11 @@ const renderBindingInput = (
               minimumCharacters={minimumCharacters}
               portalContainer={container}
               mode={mode}
-              onSelect={disableRedirectOnResultSelect ? undefined : onSelectHandler(target, { mode, redirect })}
+              onSelect={
+                disableRedirectOnResultSelect && mode === 'results'
+                  ? undefined
+                  : onSelectHandler(target, { mode, redirect })
+              }
               inputElement={{ current: target }}
               showPoweredBy={showPoweredBy}
             />
@@ -136,7 +140,11 @@ const renderBindingInput = (
                 minimumCharacters={minimumCharacters}
                 portalContainer={container}
                 mode={mode}
-                onSelect={disableRedirectOnResultSelect ? undefined : onSelectHandler(element, { mode, redirect })}
+                onSelect={
+                  disableRedirectOnResultSelect && mode === 'results'
+                    ? undefined
+                    : onSelectHandler(element, { mode, redirect })
+                }
                 inputElement={{ current: element }}
                 showPoweredBy={showPoweredBy}
               />
