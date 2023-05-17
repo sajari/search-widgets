@@ -84,7 +84,7 @@ const renderBindingInput = (
   searchContext: ContextProviderValues['search'],
   params: Omit<SearchInputBindingProps, 'selector' | 'omittedElementSelectors'>,
 ) => {
-  const { mode = 'suggestions', container, options, ...props } = params;
+  const { mode = 'suggestions', container, options, disableRedirectOnResultSelect, ...props } = params;
 
   const redirect = {
     url: props.preset === 'shopify' ? '/search' : '', // Shopify always use /search for search results page
@@ -109,7 +109,7 @@ const renderBindingInput = (
               minimumCharacters={minimumCharacters}
               portalContainer={container}
               mode={mode}
-              onSelect={onSelectHandler(target, { mode, redirect })}
+              onSelect={disableRedirectOnResultSelect ? undefined : onSelectHandler(target, { mode, redirect })}
               inputElement={{ current: target }}
               showPoweredBy={showPoweredBy}
             />
@@ -136,7 +136,7 @@ const renderBindingInput = (
                 minimumCharacters={minimumCharacters}
                 portalContainer={container}
                 mode={mode}
-                onSelect={onSelectHandler(element, { mode, redirect })}
+                onSelect={disableRedirectOnResultSelect ? undefined : onSelectHandler(element, { mode, redirect })}
                 inputElement={{ current: element }}
                 showPoweredBy={showPoweredBy}
               />
