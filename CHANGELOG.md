@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 4.1.0
+
+### Minor Changes
+
+- 0a8ae85: feat: add disableRedirectOnResultSelect prop to search input binding widget to provide the option to enable the default results mode onSelect behaviour when a redirect is provided
+
 ## 4.0.0
 
 ### Major Changes
