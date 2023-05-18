@@ -155,6 +155,11 @@ export interface SearchInputBindingProps extends SearchWidgetBaseOptions, Pick<S
       q: string;
     };
   };
+  // Set `disableRedirectOnResultSelect` to true if `mode` is set to `results`,
+  // `redirect` has been provided, and you want to preserve the default dropdown
+  // result onSelect behaviour, rather than being redirected as specified in the
+  // `redirect` prop.
+  disableRedirectOnResultSelect?: boolean;
 }
 
 export interface TokenCheckInputProps {
