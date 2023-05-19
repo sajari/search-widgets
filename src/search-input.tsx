@@ -66,6 +66,7 @@ export default (defaultProps: SearchInputProps) => {
     defaultFilter,
     currency,
     customClassNames,
+    enableRedirectOnResultsModeSearch,
   } = defaultProps;
 
   const tracking = getTracking(defaultProps);
@@ -107,6 +108,19 @@ export default (defaultProps: SearchInputProps) => {
 
   if (redirect && mode !== 'results') {
     inputRender = <AutocompleteInput options={options} redirect={redirect} mode={mode} preset={preset} />;
+  } else if (redirect && mode === 'results' && enableRedirectOnResultsModeSearch) {
+    inputRender = (
+      <form action={redirect.url ?? 'search'} css={['font-size: 16px']}>
+        <Input
+          mode={mode}
+          {...options?.input}
+          {...options}
+          name={redirect.queryParamName || 'q'}
+          autoComplete="off"
+          showPoweredBy={showPoweredBy}
+        />
+      </form>
+    );
   } else {
     inputRender = <Input mode={mode} {...options?.input} {...options} showPoweredBy={showPoweredBy} />;
   }

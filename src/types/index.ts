@@ -145,6 +145,15 @@ export interface SearchInputProps extends SearchWidgetBaseOptions {
       q: string;
     };
   };
+  // `enableRedirectOnResultsModeSearch` enables redirects to work when using the
+  //  search input in results mode.
+  //
+  // By default, the `redirect` prop is ignored if `mode` is set to `results`.
+  // The reasoning behind this is not clear - it may have been implemented this
+  // way due to a misunderstanding. We're reluctant to change the default behaviour
+  // of the search input as it introduces breaking changes (this change is the result
+  // of a single customer request).
+  enableRedirectOnResultsModeSearch?: boolean;
 }
 
 export interface SearchInputBindingProps extends SearchWidgetBaseOptions, Pick<SearchInputProps, 'mode' | 'redirect'> {
