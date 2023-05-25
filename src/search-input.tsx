@@ -110,7 +110,7 @@ export default (defaultProps: SearchInputProps) => {
     inputRender = <AutocompleteInput options={options} redirect={redirect} mode={mode} preset={preset} />;
   } else if (redirect && mode === 'results' && enableRedirectOnResultsModeSearch) {
     inputRender = (
-      <form action={redirect.url ?? 'search'} css={['font-size: 16px']}>
+      <form action={redirect.url ?? 'search'}>
         <Input
           mode={mode}
           {...options?.input}
