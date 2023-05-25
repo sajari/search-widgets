@@ -1,5 +1,11 @@
 # @sajari/search-widgets
 
+## 4.2.0
+
+### Minor Changes
+
+- 2e26426: feat: add an `enableRedirectOnResultsModeSearch` search input widget prop to enable redirects to work in results mode
+
 ## 4.1.0
 
 ### Minor Changes
